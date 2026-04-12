@@ -1,6 +1,6 @@
 # ML Research Wiki
 
-A persistent, LLM-maintained knowledge base for self-supervised representation learning research. Built using the [LLM Wiki](llm-wiki.md) pattern.
+A persistent, LLM-maintained knowledge base for self-supervised representation learning research. Built using Andrej Karpathy's [LLM Wiki](llm-wiki.md) pattern.
 
 ## Structure
 
