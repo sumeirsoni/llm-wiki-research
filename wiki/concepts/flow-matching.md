@@ -2,12 +2,13 @@
 title: "Flow Matching"
 type: concept
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-12
 tags:
   - flow-matching
   - generative-modeling
 sources:
   - "[[self-flow]]"
+  - "[[repa]]"
 aliases:
   - "Flow matching"
   - "Continuous normalizing flows"
@@ -40,9 +41,23 @@ Flow matching and [[jepa|JEPA]] share a conceptual connection:
 > [!open-question]
 > Are JEPA and flow matching with Dual-Timestep Scheduling fundamentally equivalent under some transformation? Both create asymmetric information access patterns.
 
-## Advantage Over External Representations
+## Training Efficiency: External vs. Intrinsic Representations
 
-Standard flow matching / diffusion models rely on external representation models (CLIP, DINO) for semantic conditioning. Self-Flow eliminates this dependency:
+Two approaches exist for learning representations in flow matching / diffusion models:
+
+### External Alignment — [[repa|REPA]]
+
+REPA accelerates diffusion transformer training by **aligning internal representations with frozen visual encoders** (DINOv2, CLIP):
+- 17.5x faster training convergence
+- State-of-the-art generation quality (FID 1.42 on ImageNet)
+- Only early layers need alignment — later layers focus on high-frequency details
+
+### Intrinsic Learning — [[self-flow|Self-Flow]]
+
+Self-Flow learns representations **without external models** via Dual-Timestep Scheduling:
 - No external model training needed
 - No objective misalignment
 - Follows expected scaling laws (unlike external-model-dependent approaches)
+
+> [!comparison]
+> REPA uses external representations to accelerate training; Self-Flow learns them intrinsically. Both achieve strong results — the tradeoff is training simplicity (REPA) vs. self-contained learning (Self-Flow).

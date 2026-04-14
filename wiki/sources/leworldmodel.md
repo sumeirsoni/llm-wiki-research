@@ -2,7 +2,7 @@
 title: "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels"
 type: source
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-12
 arxiv_id: "2603.19312"
 authors:
   - "Lucas Maes"
@@ -79,3 +79,5 @@ The key insight is that SIGReg is sufficient to prevent collapse without needing
 ## Links
 
 - [arXiv](https://arxiv.org/abs/2603.19312)
+- [GitHub](https://github.com/lucas-maes/le-wm)
+- [Project Page](https://le-wm.github.io/)

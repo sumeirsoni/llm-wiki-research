@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-12
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**7 sources ingested** | **8 concept pages** | **4 entity pages** | 19 total pages
+**8 sources ingested** | **8 concept pages** | **4 entity pages** | 20 total pages
 
 ## Key Themes
 
@@ -42,8 +42,14 @@ Two papers extend JEPA from representation learning to [[world-models|world mode
 - [[causal-jepa|Causal-JEPA]]: object-level masking for causal reasoning (1% of features, comparable planning)
 - [[leworldmodel|LeWorldModel]]: end-to-end from pixels with minimal hyperparameters (48x faster planning)
 
-### 4. Unifying Generation and Representation
-[[self-flow|Self-Flow]] challenges the separation of generative and discriminative learning by integrating representation learning into the flow matching framework via Dual-Timestep Scheduling. Conceptually related to JEPA (both use information asymmetry) but operates in the generative paradigm.
+### 4. Bridging Generative and Discriminative Learning
+Two symmetric approaches connect generative models and representation learning:
+
+- **[[repa|REPA]]**: Aligns diffusion transformer representations → frozen visual encoder (DINOv2). Accelerates training 17.5x.
+- **[[rethinking-jepa|SALT]]**: Aligns visual encoder → frozen generative teacher (MAE-trained). Outperforms V-JEPA 2.
+- **[[self-flow|Self-Flow]]**: Learns both intrinsically via Dual-Timestep Scheduling — no external models needed.
+
+REPA and SALT are conceptual mirrors: one makes generative models more discriminative, the other makes discriminative models learn from generative objectives.
 
 ### 5. Theoretical Foundations
 [[lejepa|LeJEPA]] provides the first rigorous theoretical framework for JEPA:
@@ -69,10 +75,13 @@ graph TD
     LeWM --> WM
     
     SelfFlow[Self-Flow] -.->|conceptual link| JEPA
+    REPA[REPA] -.->|uses| DINOv2[DINOv2/CLIP]
+    REPA -.->|reverse of| SALT
     
     style JEPA fill:#4a90d9,color:#fff
     style WM fill:#7b68ee,color:#fff
     style SelfFlow fill:#e67e22,color:#fff
+    style REPA fill:#e67e22,color:#fff
 ```
 
 ## Open Questions

@@ -2,7 +2,7 @@
 title: "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis"
 type: source
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-12
 arxiv_id: "2603.06507"
 authors:
   - "Hila Chefer"
@@ -70,6 +70,7 @@ This is conceptually related to [[jepa|JEPA]]'s masked prediction approach — b
 - Challenges the separation of representation learning and generation — argues they should be unified
 - Related to [[self-supervised-learning|self-supervised learning]] but approaches it from the generative side
 - Different from all other papers in this wiki which are in the joint-embedding paradigm — Self-Flow is in the generative paradigm
+- Contrasts with [[repa|REPA]] — REPA uses external frozen encoders to guide diffusion training; Self-Flow learns representations intrinsically via Dual-Timestep Scheduling
 - From Stability AI / MIT — different institutional context than the Meta FAIR JEPA line
 
 ## Limitations & Open Questions
@@ -86,3 +87,5 @@ This is conceptually related to [[jepa|JEPA]]'s masked prediction approach — b
 ## Links
 
 - [arXiv](https://arxiv.org/abs/2603.06507)
+- [GitHub](https://github.com/black-forest-labs/Self-Flow)
+- [Project Page](https://bfl.ai/research/self-flow)

@@ -68,6 +68,7 @@ This decoupling has several benefits:
 - Contrasts with [[lejepa|LeJEPA]] — both remove EMA, but via different mechanisms (LeJEPA uses SIGReg regularization; SALT uses a frozen teacher)
 - Related to [[bootleg|Bootleg]] — both rethink the teacher-student relationship in SSL
 - The pixel-reconstruction teacher stage connects to generative methods like [[mae|MAE]]
+- **Reverse of [[repa|REPA]]**: SALT aligns visual encoder → frozen generative teacher; REPA aligns diffusion model → frozen visual encoder. Both bridge generative and discriminative learning, but in opposite directions.
 - From Apple research — a different institutional perspective vs. the Meta FAIR JEPA line
 
 ## Limitations & Open Questions

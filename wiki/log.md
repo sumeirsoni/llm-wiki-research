@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-12
 tags:
   - meta
 ---
@@ -34,3 +34,9 @@ Ingested "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis" (arX
 
 ## [2026-04-10] ingest | V-JEPA 2.1
 Ingested "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning" (arXiv: 2603.14482). Created source page. SOTA dense video SSL from Meta FAIR. Updated concept pages: [[jepa]], [[ema]], [[self-distillation]]. Updated entity pages: [[yann-lecun]], [[meta-fair]]. Created entity page: [[imagenet]].
+
+## [2026-04-12] update | Add Code & Project Links
+Added GitHub and project page links to source pages: [[self-flow]], [[leworldmodel]], [[lejepa]]. Updated LeJEPA GitHub link to galilai-group/lejepa.
+
+## [2026-04-12] ingest | REPA
+Ingested "Representation Alignment for Generation: Training Diffusion Transformers Is Easier Than You Think" (arXiv: 2410.06940, ICLR 2025 Oral). Created source page. Key insight: REPA is the reverse of SALT — aligns diffusion model → frozen visual encoder, achieving 17.5x training speedup. Updated: [[rethinking-jepa]], [[self-flow]], [[flow-matching]], [[overview]].

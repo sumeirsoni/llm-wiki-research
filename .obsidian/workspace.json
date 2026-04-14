@@ -4,11 +4,33 @@
     "type": "split",
     "children": [
       {
-        "id": "8c8c51d5ac8397f5",
+        "id": "c98ae4b7817a1901",
         "type": "tabs",
         "children": [
           {
-            "id": "2e5f3de12c2e2c91",
+            "id": "8e7aefb0a42ed27c",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "seed-papers/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis"
+            }
+          },
+          {
+            "id": "5f8c2f46a224e777",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          },
+          {
+            "id": "af821b0dfc253c40",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -17,7 +39,8 @@
               "title": "Graph view"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -90,6 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "AGENTS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,7 +123,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for AGENTS"
             }
           },
           {
@@ -108,11 +132,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "AGENTS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from AGENTS"
             }
           },
           {
@@ -150,12 +175,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "AGENTS.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of AGENTS"
             }
           }
         ]
@@ -176,21 +202,45 @@
       "bases:Create new base": false
     }
   },
-  "active": "2e5f3de12c2e2c91",
+  "active": "af821b0dfc253c40",
   "lastOpenFiles": [
-    "Untitled.base",
-    "Untitled.canvas",
-    "Untitled 1.base",
+    "Transfer notes from iphone.md",
+    "personal-notes/Transfer notes from iphone.md",
+    "personal-notes",
+    "Notes",
+    "seed-papers/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf",
+    "wiki/sources/repa.md",
     "wiki/sources/rethinking-jepa.md",
-    "Untitled 1.canvas",
-    "wiki/sources/v-jepa-2-1.md",
     "wiki/sources/self-flow.md",
+    "seed-papers/Self-Distillation of Hidden Layers for Self-Supervised Representation Learning.pdf",
     "wiki/sources/leworldmodel.md",
-    "wiki/sources/lejepa.md",
-    "wiki/sources/causal-jepa.md",
-    "wiki/sources/bootleg.md",
     "wiki/log.md",
+    "wiki/sources/bootleg.md",
+    "wiki/sources/causal-jepa.md",
+    "wiki/sources/lejepa.md",
+    "wiki/sources/v-jepa-2-1.md",
+    "wiki/concepts/representation-collapse.md",
+    "AGENTS.md",
+    "wiki/concepts/ema.md",
+    "wiki/index.md",
+    "wiki/concepts/jepa.md",
+    "wiki/concepts/world-models.md",
+    "wiki/concepts/self-supervised-learning.md",
+    "wiki/concepts/self-distillation.md",
+    "wiki/concepts/mae.md",
+    "wiki/concepts/flow-matching.md",
+    "wiki/meta",
+    "llm-wiki.md",
+    "wiki/sources",
     "wiki/overview.md",
-    "2026-04-11.md"
+    "wiki/entities/yann-lecun.md",
+    "wiki/entities/randall-balestriero.md",
+    "wiki/entities/meta-fair.md",
+    "wiki/entities",
+    "seed-papers/V-JEPA 2.1_ Unlocking Dense Features in Video Self-Supervised Learning.pdf",
+    "seed-papers/Rethinking JEPA_ Compute-Efficient Video SSL with Frozen Teachers.pdf",
+    "seed-papers/LeWorldModel_ Stable End-to-End Joint-Embedding Predictive Architecture from Pixels.pdf",
+    "Untitled.canvas",
+    "Untitled 1.canvas"
   ]
 }

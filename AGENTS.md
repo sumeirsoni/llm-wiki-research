@@ -66,6 +66,8 @@ authors:
 year: YYYY
 venue: "Conference/Journal"
 pdf_path: "seed-papers/filename.pdf"
+code_url: "https://github.com/..."  # if available
+project_url: "https://..."           # project page, if available
 ---
 ```
 
@@ -173,6 +175,7 @@ Process a new source and integrate it into the wiki.
    - Key results and findings
    - Connections to existing wiki pages (wikilinks)
    - Limitations and open questions noted by the authors
+   - **Links section** with arXiv, GitHub code repo, and project page (when available)
 3. **Update or create concept pages** in `wiki/concepts/` for each major concept covered. Add the new source as a reference. Note if the new source confirms, extends, or contradicts existing content.
 4. **Update or create entity pages** in `wiki/entities/` for key researchers, models, datasets, and organizations mentioned.
 5. **Update `wiki/index.md`** — add entries for all new pages.

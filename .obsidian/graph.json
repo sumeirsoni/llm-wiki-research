@@ -1,22 +1,58 @@
 {
   "collapse-filter": false,
-  "search": "",
+  "search": "path:wiki/ -path:wiki/log.md -path:wiki/index.md -path:wiki/overview.md",
   "showTags": false,
   "showAttachments": false,
   "hideUnresolved": false,
   "showOrphans": true,
   "collapse-color-groups": false,
-  "colorGroups": [],
+  "colorGroups": [
+    {
+      "query": "path:wiki/sources/",
+      "color": {
+        "a": 1,
+        "rgb": 5765887
+      }
+    },
+    {
+      "query": "path:wiki/concepts/",
+      "color": {
+        "a": 1,
+        "rgb": 5025616
+      }
+    },
+    {
+      "query": "path:wiki/entities/",
+      "color": {
+        "a": 1,
+        "rgb": 16744448
+      }
+    },
+    {
+      "query": "path:wiki/comparisons/",
+      "color": {
+        "a": 1,
+        "rgb": 10040217
+      }
+    },
+    {
+      "query": "path:wiki/meta/",
+      "color": {
+        "a": 1,
+        "rgb": 8421504
+      }
+    }
+  ],
   "collapse-display": false,
-  "showArrow": false,
+  "showArrow": true,
   "textFadeMultiplier": 0,
   "nodeSizeMultiplier": 1,
   "lineSizeMultiplier": 1,
   "collapse-forces": false,
-  "centerStrength": 1,
-  "repelStrength": 20,
-  "linkStrength": 1,
-  "linkDistance": 188,
-  "scale": 1.306731851506435,
+  "centerStrength": 0.442274305555556,
+  "repelStrength": 10.4583333333333,
+  "linkStrength": 0.274522569444444,
+  "linkDistance": 336,
+  "scale": 1.1922383893655,
   "close": false
 }

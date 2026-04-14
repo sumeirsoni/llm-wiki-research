@@ -2,7 +2,7 @@
 title: "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics"
 type: source
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-12
 arxiv_id: "2511.08544"
 authors:
   - "Randall Balestriero"
@@ -76,4 +76,4 @@ This eliminates the need for:
 ## Links
 
 - [arXiv](https://arxiv.org/abs/2511.08544)
-- [GitHub](https://github.com/rbalestr-lab/lejepa)
+- [GitHub](https://github.com/galilai-group/lejepa)
