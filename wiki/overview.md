@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**8 sources ingested** | **8 concept pages** | **4 entity pages** | 20 total pages
+**11 sources ingested** | **8 concept pages** | **4 entity pages** | 23 total pages
 
 ## Key Themes
 

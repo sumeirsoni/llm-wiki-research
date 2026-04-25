@@ -21,7 +21,7 @@ tags:
   - self-distillation
   - ema
   - representation-learning
-pdf_path: "seed-papers/Rethinking JEPA_ Compute-Efficient Video SSL with Frozen Teachers.pdf"
+pdf_path: "raw/Rethinking JEPA_ Compute-Efficient Video SSL with Frozen Teachers.pdf"
 aliases:
   - "SALT"
   - "Rethinking JEPA"

@@ -18,7 +18,7 @@ tags:
   - representation-learning
   - vision
   - segmentation
-pdf_path: "seed-papers/Self-Distillation of Hidden Layers for Self-Supervised Representation Learning.pdf"
+pdf_path: "raw/Self-Distillation of Hidden Layers for Self-Supervised Representation Learning.pdf"
 aliases:
   - "Bootleg"
 ---

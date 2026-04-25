@@ -27,7 +27,7 @@ tags:
   - segmentation
   - depth-estimation
   - object-detection
-pdf_path: "seed-papers/V-JEPA 2.1_ Unlocking Dense Features in Video Self-Supervised Learning.pdf"
+pdf_path: "raw/V-JEPA 2.1_ Unlocking Dense Features in Video Self-Supervised Learning.pdf"
 aliases:
   - "V-JEPA 2.1"
 ---

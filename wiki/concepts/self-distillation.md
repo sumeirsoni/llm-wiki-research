@@ -2,7 +2,7 @@
 title: "Self-Distillation"
 type: concept
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-04-25
 tags:
   - self-distillation
   - self-supervised-learning
@@ -11,6 +11,7 @@ sources:
   - "[[bootleg]]"
   - "[[v-jepa-2-1]]"
   - "[[rethinking-jepa]]"
+  - "[[foveal-ssl]]"
 aliases:
   - "Self-distillation"
   - "Knowledge distillation"
@@ -46,6 +47,14 @@ Self-distillation is a learning paradigm where a model learns from its own outpu
 - Student learns from static targets
 - **Pro**: Stable targets, decoupled optimization
 - **Finding**: Student quality is surprisingly robust to teacher quality
+
+### Sequential-to-Global Distillation ([[foveal-ssl|Foveal SSL]])
+- Extends DINO to **iterative/recurrent** architectures
+- Teacher processes full view; student processes **sequence of local glimpses**
+- Student output at **every step** compared to teacher's final-step target
+- **Key**: Stop-gradients between steps — no BPTT needed
+- **Pro**: Enables constant-compute processing at any resolution
+- **Finding**: Performance improves monotonically with each step, confirming effective memory accumulation
 
 ## The Instability Problem
 

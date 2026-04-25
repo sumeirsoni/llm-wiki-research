@@ -23,7 +23,7 @@ tags:
   - video
   - audio
   - representation-learning
-pdf_path: "seed-papers/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf"
+pdf_path: "raw/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf"
 aliases:
   - "Self-Flow"
 ---

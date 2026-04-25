@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-04-12
+updated: 2026-04-25
 tags:
   - meta
 ---
@@ -40,3 +40,12 @@ Added GitHub and project page links to source pages: [[self-flow]], [[leworldmod
 
 ## [2026-04-12] ingest | REPA
 Ingested "Representation Alignment for Generation: Training Diffusion Transformers Is Easier Than You Think" (arXiv: 2410.06940, ICLR 2025 Oral). Created source page. Key insight: REPA is the reverse of SALT — aligns diffusion model → frozen visual encoder, achieving 17.5x training speedup. Updated: [[rethinking-jepa]], [[self-flow]], [[flow-matching]], [[overview]].
+
+## [2026-04-25] ingest | Foveal SSL
+Ingested "Self-supervised Pretraining for an Iterative Image Size Agnostic Vision Transformer" (arXiv: 2604.20392). Created source page. Key innovation: sequential-to-global self-distillation extends DINO to recurrent architectures without BPTT. Enables constant-compute processing at any resolution. Updated: [[self-distillation]].
+
+## [2026-04-25] ingest | RVM (Recurrent Video MAE)
+Ingested "Recurrent Video Masked Autoencoders" (arXiv: 2512.13684). Created source page. Key insight: GRU-Transformer recurrent core + simple pixel reconstruction achieves generalist encoder for both spatial and spatio-temporal tasks. 34M model matches 30× larger VideoMAEv2-g. Updated: [[mae]].
+
+## [2026-04-25] ingest | Hyperloop Transformers
+Ingested "Hyperloop Transformers" (arXiv: 2604.21254). Created source page. Key innovation: combines looped (recurrent-depth) Transformers with loop-level hyper-connections and diagonal H_res parameterization. Achieves lower perplexity than depth-matched Transformers with 50% fewer parameters. Note: LLM architecture paper, tangential to core SSL focus but connects to [[rvm]] via recurrent architecture theme.

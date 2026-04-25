@@ -65,7 +65,7 @@ authors:
   - "Author Name"
 year: YYYY
 venue: "Conference/Journal"
-pdf_path: "seed-papers/filename.pdf"
+pdf_path: "raw/filename.pdf"
 code_url: "https://github.com/..."  # if available
 project_url: "https://..."           # project page, if available
 ---
@@ -162,7 +162,7 @@ Initial tags for ML research. Extend as needed.
 
 Process a new source and integrate it into the wiki.
 
-**Input:** A paper (PDF in `raw/` or `seed-papers/`, or an arXiv URL).
+**Input:** A paper (PDF in `raw/`, or an arXiv URL).
 
 **Steps:**
 

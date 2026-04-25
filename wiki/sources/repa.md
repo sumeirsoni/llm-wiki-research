@@ -14,6 +14,7 @@ authors:
   - "Saining Xie"
 year: 2024
 venue: "ICLR 2025 (Oral)"
+pdf_path: "raw/REPA_ Representation Alignment for Generation.pdf"
 tags:
   - flow-matching
   - diffusion

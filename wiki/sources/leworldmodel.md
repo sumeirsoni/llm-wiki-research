@@ -17,7 +17,7 @@ tags:
   - self-supervised-learning
   - representation-learning
   - optimization
-pdf_path: "seed-papers/LeWorldModel_ Stable End-to-End Joint-Embedding Predictive Architecture from Pixels.pdf"
+pdf_path: "raw/LeWorldModel_ Stable End-to-End Joint-Embedding Predictive Architecture from Pixels.pdf"
 aliases:
   - "LeWM"
   - "LeWorldModel"

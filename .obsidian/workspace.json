@@ -8,29 +8,83 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8e7aefb0a42ed27c",
+            "id": "1cd8127e2b56ee7d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "personal-notes/LeJEPA + Self-Flow.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "LeJEPA + Self-Flow"
+            }
+          },
+          {
+            "id": "4e9ae043cd248dcf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "personal-notes/SALT + Bootleg, V-JEPA 2.1, and maybe Self-Flow.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "SALT + Bootleg, V-JEPA 2.1, and maybe Self-Flow"
+            }
+          },
+          {
+            "id": "1640747bd1636e47",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "seed-papers/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf"
+                "file": "raw/Rethinking JEPA_ Compute-Efficient Video SSL with Frozen Teachers.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "Rethinking JEPA_ Compute-Efficient Video SSL with Frozen Teachers"
+            }
+          },
+          {
+            "id": "69b37ec6b9c79416",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "raw/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf"
               },
               "icon": "lucide-file-text",
               "title": "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis"
             }
           },
           {
-            "id": "5f8c2f46a224e777",
+            "id": "67fd06c92a06fca5",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "pdf",
+              "state": {
+                "file": "raw/REPA_ Representation Alignment for Generation.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "REPA_ Representation Alignment for Generation"
             }
           },
           {
-            "id": "af821b0dfc253c40",
+            "id": "2cf4fc496623faef",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "raw/LeJEPA_ Provable and Scalable Self-Supervised Learning Without the Heuristics.pdf"
+              },
+              "icon": "lucide-file-text",
+              "title": "LeJEPA_ Provable and Scalable Self-Supervised Learning Without the Heuristics"
+            }
+          },
+          {
+            "id": "a09ca7dacfb46fee",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -39,8 +93,7 @@
               "title": "Graph view"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -199,47 +252,48 @@
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
       "command-palette:Open command palette": false,
-      "bases:Create new base": false
+      "bases:Create new base": false,
+      "marp-slides:Show Slide Preview": false
     }
   },
-  "active": "af821b0dfc253c40",
+  "active": "1cd8127e2b56ee7d",
   "lastOpenFiles": [
-    "Transfer notes from iphone.md",
-    "personal-notes/Transfer notes from iphone.md",
-    "personal-notes",
-    "Notes",
-    "seed-papers/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf",
-    "wiki/sources/repa.md",
-    "wiki/sources/rethinking-jepa.md",
+    "personal-notes/SALT + Bootleg, V-JEPA 2.1, and maybe Self-Flow.md",
+    "raw/Rethinking JEPA_ Compute-Efficient Video SSL with Frozen Teachers.pdf",
+    "raw/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf",
+    "raw/REPA_ Representation Alignment for Generation.pdf",
+    "raw/LeJEPA_ Provable and Scalable Self-Supervised Learning Without the Heuristics.pdf",
     "wiki/sources/self-flow.md",
-    "seed-papers/Self-Distillation of Hidden Layers for Self-Supervised Representation Learning.pdf",
-    "wiki/sources/leworldmodel.md",
-    "wiki/log.md",
+    "wiki/sources/hyperloop-transformers.md",
+    "wiki/sources/rvm.md",
+    "raw/Recurrent Video Masked Autoencoders.pdf",
+    "wiki/sources/foveal-ssl.md",
+    "raw/Self-supervised pretraining for an iterative image size agnostic vision transformer.pdf",
+    "personal-notes/LeJEPA + Self-Flow.md",
+    "wiki/sources/elt.md",
+    "wiki/sources/lejepa.md",
     "wiki/sources/bootleg.md",
     "wiki/sources/causal-jepa.md",
-    "wiki/sources/lejepa.md",
+    "personal-notes/Untitled.md",
+    "personal-notes/Transfer notes from iphone.md",
+    "wiki/index.md",
     "wiki/sources/v-jepa-2-1.md",
+    "raw/Causal-JEPA_ Learning World Models through Object-Level Latent Interventions.pdf",
+    "raw/Self-Distillation of Hidden Layers for Self-Supervised Representation Learning.pdf",
+    "personal-notes/Untitled.canvas",
+    "raw/V-JEPA 2.1_ Unlocking Dense Features in Video Self-Supervised Learning.pdf",
+    "raw/LeWorldModel_ Stable End-to-End Joint-Embedding Predictive Architecture from Pixels.pdf",
+    "Transfer notes from iphone.md",
+    "wiki/sources/repa.md",
+    "wiki/sources/rethinking-jepa.md",
+    "wiki/sources/leworldmodel.md",
+    "wiki/log.md",
     "wiki/concepts/representation-collapse.md",
     "AGENTS.md",
     "wiki/concepts/ema.md",
-    "wiki/index.md",
     "wiki/concepts/jepa.md",
     "wiki/concepts/world-models.md",
     "wiki/concepts/self-supervised-learning.md",
-    "wiki/concepts/self-distillation.md",
-    "wiki/concepts/mae.md",
-    "wiki/concepts/flow-matching.md",
-    "wiki/meta",
-    "llm-wiki.md",
-    "wiki/sources",
-    "wiki/overview.md",
-    "wiki/entities/yann-lecun.md",
-    "wiki/entities/randall-balestriero.md",
-    "wiki/entities/meta-fair.md",
-    "wiki/entities",
-    "seed-papers/V-JEPA 2.1_ Unlocking Dense Features in Video Self-Supervised Learning.pdf",
-    "seed-papers/Rethinking JEPA_ Compute-Efficient Video SSL with Frozen Teachers.pdf",
-    "seed-papers/LeWorldModel_ Stable End-to-End Joint-Embedding Predictive Architecture from Pixels.pdf",
     "Untitled.canvas",
     "Untitled 1.canvas"
   ]

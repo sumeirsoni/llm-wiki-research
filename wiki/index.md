@@ -2,7 +2,7 @@
 title: "Wiki Index"
 type: meta
 created: 2026-04-10
-updated: 2026-04-12
+updated: 2026-04-25
 tags:
   - meta
 ---
@@ -21,6 +21,9 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[self-flow]] — Self-supervised flow matching with Dual-Timestep Scheduling for multi-modal generation (2025)
 - [[v-jepa-2-1]] — Dense video SSL with all-token prediction, deep self-supervision, and 2B-parameter scaling (2025)
 - [[repa]] — Representation alignment for diffusion transformers; 17.5x faster training via frozen encoder guidance (2024)
+- [[foveal-ssl]] — Sequential-to-global self-distillation for image-size agnostic ViT; constant compute at any resolution (2026)
+- [[rvm]] — Recurrent Video MAE with GRU-Transformer core; generalist encoder for spatial + temporal tasks (2025)
+- [[hyperloop-transformers]] — Looped Transformer + hyper-connections; 50% fewer params, lower perplexity than vanilla Transformers (2026)
 
 ## Concepts
 

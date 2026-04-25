@@ -14,7 +14,7 @@ tags:
   - representation-learning
   - theory
   - optimization
-pdf_path: "seed-papers/LeJEPA_ Provable and Scalable Self-Supervised Leaning Without the Heuristics.pdf"
+pdf_path: "raw/LeJEPA_ Provable and Scalable Self-Supervised Leaning Without the Heuristics.pdf"
 aliases:
   - "LeJEPA"
 ---

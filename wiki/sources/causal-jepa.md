@@ -17,7 +17,7 @@ tags:
   - self-supervised-learning
   - representation-learning
   - vision
-pdf_path: "seed-papers/Causal-JEPA_ Learning World Models through Object-Level Latent Interventions.pdf"
+pdf_path: "raw/Causal-JEPA_ Learning World Models through Object-Level Latent Interventions.pdf"
 aliases:
   - "C-JEPA"
   - "Causal-JEPA"
