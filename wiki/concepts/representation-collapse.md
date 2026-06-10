@@ -2,7 +2,7 @@
 title: "Representation Collapse"
 type: concept
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-05-20
 tags:
   - representation-learning
   - self-supervised-learning
@@ -12,6 +12,11 @@ sources:
   - "[[leworldmodel]]"
   - "[[rethinking-jepa]]"
   - "[[v-jepa-2-1]]"
+  - "[[self-flow]]"
+  - "[[sub-jepa]]"
+  - "[[elucidating-representation-degradation]]"
+  - "[[global-geometry-is-not-enough]]"
+  - "[[visreg]]"
 aliases:
   - "Collapse"
   - "Mode collapse"
@@ -30,7 +35,7 @@ In JEPA, the model predicts masked embeddings from visible embeddings. The trivi
 
 ## Prevention Mechanisms
 
-The papers in this wiki offer four different approaches to preventing collapse:
+The papers in this wiki offer several different approaches to preventing collapse or collapse-like degradation:
 
 ### 1. EMA Teacher ([[v-jepa-2-1|V-JEPA 2.1]])
 - Teacher network is an exponentially moving average of the student
@@ -55,6 +60,29 @@ The papers in this wiki offer four different approaches to preventing collapse:
 - Multi-scale targets are harder to collapse than single-scale
 - **Advantage**: Richer supervision signal
 
+### 5. Reconstruction ([[self-flow|Self-Flow]], [[mae|MAE]])
+- Model must produce actual outputs (pixels/tokens) that match targets
+- Collapse would make reconstruction impossible — structurally prevents degenerate solutions
+- **Note**: [[self-flow|Self-Flow]] uses EMA *in addition to* reconstruction; whether reconstruction alone suffices is an open question
+- **Advantage**: No explicit regularization needed; inherent to the objective
+
+### 6. VISReg ([[visreg|VISReg]])
+- Decouples scale, shape, and centering with sliced Wasserstein distance on normalized projections
+- Maintains strong gradients under near-collapse, unlike SIGReg's diminishing corrective signal
+- **Advantage**: Full distributional shape control with O(N D K) scaling and strong OOD generalization
+
+### 7. Subspace Gaussian Regularization ([[sub-jepa|Sub-JEPA]])
+- Keeps the Gaussian anti-collapse idea from [[lejepa|LeJEPA]] / [[leworldmodel|LeWorldModel]]
+- Applies it in multiple frozen low-dimensional orthogonal subspaces instead of the full ambient embedding space
+- **Advantage**: Reduces the excessive bias of a full isotropic prior when task dynamics lie on low-dimensional manifolds
+
+## Related Degradation Modes
+
+Not all failures are total constant-vector collapse:
+
+- [[elucidating-representation-degradation|Elucidating Representation Degradation]] identifies a diffusion-specific failure where high-noise regimes distort and collapse predicted geometry through recoverability mismatch and Bayes-noise gradient contamination.
+- [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] shows a softer failure mode: representations may have healthy global geometry while their Jacobian sensitivity collapses along directions needed for compositional binding.
+
 ## Open Debate
 
 > [!contradiction]
@@ -62,3 +90,9 @@ The papers in this wiki offer four different approaches to preventing collapse:
 
 > [!open-question]
 > Do these collapse prevention mechanisms interact? Could SIGReg + frozen teacher + multi-layer distillation be combined?
+
+> [!open-question]
+> Is reconstruction alone sufficient to prevent collapse in teacher-student frameworks? [[self-flow|Self-Flow]] uses EMA + reconstruction together, but whether removing EMA (and possibly adding SIGReg) would work remains untested.
+
+> [!open-question]
+> How should collapse prevention balance global distributional regularity against local functional sensitivity and task-intrinsic latent geometry?

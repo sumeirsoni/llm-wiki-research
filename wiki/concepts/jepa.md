@@ -2,7 +2,7 @@
 title: "Joint-Embedding Predictive Architecture (JEPA)"
 type: concept
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-05-20
 tags:
   - jepa
   - self-supervised-learning
@@ -15,6 +15,9 @@ sources:
   - "[[rethinking-jepa]]"
   - "[[bootleg]]"
   - "[[v-jepa-2-1]]"
+  - "[[sub-jepa]]"
+  - "[[visreg]]"
+  - "[[learn-from-your-own-latents]]"
 aliases:
   - "JEPA"
   - "I-JEPA"
@@ -53,6 +56,8 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 |--------|-------------------|---------|
 | [[ema|EMA teacher]] | Slowly-updating teacher provides stable targets | [[v-jepa-2-1\|V-JEPA 2.1]], I-JEPA |
 | [[lejepa\|SIGReg]] | Regularize embeddings to isotropic Gaussian | [[lejepa\|LeJEPA]], [[leworldmodel\|LeWM]] |
+| [[visreg\|VISReg]] | Decouple scale/shape/center; sliced Wasserstein shape matching | [[visreg\|VISReg]] |
+| [[sub-jepa\|Subspace SIGReg]] | Apply Gaussian regularization in low-dimensional frozen subspaces | [[sub-jepa\|Sub-JEPA]] |
 | Frozen teacher | Pre-trained, fixed teacher provides static targets | [[rethinking-jepa\|SALT]] |
 | Multi-layer distillation | Distill from multiple hidden layers | [[bootleg\|Bootleg]] |
 
@@ -65,13 +70,16 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 - **Images**: I-JEPA (original), [[lejepa|LeJEPA]], [[bootleg|Bootleg]]
 - **Video**: [[v-jepa-2-1|V-JEPA 2.1]], [[rethinking-jepa|SALT]]
 - **World models**: [[causal-jepa|Causal-JEPA]], [[leworldmodel|LeWorldModel]]
+- **Subspace-regularized world models**: [[sub-jepa|Sub-JEPA]]
 
 ### By Innovation
-- **Theoretical foundations**: [[lejepa|LeJEPA]] (isotropic Gaussian theory + SIGReg)
+- **Theoretical foundations**: [[lejepa|LeJEPA]] (isotropic Gaussian theory + SIGReg), [[learn-from-your-own-latents|latent sample-complexity theory]]
+- **Alternative regularizers**: [[visreg|VISReg]] (variance-invariance-sketching with sliced Wasserstein shape loss)
 - **Object-centric**: [[causal-jepa|Causal-JEPA]] (object-level masking)
 - **Multi-layer**: [[bootleg|Bootleg]] (hidden layer distillation), [[v-jepa-2-1|V-JEPA 2.1]] (deep self-supervision)
 - **Frozen teacher**: [[rethinking-jepa|SALT]]
 - **End-to-end**: [[leworldmodel|LeWorldModel]] (from pixels, no EMA)
+- **Intrinsic-dimensionality regularization**: [[sub-jepa|Sub-JEPA]] (Gaussian regularization in random low-dimensional subspaces)
 - **Dense features**: [[v-jepa-2-1|V-JEPA 2.1]] (all-token prediction)
 
 ## Key Open Questions
@@ -81,3 +89,6 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 
 > [!open-question]
 > What is the optimal masking strategy? Grid-based patches vs. object-level ([[causal-jepa|Causal-JEPA]]) vs. heterogeneous noise ([[self-flow|Self-Flow]])?
+
+> [!open-question]
+> Is full-space isotropic Gaussian regularization too strong for high-dimensional JEPA representations, and should future JEPA variants prefer subspace or manifold-aware priors?

@@ -2,7 +2,7 @@
 title: "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis"
 type: source
 created: 2026-04-10
-updated: 2026-04-12
+updated: 2026-04-25
 arxiv_id: "2603.06507"
 authors:
   - "Hila Chefer"
@@ -23,6 +23,8 @@ tags:
   - video
   - audio
   - representation-learning
+  - ema
+  - self-distillation
 pdf_path: "raw/Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis.pdf"
 aliases:
   - "Self-Flow"
@@ -49,11 +51,14 @@ Standard [[flow-matching|flow matching]] / diffusion models pose a denoising tas
 - Operate on misaligned objectives
 - Exhibit unexpected scaling behavior
 
-Self-Flow solves this with **Dual-Timestep Scheduling**:
+Self-Flow solves this with **Dual-Timestep Scheduling** combined with an [[ema|EMA]] teacher-student architecture:
 1. Tokens in a sequence are corrupted with **different noise levels** (different timesteps)
-2. Tokens with less noise must help denoise tokens with more noise
-3. This creates an **information asymmetry** — the model must learn semantic representations to bridge the gap
-4. The result: strong representations emerge alongside generative capabilities, all in one model
+2. An **EMA teacher network** observes the cleaner version (lower noise, τ_min) and produces reference embeddings
+3. The **student network** observes the noisier version and learns to match the teacher's embeddings
+4. This creates an **information asymmetry** — the student must learn semantic representations to bridge the gap
+5. The result: strong representations emerge alongside generative capabilities, all in one model
+
+Notably, Self-Flow extracts embeddings from **intermediate layers** of both teacher and student, not the final layer — following prior work showing intermediate representations are more semantically meaningful.
 
 This is conceptually related to [[jepa|JEPA]]'s masked prediction approach — both create information asymmetry that forces semantic understanding — but Self-Flow operates in the generative (flow matching) framework rather than the joint-embedding framework.
 
@@ -67,9 +72,10 @@ This is conceptually related to [[jepa|JEPA]]'s masked prediction approach — b
 ## Connections
 
 - Conceptually related to [[jepa|JEPA]] — both use information asymmetry (masking vs. dual-timestep) to drive representation learning
+- Uses [[ema|EMA]] teacher-student architecture like [[v-jepa-2-1|V-JEPA]] — contrasts with [[lejepa|LeJEPA]] which eliminates EMA entirely via SIGReg
 - Challenges the separation of representation learning and generation — argues they should be unified
 - Related to [[self-supervised-learning|self-supervised learning]] but approaches it from the generative side
-- Different from all other papers in this wiki which are in the joint-embedding paradigm — Self-Flow is in the generative paradigm
+- Different from other papers in this wiki which are in the joint-embedding paradigm — Self-Flow is in the generative paradigm
 - Contrasts with [[repa|REPA]] — REPA uses external frozen encoders to guide diffusion training; Self-Flow learns representations intrinsically via Dual-Timestep Scheduling
 - From Stability AI / MIT — different institutional context than the Meta FAIR JEPA line
 
@@ -80,6 +86,9 @@ This is conceptually related to [[jepa|JEPA]]'s masked prediction approach — b
 
 > [!open-question]
 > Can Dual-Timestep Scheduling be combined with JEPA-style objectives for even stronger representations?
+
+> [!open-question]
+> Is the EMA teacher necessary, or could reconstruction alone prevent collapse? A "LeJEPA-style" Self-Flow without EMA (potentially using SIGReg or relying purely on reconstruction) is unexplored.
 
 > [!gap]
 > No direct comparison between Self-Flow and JEPA methods on shared benchmarks in the wiki yet.

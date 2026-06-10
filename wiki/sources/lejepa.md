@@ -62,6 +62,7 @@ This eliminates the need for:
 - Provides the **theoretical foundation** for the JEPA framework introduced by [[yann-lecun|Yann LeCun]]
 - SIGReg regularizer directly adopted by [[leworldmodel|LeWorldModel]] for stable end-to-end training
 - Contrasts with [[rethinking-jepa|Rethinking JEPA (SALT)]] — LeJEPA removes EMA entirely, while SALT replaces EMA with a frozen teacher
+- [[visreg|VISReg]] proposes an alternative regularizer to SIGReg with decoupled scale/shape control and stronger collapse gradients
 - Contrasts with [[bootleg|Bootleg]] which still uses teacher-student distillation but across hidden layers
 - Part of the broader effort by [[randall-balestriero|Randall Balestriero]] and [[yann-lecun|Yann LeCun]] to put SSL on rigorous theoretical footing
 

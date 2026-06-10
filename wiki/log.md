@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-04-25
+updated: 2026-06-09
 tags:
   - meta
 ---
@@ -49,3 +49,24 @@ Ingested "Recurrent Video Masked Autoencoders" (arXiv: 2512.13684). Created sour
 
 ## [2026-04-25] ingest | Hyperloop Transformers
 Ingested "Hyperloop Transformers" (arXiv: 2604.21254). Created source page. Key innovation: combines looped (recurrent-depth) Transformers with loop-level hyper-connections and diagonal H_res parameterization. Achieves lower perplexity than depth-matched Transformers with 50% fewer parameters. Note: LLM architecture paper, tangential to core SSL focus but connects to [[rvm]] via recurrent architecture theme.
+
+## [2026-04-25] correction | Self-Flow uses EMA
+Corrected [[self-flow]] page to accurately reflect that the method uses an EMA teacher-student architecture. The EMA teacher observes cleaner inputs (τ_min) and provides reference embeddings for the student. Added #ema and #self-distillation tags. Added open question about whether EMA is necessary or if reconstruction alone could prevent collapse.
+
+## [2026-05-16] ingest | AlphaXiv Batch: Representation Geometry, EBMs, Diffusion, and World Models
+Ingested 12 unique AlphaXiv papers from the requested batch: [[steerable-visual-representations]], [[energy-based-transformers]], [[representation-frechet-loss]], [[autoregressive-language-models-are-secretly-energy-based-models]], [[global-geometry-is-not-enough]], [[manifold-steering]], [[reconstruction-or-semantics-robotic-world-models]], [[sub-jepa]], [[elucidating-representation-degradation]], [[world-action-models]], [[normalizing-trajectory-models]], and [[world-model-for-robot-learning-survey]]. Deduplicated the repeated [[manifold-steering]] URL. Created concept pages [[energy-based-models]] and [[representation-geometry]]. Updated [[jepa]], [[world-models]], [[representation-collapse]], [[flow-matching]], [[self-supervised-learning]], [[overview]], and [[index]].
+
+## [2026-05-17] ingest | Solve the Loop: Attractor Models
+Ingested "Solve the Loop: Attractor Models for Language and Reasoning" (arXiv: 2605.12466). Created source page [[attractor-models]] and concept page [[iterative-refinement]]. Updated [[hyperloop-transformers]], [[energy-based-models]], and [[index]] to connect fixed-point refinement with looped transformers and energy-based inference.
+
+## [2026-05-17] ingest | Generative Recursive Reasoning (GRAM)
+Ingested "Generative Recursive Reasoning" (arXiv: 2605.19376). Created source page [[generative-recursive-reasoning]]. Updated [[iterative-refinement]], [[attractor-models]], [[hyperloop-transformers]], [[index]], and [[overview]] to connect stochastic multi-trajectory recursive reasoning with fixed-point and looped architectures.
+
+## [2026-05-20] ingest | JEPA Regularization, World Geometry, and Recursive Reasoning Batch
+Ingested five papers: [[visreg]] (arXiv: 2606.02572), [[convergent-world-representations-and-divergent-tasks]] (arXiv: 2602.00533), [[probabilistic-tiny-recursive-model]] (arXiv: 2605.19943), [[equilibrium-reasoners]] (arXiv: 2605.21488), and [[learn-from-your-own-latents]] (arXiv: 2605.27734). Updated [[jepa]], [[representation-collapse]], [[self-supervised-learning]], [[representation-geometry]], [[world-models]], [[iterative-refinement]], [[lejepa]], [[attractor-models]], [[index]], and [[overview]].
+
+## [2026-05-20] query | Iterative Latent Refinement for World Models
+Filed synthesis note [[iterative-latent-refinement-for-world-models]] on whether looped, fixed-point, stochastic, or energy-based latent refinement is desirable for JEPA-style semantic world models. Updated [[index]].
+
+## [2026-06-09] ingest | Six-Paper Batch (PC-ALM, VARC, OPRD, SMT, NF-CoT, OPD Geometry)
+Ingested six papers: [[augmented-lagrangian-predictive-coding]] (arXiv: 2605.31022), [[arc-is-a-vision-problem]] (arXiv: 2511.14761), [[on-policy-representation-distillation]] (arXiv: 2606.06021), [[pretraining-recurrent-networks-without-recurrence]] (arXiv: 2606.06479), [[latent-reasoning-with-normalizing-flows]] (arXiv: 2606.06447), and [[on-the-geometry-of-on-policy-distillation]] (arXiv: 2606.07082). Updated concept pages [[self-distillation]], [[representation-geometry]], [[iterative-refinement]], [[energy-based-models]], [[index]], and [[overview]].

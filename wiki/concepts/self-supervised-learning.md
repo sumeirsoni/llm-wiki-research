@@ -2,7 +2,7 @@
 title: "Self-Supervised Learning"
 type: concept
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-05-20
 tags:
   - self-supervised-learning
   - representation-learning
@@ -14,6 +14,10 @@ sources:
   - "[[bootleg]]"
   - "[[self-flow]]"
   - "[[v-jepa-2-1]]"
+  - "[[global-geometry-is-not-enough]]"
+  - "[[steerable-visual-representations]]"
+  - "[[visreg]]"
+  - "[[learn-from-your-own-latents]]"
 aliases:
   - "SSL"
   - "Self-supervised learning"
@@ -63,6 +67,7 @@ Learn representations **within** the generative framework itself.
 2. **Evaluation** — how to fairly compare SSL methods across downstream tasks
 3. **Scaling behavior** — do all paradigms scale equally well?
 4. **Multi-modality** — how to learn unified representations across modalities
+5. **Functional sensitivity** — whether embeddings respond to structured input changes and task prompts, not just whether their global geometry looks healthy
 
 ## Current Trends (from this wiki)
 
@@ -70,3 +75,6 @@ Learn representations **within** the generative framework itself.
 - **Dense features**: [[v-jepa-2-1|V-JEPA 2.1]] and [[bootleg|Bootleg]] emphasize spatial information
 - **World models**: [[causal-jepa|Causal-JEPA]] and [[leworldmodel|LeWorldModel]] learn dynamics, not just static representations
 - **Unifying generation and representation**: [[self-flow|Self-Flow]] integrates both
+- **Beyond static geometry**: [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] and [[steerable-visual-representations|Steerable Visual Representations]] shift attention toward functional sensitivity and prompt-steerable representations
+- **Latent vs. token learning**: [[learn-from-your-own-latents|Learn from your own latents]] proves latent prediction can be exponentially more sample-efficient than token-level SSL on hierarchical data
+- **JEPA regularization advances**: [[visreg|VISReg]] refines collapse prevention with decoupled scale/shape regularization and strong OOD transfer

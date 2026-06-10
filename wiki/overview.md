@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-04-12
+updated: 2026-06-09
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**11 sources ingested** | **8 concept pages** | **4 entity pages** | 23 total pages
+**36 sources ingested** | **11 concept pages** | **4 entity pages** | 51 source/concept/entity pages
 
 ## Key Themes
 
@@ -38,9 +38,12 @@ Standard JEPA learns global scene representations but loses spatial detail. Mult
 - [[v-jepa-2-1|V-JEPA 2.1]] + [[bootleg|Bootleg]] independently converge on the idea that intermediate-layer supervision improves spatial quality
 
 ### 3. World Models from JEPA
-Two papers extend JEPA from representation learning to [[world-models|world models]]:
+Multiple papers extend representation learning into [[world-models|world models]]:
 - [[causal-jepa|Causal-JEPA]]: object-level masking for causal reasoning (1% of features, comparable planning)
 - [[leworldmodel|LeWorldModel]]: end-to-end from pixels with minimal hyperparameters (48x faster planning)
+- [[sub-jepa|Sub-JEPA]]: subspace Gaussian regularization improves LeWM-style end-to-end world models
+- [[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]]: semantic latents beat reconstruction latents for robotic policy-relevant rollouts
+- [[world-action-models|World Action Models]] and [[world-model-for-robot-learning-survey|World Model for Robot Learning]] organize the broader robotics landscape
 
 ### 4. Bridging Generative and Discriminative Learning
 Two symmetric approaches connect generative models and representation learning:
@@ -57,6 +60,34 @@ REPA and SALT are conceptual mirrors: one makes generative models more discrimin
 - Derives SIGReg with linear complexity
 - Eliminates all heuristics (~50 lines of code)
 - Validated across 60+ architectures
+
+Newer theory pages broaden this theme:
+- [[energy-based-models|Energy-Based Models]] connect learned verifiers, inference-time optimization, and autoregressive lookahead.
+- [[iterative-refinement|Iterative Refinement]] connects looped transformers, fixed-point attractor models, stochastic recursive reasoning (GRAM), attractor landscapes (EqR), inference-time width scaling (PTRM), vision-centric reasoning (VARC), continuous latent CoT (NF-CoT), supervised memory training (SMT), and energy-based inference.
+- [[learn-from-your-own-latents|Learn from your own latents]]: latent prediction can be exponentially more sample-efficient than token-level SSL on hierarchical data.
+- [[representation-geometry|Representation Geometry]] separates global embedding statistics from functional sensitivity, divergent task geometry, intrinsic manifolds, and parameter-space update geometry during LLM post-training.
+- [[elucidating-representation-degradation|ERD]] analyzes diffusion training through recoverability mismatch and representation degradation.
+- [[augmented-lagrangian-predictive-coding|PC-ALM]] connects predictive coding to augmented Lagrangian optimization, achieving exact BP gradients via local dynamics.
+
+### 6. JEPA Regularization Beyond SIGReg
+[[visreg|VISReg]] refines the [[lejepa|LeJEPA]] regularization story with decoupled scale/shape/center objectives and sliced Wasserstein shape matching, claiming stronger anti-collapse gradients and OOD transfer than SIGReg.
+
+### 7. Representation Geometry and Control
+Three papers shift the wiki from static representations toward controllable or functional ones:
+- [[global-geometry-is-not-enough|Global Geometry Is Not Enough]]: global isotropy/effective rank do not predict compositional binding; Jacobian Effective Rank does.
+- [[manifold-steering|Manifold Steering]]: following intrinsic activation manifolds produces more natural behavior than linear steering.
+- [[steerable-visual-representations|Steerable Visual Representations]]: language adapters can redirect frozen visual features toward prompted concepts.
+- [[convergent-world-representations-and-divergent-tasks|Convergent World Representations]]: multi-task training converges world geometry, but divergent fine-tuning tasks can fracture it.
+
+### 8. On-Policy Distillation and Post-Training Geometry
+Two papers from the same research thread characterize and improve LLM post-training via on-policy distillation:
+- [[on-the-geometry-of-on-policy-distillation|OPD Geometry]]: OPD occupies a relaxed off-principal regime between SFT and RLVR, with subspace locking — updates rapidly enter a low-dimensional, functionally sufficient channel.
+- [[on-policy-representation-distillation|OPRD]]: lifts distillation from output-space KL to hidden-state alignment, providing zero-variance gradients and bypassing the LM-head information bottleneck.
+
+### 9. Alternative Reasoning and Training Paradigms
+- [[arc-is-a-vision-problem|VARC]]: reframes ARC as a vision problem; 18M ViT matches human performance with visual priors alone.
+- [[latent-reasoning-with-normalizing-flows|NF-CoT]]: continuous Chain-of-Thought via autoregressive normalizing flows with tractable likelihoods and KV-cache compatibility.
+- [[pretraining-recurrent-networks-without-recurrence|SMT]]: time-parallel RNN pretraining without BPTT via Transformer-generated memory labels.
 
 ## Key Relationships
 
@@ -77,11 +108,16 @@ graph TD
     SelfFlow[Self-Flow] -.->|conceptual link| JEPA
     REPA[REPA] -.->|uses| DINOv2[DINOv2/CLIP]
     REPA -.->|reverse of| SALT
+    SubJEPA[Sub-JEPA] -->|subspace regularization| LeWM
+    SemLatents[Semantic Robot Latents] -.->|use| VJEPA
+    WAM[World Action Models] --> WM
+    EBT[Energy-Based Transformers] -.->|verifier/planning lens| WM
     
     style JEPA fill:#4a90d9,color:#fff
     style WM fill:#7b68ee,color:#fff
     style SelfFlow fill:#e67e22,color:#fff
     style REPA fill:#e67e22,color:#fff
+    style EBT fill:#2c3e50,color:#fff
 ```
 
 ## Open Questions
@@ -91,6 +127,10 @@ graph TD
 3. **JEPA vs. generative representations**: How do JEPA and [[self-flow|Self-Flow]] representations compare on shared benchmarks?
 4. **Scaling laws**: Do all JEPA variants scale equally well, or do some approaches have inherent scaling advantages?
 5. **Combining innovations**: Can SIGReg + frozen teacher + multi-layer distillation + dense prediction be combined?
+6. **Geometry vs. function**: Which representation diagnostics actually predict compositional binding, steerability, and robot-control utility?
+7. **World model evaluation**: How should benchmarks jointly score visual plausibility, physical consistency, action faithfulness, and closed-loop policy success?
+8. **Vision vs. language for abstraction**: Does [[arc-is-a-vision-problem|VARC]]'s success indicate ARC is fundamentally visual, or can vision and recursive reasoning be combined?
+9. **Representation vs. output distillation**: When does hidden-state alignment ([[on-policy-representation-distillation|OPRD]]) outperform output-space OPD, and how does it interact with subspace locking?
 
 ## Knowledge Gaps
 
@@ -102,3 +142,6 @@ graph TD
 
 > [!gap]
 > Missing coverage of **contrastive learning** methods (SimCLR, MoCo, DINO) as reference points for evaluating JEPA's advantages.
+
+> [!gap]
+> The wiki now includes surveys of robot world models, but lacks a filed comparison that directly contrasts JEPA, diffusion/video, and VLA-style world-model architectures on shared robotics criteria.

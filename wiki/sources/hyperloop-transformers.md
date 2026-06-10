@@ -2,7 +2,7 @@
 title: "Hyperloop Transformers"
 type: source
 created: 2026-04-25
-updated: 2026-04-25
+updated: 2026-05-17
 tags:
   - transformer
   - parameter-efficiency
@@ -21,6 +21,7 @@ code_url: ""
 project_url: ""
 sources:
   - "[[rvm]]"
+  - "[[attractor-models]]"
 aliases:
   - "Hyper-Connected Looped Transformer"
 ---
@@ -82,6 +83,9 @@ Hyperloop Transformers introduce a parameter-efficient architecture that combine
 > This paper focuses on language model architecture efficiency rather than self-supervised representation learning. However, it shares conceptual links with the wiki's coverage of recurrent architectures.
 
 - **[[rvm|RVM]]**: Both explore recurrent-depth architectures. RVM uses a GRU-Transformer core for video, while Hyperloop uses parameter-sharing loops for language. Both demonstrate that recurrence can be parameter-efficient without sacrificing performance.
+- **[[attractor-models|Attractor Models]]**: Both address looped computation in language models. Hyperloop explicitly unrolls a looped middle block, while Attractor Models solve an implicit fixed point in output-embedding space.
+- **[[generative-recursive-reasoning|GRAM]]**: Both belong to the looped/recurrent architecture family; GRAM adds stochastic multi-trajectory reasoning for puzzle and multi-solution tasks.
+- **[[iterative-refinement|Iterative refinement]]**: Hyperloop is the explicit-loop member of a broader family that also includes fixed-point and energy-based refinement.
 - **Representation dynamics**: The logit lens analysis showing vocabulary-aligned representations at loop ends parallels research on how SSL representations evolve through layers.
 
 ## Significance

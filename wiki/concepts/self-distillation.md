@@ -2,7 +2,7 @@
 title: "Self-Distillation"
 type: concept
 created: 2026-04-10
-updated: 2026-04-25
+updated: 2026-06-09
 tags:
   - self-distillation
   - self-supervised-learning
@@ -12,6 +12,8 @@ sources:
   - "[[v-jepa-2-1]]"
   - "[[rethinking-jepa]]"
   - "[[foveal-ssl]]"
+  - "[[on-policy-representation-distillation]]"
+  - "[[on-the-geometry-of-on-policy-distillation]]"
 aliases:
   - "Self-distillation"
   - "Knowledge distillation"
@@ -55,6 +57,17 @@ Self-distillation is a learning paradigm where a model learns from its own outpu
 - **Key**: Stop-gradients between steps — no BPTT needed
 - **Pro**: Enables constant-compute processing at any resolution
 - **Finding**: Performance improves monotonically with each step, confirming effective memory accumulation
+
+### On-Policy Representation Distillation ([[on-policy-representation-distillation|OPRD]])
+- Lifts on-policy distillation from **output-space KL** to **hidden-state MSE** alignment
+- Supervises student intermediate representations against teacher hidden states on the student's own rollouts
+- **Pro**: Zero-variance deterministic gradients; bypasses LM-head information bottleneck; monotonic late-stage improvement
+- **Finding**: Closes student–teacher gap on math reasoning where output-space OPD stagnates; 1.44× faster and 32–54% less GPU memory
+
+### Parameter-Space Geometry of OPD ([[on-the-geometry-of-on-policy-distillation|OPD Geometry]])
+- Characterizes on-policy distillation updates in **parameter space** relative to SFT and RLVR
+- OPD occupies a "relaxed off-principal regime" with **subspace locking** — updates rapidly enter a low-dimensional, functionally sufficient channel
+- **Finding**: Objective composition (not token density or rollout policy) controls the update trajectory; early rank-16 subspace is sufficient for OPD but not SFT
 
 ## The Instability Problem
 

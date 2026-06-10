@@ -2,13 +2,16 @@
 title: "Flow Matching"
 type: concept
 created: 2026-04-10
-updated: 2026-04-12
+updated: 2026-05-16
 tags:
   - flow-matching
   - generative-modeling
 sources:
   - "[[self-flow]]"
   - "[[repa]]"
+  - "[[normalizing-trajectory-models]]"
+  - "[[representation-frechet-loss]]"
+  - "[[elucidating-representation-degradation]]"
 aliases:
   - "Flow matching"
   - "Continuous normalizing flows"
@@ -61,3 +64,20 @@ Self-Flow learns representations **without external models** via Dual-Timestep S
 
 > [!comparison]
 > REPA uses external representations to accelerate training; Self-Flow learns them intrinsically. Both achieve strong results — the tradeoff is training simplicity (REPA) vs. self-contained learning (Self-Flow).
+
+## Few-Step and Distribution-Level Generation
+
+### [[normalizing-trajectory-models|Normalizing Trajectory Models]]
+
+NTM addresses the Gaussian bottleneck that appears when flow/diffusion samplers use only a few large reverse steps. It replaces each Gaussian reverse transition with an exact-likelihood conditional normalizing flow, preserving probabilistic training while enabling high-quality 4-step generation.
+
+### [[representation-frechet-loss|Representation Fréchet Loss]]
+
+FD-loss post-trains generators by directly optimizing Fréchet Distance in frozen representation spaces. It is not a flow-matching method itself, but it is relevant to flow/diffusion generators because it improves one-step and few-step models through distribution-level representation matching.
+
+### [[elucidating-representation-degradation|Elucidating Representation Degradation]]
+
+ERD studies diffusion/flow-style training through the lens of recoverability. It suggests that loss weighting should follow how recoverable the prediction target is at each noise level, rather than allocating effort uniformly or heuristically.
+
+> [!open-question]
+> Can intrinsic representation learning ([[self-flow|Self-Flow]]), recoverability-aware weighting ([[elucidating-representation-degradation|ERD]]), and exact-likelihood non-Gaussian transitions ([[normalizing-trajectory-models|NTM]]) be combined in one efficient generative framework?
