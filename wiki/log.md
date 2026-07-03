@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-06-09
+updated: 2026-07-03
 tags:
   - meta
 ---
@@ -70,3 +70,24 @@ Filed synthesis note [[iterative-latent-refinement-for-world-models]] on whether
 
 ## [2026-06-09] ingest | Six-Paper Batch (PC-ALM, VARC, OPRD, SMT, NF-CoT, OPD Geometry)
 Ingested six papers: [[augmented-lagrangian-predictive-coding]] (arXiv: 2605.31022), [[arc-is-a-vision-problem]] (arXiv: 2511.14761), [[on-policy-representation-distillation]] (arXiv: 2606.06021), [[pretraining-recurrent-networks-without-recurrence]] (arXiv: 2606.06479), [[latent-reasoning-with-normalizing-flows]] (arXiv: 2606.06447), and [[on-the-geometry-of-on-policy-distillation]] (arXiv: 2606.07082). Updated concept pages [[self-distillation]], [[representation-geometry]], [[iterative-refinement]], [[energy-based-models]], [[index]], and [[overview]].
+
+## [2026-06-09] ingest | DeltaWorld and Topological Trouble With Transformers
+Ingested [[delta-world]] (arXiv: 2604.04913) and [[topological-trouble-with-transformers]] (arXiv: 2604.17121). Updated [[world-models]], [[iterative-refinement]], [[index]], and [[overview]].
+
+## [2026-06-09] ingest | TDV and NextLat
+Ingested [[temporal-difference-vision]] (arXiv: 2606.15956) and [[next-latent-prediction]] (arXiv: 2511.05963). Updated [[self-supervised-learning]], [[jepa]], [[world-models]], [[iterative-refinement]], [[index]], and [[overview]].
+
+## [2026-06-30] ingest | Un-0: Coupled Oscillators (Blog)
+Ingested Unconventional AI blog post "Introducing Un-0: Generating Images with Coupled Oscillators" (June 2026). Created source page [[un-0-coupled-oscillators]], concept page [[coupled-oscillators]], and entity page [[unconventional-ai]]. Updated [[iterative-refinement]], [[imagenet]], [[index]], and [[overview]].
+
+## [2026-07-03] ingest | AdaJEPA and Fixed-Point Reasoners
+Ingested [[adajepa]] (arXiv: 2606.32026) and [[fixed-point-reasoners]] (arXiv: 2606.18206). Updated [[jepa]], [[world-models]], [[iterative-refinement]], [[yann-lecun]], [[index]], and [[overview]].
+
+## [2026-07-03] ingest | Temporal Straightening and DINO-WM
+Ingested [[temporal-straightening]] (arXiv: 2603.12231, ICML 2026) and [[dino-wm]] (arXiv: 2411.04983, ICML 2025). Updated [[adajepa]], [[jepa]], [[world-models]], [[representation-geometry]], [[yann-lecun]], [[randall-balestriero]], [[index]], and [[overview]].
+
+## [2026-07-03] ingest | Sensorimotor World Models (SMWM)
+Ingested [[sensorimotor-world-models]] (arXiv: 2606.20104). Created source page. Updated [[world-models]], [[jepa]], [[representation-collapse]], [[leworldmodel]], [[randall-balestriero]], [[index]], and [[overview]].
+
+## [2026-07-03] ingest | Delta-JEPA
+Ingested [[delta-jepa]] (arXiv: 2606.31232). Created source page. Updated [[world-models]], [[jepa]], [[representation-collapse]], [[sensorimotor-world-models]], [[leworldmodel]], [[index]], and [[overview]].

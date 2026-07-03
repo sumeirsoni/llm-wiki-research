@@ -28,12 +28,12 @@ Masked Autoencoders are a generative [[self-supervised-learning|self-supervised 
 
 MAE and JEPA represent two sides of the SSL spectrum:
 
-| Aspect | MAE (Generative) | JEPA (Predictive) |
-|--------|-------------------|-------------------|
-| **Prediction target** | Raw pixels | Latent embeddings |
-| **Strengths** | Low-level grounding | High-level semantics |
-| **Weaknesses** | Doesn't prioritize semantics | May lose spatial detail |
-| **Collapse risk** | None (pixel targets are fixed) | High (embedding targets can degenerate) |
+| Aspect                | MAE (Generative)               | JEPA (Predictive)                       |
+| --------------------- | ------------------------------ | --------------------------------------- |
+| **Prediction target** | Raw pixels                     | Latent embeddings                       |
+| **Strengths**         | Low-level grounding            | High-level semantics                    |
+| **Weaknesses**        | Doesn't prioritize semantics   | May lose spatial detail                 |
+| **Collapse risk**     | None (pixel targets are fixed) | High (embedding targets can degenerate) |
 
 ## In This Wiki
 
@@ -44,6 +44,7 @@ MAE and JEPA represent two sides of the SSL spectrum:
 ### Video MAE with Recurrence
 
 [[rvm|RVM (Recurrent Video MAE)]] demonstrates that MAE with proper temporal architecture can match JEPA methods:
+
 - **GRU-Transformer core** maintains state across frames (vs. chunked spatio-temporal attention)
 - **Simple L2 pixel loss** — no EMA, no complex regularizers
 - Achieves **generalist encoder** (strong on both spatial AND temporal tasks)

@@ -2,7 +2,7 @@
 title: "Self-Supervised Learning"
 type: concept
 created: 2026-04-10
-updated: 2026-05-20
+updated: 2026-06-09
 tags:
   - self-supervised-learning
   - representation-learning
@@ -18,6 +18,7 @@ sources:
   - "[[steerable-visual-representations]]"
   - "[[visreg]]"
   - "[[learn-from-your-own-latents]]"
+  - "[[temporal-difference-vision]]"
 aliases:
   - "SSL"
   - "Self-supervised learning"
@@ -78,3 +79,5 @@ Learn representations **within** the generative framework itself.
 - **Beyond static geometry**: [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] and [[steerable-visual-representations|Steerable Visual Representations]] shift attention toward functional sensitivity and prompt-steerable representations
 - **Latent vs. token learning**: [[learn-from-your-own-latents|Learn from your own latents]] proves latent prediction can be exponentially more sample-efficient than token-level SSL on hierarchical data
 - **JEPA regularization advances**: [[visreg|VISReg]] refines collapse prevention with decoupled scale/shape regularization and strong OOD transfer
+- **Minimal-assumption SSL**: [[temporal-difference-vision|TDV]] removes even augmentation/masking biases, learning from video via causal next-frame prediction alone
+- **Latent dynamics for transformers**: [[next-latent-prediction|NextLat]] adds belief-state pressure to next-token training via self-supervised hidden-state prediction

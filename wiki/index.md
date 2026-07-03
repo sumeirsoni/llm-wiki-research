@@ -2,7 +2,7 @@
 title: "Wiki Index"
 type: meta
 created: 2026-04-10
-updated: 2026-06-09
+updated: 2026-07-03
 tags:
   - meta
 ---
@@ -49,6 +49,17 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[pretraining-recurrent-networks-without-recurrence]] — Supervised Memory Training enables time-parallel RNN pretraining without BPTT (2026)
 - [[latent-reasoning-with-normalizing-flows]] — NF-CoT: autoregressive normalizing-flow latents for tractable continuous Chain-of-Thought (2026)
 - [[on-the-geometry-of-on-policy-distillation]] — Parameter-space geometry of OPD: relaxed off-principal regime with subspace locking (2026)
+- [[delta-world]] — DeltaTok compresses frame changes to one token; generative world model beats Cosmos at 2,000× fewer FLOPs (2026)
+- [[topological-trouble-with-transformers]] — Feedforward Transformers cannot track dynamic state indefinitely due to depth topology (2026)
+- [[temporal-difference-vision]] — TDV: causal next-frame SSL from video without augmentations or masking (2026)
+- [[next-latent-prediction]] — NextLat: belief-state latent dynamics for compact transformer world models (2026)
+- [[un-0-coupled-oscillators]] — Un-0: Kuramoto oscillator image generator as physical-computing proof-of-concept; FID 6.74 on ImageNet 64×64 (2026)
+- [[adajepa]] — AdaJEPA: test-time adaptation in MPC loop for JEPA latent world models under distribution shift (2026)
+- [[fixed-point-reasoners]] — FPRM: pre-norm + residual scaling looped Transformer with fixed-point halting; 94.2% Sudoku at 7M params (2026)
+- [[temporal-straightening]] — Curvature regularization straightens JEPA latent trajectories for GD planning; +20–60% open-loop SR (ICML 2026)
+- [[dino-wm]] — Zero-shot latent planning on frozen DINOv2 patch features; task-agnostic offline world model (ICML 2025)
+- [[sensorimotor-world-models]] — Inverse dynamics regularization for action-aligned end-to-end JEPA world models; 84% vs 59% on OGBench-Cube (2026)
+- [[delta-jepa]] — Latent Difference Action Decoding for action-sensitive JEPA world models; 100% Two-Room, 79.3% OGB-Cube (2026)
 
 ## Concepts
 
@@ -63,6 +74,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[energy-based-models]] — EBMs as learned verifiers connecting transformers, ARMs, and System 2-style inference
 - [[representation-geometry]] — Global geometry, functional sensitivity, manifolds, and prompt-steerable embedding spaces
 - [[iterative-refinement]] — Looped, fixed-point, and energy-based latent refinement for language and reasoning models
+- [[coupled-oscillators]] — Kuramoto phase dynamics as generative compute substrate and neuro-inspired primitive
 
 ## Entities
 
@@ -70,6 +82,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[randall-balestriero]] — Researcher at Meta FAIR; theoretical foundations of JEPA (researcher)
 - [[meta-fair]] — Meta's Fundamental AI Research lab; home of JEPA (org)
 - [[imagenet]] — Standard benchmark for SSL evaluation (dataset)
+- [[unconventional-ai]] — Startup building physics-based AI on oscillator substrates; released Un-0 (org)
 
 ## Comparisons
 

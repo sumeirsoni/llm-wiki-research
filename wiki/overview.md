@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-06-09
+updated: 2026-07-03
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**36 sources ingested** | **11 concept pages** | **4 entity pages** | 51 source/concept/entity pages
+**47 sources ingested** | **12 concept pages** | **5 entity pages** | 64 source/concept/entity pages
 
 ## Key Themes
 
@@ -42,6 +42,10 @@ Multiple papers extend representation learning into [[world-models|world models]
 - [[causal-jepa|Causal-JEPA]]: object-level masking for causal reasoning (1% of features, comparable planning)
 - [[leworldmodel|LeWorldModel]]: end-to-end from pixels with minimal hyperparameters (48x faster planning)
 - [[sub-jepa|Sub-JEPA]]: subspace Gaussian regularization improves LeWM-style end-to-end world models
+- [[sensorimotor-world-models|SMWM]]: inverse dynamics regularization prevents collapse and biases latents toward controllable DoF ("perception for action")
+- [[delta-jepa|Delta-JEPA]]: Latent Difference Action Decoding ($\Delta z_t$) replaces SIGReg and concat inverse dynamics for action-sensitive rollouts
+- [[adajepa|AdaJEPA]]: test-time adaptation in the MPC loop recalibrates frozen JEPA world models under visual, dynamics, and layout shifts
+- [[dino-wm|DINO-WM]] → [[temporal-straightening|Temporal Straightening]] → [[adajepa|AdaJEPA]]: latent planning pipeline from frozen DINOv2 features, to straightened JEPA geometry, to deployment adaptation
 - [[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]]: semantic latents beat reconstruction latents for robotic policy-relevant rollouts
 - [[world-action-models|World Action Models]] and [[world-model-for-robot-learning-survey|World Model for Robot Learning]] organize the broader robotics landscape
 
@@ -64,13 +68,14 @@ REPA and SALT are conceptual mirrors: one makes generative models more discrimin
 Newer theory pages broaden this theme:
 - [[energy-based-models|Energy-Based Models]] connect learned verifiers, inference-time optimization, and autoregressive lookahead.
 - [[iterative-refinement|Iterative Refinement]] connects looped transformers, fixed-point attractor models, stochastic recursive reasoning (GRAM), attractor landscapes (EqR), inference-time width scaling (PTRM), vision-centric reasoning (VARC), continuous latent CoT (NF-CoT), supervised memory training (SMT), and energy-based inference.
+- [[fixed-point-reasoners|FPRM]]: pre-norm + residual scaling enables stable deep looped Transformers with native fixed-point halting — outperforms hierarchical TRM/HRM on Sudoku/Maze at 7M params without external ACT.
 - [[learn-from-your-own-latents|Learn from your own latents]]: latent prediction can be exponentially more sample-efficient than token-level SSL on hierarchical data.
 - [[representation-geometry|Representation Geometry]] separates global embedding statistics from functional sensitivity, divergent task geometry, intrinsic manifolds, and parameter-space update geometry during LLM post-training.
 - [[elucidating-representation-degradation|ERD]] analyzes diffusion training through recoverability mismatch and representation degradation.
 - [[augmented-lagrangian-predictive-coding|PC-ALM]] connects predictive coding to augmented Lagrangian optimization, achieving exact BP gradients via local dynamics.
 
 ### 6. JEPA Regularization Beyond SIGReg
-[[visreg|VISReg]] refines the [[lejepa|LeJEPA]] regularization story with decoupled scale/shape/center objectives and sliced Wasserstein shape matching, claiming stronger anti-collapse gradients and OOD transfer than SIGReg.
+[[visreg|VISReg]] refines the [[lejepa|LeJEPA]] regularization story with decoupled scale/shape/center objectives and sliced Wasserstein shape matching, claiming stronger anti-collapse gradients and OOD transfer than SIGReg. [[sensorimotor-world-models|SMWM]] and [[delta-jepa|Delta-JEPA]] offer contrasting action-aligned approaches: concat inverse dynamics vs latent-displacement decoding (LDAD), both replacing distributional priors with task-aligned transition supervision.
 
 ### 7. Representation Geometry and Control
 Three papers shift the wiki from static representations toward controllable or functional ones:
@@ -88,6 +93,19 @@ Two papers from the same research thread characterize and improve LLM post-train
 - [[arc-is-a-vision-problem|VARC]]: reframes ARC as a vision problem; 18M ViT matches human performance with visual priors alone.
 - [[latent-reasoning-with-normalizing-flows|NF-CoT]]: continuous Chain-of-Thought via autoregressive normalizing flows with tractable likelihoods and KV-cache compatibility.
 - [[pretraining-recurrent-networks-without-recurrence|SMT]]: time-parallel RNN pretraining without BPTT via Transformer-generated memory labels.
+
+### 10. Efficient Generative World Modeling
+- [[delta-world|DeltaWorld]]: DeltaTok compresses temporal frame changes to one token in VFM feature space; Best-of-Many training generates diverse futures in a single pass at 2,000× fewer FLOPs than Cosmos.
+
+### 11. Architectural Limits of Feedforward Transformers
+- [[topological-trouble-with-transformers|Topological Trouble With Transformers]]: feedforward depth topology prevents indefinite dynamic state tracking; motivates recurrence, SSMs, and implicit latent state over CoT workarounds.
+- [[next-latent-prediction|NextLat]]: injects belief-state pressure via next-latent prediction; provably shapes compact world models and enables 3.3× self-speculative decoding.
+
+### 12. Minimal-Assumption Representation Learning
+- [[temporal-difference-vision|TDV]]: learns from video using only causal next-frame prediction — no augmentations, masking, or cropping; matches SOTA on dense spatial tasks.
+
+### 13. Physical and Oscillator-Based Generation
+- [[un-0-coupled-oscillators|Un-0]]: replaces neural backbones with coupled Kuramoto oscillator dynamics for class-conditional image generation; FID 6.74 on ImageNet 64×64. Validates mapping modern generative workloads to physical substrates toward ~1000× energy efficiency. Dynamics handle diversity (recall); small decoder handles quality (precision).
 
 ## Key Relationships
 
@@ -109,6 +127,8 @@ graph TD
     REPA[REPA] -.->|uses| DINOv2[DINOv2/CLIP]
     REPA -.->|reverse of| SALT
     SubJEPA[Sub-JEPA] -->|subspace regularization| LeWM
+    SMWM[SMWM] -->|inverse dynamics vs SIGReg| LeWM
+    DeltaJEPA[Delta-JEPA] -->|LDAD vs SIGReg/concat IDM| LeWM
     SemLatents[Semantic Robot Latents] -.->|use| VJEPA
     WAM[World Action Models] --> WM
     EBT[Energy-Based Transformers] -.->|verifier/planning lens| WM
@@ -131,6 +151,13 @@ graph TD
 7. **World model evaluation**: How should benchmarks jointly score visual plausibility, physical consistency, action faithfulness, and closed-loop policy success?
 8. **Vision vs. language for abstraction**: Does [[arc-is-a-vision-problem|VARC]]'s success indicate ARC is fundamentally visual, or can vision and recursive reasoning be combined?
 9. **Representation vs. output distillation**: When does hidden-state alignment ([[on-policy-representation-distillation|OPRD]]) outperform output-space OPD, and how does it interact with subspace locking?
+10. **Temporal compression for world models**: Can DeltaTok-style delta tokens integrate with JEPA end-to-end training, or do they require frozen VFM features?
+11. **Recurrence vs. retrieval**: Does [[topological-trouble-with-transformers|state-tracking topology]] require explicit recurrence, or can enhanced SSMs and training objectives approximate it within feedforward architectures?
+12. **Minimal assumptions at scale**: Will [[temporal-difference-vision|TDV]]'s causal-only objective eventually surpass augmentation-based SSL as data grows, as the paper's scaling experiments suggest?
+13. **Belief states in LLMs**: Can [[next-latent-prediction|NextLat]]-style objectives fix incoherent implicit world models in language transformers without architectural changes?
+14. **Physics-as-compute scaling**: Can [[coupled-oscillators|oscillator-based]] generators close the quality gap with EDM-class diffusion at comparable parameter counts, or is a new physical primitive needed?
+15. **Adaptive world models**: Can [[adajepa|AdaJEPA]]-style closed-loop TTA scale to pixel-level or video world models, or is it limited to compact latent JEPA planners?
+16. **Hierarchy vs signal propagation**: Is hierarchical looping in TRM/HRM irreducible algorithmic structure, or primarily a workaround for post-norm depth limits that [[fixed-point-reasoners|FPRM]] makes unnecessary?
 
 ## Knowledge Gaps
 

@@ -36,6 +36,7 @@ Meta's Fundamental AI Research lab, led by [[yann-lecun|Yann LeCun]]. The primar
 ## JEPA Roadmap
 
 Meta FAIR has systematically developed the JEPA paradigm:
+
 1. **I-JEPA** (2023) — original image JEPA
 2. **V-JEPA** (2024) — extension to video
 3. **V-JEPA 2** (2024) — scaled video JEPA

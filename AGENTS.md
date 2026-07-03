@@ -66,8 +66,8 @@ authors:
 year: YYYY
 venue: "Conference/Journal"
 pdf_path: "raw/filename.pdf"
-code_url: "https://github.com/..."  # if available
-project_url: "https://..."           # project page, if available
+code_url: "https://github.com/..." # if available
+project_url: "https://..." # project page, if available
 ---
 ```
 
@@ -116,6 +116,7 @@ Use Obsidian callouts for important annotations:
 Initial tags for ML research. Extend as needed.
 
 ### Paradigms
+
 - `#self-supervised-learning`
 - `#contrastive-learning`
 - `#generative-modeling`
@@ -123,6 +124,7 @@ Initial tags for ML research. Extend as needed.
 - `#supervised-learning`
 
 ### Architectures & Methods
+
 - `#transformer`
 - `#cnn`
 - `#jepa` (Joint-Embedding Predictive Architecture)
@@ -133,6 +135,7 @@ Initial tags for ML research. Extend as needed.
 - `#ema` (Exponential Moving Average)
 
 ### Modalities
+
 - `#vision`
 - `#video`
 - `#language`
@@ -140,6 +143,7 @@ Initial tags for ML research. Extend as needed.
 - `#audio`
 
 ### Tasks & Applications
+
 - `#representation-learning`
 - `#object-detection`
 - `#segmentation`
@@ -148,6 +152,7 @@ Initial tags for ML research. Extend as needed.
 - `#depth-estimation`
 
 ### Meta
+
 - `#benchmark`
 - `#dataset`
 - `#optimization`
@@ -228,14 +233,14 @@ Health-check the wiki.
 
 ### Available Tools
 
-| Tool | Use When |
-|------|----------|
-| `embedding_similarity_search` | Finding papers by concept/method (use 2-3 sentence queries) |
-| `full_text_papers_search` | Searching by keyword, method name, author, or benchmark |
-| `agentic_paper_retrieval` | Comprehensive multi-turn search for a research question |
-| `get_paper_content` | Retrieving paper text (default: AI report; `fullText: true` for raw) |
-| `answer_pdf_queries` | Asking specific questions about a paper |
-| `read_files_from_github_repository` | Exploring a paper's code repository |
+| Tool                                | Use When                                                             |
+| ----------------------------------- | -------------------------------------------------------------------- |
+| `embedding_similarity_search`       | Finding papers by concept/method (use 2-3 sentence queries)          |
+| `full_text_papers_search`           | Searching by keyword, method name, author, or benchmark              |
+| `agentic_paper_retrieval`           | Comprehensive multi-turn search for a research question              |
+| `get_paper_content`                 | Retrieving paper text (default: AI report; `fullText: true` for raw) |
+| `answer_pdf_queries`                | Asking specific questions about a paper                              |
+| `read_files_from_github_repository` | Exploring a paper's code repository                                  |
 
 ### Recommended Patterns
 
@@ -251,18 +256,23 @@ Health-check the wiki.
 
 ```markdown
 ## Sources
+
 - [[source-page-name]] — One-line summary (YYYY)
 
 ## Concepts
+
 - [[concept-page-name]] — One-line summary
 
 ## Entities
+
 - [[entity-page-name]] — One-line summary (type: researcher | model | dataset | org)
 
 ## Comparisons
+
 - [[comparison-page-name]] — One-line summary
 
 ## Meta
+
 - [[meta-page-name]] — One-line summary
 ```
 
@@ -272,11 +282,14 @@ Health-check the wiki.
 
 ```markdown
 ## [YYYY-MM-DD] ingest | Paper Title
+
 Summary of what was done and pages affected.
 
 ## [YYYY-MM-DD] query | Question Asked
+
 Summary of the answer and any pages filed.
 
 ## [YYYY-MM-DD] lint | Health Check
+
 Summary of findings and fixes applied.
 ```

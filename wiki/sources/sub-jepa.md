@@ -2,7 +2,7 @@
 title: "Sub-JEPA: Subspace Gaussian Regularization for Stable End-to-End World Models"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-03
 arxiv_id: "2605.09241"
 authors:
   - "Kai Zhao"
@@ -57,6 +57,7 @@ The projections are frozen to prevent co-adaptation and orthogonalized to give b
 - Direct continuation of [[leworldmodel|LeWorldModel]] and [[lejepa|LeJEPA]], replacing full-space SIGReg with subspace-wise Gaussian constraints.
 - Updates the [[representation-collapse|representation collapse]] debate: avoiding collapse is not enough if the anti-collapse prior is too rigid.
 - Adds another JEPA-based branch to [[world-models|world models]], especially for continuous-control planning.
+- [[delta-jepa|Delta-JEPA]] is a complementary alternative: replaces Gaussian/subspace regularization entirely with Latent Difference Action Decoding; beats Sub-JEPA on all four shared benchmark tasks in its evaluation.
 - Relates to [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] because both caution against treating global geometry as the whole story.
 
 ## Limitations & Open Questions

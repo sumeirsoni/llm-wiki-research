@@ -2,7 +2,7 @@
 title: "Joint-Embedding Predictive Architecture (JEPA)"
 type: concept
 created: 2026-04-10
-updated: 2026-05-20
+updated: 2026-07-03
 tags:
   - jepa
   - self-supervised-learning
@@ -18,6 +18,12 @@ sources:
   - "[[sub-jepa]]"
   - "[[visreg]]"
   - "[[learn-from-your-own-latents]]"
+  - "[[temporal-difference-vision]]"
+  - "[[adajepa]]"
+  - "[[temporal-straightening]]"
+  - "[[dino-wm]]"
+  - "[[sensorimotor-world-models]]"
+  - "[[delta-jepa]]"
 aliases:
   - "JEPA"
   - "I-JEPA"
@@ -70,6 +76,9 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 - **Images**: I-JEPA (original), [[lejepa|LeJEPA]], [[bootleg|Bootleg]]
 - **Video**: [[v-jepa-2-1|V-JEPA 2.1]], [[rethinking-jepa|SALT]]
 - **World models**: [[causal-jepa|Causal-JEPA]], [[leworldmodel|LeWorldModel]]
+- **Adaptive world models**: [[adajepa|AdaJEPA]] (test-time recalibration in MPC loop)
+- **Planning-focused world models**: [[dino-wm|DINO-WM]] (frozen DINOv2 latents), [[temporal-straightening|Temporal Straightening]] (straightened JEPA latents for GD planning)
+- **End-to-end pixel world models**: [[leworldmodel|LeWM]] (SIGReg), [[sub-jepa|Sub-JEPA]] (subspace SIGReg), [[sensorimotor-world-models|SMWM]] (concat inverse dynamics), [[delta-jepa|Delta-JEPA]] (latent-difference action decoding)
 - **Subspace-regularized world models**: [[sub-jepa|Sub-JEPA]]
 
 ### By Innovation
@@ -81,6 +90,11 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 - **End-to-end**: [[leworldmodel|LeWorldModel]] (from pixels, no EMA)
 - **Intrinsic-dimensionality regularization**: [[sub-jepa|Sub-JEPA]] (Gaussian regularization in random low-dimensional subspaces)
 - **Dense features**: [[v-jepa-2-1|V-JEPA 2.1]] (all-token prediction)
+- **Minimal temporal bias**: [[temporal-difference-vision|TDV]] (causal next-frame prediction from video, no augmentations/masking)
+
+## Beyond Masking: Temporal Causality
+
+[[temporal-difference-vision|TDV]] extends the JEPA trajectory one step further: instead of masking or augmentations to create learning signal, it uses the causal assumption that z_t + Δz_t ≈ z_{t+1} from consecutive video frames. This removes hand-crafted invariances entirely while still predicting in latent space. TDV currently excels at dense spatial tasks (optical flow, depth, segmentation) but lags on semantic benchmarks — suggesting augmentations may still help for object-level semantics even if they become bottlenecks at scale.
 
 ## Key Open Questions
 

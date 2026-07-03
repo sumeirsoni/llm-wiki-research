@@ -30,20 +30,21 @@ where $\alpha$ is typically close to 1 (e.g., 0.996–0.999), meaning the teache
 ## Purpose
 
 EMA prevents [[representation-collapse|representation collapse]] in teacher-student SSL:
+
 - The teacher provides slowly-changing targets
 - The student can't collapse because its targets (from the teacher) evolve on a different timescale
 - The momentum creates a natural form of regularization
 
 ## Usage in This Wiki
 
-| Paper | Uses EMA? | Alternative |
-|-------|-----------|-------------|
-| [[v-jepa-2-1\|V-JEPA 2.1]] | ✅ Yes | — |
-| [[rethinking-jepa\|SALT]] | ❌ No | Frozen teacher |
-| [[lejepa\|LeJEPA]] | ❌ No | SIGReg regularizer |
-| [[leworldmodel\|LeWM]] | ❌ No | SIGReg regularizer |
-| [[bootleg\|Bootleg]] | ✅ Yes | Multi-layer targets |
-| [[causal-jepa\|C-JEPA]] | ✅ Yes | Object-level masking |
+| Paper                      | Uses EMA? | Alternative          |
+| -------------------------- | --------- | -------------------- |
+| [[v-jepa-2-1\|V-JEPA 2.1]] | ✅ Yes    | —                    |
+| [[rethinking-jepa\|SALT]]  | ❌ No     | Frozen teacher       |
+| [[lejepa\|LeJEPA]]         | ❌ No     | SIGReg regularizer   |
+| [[leworldmodel\|LeWM]]     | ❌ No     | SIGReg regularizer   |
+| [[bootleg\|Bootleg]]       | ✅ Yes    | Multi-layer targets  |
+| [[causal-jepa\|C-JEPA]]    | ✅ Yes    | Object-level masking |
 
 ## The EMA Debate
 

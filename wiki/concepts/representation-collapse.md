@@ -2,7 +2,7 @@
 title: "Representation Collapse"
 type: concept
 created: 2026-04-10
-updated: 2026-05-20
+updated: 2026-07-03
 tags:
   - representation-learning
   - self-supervised-learning
@@ -17,6 +17,8 @@ sources:
   - "[[elucidating-representation-degradation]]"
   - "[[global-geometry-is-not-enough]]"
   - "[[visreg]]"
+  - "[[sensorimotor-world-models]]"
+  - "[[delta-jepa]]"
 aliases:
   - "Collapse"
   - "Mode collapse"
@@ -75,6 +77,18 @@ The papers in this wiki offer several different approaches to preventing collaps
 - Keeps the Gaussian anti-collapse idea from [[lejepa|LeJEPA]] / [[leworldmodel|LeWorldModel]]
 - Applies it in multiple frozen low-dimensional orthogonal subspaces instead of the full ambient embedding space
 - **Advantage**: Reduces the excessive bias of a full isotropic prior when task dynamics lie on low-dimensional manifolds
+
+### 8. Inverse Dynamics — Endpoint Concatenation ([[sensorimotor-world-models|SMWM]])
+- Add inverse dynamics head predicting $a_t$ from $(z_t, z_{t+1})$
+- Collapsed encoder cannot recover actions → high $\mathcal{L}_{inv}$ prevents degenerate solutions
+- **Advantage**: Single task-aligned term; also biases latents toward controllable DoF and filters distractors ("perception for action")
+- **Tradeoff**: When the forward predictor is action-conditioned, $z_{t+1}$ may absorb action-correlated cues that support inverse decoding without modeling the transition itself ([[delta-jepa|Delta-JEPA]] ablation)
+
+### 9. Latent Difference Action Decoding ([[delta-jepa|Delta-JEPA]])
+- Decode $a_t$ from displacement $\Delta z_t = z_{t+1} - z_t$ only, not concatenated endpoints
+- Anti-collapse: collapsed adjacent states yield uninformative $\Delta z_t$
+- **Advantage**: Forces action information into transition geometry; +4 to +12.6 pp planning gain over concat inverse on LeWM-style benchmarks
+- **Tradeoff**: Still assumes actions are recoverable from single-step latent displacements
 
 ## Related Degradation Modes
 

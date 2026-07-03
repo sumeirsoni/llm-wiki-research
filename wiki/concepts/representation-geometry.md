@@ -2,7 +2,7 @@
 title: "Representation Geometry"
 type: concept
 created: 2026-05-16
-updated: 2026-06-09
+updated: 2026-07-03
 tags:
   - representation-learning
   - theory
@@ -14,6 +14,8 @@ sources:
   - "[[convergent-world-representations-and-divergent-tasks]]"
   - "[[on-the-geometry-of-on-policy-distillation]]"
   - "[[on-policy-representation-distillation]]"
+  - "[[temporal-straightening]]"
+  - "[[dino-wm]]"
 aliases:
   - "Embedding geometry"
   - "Representation manifolds"
@@ -42,6 +44,10 @@ This matters for [[lejepa|LeJEPA]] and [[sub-jepa|Sub-JEPA]] because Gaussian re
 ## Prompt-Steered Geometry
 
 [[steerable-visual-representations|Steerable Visual Representations]] adds another axis: text prompts can reorganize visual embedding spaces toward queried objects, parts, or attributes. This is not just a better static embedding; it is a controllable representation whose geometry depends on the task prompt.
+
+## Trajectory Geometry for Planning
+
+[[temporal-straightening|Temporal Straightening]] adds a control-relevant geometric criterion: **latent trajectory curvature**. Pretrained DINOv2 features ([[dino-wm|DINO-WM]]) encode rich semantics but produce highly curved latent paths where Euclidean distance misaligns with geodesic (shortest-action) distance. Penalizing curvature during JEPA world model training straightens trajectories, improves planning Hessian conditioning, and makes gradient-based MPC viable. This complements global isotropy metrics ([[lejepa|LeJEPA]]) with geometry tailored to dynamical reachability.
 
 ## Parameter-Space Update Geometry
 

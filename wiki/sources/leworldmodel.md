@@ -2,7 +2,7 @@
 title: "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels"
 type: source
 created: 2026-04-10
-updated: 2026-04-12
+updated: 2026-07-03
 arxiv_id: "2603.19312"
 authors:
   - "Lucas Maes"
@@ -67,6 +67,8 @@ The key insight is that SIGReg is sufficient to prevent collapse without needing
 - Related to [[causal-jepa|Causal-JEPA]] — both apply JEPA to world models, but Causal-JEPA uses object-level masking while LeWM trains end-to-end from pixels
 - Part of the [[yann-lecun|LeCun]] / [[randall-balestriero|Balestriero]] line of work on theoretically grounded JEPA
 - Addresses the [[representation-collapse|representation collapse]] problem that plagues [[jepa|JEPA]] training
+- [[sensorimotor-world-models|SMWM]] uses the same planning setup but replaces SIGReg with inverse dynamics regularization — **84% vs 59%** on OGBench-Cube
+- [[delta-jepa|Delta-JEPA]] replaces SIGReg with Latent Difference Action Decoding — **79.3% vs 64.1%** on OGB-Cube in a shared benchmark table with Sub-JEPA and PLDM
 
 ## Limitations & Open Questions
 
