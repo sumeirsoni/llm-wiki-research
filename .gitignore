@@ -1,1 +1,3 @@
 personal-notes/
+node_modules/
+.qmd/index.sqlite

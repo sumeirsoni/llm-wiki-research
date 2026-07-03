@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**47 sources ingested** | **12 concept pages** | **5 entity pages** | 64 source/concept/entity pages
+**48 sources ingested** | **13 concept pages** | **5 entity pages** | **2 comparison pages** | 73 source/concept/entity/comparison pages
 
 ## Key Themes
 
@@ -29,13 +29,14 @@ The most prominent thread across the wiki. [[ema|EMA]]-based self-distillation h
 - [[rethinking-jepa|SALT]] shows a frozen teacher outperforms EMA-based V-JEPA 2
 - [[leworldmodel|LeWorldModel]] achieves stable training with SIGReg alone
 
-Meanwhile, [[v-jepa-2-1|V-JEPA 2.1]] achieves state-of-the-art with EMA, suggesting the debate is far from settled.
+Meanwhile, [[v-jepa-2-1|V-JEPA 2.1]] achieves state-of-the-art with EMA, suggesting the debate is far from settled. See [[ema-vs-non-ema-collapse-prevention]] for a filed comparison.
 
 ### 2. Dense vs. Global Features
 Standard JEPA learns global scene representations but loses spatial detail. Multiple papers address this:
 - [[v-jepa-2-1|V-JEPA 2.1]]: all-token prediction forces spatial grounding
 - [[bootleg|Bootleg]]: multi-layer distillation captures features at all abstraction levels
 - [[v-jepa-2-1|V-JEPA 2.1]] + [[bootleg|Bootleg]] independently converge on the idea that intermediate-layer supervision improves spatial quality
+- [[levljepa|LeVLJEPA]]: non-contrastive vision-language pretraining produces **stronger patch-token** semantics than CLIP/SigLIP for VLM backbones and segmentation, despite weaker zero-shot — zero-shot and backbone quality can be inversely related
 
 ### 3. World Models from JEPA
 Multiple papers extend representation learning into [[world-models|world models]]:
@@ -47,7 +48,7 @@ Multiple papers extend representation learning into [[world-models|world models]
 - [[adajepa|AdaJEPA]]: test-time adaptation in the MPC loop recalibrates frozen JEPA world models under visual, dynamics, and layout shifts
 - [[dino-wm|DINO-WM]] → [[temporal-straightening|Temporal Straightening]] → [[adajepa|AdaJEPA]]: latent planning pipeline from frozen DINOv2 features, to straightened JEPA geometry, to deployment adaptation
 - [[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]]: semantic latents beat reconstruction latents for robotic policy-relevant rollouts
-- [[world-action-models|World Action Models]] and [[world-model-for-robot-learning-survey|World Model for Robot Learning]] organize the broader robotics landscape
+- [[world-action-models|World Action Models]] and [[world-model-for-robot-learning-survey|World Model for Robot Learning]] organize the broader robotics landscape — see [[robot-world-model-architectures]] for a filed architecture comparison
 
 ### 4. Bridging Generative and Discriminative Learning
 Two symmetric approaches connect generative models and representation learning:
@@ -75,7 +76,7 @@ Newer theory pages broaden this theme:
 - [[augmented-lagrangian-predictive-coding|PC-ALM]] connects predictive coding to augmented Lagrangian optimization, achieving exact BP gradients via local dynamics.
 
 ### 6. JEPA Regularization Beyond SIGReg
-[[visreg|VISReg]] refines the [[lejepa|LeJEPA]] regularization story with decoupled scale/shape/center objectives and sliced Wasserstein shape matching, claiming stronger anti-collapse gradients and OOD transfer than SIGReg. [[sensorimotor-world-models|SMWM]] and [[delta-jepa|Delta-JEPA]] offer contrasting action-aligned approaches: concat inverse dynamics vs latent-displacement decoding (LDAD), both replacing distributional priors with task-aligned transition supervision.
+[[visreg|VISReg]] refines the [[lejepa|LeJEPA]] regularization story with decoupled scale/shape/center objectives and sliced Wasserstein shape matching, claiming stronger anti-collapse gradients and OOD transfer than SIGReg. [[levljepa|LeVLJEPA]] extends SIGReg to vision-language pretraining without contrastive negatives. [[sensorimotor-world-models|SMWM]] and [[delta-jepa|Delta-JEPA]] offer action-aligned world-model alternatives: concat inverse dynamics vs latent-displacement decoding.
 
 ### 7. Representation Geometry and Control
 Three papers shift the wiki from static representations toward controllable or functional ones:
@@ -117,6 +118,7 @@ graph TD
     JEPA --> CJEPA[Causal-JEPA]
     
     LeJEPA -->|SIGReg| LeWM[LeWorldModel]
+    LeJEPA -->|SIGReg| LeVLJEPA[LeVLJEPA]
     IJEPA -->|improves| Bootleg[Bootleg]
     VJEPA -->|challenges| SALT[SALT / Rethinking JEPA]
     
@@ -162,13 +164,13 @@ graph TD
 ## Knowledge Gaps
 
 > [!gap]
-> No papers on JEPA applied to **language** or **audio** in the wiki yet. [[self-flow|Self-Flow]] covers audio generation but in the flow matching paradigm, not JEPA.
+> No papers on JEPA applied to **audio** in the wiki yet. [[self-flow|Self-Flow]] covers audio generation but in the flow matching paradigm, not JEPA. [[levljepa|LeVLJEPA]] covers vision-language but not language-only or audio-language JEPA.
 
 > [!gap]
-> No direct **benchmark comparisons** across all methods on shared evaluation protocols. Each paper uses different baselines and metrics.
+> No direct **benchmark comparisons** across all SSL methods on shared evaluation protocols. Each paper uses different baselines and metrics. Partial coverage: [[ema-vs-non-ema-collapse-prevention]] (collapse prevention), [[robot-world-model-architectures]] (robotics WM families).
 
 > [!gap]
-> Missing coverage of **contrastive learning** methods (SimCLR, MoCo, DINO) as reference points for evaluating JEPA's advantages.
+> **Contrastive learning** reference coverage added via [[contrastive-learning]] concept page; primary SimCLR/MoCo/DINO source papers not yet ingested.
 
 > [!gap]
-> The wiki now includes surveys of robot world models, but lacks a filed comparison that directly contrasts JEPA, diffusion/video, and VLA-style world-model architectures on shared robotics criteria.
+> [[robot-world-model-architectures]] files a partial comparison of JEPA, diffusion/video, and VLA-style world models, but no source runs all families on identical robot benchmarks with unified metrics.

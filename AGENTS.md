@@ -11,6 +11,8 @@ Self-supervised representation learning and related ML research. The wiki covers
 ```
 llm-wiki-research/
 ├── AGENTS.md              # This file — schema & conventions
+├── .qmd/                  # qmd search index config (index.yml; index.sqlite is gitignored)
+├── scripts/               # Tooling scripts (qmd setup, etc.)
 ├── raw/                   # Immutable source documents (PDFs, clipped articles)
 │   └── assets/            # Downloaded images
 ├── seed-papers/           # Initial seed papers (PDFs)
@@ -186,6 +188,7 @@ Process a new source and integrate it into the wiki.
 5. **Update `wiki/index.md`** — add entries for all new pages.
 6. **Append to `wiki/log.md`** — record the ingest with timestamp.
 7. **Update `wiki/overview.md`** if the new source significantly changes the overall synthesis.
+8. **Reindex search** — run `npm run qmd:reindex` so qmd picks up new/changed pages.
 
 ### 2. Query
 
@@ -193,10 +196,14 @@ Answer a question using the wiki.
 
 **Steps:**
 
-1. Read `wiki/index.md` to identify relevant pages.
-2. Read the relevant wiki pages.
+1. **Search the wiki** with qmd (preferred) or read `wiki/index.md`:
+   - MCP: use the `qmd` server's `query` tool with typed sub-queries (`lex` for keywords, `vec` for semantic, `hyde` for hypothetical answers). Filter with `collections: ["wiki"]`.
+   - CLI: `npm run qmd:search -- "your question"` (hybrid search + reranking), or `npx qmd search "keywords"` for fast BM25-only lookup.
+   - Fallback: read `wiki/index.md` to identify relevant pages by category.
+2. **Retrieve content** — use qmd `get` / `multi_get` (MCP or `npx qmd get …`) for the top hits, or read wiki pages directly.
 3. Synthesize an answer with `[[wikilinks]]` citations to wiki pages.
 4. If the answer is substantial and reusable, file it as a new page in `wiki/comparisons/` or `wiki/meta/` and update the index.
+5. If new pages were filed, run `npm run qmd:reindex`.
 
 ### 3. Discover
 
@@ -223,6 +230,47 @@ Health-check the wiki.
    - **Gaps** — important related topics not yet covered
 2. Report findings and suggest fixes.
 3. Optionally, suggest new papers to look up via AlphaXiv MCP to fill gaps.
+
+---
+
+## QMD Search Integration
+
+Local hybrid search over wiki pages via [qmd](https://github.com/tobi/qmd) — BM25 + vector search + LLM reranking, all on-device.
+
+**Setup (once per clone):**
+
+```sh
+npm install
+npm run qmd:setup
+```
+
+This creates a project-local index in `.qmd/`, indexes `wiki/**/*.md`, and downloads embedding models to `~/.cache/qmd/models/` (~350MB on first run).
+
+**Cursor MCP:** `.cursor/mcp.json` registers the qmd MCP server. Enable it in Cursor Settings → MCP if not auto-detected. Tools: `query`, `get`, `multi_get`, `status`.
+
+**Reindex after wiki changes:**
+
+```sh
+npm run qmd:reindex
+```
+
+**CLI quick reference:**
+
+| Command | Use When |
+| ------- | -------- |
+| `npm run qmd:search -- "question"` | Best-quality hybrid search (default for queries) |
+| `npx qmd search "keyword"` | Fast BM25 keyword lookup |
+| `npx qmd vsearch "conceptual question"` | Semantic search only |
+| `npx qmd get "sources/jepa.md"` | Retrieve full page content |
+| `npm run qmd:status` | Check index health |
+
+**Collection context** (helps qmd rank results):
+
+- `wiki/sources` — paper summaries
+- `wiki/concepts` — topic synthesis pages
+- `wiki/entities` — researchers, models, datasets, orgs
+- `wiki/comparisons` — filed analyses
+- `wiki/meta` — reading lists and open questions
 
 ---
 

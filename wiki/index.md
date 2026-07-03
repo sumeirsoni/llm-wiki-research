@@ -3,11 +3,6 @@ title: "Wiki Index"
 type: meta
 created: 2026-04-10
 updated: 2026-07-03
-tags:
-  - meta
----
-
-# Wiki Index
 
 A catalog of all pages in the ML Research Wiki, organized by category.
 
@@ -24,6 +19,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[foveal-ssl]] — Sequential-to-global self-distillation for image-size agnostic ViT; constant compute at any resolution (2026)
 - [[rvm]] — Recurrent Video MAE with GRU-Transformer core; generalist encoder for spatial + temporal tasks (2025)
 - [[hyperloop-transformers]] — Looped Transformer + hyper-connections; 50% fewer params, lower perplexity than vanilla Transformers (2026)
+- [[elt]] — Elastic Looped Transformers with Intra-Loop Self Distillation; 4× parameter reduction for visual generation (2026)
 - [[steerable-visual-representations]] — Text-steerable visual encoder adapters with early fusion and prompt-controlled feature geometry (2026)
 - [[energy-based-transformers]] — Transformer EBMs that learn to think via energy minimization, dynamic compute, and self-verification (2025)
 - [[representation-frechet-loss]] — Direct Fréchet Distance optimization as a scalable visual-generation post-training loss (2026)
@@ -60,6 +56,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[dino-wm]] — Zero-shot latent planning on frozen DINOv2 patch features; task-agnostic offline world model (ICML 2025)
 - [[sensorimotor-world-models]] — Inverse dynamics regularization for action-aligned end-to-end JEPA world models; 84% vs 59% on OGBench-Cube (2026)
 - [[delta-jepa]] — Latent Difference Action Decoding for action-sensitive JEPA world models; 100% Two-Room, 79.3% OGB-Cube (2026)
+- [[levljepa]] — Non-contrastive vision-language JEPA with SIGReg; strongest dense patch features for frozen VLM backbones (2026)
 
 ## Concepts
 
@@ -75,6 +72,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[representation-geometry]] — Global geometry, functional sensitivity, manifolds, and prompt-steerable embedding spaces
 - [[iterative-refinement]] — Looped, fixed-point, and energy-based latent refinement for language and reasoning models
 - [[coupled-oscillators]] — Kuramoto phase dynamics as generative compute substrate and neuro-inspired primitive
+- [[contrastive-learning]] — Contrastive SSL paradigm (SimCLR, MoCo, DINO, CLIP) as reference baseline for JEPA
 
 ## Entities
 
@@ -86,7 +84,8 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Comparisons
 
-_No comparisons filed yet._
+- [[ema-vs-non-ema-collapse-prevention]] — Filed comparison of EMA, SIGReg, frozen teacher, and action-aligned collapse prevention
+- [[robot-world-model-architectures]] — JEPA latent planners vs generative video vs VLA/WAM approaches for robotics
 
 ## Meta
 

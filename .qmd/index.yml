@@ -1,0 +1,15 @@
+collections:
+  wiki:
+    path: /Users/sumei/llm-wiki-research/wiki
+    pattern: "**/*.md"
+    context:
+      sources: Paper summaries — one page per ingested source
+      concepts: Concept and topic pages synthesizing ideas across papers
+      entities: Researchers, models, datasets, and organizations
+      comparisons: Filed comparison analyses and tables
+      meta: Reading lists, open questions, and knowledge gaps
+models:
+  embed: hf:ggml-org/embeddinggemma-300M-GGUF/embeddinggemma-300M-Q8_0.gguf
+  generate: hf:tobil/qmd-query-expansion-1.7B-gguf/qmd-query-expansion-1.7B-q4_k_m.gguf
+  rerank: hf:ggml-org/Qwen3-Reranker-0.6B-Q8_0-GGUF/qwen3-reranker-0.6b-q8_0.gguf
+global_context: ML research wiki on self-supervised representation learning, JEPA, world models, and related methods

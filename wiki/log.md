@@ -91,3 +91,9 @@ Ingested [[sensorimotor-world-models]] (arXiv: 2606.20104). Created source page.
 
 ## [2026-07-03] ingest | Delta-JEPA
 Ingested [[delta-jepa]] (arXiv: 2606.31232). Created source page. Updated [[world-models]], [[jepa]], [[representation-collapse]], [[sensorimotor-world-models]], [[leworldmodel]], [[index]], and [[overview]].
+
+## [2026-07-03] ingest | LeVLJEPA
+Ingested [[levljepa]] (arXiv: 2607.00784). Created source page. Updated [[jepa]], [[self-supervised-learning]], [[representation-collapse]], [[lejepa]], [[randall-balestriero]], [[index]], and [[overview]].
+
+## [2026-07-03] lint | Health Check
+Fixed 28 escaped-pipe wikilinks in [[jepa]], [[ema]], [[world-models]], [[imagenet]], and [[delta-jepa]]. Repaired [[jepa]] frontmatter. Added [[elt]] to [[index]]. Created [[contrastive-learning]], [[ema-vs-non-ema-collapse-prevention]], and [[robot-world-model-architectures]]. Updated [[self-supervised-learning]], [[representation-collapse]], [[overview]], and [[elt]] cross-links.

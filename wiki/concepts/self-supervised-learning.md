@@ -2,7 +2,7 @@
 title: "Self-Supervised Learning"
 type: concept
 created: 2026-04-10
-updated: 2026-06-09
+updated: 2026-07-03
 tags:
   - self-supervised-learning
   - representation-learning
@@ -19,6 +19,7 @@ sources:
   - "[[visreg]]"
   - "[[learn-from-your-own-latents]]"
   - "[[temporal-difference-vision]]"
+  - "[[levljepa]]"
 aliases:
   - "SSL"
   - "Self-supervised learning"
@@ -43,9 +44,9 @@ Learn by **reconstructing raw inputs** from corrupted versions.
 ### Contrastive Methods
 Learn by **distinguishing positive pairs from negative pairs** in embedding space.
 
-- **Examples**: SimCLR, MoCo, CLIP
-- **Strengths**: Strong semantic representations, scalable
-- **Weaknesses**: Require careful augmentation design, negative mining
+- **Examples**: SimCLR, MoCo, DINO, CLIP, SigLIP — see [[contrastive-learning|Contrastive Learning]]
+- **Strengths**: Strong semantic representations, scalable; dominant for vision-language pretraining
+- **Weaknesses**: Require careful augmentation design, negative mining; batch-size dependent; optimize pooled global alignment — patch tokens supervised only as byproduct ([[levljepa|LeVLJEPA]] critique)
 
 ### Joint-Embedding Predictive ([[jepa|JEPA]])
 Learn by **predicting masked embeddings** in latent space.
@@ -78,6 +79,7 @@ Learn representations **within** the generative framework itself.
 - **Unifying generation and representation**: [[self-flow|Self-Flow]] integrates both
 - **Beyond static geometry**: [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] and [[steerable-visual-representations|Steerable Visual Representations]] shift attention toward functional sensitivity and prompt-steerable representations
 - **Latent vs. token learning**: [[learn-from-your-own-latents|Learn from your own latents]] proves latent prediction can be exponentially more sample-efficient than token-level SSL on hierarchical data
+- **Non-contrastive vision-language**: [[levljepa|LeVLJEPA]] extends SIGReg + cross-modal prediction to image–text pretraining without CLIP-style negatives; strongest on dense patch features for VLM backbones
 - **JEPA regularization advances**: [[visreg|VISReg]] refines collapse prevention with decoupled scale/shape regularization and strong OOD transfer
 - **Minimal-assumption SSL**: [[temporal-difference-vision|TDV]] removes even augmentation/masking biases, learning from video via causal next-frame prediction alone
 - **Latent dynamics for transformers**: [[next-latent-prediction|NextLat]] adds belief-state pressure to next-token training via self-supervised hidden-state prediction

@@ -14,6 +14,7 @@ sources:
   - "[[leworldmodel]]"
   - "[[temporal-straightening]]"
   - "[[sensorimotor-world-models]]"
+  - "[[levljepa]]"
 aliases:
   - "Balestriero"
 ---
@@ -33,6 +34,7 @@ Co-author on several key JEPA papers focused on principled, theoretically-ground
 - [[causal-jepa|Causal-JEPA]] — extended JEPA to object-centric representations
 - [[temporal-straightening|Temporal Straightening]] — curvature regularization for latent planning geometry (ICML 2026, with Wang, LeCun, Ren)
 - [[sensorimotor-world-models|SMWM]] — inverse dynamics regularization for action-aligned end-to-end JEPA world models (with Ivashkov, Schölkopf)
+- [[levljepa|LeVLJEPA]] — non-contrastive vision-language pretraining via cross-modal prediction + SIGReg (with Kuhn, Serra, Buettner)
 
 ## Research Theme
 

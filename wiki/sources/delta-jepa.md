@@ -75,8 +75,8 @@ When the forward predictor is action-conditioned, $z_{t+1}$ can absorb action-co
 | Method | Two-Room | Reacher | Push-T | OGB-Cube |
 | --- | --- | --- | --- | --- |
 | PLDM | 93.7 | 64.3 | 76.1 | 57.3 |
-| [[leworldmodel\|LeWM]] | 74.9 | 79.9 | 84.5 | 64.1 |
-| [[sub-jepa\|Sub-JEPA]] | 90.6 | 81.0 | 63.7 | 62.7 |
+| [[leworldmodel|LeWM]] | 74.9 | 79.9 | 84.5 | 64.1 |
+| [[sub-jepa|Sub-JEPA]] | 90.6 | 81.0 | 63.7 | 62.7 |
 | **Delta-JEPA** | **100.0** | **81.3** | **89.1** | **79.3** |
 
 ### Ablations

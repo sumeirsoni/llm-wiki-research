@@ -27,7 +27,20 @@ A persistent, LLM-maintained knowledge base for self-supervised representation l
 This wiki is designed to be:
 1. **Browsed in [Obsidian](https://obsidian.md)** — open this directory as a vault
 2. **Maintained by LLM agents** — agents follow the conventions in `AGENTS.md`
-3. **Augmented by [AlphaXiv MCP](https://www.alphaxiv.org/docs/mcp)** — for discovering and retrieving new research papers
+3. **Searched with [qmd](https://github.com/tobi/qmd)** — local hybrid search over wiki pages (see below)
+4. **Augmented by [AlphaXiv MCP](https://www.alphaxiv.org/docs/mcp)** — for discovering and retrieving new research papers
+
+### Search setup
+
+```sh
+npm install
+npm run qmd:setup    # first time: index wiki pages + download models
+npm run qmd:search -- "how does JEPA differ from MAE?"
+```
+
+After ingesting or editing wiki pages, reindex with `npm run qmd:reindex`.
+
+Cursor agents can use the qmd MCP server (configured in `.cursor/mcp.json`) for native `query` / `get` tools during the Query workflow.
 
 ## Current Focus
 

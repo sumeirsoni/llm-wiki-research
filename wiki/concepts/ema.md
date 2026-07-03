@@ -2,7 +2,7 @@
 title: "Exponential Moving Average (EMA)"
 type: concept
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-07-03
 tags:
   - ema
   - self-distillation
@@ -39,16 +39,16 @@ EMA prevents [[representation-collapse|representation collapse]] in teacher-stud
 
 | Paper                      | Uses EMA? | Alternative          |
 | -------------------------- | --------- | -------------------- |
-| [[v-jepa-2-1\|V-JEPA 2.1]] | ✅ Yes    | —                    |
-| [[rethinking-jepa\|SALT]]  | ❌ No     | Frozen teacher       |
-| [[lejepa\|LeJEPA]]         | ❌ No     | SIGReg regularizer   |
-| [[leworldmodel\|LeWM]]     | ❌ No     | SIGReg regularizer   |
-| [[bootleg\|Bootleg]]       | ✅ Yes    | Multi-layer targets  |
-| [[causal-jepa\|C-JEPA]]    | ✅ Yes    | Object-level masking |
+| [[v-jepa-2-1|V-JEPA 2.1]] | ✅ Yes    | —                    |
+| [[rethinking-jepa|SALT]]  | ❌ No     | Frozen teacher       |
+| [[lejepa|LeJEPA]]         | ❌ No     | SIGReg regularizer   |
+| [[leworldmodel|LeWM]]     | ❌ No     | SIGReg regularizer   |
+| [[bootleg|Bootleg]]       | ✅ Yes    | Multi-layer targets  |
+| [[causal-jepa|C-JEPA]]    | ✅ Yes    | Object-level masking |
 
 ## The EMA Debate
 
-Three of the seven papers in this wiki argue against EMA:
+See [[ema-vs-non-ema-collapse-prevention]] for a filed comparison. Three of the seven papers in this wiki argue against EMA:
 
 - [[lejepa|LeJEPA]]: EMA is a heuristic without theoretical justification; SIGReg is provably better
 - [[rethinking-jepa|SALT]]: A frozen teacher outperforms EMA-based V-JEPA 2; EMA couples architectures and complicates scaling

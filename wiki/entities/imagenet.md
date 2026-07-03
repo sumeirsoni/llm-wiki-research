@@ -27,9 +27,9 @@ ImageNet-1K is the standard benchmark for evaluating image [[self-supervised-lea
 
 | Method                     | Architecture | Linear Eval Accuracy                 |
 | -------------------------- | ------------ | ------------------------------------ |
-| [[lejepa\|LeJEPA]]         | ViT-H/14     | 79%                                  |
-| [[bootleg\|Bootleg]]       | —            | +10% over I-JEPA                     |
-| [[v-jepa-2-1\|V-JEPA 2.1]] | ViT-G        | (primarily evaluated on video tasks) |
+| [[lejepa|LeJEPA]]         | ViT-H/14     | 79%                                  |
+| [[bootleg|Bootleg]]       | —            | +10% over I-JEPA                     |
+| [[v-jepa-2-1|V-JEPA 2.1]] | ViT-G        | (primarily evaluated on video tasks) |
 
 ## Role as Benchmark
 
@@ -47,6 +47,6 @@ ImageNet 64×64 is also used for **class-conditional image generation** evaluati
 
 | Method | Params | FID@50k |
 | --- | --- | --- |
-| [[un-0-coupled-oscillators\|Un-0.n16384]] | 322M | 6.74 |
+| [[un-0-coupled-oscillators|Un-0.n16384]] | 322M | 6.74 |
 
 Un-0 uses coupled Kuramoto oscillator dynamics rather than diffusion or GAN backbones; quality is comparable to early conventional generators (BigGAN, iDDPM) but below later SOTA (EDM).

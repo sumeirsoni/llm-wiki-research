@@ -2,7 +2,7 @@
 title: "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics"
 type: source
 created: 2026-04-10
-updated: 2026-04-12
+updated: 2026-07-03
 arxiv_id: "2511.08544"
 authors:
   - "Randall Balestriero"
@@ -63,6 +63,7 @@ This eliminates the need for:
 - SIGReg regularizer directly adopted by [[leworldmodel|LeWorldModel]] for stable end-to-end training
 - Contrasts with [[rethinking-jepa|Rethinking JEPA (SALT)]] — LeJEPA removes EMA entirely, while SALT replaces EMA with a frozen teacher
 - [[visreg|VISReg]] proposes an alternative regularizer to SIGReg with decoupled scale/shape control and stronger collapse gradients
+- Extended to vision-language pretraining as [[levljepa|LeVLJEPA]] — cross-modal predictors + stop-gradient + per-modality SIGReg (asymmetric; symmetric cross-modal MSE collapses)
 - Contrasts with [[bootleg|Bootleg]] which still uses teacher-student distillation but across hidden layers
 - Part of the broader effort by [[randall-balestriero|Randall Balestriero]] and [[yann-lecun|Yann LeCun]] to put SSL on rigorous theoretical footing
 

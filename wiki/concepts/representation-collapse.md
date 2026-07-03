@@ -19,6 +19,7 @@ sources:
   - "[[visreg]]"
   - "[[sensorimotor-world-models]]"
   - "[[delta-jepa]]"
+  - "[[levljepa]]"
 aliases:
   - "Collapse"
   - "Mode collapse"
@@ -90,6 +91,12 @@ The papers in this wiki offer several different approaches to preventing collaps
 - **Advantage**: Forces action information into transition geometry; +4 to +12.6 pp planning gain over concat inverse on LeWM-style benchmarks
 - **Tradeoff**: Still assumes actions are recoverable from single-step latent displacements
 
+### 10. Cross-Modal Predictors + SIGReg ([[levljepa|LeVLJEPA]])
+- Vision-language extension: asymmetric cross-modal MSE with stop-gradient targets + per-modality SIGReg
+- Direct symmetric image–text MSE collapses even with SIGReg; predictors absorb cross-modal asymmetry (SimSiam-style)
+- **Advantage**: Non-contrastive VLP without negatives/temperature/momentum; batch-size invariant; strong dense patch features
+- **Tradeoff**: Weaker zero-shot than CLIP/SigLIP (objectives optimize different readouts)
+
 ## Related Degradation Modes
 
 Not all failures are total constant-vector collapse:
@@ -98,6 +105,8 @@ Not all failures are total constant-vector collapse:
 - [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] shows a softer failure mode: representations may have healthy global geometry while their Jacobian sensitivity collapses along directions needed for compositional binding.
 
 ## Open Debate
+
+See [[ema-vs-non-ema-collapse-prevention]] for a filed comparison.
 
 > [!contradiction]
 > There is no consensus on the best approach. [[v-jepa-2-1|V-JEPA 2.1]] achieves SOTA with EMA, but [[rethinking-jepa|SALT]] outperforms V-JEPA 2 without EMA, and [[lejepa|LeJEPA]] provides theoretical arguments against EMA. The field is actively debating whether EMA is a feature or a crutch.

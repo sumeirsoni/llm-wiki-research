@@ -2,7 +2,7 @@
 title: "ELT: Elastic Looped Transformers for Visual Generation"
 type: source
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-07-03
 arxiv_id: "2604.09168"
 authors:
   - "Sahil Goyal"
@@ -21,6 +21,11 @@ tags:
   - vision
   - video
   - optimization
+sources:
+  - "[[iterative-refinement]]"
+  - "[[self-distillation]]"
+  - "[[repa]]"
+  - "[[foveal-ssl]]"
 aliases:
   - "ELT"
   - "Elastic Looped Transformers"
@@ -94,6 +99,7 @@ Video (UCF-101):
 ## Connections
 
 - Related to [[self-distillation]] — ILSD is a form of self-distillation within the same model's loop iterations
+- Related to [[iterative-refinement]] — looped weight-shared blocks with adaptive compute at inference
 - Applicable to diffusion transformers like those improved by [[repa|REPA]] — orthogonal efficiency gains possible
 - The "Any-Time inference" concept parallels [[rethinking-jepa|SALT]]'s decoupling of teacher-student, but applied within a single recurrent model
 - Addresses the parameter efficiency frontier that [[self-flow|Self-Flow]] and [[repa|REPA]] also target from different angles

@@ -7,7 +7,6 @@ tags:
   - jepa
   - self-supervised-learning
   - representation-learning
-  - architecture
 sources:
   - "[[causal-jepa]]"
   - "[[lejepa]]"
@@ -24,6 +23,7 @@ sources:
   - "[[dino-wm]]"
   - "[[sensorimotor-world-models]]"
   - "[[delta-jepa]]"
+  - "[[levljepa]]"
 aliases:
   - "JEPA"
   - "I-JEPA"
@@ -49,7 +49,7 @@ JEPA is a family of [[self-supervised-learning|self-supervised learning]] archit
 | Approach | Predicts | Space | Example |
 |----------|----------|-------|---------|
 | **Generative** (MAE) | Raw pixels | Input space | [[mae|MAE]] |
-| **Contrastive** (SimCLR) | Same vs. different | Embedding space | SimCLR, CLIP |
+| **Contrastive** (SimCLR) | Same vs. different | Embedding space | [[contrastive-learning|SimCLR, CLIP]] |
 | **JEPA** | Masked embeddings | Latent space | I-JEPA, V-JEPA |
 
 JEPA's advantage: predicting in latent space discards irrelevant low-level details and focuses on semantic content.
@@ -60,15 +60,16 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 
 | Method | Collapse Prevention | Used By |
 |--------|-------------------|---------|
-| [[ema|EMA teacher]] | Slowly-updating teacher provides stable targets | [[v-jepa-2-1\|V-JEPA 2.1]], I-JEPA |
-| [[lejepa\|SIGReg]] | Regularize embeddings to isotropic Gaussian | [[lejepa\|LeJEPA]], [[leworldmodel\|LeWM]] |
-| [[visreg\|VISReg]] | Decouple scale/shape/center; sliced Wasserstein shape matching | [[visreg\|VISReg]] |
-| [[sub-jepa\|Subspace SIGReg]] | Apply Gaussian regularization in low-dimensional frozen subspaces | [[sub-jepa\|Sub-JEPA]] |
-| Frozen teacher | Pre-trained, fixed teacher provides static targets | [[rethinking-jepa\|SALT]] |
-| Multi-layer distillation | Distill from multiple hidden layers | [[bootleg\|Bootleg]] |
+| [[ema|EMA teacher]] | Slowly-updating teacher provides stable targets | [[v-jepa-2-1|V-JEPA 2.1]], I-JEPA |
+| [[lejepa|SIGReg]] | Regularize embeddings to isotropic Gaussian | [[lejepa|LeJEPA]], [[leworldmodel|LeWM]] |
+| [[visreg|VISReg]] | Decouple scale/shape/center; sliced Wasserstein shape matching | [[visreg|VISReg]] |
+| [[sub-jepa|Subspace SIGReg]] | Apply Gaussian regularization in low-dimensional frozen subspaces | [[sub-jepa|Sub-JEPA]] |
+| Cross-modal predictors + SIGReg | Asymmetric prediction with stop-gradient per modality | [[levljepa|LeVLJEPA]] |
+| Frozen teacher | Pre-trained, fixed teacher provides static targets | [[rethinking-jepa|SALT]] |
+| Multi-layer distillation | Distill from multiple hidden layers | [[bootleg|Bootleg]] |
 
 > [!open-question]
-> Which collapse prevention mechanism is best? This is an active debate — [[lejepa|LeJEPA]] and [[rethinking-jepa|SALT]] both argue EMA is unnecessary, but [[v-jepa-2-1|V-JEPA 2.1]] achieves SOTA with EMA.
+> Which collapse prevention mechanism is best? See [[ema-vs-non-ema-collapse-prevention]] — [[lejepa|LeJEPA]] and [[rethinking-jepa|SALT]] both argue EMA is unnecessary, but [[v-jepa-2-1|V-JEPA 2.1]] achieves SOTA with EMA.
 
 ## JEPA Variants in This Wiki
 
@@ -79,6 +80,7 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 - **Adaptive world models**: [[adajepa|AdaJEPA]] (test-time recalibration in MPC loop)
 - **Planning-focused world models**: [[dino-wm|DINO-WM]] (frozen DINOv2 latents), [[temporal-straightening|Temporal Straightening]] (straightened JEPA latents for GD planning)
 - **End-to-end pixel world models**: [[leworldmodel|LeWM]] (SIGReg), [[sub-jepa|Sub-JEPA]] (subspace SIGReg), [[sensorimotor-world-models|SMWM]] (concat inverse dynamics), [[delta-jepa|Delta-JEPA]] (latent-difference action decoding)
+- **Vision-language**: [[levljepa|LeVLJEPA]] (non-contrastive cross-modal prediction + SIGReg; strong dense patch features for VLM backbones)
 - **Subspace-regularized world models**: [[sub-jepa|Sub-JEPA]]
 
 ### By Innovation

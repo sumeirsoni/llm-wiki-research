@@ -68,7 +68,7 @@ Two papers in this wiki apply [[jepa|JEPA]] to world modeling:
 
 ## Key Differences
 
-| Aspect | [[causal-jepa\|C-JEPA]] | [[leworldmodel\|LeWM]] | [[sub-jepa\|Sub-JEPA]] | [[sensorimotor-world-models\|SMWM]] | [[delta-jepa\|Delta-JEPA]] |
+| Aspect | [[causal-jepa|C-JEPA]] | [[leworldmodel|LeWM]] | [[sub-jepa|Sub-JEPA]] | [[sensorimotor-world-models|SMWM]] | [[delta-jepa|Delta-JEPA]] |
 |--------|---------|------|------|------|------|
 | **Input** | Object representations | Raw pixels | Raw pixels | Raw pixels | Raw pixels |
 | **Masking / prediction** | Object-level | Temporal next-step latent prediction | Temporal next-step latent prediction | Temporal next-step latent prediction | Temporal next-step latent prediction |
@@ -78,7 +78,7 @@ Two papers in this wiki apply [[jepa|JEPA]] to world modeling:
 
 ## Robot World Models
 
-Recent robot-focused sources broaden the page beyond JEPA:
+See [[robot-world-model-architectures]] for a filed comparison of JEPA, diffusion/video, and VLA-style approaches on shared robotics criteria. Recent robot-focused sources broaden the page beyond JEPA:
 
 - [[world-model-for-robot-learning-survey|World Model for Robot Learning]] surveys world models as policy components, learned simulators, evaluators, and robotic video generators.
 - [[world-action-models|World Action Models]] defines WAMs as joint models of future states and actions, bridging reactive VLA policies and predictive world models.
