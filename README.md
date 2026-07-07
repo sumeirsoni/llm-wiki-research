@@ -1,6 +1,6 @@
 # ML Research Wiki
 
-A persistent, LLM-maintained knowledge base for self-supervised representation learning research. Built using Andrej Karpathy's [LLM Wiki](llm-wiki.md) pattern.
+A persistent, LLM-maintained knowledge base for **representation learning and related ML research** — self-supervised learning, world models, generative modeling, LLM post-training, reasoning architectures, and representation geometry. Built using Andrej Karpathy's [LLM Wiki](llm-wiki.md) pattern.
 
 ## Structure
 
@@ -42,6 +42,23 @@ After ingesting or editing wiki pages, reindex with `npm run qmd:reindex`.
 
 Cursor agents can use the qmd MCP server (configured in `.cursor/mcp.json`) for native `query` / `get` tools during the Query workflow.
 
-## Current Focus
+## Scope
 
-Self-supervised representation learning, particularly JEPA (Joint-Embedding Predictive Architecture) variants and related methods.
+The wiki started with **self-supervised representation learning** (especially JEPA) and has grown to cover adjacent areas that share representation-learning foundations:
+
+| Area | Examples in the wiki |
+|------|----------------------|
+| **SSL & JEPA** | LeJEPA, V-JEPA 2.1, Bootleg, Causal-JEPA, LeVLJEPA, Temporal Difference Vision |
+| **World models** | LeWorldModel, DINO-WM, Delta-JEPA, AdaJEPA, robot WM surveys |
+| **Generative modeling** | Self-Flow, REPA, DeltaWorld, normalizing flows, oscillator-based generation |
+| **LLM post-training** | On-policy distillation geometry, OPRD, layer contribution in RLVR |
+| **Reasoning & inference** | Fixed-point reasoners, GRAM, NF-CoT, energy-based transformers, ARC-as-vision |
+| **Representation geometry** | Global vs functional geometry, manifold steering, layer-wise adaptation |
+
+See `wiki/overview.md` for a synthesized view of current themes and open questions.
+
+## Current State
+
+**49 sources** · **14 concepts** · **5 entities** · **2 comparisons**
+
+Primary anchor: **JEPA** and its variants, with growing coverage of world models, post-training geometry, and reasoning architectures.

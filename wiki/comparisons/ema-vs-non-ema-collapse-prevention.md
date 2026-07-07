@@ -40,18 +40,18 @@ The wiki documents a **live debate**, not a settled answer. [[v-jepa-2-1|V-JEPA 
 
 ## Comparison Table
 
-| Method | Uses EMA? | Collapse prevention | Primary domain | Key claim |
-|--------|-----------|---------------------|----------------|-----------|
-| [[v-jepa-2-1|V-JEPA 2.1]] | Yes | EMA teacher + deep self-supervision | Video SSL | SOTA dense video features at 2B scale |
-| [[bootleg|Bootleg]] | Yes | Multi-layer EMA distillation | Image SSL | +10% over I-JEPA |
-| [[causal-jepa|C-JEPA]] | Yes | EMA + object-level masking structure | World model | Causal/object-centric latents |
-| [[rethinking-jepa|SALT]] | No | Frozen generative teacher | Video SSL | Beats V-JEPA 2 without EMA |
-| [[lejepa|LeJEPA]] | No | SIGReg (isotropic Gaussian) | Image SSL | Theoretical grounding; 79% ImageNet linear |
-| [[leworldmodel|LeWM]] | No | SIGReg | Pixel world model | Stable end-to-end JEPA WM |
-| [[visreg|VISReg]] | No | Decoupled scale/shape/center + sliced Wasserstein | Image SSL | Stronger OOD than SIGReg |
-| [[sub-jepa|Sub-JEPA]] | No | Subspace Gaussian regularization | Pixel world model | Better planning than LeWM |
-| [[sensorimotor-world-models|SMWM]] | No | Concat inverse dynamics | Pixel world model | 84% vs 59% on OGB-Cube |
-| [[delta-jepa|Delta-JEPA]] | No | Latent-difference action decoding | Pixel world model | Best mean on LeWM-style tasks |
+| Method                      | Uses EMA?    | Collapse prevention | Primary domain                                    | Key claim         |                                            |
+| --------------------------- | ------------ | ------------------- | ------------------------------------------------- | ----------------- | ------------------------------------------ |
+| [[v-jepa-2-1                | V-JEPA 2.1]] | Yes                 | EMA teacher + deep self-supervision               | Video SSL         | SOTA dense video features at 2B scale      |
+| [[bootleg                   | Bootleg]]    | Yes                 | Multi-layer EMA distillation                      | Image SSL         | +10% over I-JEPA                           |
+| [[causal-jepa               | C-JEPA]]     | Yes                 | EMA + object-level masking structure              | World model       | Causal/object-centric latents              |
+| [[rethinking-jepa           | SALT]]       | No                  | Frozen generative teacher                         | Video SSL         | Beats V-JEPA 2 without EMA                 |
+| [[lejepa                    | LeJEPA]]     | No                  | SIGReg (isotropic Gaussian)                       | Image SSL         | Theoretical grounding; 79% ImageNet linear |
+| [[leworldmodel              | LeWM]]       | No                  | SIGReg                                            | Pixel world model | Stable end-to-end JEPA WM                  |
+| [[visreg                    | VISReg]]     | No                  | Decoupled scale/shape/center + sliced Wasserstein | Image SSL         | Stronger OOD than SIGReg                   |
+| [[sub-jepa                  | Sub-JEPA]]   | No                  | Subspace Gaussian regularization                  | Pixel world model | Better planning than LeWM                  |
+| [[sensorimotor-world-models | SMWM]]       | No                  | Concat inverse dynamics                           | Pixel world model | 84% vs 59% on OGB-Cube                     |
+| [[delta-jepa                | Delta-JEPA]] | No                  | Latent-difference action decoding                 | Pixel world model | Best mean on LeWM-style tasks              |
 
 ## Axes of Disagreement
 
@@ -61,11 +61,11 @@ The wiki documents a **live debate**, not a settled answer. [[v-jepa-2-1|V-JEPA 
 
 ### 2. Teacher dynamics
 
-| Approach | Teacher update | Tradeoff |
-|----------|---------------|----------|
-| EMA | Slow momentum of student | Stable targets; couples architectures |
-| Frozen teacher ([[rethinking-jepa|SALT]]) | Fixed after pretraining | Decouples student/teacher capacity; requires Stage-1 generative teacher |
-| No teacher ([[lejepa|LeJEPA]], [[visreg|VISReg]]) | Regularizer on batch statistics | Fewer hyperparameters; relies on distributional prior |
+| Approach                          | Teacher update           | Tradeoff                              |                                                                         |                                                       |     |
+| --------------------------------- | ------------------------ | ------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------- | --- |
+| EMA                               | Slow momentum of student | Stable targets; couples architectures |                                                                         |                                                       |     |
+| Frozen teacher ([[rethinking-jepa | SALT]])                  | Fixed after pretraining               | Decouples student/teacher capacity; requires Stage-1 generative teacher |                                                       |     |
+| No teacher ([[lejepa              | LeJEPA]], [[visreg       | VISReg]])                             | Regularizer on batch statistics                                         | Fewer hyperparameters; relies on distributional prior |     |
 
 ### 3. World-model-specific mechanisms
 

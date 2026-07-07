@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-07-06
 tags:
   - meta
 ---
@@ -97,3 +97,6 @@ Ingested [[levljepa]] (arXiv: 2607.00784). Created source page. Updated [[jepa]]
 
 ## [2026-07-03] lint | Health Check
 Fixed 28 escaped-pipe wikilinks in [[jepa]], [[ema]], [[world-models]], [[imagenet]], and [[delta-jepa]]. Repaired [[jepa]] frontmatter. Added [[elt]] to [[index]]. Created [[contrastive-learning]], [[ema-vs-non-ema-collapse-prevention]], and [[robot-world-model-architectures]]. Updated [[self-supervised-learning]], [[representation-collapse]], [[overview]], and [[elt]] cross-links.
+
+## [2026-07-06] ingest | Is One Layer Enough? RL Training
+Ingested [[is-one-layer-enough-rl-training]] (arXiv: 2607.01232). Created source page and concept page [[layer-contribution-rl]]. Updated [[representation-geometry]], [[self-distillation]], [[index]], and [[overview]].

@@ -2,7 +2,7 @@
 title: "Self-Distillation"
 type: concept
 created: 2026-04-10
-updated: 2026-06-09
+updated: 2026-07-06
 tags:
   - self-distillation
   - self-supervised-learning
@@ -14,6 +14,7 @@ sources:
   - "[[foveal-ssl]]"
   - "[[on-policy-representation-distillation]]"
   - "[[on-the-geometry-of-on-policy-distillation]]"
+  - "[[is-one-layer-enough-rl-training]]"
 aliases:
   - "Self-distillation"
   - "Knowledge distillation"
@@ -81,3 +82,13 @@ Each paper addresses this differently:
 - **Frozen teacher** ([[rethinking-jepa|SALT]]): Eliminates non-stationarity entirely
 - **Multi-layer** ([[bootleg|Bootleg]]): Adds redundancy to stabilize
 - **Regularization** ([[lejepa|LeJEPA]]): Constrains the embedding space directly
+
+## Layer Heterogeneity in Post-Training
+
+Beyond self-distillation variants, transformer layers play markedly different roles during LLM post-training:
+
+- **SFT**: Layer-wise importance sampling (LISA, MISA) and gradient-guided selection (AdaGradSelect) exploit uneven adaptation across depth.
+- **RLVR**: [[is-one-layer-enough-rl-training|Is One Layer Enough?]] shows a single layer can match or exceed full-parameter GRPO; [[layer-contribution-rl|layer contribution]] concentrates in middle layers with stable rankings across datasets and tasks.
+- **Distillation**: [[on-policy-representation-distillation|OPRD]] supervises all 28 layers uniformly, while [[on-the-geometry-of-on-policy-distillation|OPD geometry]] shows updates lock into a low-dimensional subspace regardless of layer.
+
+The consistent theme: pretrained LLMs possess **stable layer-wise structural organization** that uniform full-parameter training does not exploit.

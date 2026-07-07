@@ -2,7 +2,7 @@
 title: "Wiki Index"
 type: meta
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-07-06
 
 A catalog of all pages in the ML Research Wiki, organized by category.
 
@@ -57,6 +57,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[sensorimotor-world-models]] — Inverse dynamics regularization for action-aligned end-to-end JEPA world models; 84% vs 59% on OGBench-Cube (2026)
 - [[delta-jepa]] — Latent Difference Action Decoding for action-sensitive JEPA world models; 100% Two-Room, 79.3% OGB-Cube (2026)
 - [[levljepa]] — Non-contrastive vision-language JEPA with SIGReg; strongest dense patch features for frozen VLM backbones (2026)
+- [[is-one-layer-enough-rl-training]] — Single transformer layer can match full-parameter RLVR; middle-layer contribution structure across 7 models (2026)
 
 ## Concepts
 
@@ -73,6 +74,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[iterative-refinement]] — Looped, fixed-point, and energy-based latent refinement for language and reasoning models
 - [[coupled-oscillators]] — Kuramoto phase dynamics as generative compute substrate and neuro-inspired primitive
 - [[contrastive-learning]] — Contrastive SSL paradigm (SimCLR, MoCo, DINO, CLIP) as reference baseline for JEPA
+- [[layer-contribution-rl]] — Layer contribution metric and middle-layer concentration in RLVR post-training
 
 ## Entities
 

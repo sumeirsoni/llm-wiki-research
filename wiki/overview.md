@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-07-06
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**48 sources ingested** | **13 concept pages** | **5 entity pages** | **2 comparison pages** | 73 source/concept/entity/comparison pages
+**49 sources ingested** | **14 concept pages** | **5 entity pages** | **2 comparison pages** | 75 source/concept/entity/comparison pages
 
 ## Key Themes
 
@@ -71,7 +71,7 @@ Newer theory pages broaden this theme:
 - [[iterative-refinement|Iterative Refinement]] connects looped transformers, fixed-point attractor models, stochastic recursive reasoning (GRAM), attractor landscapes (EqR), inference-time width scaling (PTRM), vision-centric reasoning (VARC), continuous latent CoT (NF-CoT), supervised memory training (SMT), and energy-based inference.
 - [[fixed-point-reasoners|FPRM]]: pre-norm + residual scaling enables stable deep looped Transformers with native fixed-point halting — outperforms hierarchical TRM/HRM on Sudoku/Maze at 7M params without external ACT.
 - [[learn-from-your-own-latents|Learn from your own latents]]: latent prediction can be exponentially more sample-efficient than token-level SSL on hierarchical data.
-- [[representation-geometry|Representation Geometry]] separates global embedding statistics from functional sensitivity, divergent task geometry, intrinsic manifolds, and parameter-space update geometry during LLM post-training.
+- [[representation-geometry|Representation Geometry]] separates global embedding statistics from functional sensitivity, divergent task geometry, intrinsic manifolds, parameter-space update geometry, and layer-wise RL contribution structure during LLM post-training.
 - [[elucidating-representation-degradation|ERD]] analyzes diffusion training through recoverability mismatch and representation degradation.
 - [[augmented-lagrangian-predictive-coding|PC-ALM]] connects predictive coding to augmented Lagrangian optimization, achieving exact BP gradients via local dynamics.
 
@@ -86,9 +86,10 @@ Three papers shift the wiki from static representations toward controllable or f
 - [[convergent-world-representations-and-divergent-tasks|Convergent World Representations]]: multi-task training converges world geometry, but divergent fine-tuning tasks can fracture it.
 
 ### 8. On-Policy Distillation and Post-Training Geometry
-Two papers from the same research thread characterize and improve LLM post-training via on-policy distillation:
+Three papers characterize where and how LLM post-training adapts the network:
 - [[on-the-geometry-of-on-policy-distillation|OPD Geometry]]: OPD occupies a relaxed off-principal regime between SFT and RLVR, with subspace locking — updates rapidly enter a low-dimensional, functionally sufficient channel.
 - [[on-policy-representation-distillation|OPRD]]: lifts distillation from output-space KL to hidden-state alignment, providing zero-variance gradients and bypassing the LM-head information bottleneck.
+- [[is-one-layer-enough-rl-training|Is One Layer Enough?]]: RL gains concentrate in middle transformer layers; a single layer can match or exceed full-parameter GRPO; layer-aware selective training outperforms uniform RL.
 
 ### 9. Alternative Reasoning and Training Paradigms
 - [[arc-is-a-vision-problem|VARC]]: reframes ARC as a vision problem; 18M ViT matches human performance with visual priors alone.
@@ -153,13 +154,14 @@ graph TD
 7. **World model evaluation**: How should benchmarks jointly score visual plausibility, physical consistency, action faithfulness, and closed-loop policy success?
 8. **Vision vs. language for abstraction**: Does [[arc-is-a-vision-problem|VARC]]'s success indicate ARC is fundamentally visual, or can vision and recursive reasoning be combined?
 9. **Representation vs. output distillation**: When does hidden-state alignment ([[on-policy-representation-distillation|OPRD]]) outperform output-space OPD, and how does it interact with subspace locking?
-10. **Temporal compression for world models**: Can DeltaTok-style delta tokens integrate with JEPA end-to-end training, or do they require frozen VFM features?
-11. **Recurrence vs. retrieval**: Does [[topological-trouble-with-transformers|state-tracking topology]] require explicit recurrence, or can enhanced SSMs and training objectives approximate it within feedforward architectures?
-12. **Minimal assumptions at scale**: Will [[temporal-difference-vision|TDV]]'s causal-only objective eventually surpass augmentation-based SSL as data grows, as the paper's scaling experiments suggest?
-13. **Belief states in LLMs**: Can [[next-latent-prediction|NextLat]]-style objectives fix incoherent implicit world models in language transformers without architectural changes?
-14. **Physics-as-compute scaling**: Can [[coupled-oscillators|oscillator-based]] generators close the quality gap with EDM-class diffusion at comparable parameter counts, or is a new physical primitive needed?
-15. **Adaptive world models**: Can [[adajepa|AdaJEPA]]-style closed-loop TTA scale to pixel-level or video world models, or is it limited to compact latent JEPA planners?
-16. **Hierarchy vs signal propagation**: Is hierarchical looping in TRM/HRM irreducible algorithmic structure, or primarily a workaround for post-norm depth limits that [[fixed-point-reasoners|FPRM]] makes unnecessary?
+10. **Layer-wise RL adaptation**: Can [[layer-contribution-rl|layer contribution]] profiles replace expensive per-layer profiling in production RL pipelines, and why do middle layers disproportionately absorb RL improvement?
+11. **Temporal compression for world models**: Can DeltaTok-style delta tokens integrate with JEPA end-to-end training, or do they require frozen VFM features?
+12. **Recurrence vs. retrieval**: Does [[topological-trouble-with-transformers|state-tracking topology]] require explicit recurrence, or can enhanced SSMs and training objectives approximate it within feedforward architectures?
+13. **Minimal assumptions at scale**: Will [[temporal-difference-vision|TDV]]'s causal-only objective eventually surpass augmentation-based SSL as data grows, as the paper's scaling experiments suggest?
+14. **Belief states in LLMs**: Can [[next-latent-prediction|NextLat]]-style objectives fix incoherent implicit world models in language transformers without architectural changes?
+15. **Physics-as-compute scaling**: Can [[coupled-oscillators|oscillator-based]] generators close the quality gap with EDM-class diffusion at comparable parameter counts, or is a new physical primitive needed?
+16. **Adaptive world models**: Can [[adajepa|AdaJEPA]]-style closed-loop TTA scale to pixel-level or video world models, or is it limited to compact latent JEPA planners?
+17. **Hierarchy vs signal propagation**: Is hierarchical looping in TRM/HRM irreducible algorithmic structure, or primarily a workaround for post-norm depth limits that [[fixed-point-reasoners|FPRM]] makes unnecessary?
 
 ## Knowledge Gaps
 

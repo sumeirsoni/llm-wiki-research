@@ -2,7 +2,7 @@
 title: "Representation Geometry"
 type: concept
 created: 2026-05-16
-updated: 2026-07-03
+updated: 2026-07-06
 tags:
   - representation-learning
   - theory
@@ -16,6 +16,7 @@ sources:
   - "[[on-policy-representation-distillation]]"
   - "[[temporal-straightening]]"
   - "[[dino-wm]]"
+  - "[[is-one-layer-enough-rl-training]]"
 aliases:
   - "Embedding geometry"
   - "Representation manifolds"
@@ -54,6 +55,12 @@ This matters for [[lejepa|LeJEPA]] and [[sub-jepa|Sub-JEPA]] because Gaussian re
 [[on-the-geometry-of-on-policy-distillation|On the Geometry of On-Policy Distillation]] extends geometric analysis from embedding spaces to **parameter-space update trajectories** during LLM post-training. On-policy distillation occupies a relaxed off-principal regime between SFT (dense, principal-aligned) and RLVR (sparse, off-principal), with subspace locking — cumulative updates rapidly enter a narrow low-dimensional channel that is functionally sufficient.
 
 [[on-policy-representation-distillation|OPRD]] shows that hidden-state geometry can differ substantially from output distributions: the LM head's null space hides representational differences that output-space distillation cannot see. Representation-level alignment provides strictly richer supervision than token-level KL alone.
+
+## Layer-Wise Functional Geometry in RL
+
+[[is-one-layer-enough-rl-training|Is One Layer Enough?]] adds a **depth-axis** to post-training geometry: RL improvement is not uniformly distributed across transformer layers. **Layer contribution** $C(k)$ measures what fraction of full-parameter RL gain a single layer can absorb in isolation. High-contribution layers concentrate at ~40–60% network depth across model families, RL algorithms, and task domains, with rankings stable across datasets and even math vs code tasks.
+
+Notably, full-parameter RL produces **uniform per-layer weight change magnitudes** despite this highly non-uniform contribution profile — the effectiveness of a layer's parameter subspace for RL adaptation dissociates from how much its weights move during joint training. This parallels the dissociation between update geometry and functional outcome in [[on-the-geometry-of-on-policy-distillation|OPD geometry]], but along the interpretable axis of transformer depth. See [[layer-contribution-rl]] for the full concept treatment.
 
 ## Open Questions
 
