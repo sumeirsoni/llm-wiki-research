@@ -2,7 +2,7 @@
 title: "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels"
 type: source
 created: 2026-04-10
-updated: 2026-07-11
+updated: 2026-07-24
 arxiv_id: "2603.19312"
 authors:
   - "Lucas Maes"
@@ -69,6 +69,9 @@ The key insight is that SIGReg is sufficient to prevent collapse without needing
 - Addresses the [[representation-collapse|representation collapse]] problem that plagues [[jepa|JEPA]] training
 - [[sensorimotor-world-models|SMWM]] uses the same planning setup but replaces SIGReg with inverse dynamics regularization — **84% vs 59%** on OGBench-Cube
 - [[delta-jepa|Delta-JEPA]] replaces SIGReg with Latent Difference Action Decoding — **79.3% vs 64.1%** on OGB-Cube in a shared benchmark table with Sub-JEPA and PLDM
+- [[fast-leworldmodel|Fast-LeWM]] retains LeWM's visual encoder and SIGReg but replaces one-step autoregressive rollout with dense action-prefix prediction, improving average success from 85.8% to 90.5% and halving CEM solve time
+- [[prism-prior-guided-imagination-sampling|PRISM]] freezes LeWM and learns a lightweight uncertainty-aware action prior from its latents, improving MPPI sample efficiency without a second visual encoder
+- See [[sampling-based-latent-planning]] for how LeWM's representation, rollout interface, and planner proposal distribution form separate optimization surfaces
 
 ## Limitations & Open Questions
 

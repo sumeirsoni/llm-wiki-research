@@ -2,7 +2,7 @@
 title: "Temporal Straightening for Latent Planning"
 type: source
 created: 2026-07-03
-updated: 2026-07-11
+updated: 2026-07-24
 arxiv_id: "2603.12231"
 authors:
   - "Ying Wang"
@@ -83,6 +83,7 @@ Goal-reaching via GD or MPC minimizing $\|\hat{z}_T - z_g\|_2^2$ over action seq
 - Extends [[jepa|JEPA]] world-model line beyond collapse prevention ([[lejepa|LeJEPA]], [[sub-jepa|Sub-JEPA]]) toward **planning-aware representation geometry**.
 - Connects to [[representation-geometry|representation geometry]]: latent curvature and distance faithfulness matter for control, not just semantic richness.
 - Inspired by perceptual straightening hypothesis (Hénaff et al., 2019); related to plannable representation literature (Eysenbach et al., 2024; Plan2Vec).
+- Provides the representation-geometry branch of [[sampling-based-latent-planning]], complementary to [[fast-leworldmodel|Fast-LeWM]]'s rollout interface and [[prism-prior-guided-imagination-sampling|PRISM]]'s candidate proposal
 
 ## Limitations & Open Questions
 

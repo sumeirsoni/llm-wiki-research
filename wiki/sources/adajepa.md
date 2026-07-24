@@ -2,7 +2,7 @@
 title: "AdaJEPA: An Adaptive Latent World Model"
 type: source
 created: 2026-07-03
-updated: 2026-07-11
+updated: 2026-07-24
 arxiv_id: "2606.32026"
 authors:
   - "Ying Wang"
@@ -78,6 +78,7 @@ Default $\Omega$: final layers of sensory encoder + predictor (`predlast+enclast
 - Conceptually related to test-time training (Sun et al., 2020) but specialized for closed-loop MPC with JEPA latent dynamics.
 - Co-authored by [[yann-lecun|Yann LeCun]].
 - Contrasts with [[next-latent-prediction|NextLat]]'s training-time belief-state shaping — AdaJEPA adapts **at deployment** rather than changing the pretraining objective.
+- Adds the online-adaptation branch of [[sampling-based-latent-planning]], alongside offline geometry, rollout, and proposal-distribution improvements
 
 ## Limitations & Open Questions
 

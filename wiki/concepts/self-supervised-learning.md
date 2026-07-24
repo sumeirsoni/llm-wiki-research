@@ -2,7 +2,7 @@
 title: "Self-Supervised Learning"
 type: concept
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-07-24
 tags:
   - self-supervised-learning
   - representation-learning
@@ -20,6 +20,7 @@ sources:
   - "[[learn-from-your-own-latents]]"
   - "[[temporal-difference-vision]]"
   - "[[levljepa]]"
+  - "[[intelligence-from-learnable-novelty]]"
 aliases:
   - "SSL"
   - "Self-supervised learning"
@@ -63,6 +64,13 @@ Learn representations **within** the generative framework itself.
 - **Strengths**: Unifies representation learning and generation
 - **Weaknesses**: Newer approach, less established
 
+### Bounded-Observer Objectives
+Learn representations by maximizing structure recoverable by a deliberately capacity-limited observer.
+
+- **Example**: [[intelligence-from-learnable-novelty|Intelligence from Learnable Novelty]] trains an encoder to maximize [[learnable-novelty|learnable novelty]] under a frozen random reservoir and ridge readout
+- **Strengths**: Requires no labels, augmentations, negatives, masking, reconstruction target, or teacher network
+- **Weaknesses**: The learned structure depends directly on observer architecture and regularization; evidence is currently limited to [[mnist|MNIST]]
+
 ## Key Challenges
 
 1. **[[representation-collapse|Representation collapse]]** — embeddings converge to trivial solutions
@@ -83,3 +91,4 @@ Learn representations **within** the generative framework itself.
 - **JEPA regularization advances**: [[visreg|VISReg]] refines collapse prevention with decoupled scale/shape regularization and strong OOD transfer
 - **Minimal-assumption SSL**: [[temporal-difference-vision|TDV]] removes even augmentation/masking biases, learning from video via causal next-frame prediction alone
 - **Latent dynamics for transformers**: [[next-latent-prediction|NextLat]] adds belief-state pressure to next-token training via self-supervised hidden-state prediction
+- **Observer-relative objectives**: [[intelligence-from-learnable-novelty|Learnable Novelty]] organizes a label-free [[mnist|MNIST]] representation by maximizing structure recoverable through a bounded random-feature observer

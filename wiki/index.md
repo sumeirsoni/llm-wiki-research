@@ -2,7 +2,7 @@
 title: "Wiki Index"
 type: meta
 created: 2026-04-10
-updated: 2026-07-16
+updated: 2026-07-24
 tags:
   - meta
 ---
@@ -75,6 +75,9 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[phf]] — Privileged hidden-flow objective aligns on-policy hidden transitions instead of pointwise states (2026)
 - [[aristotelian-representation-hypothesis]] — Null-calibration for representational similarity; local neighborhood convergence survives, global CKA trends do not (ICML 2026)
 - [[lotus]] — Looped padded Transformers with parallel gold CoT supervision; approaches explicit CoT at 3B with 2–7× lower thought latency (2026)
+- [[intelligence-from-learnable-novelty]] — Closed-form epiplexity objective unifying complexity measurement, unsupervised representation learning, and intrinsic exploration (2026)
+- [[fast-leworldmodel]] — Parallel action-prefix prediction cuts LeWM CEM solve time by 48% while improving planning success (2026)
+- [[prism-prior-guided-imagination-sampling]] — Precision-weighted action priors improve low-budget latent MPC with negligible overhead (2026)
 
 ## Concepts
 
@@ -95,6 +98,8 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[on-policy-distillation]] — Student-rollout distillation family spanning OPD, ExOPD, EOPD, OPRD, and token-selective variants
 - [[token-selective-distillation]] — Position-, confidence-, discrepancy-, and verifier-weighted alternatives to uniform token KD
 - [[contrastive-hidden-state-distillation]] — Contrastive and relational hidden-state KD design space for OPRD
+- [[learnable-novelty]] — Observer-relative, compressible surprise as an objective for complexity, abstraction, and exploration
+- [[sampling-based-latent-planning]] — Model-predictive control in latent space across representation, rollout, and proposal interfaces
 
 ## Entities
 
@@ -104,6 +109,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[imagenet]] — Standard benchmark for SSL evaluation (dataset)
 - [[unconventional-ai]] — Startup building physics-based AI on oscillator substrates; released Un-0 (org)
 - [[maria-brbic]] — EPFL professor; null-calibration for representational similarity and Aristotelian Representation Hypothesis (researcher)
+- [[mnist]] — Handwritten-digit benchmark used to test label-free category emergence (dataset)
 
 ## Comparisons
 

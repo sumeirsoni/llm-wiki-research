@@ -2,7 +2,7 @@
 title: "Robot World Model Architectures"
 type: comparison
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-24
 tags:
   - world-model
   - reinforcement-learning
@@ -19,6 +19,8 @@ sources:
   - "[[dino-wm]]"
   - "[[delta-world]]"
   - "[[v-jepa-2-1]]"
+  - "[[fast-leworldmodel]]"
+  - "[[prism-prior-guided-imagination-sampling]]"
 aliases:
   - "Robotics world model comparison"
   - "JEPA vs diffusion vs VLA world models"
@@ -32,7 +34,7 @@ How do **JEPA-style latent planners**, **generative video/diffusion world models
 
 ## Summary
 
-The wiki's robotics sources agree that **semantic latents outperform reconstruction latents** for policy-relevant rollouts ([[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]]), but they disagree on the best architecture for closed-loop control. JEPA end-to-end world models ([[leworldmodel|LeWM]] → [[delta-jepa|Delta-JEPA]]) optimize latent dynamics for MPC; frozen-VFM generative models ([[delta-world|DeltaWorld]]) prioritize sample-efficient video forecasting; VLAs and [[world-action-models|WAMs]] joint-model states and actions for reactive embodied policies.
+The wiki's robotics sources agree that **semantic latents outperform reconstruction latents** for policy-relevant rollouts ([[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]]), but they disagree on the best architecture for closed-loop control. JEPA end-to-end world models ([[leworldmodel|LeWM]] → [[delta-jepa|Delta-JEPA]]) optimize latent dynamics for MPC; [[fast-leworldmodel|Fast-LeWM]] and [[prism-prior-guided-imagination-sampling|PRISM]] show that the rollout and proposal interfaces remain major bottlenecks even after a latent model is learned; frozen-VFM generative models ([[delta-world|DeltaWorld]]) prioritize sample-efficient video forecasting; VLAs and [[world-action-models|WAMs]] joint-model states and actions for reactive embodied policies.
 
 ## Architecture Families
 
@@ -57,6 +59,17 @@ Four end-to-end JEPA world models share LeWM-style environments (Two-Room, Reach
 
 > [!open-question]
 > Does [[delta-jepa|Delta-JEPA]]'s displacement decoding subsume [[sensorimotor-world-models|SMWM]]'s concat inverse dynamics under distractor-rich 3D settings?
+
+## Planning Interface After Representation Learning
+
+[[fast-leworldmodel|Fast-LeWM]] and [[prism-prior-guided-imagination-sampling|PRISM]] hold much of the LeWM stack fixed and optimize different parts of [[sampling-based-latent-planning]]:
+
+| Method | Interface changed | Main result |
+| --- | --- | --- |
+| [[fast-leworldmodel|Fast-LeWM]] | Dynamics query and rollout | 3.9 times faster dynamics evaluation; average success 90.5% vs 85.8% |
+| [[prism-prior-guided-imagination-sampling|PRISM]] | Candidate proposal distribution | PushT 89% vs 57% and Cube 79% vs 44% at 128 samples |
+
+Fast-LeWM shows that one-step autoregression is not required for short-horizon latent MPC. PRISM shows that an accurate scorer can still waste most of its budget on poor proposals. Their interventions are complementary in principle, but no shared experiment yet combines parallel action-prefix prediction with confidence-weighted proposal sampling.
 
 ## Semantic vs Reconstruction Latents
 
@@ -86,6 +99,8 @@ No single paper in the wiki scores all four on identical benchmarks — cross-fa
 | End-to-end pixel planning from scratch | [[delta-jepa|Delta-JEPA]] / [[sensorimotor-world-models|SMWM]] |
 | Zero-shot goal-image planning on offline data | [[dino-wm|DINO-WM]] → [[temporal-straightening|Temporal Straightening]] |
 | Deployment under distribution shift | [[adajepa|AdaJEPA]] closed-loop TTA |
+| Fast CEM candidate evaluation | [[fast-leworldmodel|Fast-LeWM]] action-prefix prediction |
+| Low-budget MPPI sample efficiency | [[prism-prior-guided-imagination-sampling|PRISM]] uncertainty-aware proposal fusion |
 | Reactive embodied foundation model | [[world-action-models|WAM]] / VLA joint modeling |
 | Object-centric causal reasoning | [[causal-jepa|C-JEPA]] |
 

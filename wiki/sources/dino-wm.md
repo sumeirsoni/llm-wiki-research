@@ -2,7 +2,7 @@
 title: "DINO-WM: World Models on Pre-trained Visual Features enable Zero-shot Planning"
 type: source
 created: 2026-07-03
-updated: 2026-07-11
+updated: 2026-07-24
 arxiv_id: "2411.04983"
 authors:
   - "Gaoyue Zhou"
@@ -90,6 +90,8 @@ Patch DINOv2 >> global encoders (R3M, ResNet, DINO CLS) on complex manipulation 
 - [[adajepa|AdaJEPA]] evaluates on PushT/PushObj/PointMaze from DINO-WM setups; frozen DINO-WM degrades under distribution shift where AdaJEPA adapts online.
 - Contrasts with [[leworldmodel|LeWM]]/[[sub-jepa|Sub-JEPA]]: trains dynamics in learned latents from scratch with SIGReg/subspace regularization rather than frozen foundation features.
 - Co-authored by [[yann-lecun|Yann LeCun]]; Gaoyue Zhou also co-authors [[temporal-straightening|Temporal Straightening]].
+- [[prism-prior-guided-imagination-sampling|PRISM]] finds that its learned proposal still improves a DINO-WM-style planner, but a global DINOv2 CLS token performs poorly on PushT, reinforcing this paper's patch-over-global encoder ablation
+- See [[sampling-based-latent-planning]] for the interaction between DINO-WM's representation choice and downstream proposal and trajectory optimization
 
 ## Limitations & Open Questions
 

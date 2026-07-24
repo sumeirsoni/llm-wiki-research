@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-07-16
+updated: 2026-07-24
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**62 sources ingested** | **17 concept pages** | **6 entity pages** | **3 comparison pages** | 88 source/concept/entity/comparison pages | 92 wiki Markdown files
+**65 sources ingested** | **19 concept pages** | **7 entity pages** | **3 comparison pages** | 94 source/concept/entity/comparison pages | 98 wiki Markdown files
 
 ## Key Themes
 
@@ -45,6 +45,9 @@ Multiple papers extend representation learning into [[world-models|world models]
 - [[sub-jepa|Sub-JEPA]]: subspace Gaussian regularization improves LeWM-style end-to-end world models
 - [[sensorimotor-world-models|SMWM]]: inverse dynamics regularization prevents collapse and biases latents toward controllable DoF ("perception for action")
 - [[delta-jepa|Delta-JEPA]]: Latent Difference Action Decoding ($\Delta z_t$) replaces SIGReg and concat inverse dynamics for action-sensitive rollouts
+- [[fast-leworldmodel|Fast-LeWM]]: parallel action-prefix prediction removes repeated one-step latent rollout, halving CEM solve time while improving average success
+- [[prism-prior-guided-imagination-sampling|PRISM]]: a lightweight uncertainty-aware action prior from frozen LeWM features improves low-budget MPPI proposals with negligible inference overhead
+- [[sampling-based-latent-planning|Sampling-Based Latent Planning]] separates representation geometry, dynamics queries, and candidate proposals as distinct planning bottlenecks
 - [[adajepa|AdaJEPA]]: test-time adaptation in the MPC loop recalibrates frozen JEPA world models under visual, dynamics, and layout shifts
 - [[dino-wm|DINO-WM]] → [[temporal-straightening|Temporal Straightening]] → [[adajepa|AdaJEPA]]: latent planning pipeline from frozen DINOv2 features, to straightened JEPA geometry, to deployment adaptation
 - [[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]]: semantic latents beat reconstruction latents for robotic policy-relevant rollouts
@@ -116,6 +119,11 @@ See [[oprd-literature-review]] for the experiment-facing synthesis: contrastive 
 ### 13. Physical and Oscillator-Based Generation
 - [[un-0-coupled-oscillators|Un-0]]: replaces neural backbones with coupled Kuramoto oscillator dynamics for class-conditional image generation; FID 6.74 on ImageNet 64×64. Validates mapping modern generative workloads to physical substrates toward ~1000× energy efficiency. Dynamics handle diversity (recall); small decoder handles quality (precision).
 
+### 14. Learnable Novelty and Bounded Observers
+- [[intelligence-from-learnable-novelty|Intelligence from Learnable Novelty]] reframes epiplexity as the structured portion of surprise that a computationally bounded observer can absorb.
+- The same closed-form reservoir score ranks complex cellular automata, induces label-free class structure on [[mnist|MNIST]], and supplies a stable intrinsic exploration bonus across ten RL tasks.
+- [[learnable-novelty|Learnable Novelty]] broadens the wiki beyond fixed SSL objectives by making observer capacity part of the definition of useful structure. The central unresolved issue is whether observer and observed system can co-evolve without collusion or saturation.
+
 ## Key Relationships
 
 ```mermaid
@@ -170,6 +178,8 @@ graph TD
 16. **Physics-as-compute scaling**: Can [[coupled-oscillators|oscillator-based]] generators close the quality gap with EDM-class diffusion at comparable parameter counts, or is a new physical primitive needed?
 17. **Adaptive world models**: Can [[adajepa|AdaJEPA]]-style closed-loop TTA scale to pixel-level or video world models, or is it limited to compact latent JEPA planners?
 18. **Hierarchy vs signal propagation**: Is hierarchical looping in TRM/HRM irreducible algorithmic structure, or primarily a workaround for post-norm depth limits that [[fixed-point-reasoners|FPRM]] makes unnecessary?
+19. **Adaptive bounded observers**: Can [[learnable-novelty|learnable novelty]] scale beyond fixed random reservoirs by co-training observer and generator without creating arbitrary private codes or losing the compute-bound interpretation?
+20. **Latent planning budget**: How should [[sampling-based-latent-planning|latent MPC]] divide compute among representation quality, rollout horizon, [[fast-leworldmodel|parallel prediction]], [[prism-prior-guided-imagination-sampling|proposal guidance]], and online adaptation?
 
 ## Knowledge Gaps
 

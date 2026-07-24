@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-07-16
+updated: 2026-07-24
 tags:
   - meta
 ---
@@ -115,3 +115,17 @@ Added a required `## Future Work` section to the source-page schema in [[AGENTS.
 
 ## [2026-07-16] ingest | Bridging the Gap Between Latent and Explicit Reasoning with Looped Transformers
 Ingested [[lotus]] (arXiv: 2606.31779). Created source page. Updated [[iterative-refinement]], [[latent-reasoning-with-normalizing-flows]], [[fixed-point-reasoners]], [[index]], and [[overview]].
+
+## [2026-07-24] ingest | Intelligence from Learnable Novelty
+
+Ingested [[intelligence-from-learnable-novelty]] (arXiv: 2607.18433). Created concept page [[learnable-novelty]] and dataset entity [[mnist]]. Updated [[self-supervised-learning]], [[representation-geometry]], [[index]], and [[overview]] to connect bounded-observer epiplexity with unsupervised abstraction, dynamical complexity, and intrinsic exploration.
+
+Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); qmd reindex PASS (3 new, 5 updated, 37 chunks embedded).
+Caveats: Evidence for unsupervised representation learning is limited to MNIST, and the estimator remains sensitive to observer capacity and regularization.
+
+## [2026-07-24] ingest | Fast LeWorldModel and PRISM
+
+Ingested [[fast-leworldmodel]] (arXiv: 2606.26217) and [[prism-prior-guided-imagination-sampling]] (arXiv: 2606.07974). Created concept page [[sampling-based-latent-planning]]. Updated [[world-models]], [[leworldmodel]], [[dino-wm]], [[robot-world-model-architectures]], [[index]], and [[overview]] to separate latent representation, dynamics-query, and candidate-proposal bottlenecks.
+
+Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); qmd reindex PASS (3 new, 9 updated, 56 chunks embedded).
+Caveats: Fast-LeWM is evaluated only on four short-horizon LeWM tasks; PRISM's controlled results cover two simulated tasks, while real-robot runs are preliminary and lack matched planner baselines.

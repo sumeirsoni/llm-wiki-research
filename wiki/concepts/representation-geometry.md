@@ -2,7 +2,7 @@
 title: "Representation Geometry"
 type: concept
 created: 2026-05-16
-updated: 2026-07-10
+updated: 2026-07-24
 tags:
   - representation-learning
   - theory
@@ -19,6 +19,7 @@ sources:
   - "[[is-one-layer-enough-rl-training]]"
   - "[[phf]]"
   - "[[aristotelian-representation-hypothesis]]"
+  - "[[intelligence-from-learnable-novelty]]"
 aliases:
   - "Embedding geometry"
   - "Representation manifolds"
@@ -35,6 +36,12 @@ Representation geometry studies the structure of learned embedding spaces: their
 [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] shows that global isotropy and participation ratio do not predict compositional binding across vision encoders. Jacobian Effective Rank, which measures local input-output sensitivity, is much more predictive.
 
 This matters for [[lejepa|LeJEPA]] and [[sub-jepa|Sub-JEPA]] because Gaussian regularization improves stability, but global geometric regularity alone may not guarantee compositional or action-relevant structure.
+
+## Observer-Relative Decodability
+
+[[intelligence-from-learnable-novelty|Intelligence from Learnable Novelty]] adds an observer-relative view of representation quality. A code is rewarded when a capacity-limited reservoir can recover many independent, nonredundant directions from it. On [[mnist|MNIST]], maximizing this score raises both linear-probe and 5-nearest-neighbor accuracy to 0.89 without labels, while weak readout regularization or low spectral resolution can destroy the class structure.
+
+This result links geometry to a specific functional test: what a bounded observer can decode. It also cautions that the resulting geometry is not intrinsic to the encoder alone. Reservoir width, locality, and regularization define which factors appear simple enough to count as [[learnable-novelty|learnable]].
 
 ## Cross-Model Similarity and the Aristotelian Hypothesis
 

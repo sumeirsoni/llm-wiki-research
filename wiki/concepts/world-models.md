@@ -2,7 +2,7 @@
 title: "World Models"
 type: concept
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-07-24
 tags:
   - world-model
   - representation-learning
@@ -22,6 +22,8 @@ sources:
   - "[[dino-wm]]"
   - "[[sensorimotor-world-models]]"
   - "[[delta-jepa]]"
+  - "[[fast-leworldmodel]]"
+  - "[[prism-prior-guided-imagination-sampling]]"
 aliases:
   - "World model"
 ---
@@ -34,7 +36,7 @@ World models learn a **predictive model of environment dynamics** in a compact l
 
 ## JEPA-Based World Models
 
-Two papers in this wiki apply [[jepa|JEPA]] to world modeling:
+Several papers in this wiki apply [[jepa|JEPA]] to world modeling and latent planning:
 
 ### [[causal-jepa|Causal-JEPA (C-JEPA)]]
 - **Focus**: Object-level interactions and causal reasoning
@@ -65,6 +67,20 @@ Two papers in this wiki apply [[jepa|JEPA]] to world modeling:
 - **Key idea**: decode $a_t$ from $\Delta z_t = z_{t+1} - z_t$, not $[z_t, z_{t+1}]$ — avoids action shortcuts in endpoint embeddings
 - **Planning**: Best mean success on all four LeWM-style tasks; **100% Two-Room**, **79.3% OGB-Cube** (+15.1 pp over LeWM)
 - **Mechanism**: Two objectives only ($\mathcal{L}_{pred} + \lambda \mathcal{L}_{action}$); displacement ablation +12.6 pp on Push-T vs concat inverse
+
+### [[fast-leworldmodel|Fast-LeWM]]
+- **Focus**: Parallel multi-horizon dynamics queries for CEM planning
+- **Key idea**: Causal action-prefix tokens predict every future latent directly from the observed anchor instead of recursively feeding predicted latents forward
+- **Planning**: Average success 90.5% vs LeWM 85.8%; full CEM solve time 28.3s vs 54.4s
+- **Mechanism**: Dense prefix-level supervision reduces repeated model calls and slows open-loop error growth
+
+### [[prism-prior-guided-imagination-sampling|PRISM]]
+- **Focus**: Sample-efficient proposal distributions for latent MPC
+- **Key idea**: A small head on frozen LeWM features predicts a Gaussian action prior; precision-weighted fusion initializes MPPI with state-dependent mean and variance
+- **Planning**: At 128 candidates, PushT 89% vs vanilla MPPI 57% and Cube 79% vs 44%, with negligible added latency
+- **Mechanism**: Fixed fused covariance preserves prior confidence across MPPI iterations and falls back toward vanilla sampling when uncertain
+
+These additions separate world-model quality from the broader [[sampling-based-latent-planning|planning interface]]: Fast-LeWM changes how a candidate is rolled out, while PRISM changes which candidates are proposed.
 
 ## Key Differences
 
@@ -135,3 +151,6 @@ Frozen latent world models degrade under test-time distribution shift — visual
 
 > [!open-question]
 > Does [[delta-jepa|Delta-JEPA]]'s latent-displacement inverse objective subsume concat inverse dynamics ([[sensorimotor-world-models|SMWM]]) and SIGReg ([[leworldmodel|LeWM]]) as redundant, or do distractor filtering and distributional regularization add complementary benefits?
+
+> [!open-question]
+> How should a finite planning budget be divided among better latent geometry, faster [[fast-leworldmodel|prefix prediction]], stronger [[prism-prior-guided-imagination-sampling|action priors]], and more sampled candidates?
