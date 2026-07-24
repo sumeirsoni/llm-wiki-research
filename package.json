@@ -4,10 +4,14 @@
   "description": "A persistent, LLM-maintained knowledge base for self-supervised representation learning research. Built using Andrej Karpathy's [LLM Wiki](llm-wiki.md) pattern.",
   "main": "index.js",
   "scripts": {
-    "qmd:setup": "bash scripts/qmd-setup.sh",
+    "test": "node --test",
+    "wiki:validate": "node scripts/wiki/cli.mjs validate",
+    "wiki:validate:json": "node scripts/wiki/cli.mjs validate --format=json",
+    "quality": "npm test && npm run wiki:validate",
+    "qmd:setup": "node scripts/qmd/configure.mjs --reindex",
     "qmd:update": "qmd update",
     "qmd:embed": "qmd embed",
-    "qmd:reindex": "qmd update && qmd embed",
+    "qmd:reindex": "node scripts/qmd/reindex.mjs",
     "qmd:status": "qmd status",
     "qmd:search": "qmd query"
   },
@@ -19,11 +23,15 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=22"
+  },
   "bugs": {
     "url": "https://github.com/sumeirsoni/llm-wiki-research/issues"
   },
   "homepage": "https://github.com/sumeirsoni/llm-wiki-research#readme",
   "devDependencies": {
-    "@tobilu/qmd": "^2.5.3"
+    "@tobilu/qmd": "^2.5.3",
+    "yaml": "^2.9.0"
   }
 }

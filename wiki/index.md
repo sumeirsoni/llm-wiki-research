@@ -3,6 +3,12 @@ title: "Wiki Index"
 type: meta
 created: 2026-04-10
 updated: 2026-07-16
+tags:
+  - meta
+---
+
+# Wiki Index
+
 A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Sources

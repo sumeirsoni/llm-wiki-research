@@ -34,44 +34,55 @@ llm-wiki-research/
 - **`wiki/` is LLM-owned.** The LLM creates, updates, and maintains all wiki pages. The user reads them.
 - **`AGENTS.md` is co-evolved.** The user and LLM update this file together as conventions evolve.
 
+### Definition of Done
+
+For broad multi-file, configuration-heavy, or experimental work:
+
+1. State the intended scope, expected outputs, non-goals, and validation before editing.
+2. Preserve and distinguish all pre-existing working-tree changes.
+3. Review the relevant final diff and unexpected/generated paths.
+4. Run `npm run wiki:validate` for wiki changes and the relevant tests for tooling changes.
+5. Ensure required index/log companion changes are present.
+6. Reindex qmd after wiki changes; Claude Code hooks do this once at Stop for session-attributed changes.
+7. Report the checks run, their results, and any caveats. Do not claim completion when a required check failed.
+
+Small single-page corrections do not require a formal plan, but they still require validation.
+
 ---
 
 ## Page Format Conventions
 
 ### Frontmatter
 
-Every wiki page MUST have YAML frontmatter:
+Every wiki page MUST have closed YAML frontmatter with `title`, `type`, `created`, `updated`, and `tags`.
+
+**Concept, entity, comparison, and filed meta pages** also require:
 
 ```yaml
----
-title: "Page Title"
-type: source | concept | entity | comparison | meta
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-tags:
-  - relevant-tag
-  - another-tag
 sources:
   - "[[Source Page Name]]"
 aliases:
   - "Alternative Name"
----
 ```
 
-**Source pages** additionally include:
+The root infrastructure pages `wiki/index.md`, `wiki/log.md`, and `wiki/overview.md` use `type: meta` but do not require artificial `sources` or `aliases` fields.
+
+**Source pages** require `authors`, `year`, `tags`, and `aliases`, and should include the most specific known `venue`. Paper sources include a canonical paper location and `arxiv_id` when applicable:
 
 ```yaml
----
-arxiv_id: "XXXX.XXXXX"
+arxiv_id: "XXXX.XXXXX" # when the source is on arXiv
 authors:
   - "Author Name"
 year: YYYY
-venue: "Conference/Journal"
-pdf_path: "raw/filename.pdf"
-code_url: "https://github.com/..." # if available
-project_url: "https://..." # project page, if available
----
+venue: "Conference/Journal or arXiv preprint"
+pdf_path: "raw/filename.pdf or https://..."
+code_url: "https://github.com/..." # optional
+project_url: "https://..." # optional
+aliases:
+  - "Short Name"
 ```
+
+Web articles and model releases may use a canonical `project_url` without inventing arXiv or PDF metadata. Omit unavailable optional fields rather than storing empty strings.
 
 ### Wikilinks
 
@@ -86,6 +97,14 @@ Use Obsidian-style wikilinks for all cross-references:
 - `# Title` — page title (matches frontmatter title)
 - `## Section` — major sections
 - `### Subsection` — subsections
+
+### Source page sections (canonical order)
+
+After the title and summary/contributions/methodology/results/connections blocks, source pages should include:
+
+1. `## Limitations & Open Questions` — caveats, failure modes, unresolved questions (callouts welcome)
+2. `## Future Work` — author-stated or clearly implied research directions (bulleted; may come from an explicit Future Work section or from discussion/conclusion/limitations)
+3. `## Links` — arXiv, PDF, code, project page
 
 ### Callouts for Special Notes
 
@@ -182,13 +201,14 @@ Process a new source and integrate it into the wiki.
    - Key results and findings
    - Connections to existing wiki pages (wikilinks)
    - Limitations and open questions noted by the authors
+   - **Future work** — author-stated or clearly implied research directions (dedicated `## Future Work` section; may be explicit in the paper or scattered in discussion/conclusion/limitations)
    - **Links section** with arXiv, GitHub code repo, and project page (when available)
 3. **Update or create concept pages** in `wiki/concepts/` for each major concept covered. Add the new source as a reference. Note if the new source confirms, extends, or contradicts existing content.
 4. **Update or create entity pages** in `wiki/entities/` for key researchers, models, datasets, and organizations mentioned.
 5. **Update `wiki/index.md`** — add entries for all new pages.
 6. **Append to `wiki/log.md`** — record the ingest with timestamp.
 7. **Update `wiki/overview.md`** if the new source significantly changes the overall synthesis.
-8. **Reindex search** — run `npm run qmd:reindex` so qmd picks up new/changed pages.
+8. **Validate and reindex** — run `npm run wiki:validate`. In Claude Code, the Stop hook reindexes qmd once when final session-attributed wiki content changed; otherwise run `npm run qmd:reindex` explicitly.
 
 ### 2. Query
 
@@ -203,7 +223,7 @@ Answer a question using the wiki.
 2. **Retrieve content** — use qmd `get` / `multi_get` (MCP or `npx qmd get …`) for the top hits, or read wiki pages directly.
 3. Synthesize an answer with `[[wikilinks]]` citations to wiki pages.
 4. If the answer is substantial and reusable, file it as a new page in `wiki/comparisons/` or `wiki/meta/` and update the index.
-5. If new pages were filed, run `npm run qmd:reindex`.
+5. If new pages were filed, run `npm run wiki:validate`; use the automatic Claude Stop-hook reindex or run `npm run qmd:reindex` explicitly outside Claude Code.
 
 ### 3. Discover
 
@@ -248,11 +268,13 @@ This creates a project-local index in `.qmd/`, indexes `wiki/**/*.md`, and downl
 
 **Cursor MCP:** `.cursor/mcp.json` registers the qmd MCP server. Enable it in Cursor Settings → MCP if not auto-detected. Tools: `query`, `get`, `multi_get`, `status`.
 
-**Reindex after wiki changes:**
+**Reindex after wiki changes:** Claude Code automatically runs a deduplicated reindex at Stop when the current session changed wiki content. Humans, other agents, and troubleshooting sessions should run:
 
 ```sh
 npm run qmd:reindex
 ```
+
+Automatic reindexing never appends an operation-log entry or silently edits wiki content.
 
 **CLI quick reference:**
 
@@ -340,4 +362,9 @@ Summary of the answer and any pages filed.
 ## [YYYY-MM-DD] lint | Health Check
 
 Summary of findings and fixes applied.
+
+Verification: wiki:validate PASS; relevant tests PASS; qmd reindexed.
+Caveats: none.
 ```
+
+Use the compact `Verification:` line for change-bearing operations. Record actual results and omit checks that were not run; hooks do not append log entries automatically.

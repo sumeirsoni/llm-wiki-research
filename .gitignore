@@ -1,3 +1,8 @@
 personal-notes/
 node_modules/
-.qmd/index.sqlite
+
+.DS_Store
+.qmd/index.yml
+.qmd/index.sqlite*
+.obsidian/graph.json
+.obsidian/workspace.json
