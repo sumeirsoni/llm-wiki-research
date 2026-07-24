@@ -2,7 +2,7 @@
 title: "Probabilistic Tiny Recursive Model"
 type: source
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-11
 arxiv_id: "2605.19943"
 authors:
   - "Amin Sghaier"
@@ -65,6 +65,11 @@ Task-dependent σ is tuned per benchmark. PTRM can be combined with depth scalin
 
 > [!open-question]
 > How does PTRM compare with training-time probabilistic methods like GRAM when both are allowed similar compute budgets?
+
+## Future Work
+
+- Analyze why test-time width scaling helps some puzzles much more than others, especially where verification is harder (e.g., smaller gains on ARC-AGI-2 and Heyawake).
+- Develop stronger verifiers than the pretrained Q-head so best-Q@K selection better tracks true solution quality on hard-to-verify tasks.
 
 ## Links
 

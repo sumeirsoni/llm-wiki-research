@@ -2,7 +2,7 @@
 title: "Recurrent Video Masked Autoencoders"
 type: source
 created: 2026-04-25
-updated: 2026-04-25
+updated: 2026-07-11
 arxiv_id: "2512.13684"
 authors:
   - "Daniel Zoran"
@@ -120,6 +120,11 @@ On DAVIS segmentation over 80+ frames:
 
 > [!gap]
 > No direct comparison between RVM and JEPA methods on shared protocols in the wiki yet.
+
+## Future Work
+
+- Further scale RVM training beyond the 2B clips used here to locate the data saturation point.
+- Evaluate RVM in multi-modal and world-modeling settings, including robotic control.
 
 ## Links
 

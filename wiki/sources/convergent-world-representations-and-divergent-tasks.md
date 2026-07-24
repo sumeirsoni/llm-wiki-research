@@ -2,7 +2,7 @@
 title: "Convergent World Representations and Divergent Tasks"
 type: source
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-11
 arxiv_id: "2602.00533"
 authors:
   - "Core Francisco Park"
@@ -51,6 +51,7 @@ Pretraining uses 42M rows across tasks. Fine-tuning adds 100 synthetic Atlantic 
 - Extends the [[world-models|world models]] theme from robotics/JEPA to controlled LLM world-representation geometry.
 - Relates to [[representation-geometry|representation geometry]] and [[manifold-steering|Manifold Steering]] through its focus on intrinsic representational manifolds and their causal role in behavior.
 - Provides mechanistic evidence relevant to the Platonic Representation Hypothesis and cautionary support for fractured-representation views during adaptation.
+- [[aristotelian-representation-hypothesis|Aristotelian Representation Hypothesis]] cautions that raw CKA scaling trends used here may partly reflect width/depth confounders; local neighborhood metrics may be more reliable for cross-model convergence claims.
 - Relevant to [[learn-from-your-own-latents|Learn from your own latents]]: token-level task learning can produce task-specific geometries that do not adapt coherently.
 
 ## Limitations & Open Questions
@@ -60,6 +61,13 @@ Pretraining uses 42M rows across tasks. Fine-tuning adds 100 synthetic Atlantic 
 
 > [!open-question]
 > How do these findings transfer to larger LLMs, vision-language models, or [[jepa|JEPA]]-style latent world models?
+
+## Future Work
+
+- Identify the mechanistic basis of task divergence and whether harmful tasks can be predicted from task structure and gradient geometry before training.
+- Extend the World–Data–Model framework to study continual world adaptation when underlying entities change, beyond single-shot Atlantis fine-tuning.
+- Characterize how representations evolve during inference-time and fine-tuning adaptation, not only during initial multi-task pretraining.
+- Test whether forward-pass modularity and backward-pass modularity decouple in larger-scale natural settings, additional architectures, and modalities.
 
 ## Links
 

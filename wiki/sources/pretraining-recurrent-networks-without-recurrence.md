@@ -2,7 +2,7 @@
 title: "Pretraining Recurrent Networks without Recurrence"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2606.06479"
 authors:
   - "Akarsh Kumar"
@@ -68,6 +68,13 @@ After SMT, DMT fine-tunes by training on (m̂_t, x_{t+1}) → m_{t+1} where m̂_
 
 > [!open-question]
 > Can SMT pretraining combine with [[equilibrium-reasoners|Equilibrium Reasoners]]-style attractor dynamics for reasoning tasks?
+
+## Future Work
+
+- BPTT fine-tuning after SMT pretraining to recover expressivity beyond the time-parallel Transformer teacher, which is itself constrained in expressivity.
+- Training on all per-timestep memories [m₀, …, m_T] rather than a single sampled m_t, which may help at larger scales despite offering no gain in current settings.
+- Parallelizing DAgger Memory Training (DMT) via DEER-style methods to retain on-policy drift correction without sacrificing time-parallel training.
+- Applying the O(1) credit-path SMT recipe to lifelong learning over unbounded horizons, where memories must remain useful many steps later.
 
 ## Links
 

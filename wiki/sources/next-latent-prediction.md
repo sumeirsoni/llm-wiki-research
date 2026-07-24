@@ -2,7 +2,7 @@
 title: "Next-Latent Prediction Transformers Learn Compact World Models"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2511.05963"
 authors:
   - "Jayden Teoh"
@@ -84,6 +84,14 @@ Stop-gradients on targets prevent collapse. At inference, the transformer decode
 
 > [!open-question]
 > How does NextLat interact with explicit recurrence ([[hyperloop-transformers|Hyperloop]], SSMs) — complementary or redundant?
+
+## Future Work
+
+- Explore more expressive latent dynamics architectures beyond the simple MLP used in all experiments, including how hidden width constrains belief-state capacity.
+- Apply NextLat as a post-hoc finetuning objective on pretrained transformers to improve reasoning, planning, and world modeling without retraining from scratch.
+- Develop adaptive-length speculative decoding strategies rather than fixed draft lengths.
+- Systematically study whether multi-step supervision (d > 1) and KL token-level losses remain necessary at larger model and data scales.
+- Investigate richer hierarchical belief states spanning multiple layers or tokens, and whether NextLat-trained representations benefit RL post-training.
 
 ## Links
 

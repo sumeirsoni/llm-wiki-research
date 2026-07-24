@@ -2,7 +2,7 @@
 title: "Generative Recursive Reasoning"
 type: source
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-07-11
 arxiv_id: "2605.19376"
 authors:
   - "Junyeob Baek"
@@ -73,6 +73,11 @@ Multiple supervision steps stack these transitions, with deep supervision at eac
 
 > [!open-question]
 > How should multi-sample inference be calibrated in high-stakes settings where plausible but invalid solutions remain possible?
+
+## Future Work
+
+- Explore hierarchical recursion as a generative modeling paradigm beyond puzzle solving, building on GRAM's unconditional Sudoku and binarized MNIST generation where quality improves with recursive depth beyond training-time steps.
+- Overcome the sequential deep-supervision training bottleneck that currently limits scaling GRAM toward larger foundation-model pretraining regimes.
 
 ## Links
 

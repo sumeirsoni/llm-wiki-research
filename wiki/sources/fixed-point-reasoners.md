@@ -2,7 +2,7 @@
 title: "Fixed-Point Reasoners: Stable and Adaptive Deep Looped Transformers"
 type: source
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-16
 arxiv_id: "2606.18206"
 authors:
   - "Sajad Movahedi"
@@ -94,6 +94,7 @@ Outer loop runs until FPOPT detects convergence. Inner loop: K-step truncated BP
 
 - Directly extends [[iterative-refinement|iterative refinement]] and complements [[attractor-models|Attractor Models]] (Anderson acceleration fixed-point) and [[equilibrium-reasoners|Equilibrium Reasoners]] (attractor landscapes) — FPRM focuses on **signal propagation** and **native fixed-point halting** without hierarchy.
 - Contrasts with [[hyperloop-transformers|Hyperloop Transformers]]: both loop depth, but Hyperloop uses hyper-connections for LM perplexity; FPRM targets algorithmic reasoning with adaptive halting.
+- Related to [[lotus|LOTUS]]: both use looped Transformers for latent compute; LOTUS targets parallel latent CoT with fixed R and gold-token readout on math LMs, while FPRM targets fixed-point halting on algorithmic tasks.
 - Related to [[topological-trouble-with-transformers|Topological Trouble With Transformers]]: looped depth provides explicit recurrence for state-tracking, though FPRM still shows sub-logarithmic scaling on A₅.
 - Concurrent with [[attractor-models|Attractor Models]] and [[equilibrium-reasoners|EqR]] — FPRM's contribution is orthogonal (pre-norm + residual scaling, no hierarchical TRM structure).
 - Builds on TRM codebase; ablation shows naively swapping FPRM modifications into TRM hurts performance — careful redesign required.
@@ -108,6 +109,13 @@ Outer loop runs until FPOPT detects convergence. Inner loop: K-step truncated BP
 
 > [!open-question]
 > Can a latent reasoning architecture achieve logarithmic complexity on state-tracking while remaining Turing-complete?
+
+## Future Work
+
+- Efficient inference-time implementation of adaptive halting so halted samples are removed from the batch immediately rather than waiting for the last sample.
+- Theoretical explanation of hierarchy's role in HRM/TRM through the lens of optimization and signal propagation, rather than biological or scratch-pad metaphors.
+- Latent reasoning architectures that achieve logarithmic-time state-tracking (vs. the super-logarithmic CoT requirement for A₅) while remaining Turing-complete.
+- Demonstrate that compositional reasoning on algorithmic tasks transfers to natural language and other domains beyond the current Transformer-only, algorithmic-task evaluation.
 
 ## Links
 

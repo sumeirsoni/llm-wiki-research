@@ -2,7 +2,7 @@
 title: "Latent Reasoning with Normalizing Flows"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-16
 arxiv_id: "2606.06447"
 authors:
   - "Guancheng Tu"
@@ -60,6 +60,8 @@ At inference, thoughts ũ are sampled autoregressively from p_θ(u|q), then answ
 
 ## Connections
 
+- Complements [[lotus|LOTUS]]: both replace decoded CoT with continuous thoughts for efficiency; NF-CoT emphasizes tractable likelihoods and RL in flow space, while LOTUS uses looped parallel blocks with direct gold-token CE readout and approaches explicit CoT at 3B.
+
 - Extends [[iterative-refinement|iterative refinement]] from discrete recursive reasoning ([[generative-recursive-reasoning|GRAM]], [[attractor-models|Attractor Models]]) to continuous latent thought with tractable likelihoods.
 - Contrasts with diffusion-based latent reasoning (LaDiR) by preserving autoregressive LLM interfaces — related to [[flow-matching|flow matching]] as another continuous generative framework but applied to reasoning latents.
 - The unified causal stream design parallels [[on-policy-representation-distillation|OPRD]]'s insight that internal representations carry information beyond output distributions.
@@ -75,6 +77,12 @@ At inference, thoughts ũ are sampled autoregressively from p_θ(u|q), then answ
 
 > [!open-question]
 > Continuous latents are not human-readable — how should decoded CoT traces be interpreted as faithful explanations vs. qualitative probes?
+
+## Future Work
+
+- Extend NF-CoT beyond code generation to other reasoning tasks (math, science, multimodal) where unit-test verifiers are unavailable.
+- Develop adaptive latent budgets that vary the number of continuous thought steps per problem, rather than relying on fixed-length VAE-encoded trajectories.
+- Generalize policy-gradient refinement in continuous latent space to domains without executable verifiers, where latent likelihood alone cannot serve as a correctness oracle.
 
 ## Links
 

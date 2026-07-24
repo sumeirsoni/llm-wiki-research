@@ -2,7 +2,7 @@
 title: "Self-Distillation"
 type: concept
 created: 2026-04-10
-updated: 2026-07-06
+updated: 2026-07-08
 tags:
   - self-distillation
   - self-supervised-learning
@@ -15,6 +15,13 @@ sources:
   - "[[on-policy-representation-distillation]]"
   - "[[on-the-geometry-of-on-policy-distillation]]"
   - "[[is-one-layer-enough-rl-training]]"
+  - "[[on-the-position-bias-of-on-policy-distillation]]"
+  - "[[learning-beyond-teacher]]"
+  - "[[entropy-aware-opd]]"
+  - "[[tip-token-importance-opd]]"
+  - "[[fire-opd]]"
+  - "[[selectkd]]"
+  - "[[phf]]"
 aliases:
   - "Self-distillation"
   - "Knowledge distillation"
@@ -59,16 +66,33 @@ Self-distillation is a learning paradigm where a model learns from its own outpu
 - **Pro**: Enables constant-compute processing at any resolution
 - **Finding**: Performance improves monotonically with each step, confirming effective memory accumulation
 
+### On-Policy Distillation Family ([[on-policy-distillation|OPD]])
+- Trains on **student-generated rollouts** while using teacher token-level supervision
+- **Generalizations**: [[learning-beyond-teacher|ExOPD]] scales the teacher reward beyond imitation; [[entropy-aware-opd|EOPD]] switches objective behavior when teacher entropy is high
+- **Token selectivity**: [[on-the-position-bias-of-on-policy-distillation|IW-OPD]], [[tip-token-importance-opd|TIP]], [[fire-opd|FiRe-OPD]], and [[selectkd|SelecTKD]] all reject uniform token weighting in different ways
+- **Geometry**: [[on-the-geometry-of-on-policy-distillation|OPD Geometry]] shows objective composition controls early subspace locking
+
 ### On-Policy Representation Distillation ([[on-policy-representation-distillation|OPRD]])
 - Lifts on-policy distillation from **output-space KL** to **hidden-state MSE** alignment
 - Supervises student intermediate representations against teacher hidden states on the student's own rollouts
 - **Pro**: Zero-variance deterministic gradients; bypasses LM-head information bottleneck; monotonic late-stage improvement
 - **Finding**: Closes student–teacher gap on math reasoning where output-space OPD stagnates; 1.44× faster and 32–54% less GPU memory
+- **Open direction**: [[contrastive-hidden-state-distillation|contrastive hidden-state distillation]] and [[token-selective-distillation|token-selective distillation]] suggest OPRD can vary both the hidden objective and the positions receiving gradient budget
 
 ### Parameter-Space Geometry of OPD ([[on-the-geometry-of-on-policy-distillation|OPD Geometry]])
 - Characterizes on-policy distillation updates in **parameter space** relative to SFT and RLVR
 - OPD occupies a "relaxed off-principal regime" with **subspace locking** — updates rapidly enter a low-dimensional, functionally sufficient channel
 - **Finding**: Objective composition (not token density or rollout policy) controls the update trajectory; early rank-16 subspace is sufficient for OPD but not SFT
+
+### Importance-Weighted OPD ([[on-the-position-bias-of-on-policy-distillation|Position Bias OPD]])
+- Identifies **position bias**: teacher supervision degrades along student rollouts; prefix tokens dominate learning
+- **IW-OPD** reweights token-level KL by cumulative unsigned teacher–student prefix discrepancy, blended with standard OPD ($\gamma = 0.5$)
+- **Finding**: Prefix-30% matches full OPD; suffix-30% barely learns; +6.9 AIME25 at step 10; stronger teachers and smaller students benefit most
+
+### Hidden-Flow Distillation ([[phf|PHF]])
+- Adds hidden-process supervision to on-policy self-distillation by matching token-to-token hidden transitions, not pointwise states
+- **Pro**: Invariant to shared hidden-trajectory offsets and more geometry-aware than raw hidden MSE
+- **Finding**: Improves OPSD on Qwen3 reasoning models; useful as a nearby control for OPRD hidden-state matching
 
 ## The Instability Problem
 

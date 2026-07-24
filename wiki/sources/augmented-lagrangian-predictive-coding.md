@@ -2,7 +2,7 @@
 title: "Augmented Lagrangian Predictive Coding"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2605.31022"
 authors:
   - "Jeffrey Seely"
@@ -64,6 +64,10 @@ Each inference cycle performs one primal step (gradient descent on h w.r.t. L_ρ
 
 > [!gap]
 > PC-ALM does not address the weight transport problem; full biological plausibility remains an open challenge.
+
+## Future Work
+
+- The paper defers current limitations to Appendix G rather than listing forward experiments; natural extensions implied by the discussion are scaling PC-ALM beyond the verified linear/nonlinear regimes and comparing more systematically to related Lagrangian / Equilibrium Propagation methods.
 
 ## Links
 

@@ -2,7 +2,7 @@
 title: "AdaJEPA: An Adaptive Latent World Model"
 type: source
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2606.32026"
 authors:
   - "Ying Wang"
@@ -89,6 +89,12 @@ Default $\Omega$: final layers of sensory encoder + predictor (`predlast+enclast
 
 > [!gap]
 > Effectiveness is bounded by pretrained representation coverage — entirely novel features absent from training may not be fully recoverable via lightweight TTA.
+
+## Future Work
+
+- Combine lightweight MPC-time adaptation with continual and active learning to expand world-model coverage over long deployments, not only recalibrate within pretrained feature space.
+- Continue training latent world models during deployment rather than keeping them frozen after offline pretraining.
+- Build adaptive world models that continuously calibrate predictions and update representations while acting, enabling more resilient perception and planning under visual, dynamics, and layout shifts.
 
 ## Links
 

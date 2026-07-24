@@ -2,7 +2,7 @@
 title: "Un-0: Generating Images with Coupled Oscillators"
 type: source
 created: 2026-06-30
-updated: 2026-06-30
+updated: 2026-07-11
 authors:
   - "Unconventional AI"
 year: 2026
@@ -112,6 +112,12 @@ Smaller checkpoints: CIFAR-10 down to FID 11.01 (n1024); ImageNet 64×64 down to
 
 > [!gap]
 > The drifting loss paper (Deng et al., 2026, arXiv:2602.04770) is not yet ingested in the wiki. Un-0's training objective depends on it.
+
+## Future Work
+
+- Scale coupled-oscillator generation beyond ImageNet 64×64 and CIFAR-10 toward higher-resolution class-conditional benchmarks.
+- Close the FID gap with state-of-the-art diffusion and flow-matching generators through improved learning algorithms, oscillator architectures, and coupling inductive biases.
+- Realize physics-as-compute inference on analog/CMOS hardware substrates to validate the claimed ~1000× energy-efficiency advantage at comparable quality.
 
 ## Links
 

@@ -2,7 +2,7 @@
 title: "Reconstruction or Semantics? What Makes a Latent Space Useful for Robotic World Models"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2605.06388"
 authors:
   - "Nilaksh"
@@ -63,6 +63,13 @@ The evaluation suite includes reference video metrics, reference-free perceptual
 
 > [!open-question]
 > Can future encoders combine semantic task structure with the geometric precision that reconstruction latents sometimes preserve better?
+
+## Future Work
+
+- Evaluate semantic versus reconstruction latents across broader robot embodiments, manipulation domains, and data regimes beyond the Bridge V2 setting.
+- Test policy improvement and sim-to-real transfer with the same latent-diffusion world models, complementing the current fixed-VLA rollout evaluation.
+- Compare diffusion-based semantic latents against non-diffusion semantic world models such as DINO-WM and V-JEPA 2 AC under matched representation choices.
+- Cross-embodiment benchmarks on setups such as ALOHA, Franka, or RoboCasa to assess whether semantic latent advantages survive embodiment-specific action spaces and failure modes.
 
 ## Links
 

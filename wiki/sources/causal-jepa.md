@@ -2,7 +2,7 @@
 title: "Causal-JEPA: Learning World Models through Object-Level Latent Interventions"
 type: source
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-07-11
 arxiv_id: "2602.11389"
 authors:
   - "Heejeong Nam"
@@ -63,6 +63,12 @@ The approach builds on the JEPA framework but replaces the typical grid-based ma
 
 > [!open-question]
 > How does the approach scale to more complex scenes with many interacting objects?
+
+## Future Work
+
+- Validate formally characterized influence neighborhoods on datasets with explicit temporal causal graphs.
+- Jointly refine object-centric encoders with strong pretrained backbones while avoiding representational collapse.
+- Evaluate C-JEPA in more complex environments with richer object interactions.
 
 ## Links
 

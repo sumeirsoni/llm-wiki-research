@@ -2,7 +2,7 @@
 title: "Sub-JEPA: Subspace Gaussian Regularization for Stable End-to-End World Models"
 type: source
 created: 2026-05-16
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2605.09241"
 authors:
   - "Kai Zhao"
@@ -67,6 +67,11 @@ The projections are frozen to prevent co-adaptation and orthogonalized to give b
 
 > [!open-question]
 > Can subspace regularization improve large-scale video JEPA models, or is it mainly useful in smaller control environments?
+
+## Future Work
+
+- The paper does not spell out explicit next steps; the conclusion frames Multi-Subspace Gaussian regularization as a drop-in replacement for ambient SIGReg when dynamics live on low-dimensional manifolds, leaving broader environments and regularization schedules as open extensions.
+
 
 ## Links
 

@@ -2,7 +2,7 @@
 title: "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics"
 type: source
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2511.08544"
 authors:
   - "Randall Balestriero"
@@ -14,7 +14,7 @@ tags:
   - representation-learning
   - theory
   - optimization
-pdf_path: "raw/LeJEPA_ Provable and Scalable Self-Supervised Leaning Without the Heuristics.pdf"
+pdf_path: "raw/LeJEPA_ Provable and Scalable Self-Supervised Learning Without the Heuristics.pdf"
 aliases:
   - "LeJEPA"
 ---
@@ -74,6 +74,10 @@ This eliminates the need for:
 
 > [!open-question]
 > Can SIGReg be applied to other SSL paradigms beyond JEPA (e.g., contrastive learning)?
+
+## Future Work
+
+- The authors hope LeJEPA's simplicity and theory-friendly SIGReg ecosystem will reestablish self-supervised pretraining as a core pillar of AI research; the paper itself does not list concrete follow-up experiments beyond the broad validation already reported.
 
 ## Links
 

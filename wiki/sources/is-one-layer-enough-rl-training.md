@@ -2,7 +2,7 @@
 title: "Is One Layer Enough? Training A Single Transformer Layer Can Match Full-Parameter RL Training"
 type: source
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-11
 arxiv_id: "2607.01232"
 authors:
   - "Zijian Zhang"
@@ -92,6 +92,12 @@ For an LLM with $L$ transformer layers, the authors train each layer $k$ indepen
 
 > [!open-question]
 > Can layer contribution profiles guide parameter-efficient methods (LoRA target selection, layer-wise LR schedules) in production RL pipelines without expensive per-layer profiling?
+
+## Future Work
+
+- Extend layer-aware RL strategies (selective layer training, LR boosting on high-contribution layers, profiling-free middle-layer heuristics) from mathematical reasoning to coding and agentic RL post-training.
+- Develop theoretical explanations for why middle transformer layers disproportionately absorb RLVR improvement despite uniform full-parameter weight-change magnitudes.
+- Translate complementary layer-specialist diversity insights into practical production RL pipelines without independently training many layer-specific models.
 
 ## Links
 

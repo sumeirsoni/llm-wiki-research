@@ -2,8 +2,7 @@
 title: "Wiki Index"
 type: meta
 created: 2026-04-10
-updated: 2026-07-06
-
+updated: 2026-07-16
 A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Sources
@@ -58,6 +57,18 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[delta-jepa]] — Latent Difference Action Decoding for action-sensitive JEPA world models; 100% Two-Room, 79.3% OGB-Cube (2026)
 - [[levljepa]] — Non-contrastive vision-language JEPA with SIGReg; strongest dense patch features for frozen VLM backbones (2026)
 - [[is-one-layer-enough-rl-training]] — Single transformer layer can match full-parameter RLVR; middle-layer contribution structure across 7 models (2026)
+- [[on-the-position-bias-of-on-policy-distillation]] — Position bias in OPD; IW-OPD reweights by prefix teacher–student discrepancy (+6.9 AIME25) (2026)
+- [[contrastive-representation-distillation]] — Contrastive KD objective for transferring teacher representation structure beyond output KL/MSE (2020)
+- [[codir]] — Contrastive intermediate-representation distillation for Transformer language-model compression (2020)
+- [[distiller]] — Systematic NLP KD study showing intermediate-representation loss and layer mapping dominate distillation quality (2021)
+- [[learning-beyond-teacher]] — Generalized OPD and ExOPD reward extrapolation for surpassing teacher boundaries (2026)
+- [[entropy-aware-opd]] — Entropy-gated OPD switches to mode-covering supervision on high-entropy teacher tokens (2026)
+- [[tip-token-importance-opd]] — Token-importance taxonomy for OPD using student entropy and teacher-student divergence (2026)
+- [[fire-opd]] — Trajectory filtering plus soft token reweighting for finer-grained OPD optimization (2026)
+- [[selectkd]] — Objective-agnostic propose-and-verify token weighting for LLM distillation (2025)
+- [[phf]] — Privileged hidden-flow objective aligns on-policy hidden transitions instead of pointwise states (2026)
+- [[aristotelian-representation-hypothesis]] — Null-calibration for representational similarity; local neighborhood convergence survives, global CKA trends do not (ICML 2026)
+- [[lotus]] — Looped padded Transformers with parallel gold CoT supervision; approaches explicit CoT at 3B with 2–7× lower thought latency (2026)
 
 ## Concepts
 
@@ -75,6 +86,9 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[coupled-oscillators]] — Kuramoto phase dynamics as generative compute substrate and neuro-inspired primitive
 - [[contrastive-learning]] — Contrastive SSL paradigm (SimCLR, MoCo, DINO, CLIP) as reference baseline for JEPA
 - [[layer-contribution-rl]] — Layer contribution metric and middle-layer concentration in RLVR post-training
+- [[on-policy-distillation]] — Student-rollout distillation family spanning OPD, ExOPD, EOPD, OPRD, and token-selective variants
+- [[token-selective-distillation]] — Position-, confidence-, discrepancy-, and verifier-weighted alternatives to uniform token KD
+- [[contrastive-hidden-state-distillation]] — Contrastive and relational hidden-state KD design space for OPRD
 
 ## Entities
 
@@ -83,11 +97,13 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 - [[meta-fair]] — Meta's Fundamental AI Research lab; home of JEPA (org)
 - [[imagenet]] — Standard benchmark for SSL evaluation (dataset)
 - [[unconventional-ai]] — Startup building physics-based AI on oscillator substrates; released Un-0 (org)
+- [[maria-brbic]] — EPFL professor; null-calibration for representational similarity and Aristotelian Representation Hypothesis (researcher)
 
 ## Comparisons
 
 - [[ema-vs-non-ema-collapse-prevention]] — Filed comparison of EMA, SIGReg, frozen teacher, and action-aligned collapse prevention
 - [[robot-world-model-architectures]] — JEPA latent planners vs generative video vs VLA/WAM approaches for robotics
+- [[oprd-literature-review]] — Experiment-facing review for contrastive OPRD, position-aware OPRD, and OPRD geometry
 
 ## Meta
 

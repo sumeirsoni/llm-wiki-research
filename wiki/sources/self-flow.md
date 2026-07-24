@@ -2,7 +2,7 @@
 title: "Self-Supervised Flow Matching for Scalable Multi-Modal Synthesis"
 type: source
 created: 2026-04-10
-updated: 2026-04-25
+updated: 2026-07-11
 arxiv_id: "2603.06507"
 authors:
   - "Hila Chefer"
@@ -92,6 +92,12 @@ This is conceptually related to [[jepa|JEPA]]'s masked prediction approach — b
 
 > [!gap]
 > No direct comparison between Self-Flow and JEPA methods on shared benchmarks in the wiki yet.
+
+## Future Work
+
+- Scale Self-Flow to larger generative models and additional modalities within a single unified framework, replacing external alignment methods that degrade on video and audio.
+- Pursue the unified generation-and-representation approach as a candidate to outperform methods relying on external encoders, given consistent gains across image, video, and audio settings.
+- Reduce or optimize the extra teacher forward-pass training overhead while preserving accelerated convergence.
 
 ## Links
 

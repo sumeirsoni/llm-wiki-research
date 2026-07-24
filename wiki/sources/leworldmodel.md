@@ -2,7 +2,7 @@
 title: "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels"
 type: source
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2603.19312"
 authors:
   - "Lucas Maes"
@@ -77,6 +77,12 @@ The key insight is that SIGReg is sufficient to prevent collapse without needing
 
 > [!open-question]
 > Can the latent space be used for more complex reasoning tasks beyond planning and surprise detection?
+
+## Future Work
+
+- Hierarchical world modeling to extend planning and reasoning beyond short horizons.
+- Pre-training on large, diverse natural video datasets to supply representation priors and reduce dependence on domain-specific offline interaction data.
+- Learning future action representations via inverse dynamics modeling, reducing reliance on costly explicit action annotations.
 
 ## Links
 

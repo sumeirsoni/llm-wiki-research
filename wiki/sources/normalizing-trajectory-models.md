@@ -2,7 +2,7 @@
 title: "Normalizing Trajectory Models"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2605.08078"
 authors:
   - "Jiatao Gu"
@@ -65,6 +65,12 @@ Training can occur from scratch over stochastic forward trajectories or by finet
 
 > [!open-question]
 > What is the best balance between exact likelihood, learned denoiser speed, and sample quality when deploying few-step generators?
+
+## Future Work
+
+- Apply distribution-level post-training (e.g., adversarial or perceptual losses) to further improve few-step generation quality while retaining exact trajectory likelihood.
+- Scale NTM to higher image resolutions and explore the transporter-depth versus denoising-step tradeoff across the architecture spectrum.
+- Pursue architectural designs—such as adaptive-depth transporters or progressive capacity allocation across timesteps—that push exact-likelihood generation toward single-step or even fewer-step sampling.
 
 ## Links
 

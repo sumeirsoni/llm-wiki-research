@@ -2,7 +2,7 @@
 title: "The Topological Trouble With Transformers"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2604.17121"
 authors:
   - "Michael C. Mozer"
@@ -62,6 +62,12 @@ Conceptual analysis grounded in state-update formalism s_t = f(s_{t-1}, x_t), il
 
 > [!open-question]
 > Can training objectives steer feedforward transformers to approximate state tracking without explicit recurrence, as the paper suggests as one research direction?
+
+## Future Work
+
+- Transition from explicit chain-of-thought workarounds toward implicit, recurrent activation dynamics that maintain state across tokens without re-scanning the past.
+- Pursue architectures and training regimes from the paper's taxonomy that support indefinite state tracking and multihop inference while retaining transformer-scale parallel efficiency.
+- Build foundation models that sustain a fluid, evolving internal representation across the multiple time scales required for temporally extended cognition.
 
 ## Links
 

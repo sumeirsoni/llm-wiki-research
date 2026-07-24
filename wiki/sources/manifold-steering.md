@@ -2,7 +2,7 @@
 title: "Manifold Steering Reveals the Shared Geometry of Neural Network Representation and Behavior"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2605.05115"
 authors:
   - "Daniel Wurgaft"
@@ -75,6 +75,13 @@ A pullback experiment solves the inverse problem: find an activation-space path 
 
 > [!open-question]
 > How stable are fitted manifolds across prompts, layers, model sizes, and training checkpoints?
+
+## Future Work
+
+- Extend validation to abstract concepts such as refusal, sycophancy, and persuasion, where behavioral signatures of conceptual structure are subtler than in weekday or letter tasks.
+- Test whether conceptual geometry for such abstract behaviors can still be inferred from behavior and related to activation representations as in the simpler domains.
+- Investigate the origins of shared geometry between behavior and representation manifolds, including how conceptual structure constrains both spaces beyond training-data statistics.
+- Develop intrinsic manifold coordinates as primitive units for causal analysis of neural network internals, constraining degenerate causal-abstraction solutions.
 
 ## Links
 

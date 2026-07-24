@@ -2,7 +2,7 @@
 title: "You Don't Need Strong Assumptions: Visual Representation Learning via Temporal Differences"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2606.15956"
 authors:
   - "Ninad Daithankar"
@@ -70,6 +70,13 @@ Given consecutive video frames x_t, x_{t+1}, TDV computes RGB difference Δx_t =
 
 > [!open-question]
 > Can TDV's motion encoder integrate with [[sub-jepa|Sub-JEPA]]-style regularization or [[visreg|VISReg]] shape matching for combined bias reduction and stability?
+
+## Future Work
+
+- Build on the TDV recipe to close remaining performance gaps on dense spatial tasks and reach state-of-the-art across the board.
+- Incorporate invariance-inducing inductive biases (e.g., local/global crops) to improve semantic benchmarks where TDV currently lags DINO/iBOT.
+- Scale TDV to larger, higher-quality video datasets beyond Something-Something V2 with hyperparameters tuned for larger data and model sizes.
+- Search for hyperparameter regimes that scale more favorably as video data volume and encoder capacity grow.
 
 ## Links
 

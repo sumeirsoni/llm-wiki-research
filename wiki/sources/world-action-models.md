@@ -2,7 +2,7 @@
 title: "World Action Models: The Next Frontier in Embodied AI"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2605.12090"
 authors:
   - "Siyin Wang"
@@ -73,6 +73,14 @@ The survey also maps the data landscape, from high-fidelity robot triplets to hu
 
 > [!open-question]
 > How should WAMs balance explicit pixel/video imagination against faster latent or symbolic predictive structures for real-time control?
+
+## Future Work
+
+- Run controlled ablations comparing cascaded, joint, and latent-predictive WAM coupling mechanisms under matched scale, data, and evaluation protocols.
+- Extend WAM state prediction beyond RGB to tactile, force, and proprioceptive futures with modality-adaptive inference when rich sensors are unavailable.
+- Develop principled data-mixture and embodiment-aware filtering recipes for combining robot teleoperation, human video, and internet-scale priors.
+- Build hierarchical world-action architectures and long-horizon benchmarks linking high-level task decomposition to low-level physical prediction.
+- Design joint evaluation metrics—such as counterfactual consistency and foresight-conditioned success—that test causal alignment between imagined futures and executed actions.
 
 ## Links
 

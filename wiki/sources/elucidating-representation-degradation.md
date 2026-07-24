@@ -2,7 +2,7 @@
 title: "Elucidating Representation Degradation Problem in Diffusion Model Training"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2605.10790"
 authors:
   - "Zhipeng Yao"
@@ -70,6 +70,10 @@ ERD computes a recoverability score for the target y_lambda = c_x(lambda)x0 + c_
 
 > [!open-question]
 > Can recoverability weighting improve video, audio, or robot-world-model diffusion training where signals vary across space, time, and action conditioning?
+
+## Future Work
+
+- The paper does not spell out future work beyond its stated limitations; authors note that the NTK-regime analysis and effective-amplitude recoverability proxy may not fully capture finite-width, highly nonlinear diffusion training, leaving broader theoretical and empirical validation open.
 
 ## Links
 

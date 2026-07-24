@@ -2,7 +2,7 @@
 title: "LeVLJEPA: End-to-End Vision-Language Pretraining Without Negatives"
 type: source
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2607.00784"
 authors:
   - "Lukas Kuhn"
@@ -116,6 +116,12 @@ LeVLJEPA wins every GQA / VQAv2 / POPE column under both Llama-1B and Qwen-1.5B 
 
 > [!open-question]
 > How does LeVLJEPA compare to [[steerable-visual-representations|steerable visual encoders]] or [[repa|REPA]]-style alignment for diffusion/VLM pipelines?
+
+## Future Work
+
+- Combine the dense patch-token advantages of non-contrastive JEPA-style pretraining with competitive zero-shot image-text alignment in a single objective.
+- Verify that LeVLJEPA's dense-feature and VLM-backbone gains persist at larger ViT backbones and data scales beyond ViT-B/16 on Datacomp-L.
+- Reorient vision-language pretraining objectives and evaluation protocols around dense token features consumed by visual instruction tuning, segmentation, and language-conditioned control.
 
 ## Links
 

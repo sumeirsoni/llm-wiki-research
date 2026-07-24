@@ -2,7 +2,7 @@
 title: "REPA: Representation Alignment for Generation"
 type: source
 created: 2026-04-12
-updated: 2026-04-12
+updated: 2026-07-11
 arxiv_id: "2410.06940"
 authors:
   - "Sihyun Yu"
@@ -81,6 +81,11 @@ The key insight is aligning representations of the **noisy input** (what the dif
 
 > [!open-question]
 > How do REPA-trained diffusion models compare to JEPA methods as feature extractors for downstream tasks?
+
+## Future Work
+
+- Unify discriminative and generative models and their internal representations (authors point to Appendix M for extended discussion).
+- Pursue theoretical analysis of why aligning diffusion transformer hidden states with frozen self-supervised encoders accelerates generation.
 
 ## Links
 

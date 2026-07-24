@@ -2,7 +2,7 @@
 title: "Autoregressive Language Models are Secretly Energy-Based Models"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2512.15605"
 authors:
   - "Mathieu Blondel"
@@ -62,6 +62,11 @@ This turns sequence modeling into an entropy-regularized dynamic-programming pro
 
 > [!open-question]
 > Does adding latent reasoning traces make the ARM approximation easier, or does it merely shift the EBM-to-ARM distillation problem into a larger space?
+
+## Future Work
+
+- Study how latent variables (thinking traces) affect the expressivity of autoregressive language models and ease of reaching the EBM-equivalent optimum.
+- Build further bridges between autoregressive models, energy-based models, and maximum-entropy reinforcement learning communities.
 
 ## Links
 

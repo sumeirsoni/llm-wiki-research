@@ -2,7 +2,7 @@
 title: "Iterative Refinement"
 type: concept
 created: 2026-05-17
-updated: 2026-07-03
+updated: 2026-07-16
 tags:
   - transformer
   - language
@@ -23,6 +23,7 @@ sources:
   - "[[next-latent-prediction]]"
   - "[[un-0-coupled-oscillators]]"
   - "[[fixed-point-reasoners]]"
+  - "[[lotus]]"
 aliases:
   - "Latent thinking"
   - "Architectural recurrence"
@@ -88,6 +89,10 @@ NextLat co-trains a transformer with a lightweight MLP latent dynamics model tha
 ### Fixed-Point Looped Halting ([[fixed-point-reasoners|FPRM]])
 
 [[fixed-point-reasoners|FPRM]] replaces external ACT halting in looped Transformers with convergence of $\|f_\theta(z; x) - z\|$ as the native stop criterion. Pre-norm + learnable residual scaling (α₁, α₂) resolves the depth-induced signal propagation problem that limits post-norm TRM/HRM — enabling a simpler non-hierarchical loop to outperform hierarchical baselines on Sudoku, Maze, and state-tracking while adaptively scaling effective depth to task difficulty. Damped FPOPT suppresses oscillatory fixed-point dynamics at inference.
+
+### Parallel Latent CoT ([[lotus|LOTUS]])
+
+[[lotus|LOTUS]] applies looped Transformers to **latent Chain-of-Thought**: a fixed padded latent prefix is refined over R iterations with a shared question KV cache, then supervised in parallel against gold CoT tokens through the base LM head. This removes the sequential decode bottleneck of explicit CoT and of autoregressive latent methods, while keeping latents readable (LM-head recovery of gold steps). At 3B scale it approaches explicit CoT accuracy with ~2–7× lower thought-phase latency — a practical bridge between [[latent-reasoning-with-normalizing-flows|continuous latent CoT]] and [[hyperloop-transformers|looped depth]] architectures.
 
 ## Key Tension
 

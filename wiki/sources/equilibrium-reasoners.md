@@ -2,7 +2,7 @@
 title: "Equilibrium Reasoners: Learning Attractors Enables Scalable Reasoning"
 type: source
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-11
 arxiv_id: "2605.21488"
 authors:
   - "Benhao Huang"
@@ -68,6 +68,11 @@ Evaluated on Sudoku-Extreme and Maze-Unique (unambiguous shortest paths, unlike 
 
 > [!open-question]
 > Can convergence-residual selection replace learned Q-heads in PTRM-style inference?
+
+## Future Work
+
+- Conduct a more systematic study of initialization priors in iterative reasoning models, including alternative parameterizations, architectures, objectives, and regularization strategies beyond the zero-mean Gaussian RI baseline.
+- Extend path-stochasticity and landscape-shaping analyses to determine which noise-injection and initialization designs generalize across reasoning tasks and model families.
 
 ## Links
 

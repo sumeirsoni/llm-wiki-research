@@ -2,7 +2,7 @@
 title: "Energy-Based Transformers are Scalable Learners and Thinkers"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2507.02092"
 authors:
   - "Alexi Gladstone"
@@ -71,6 +71,14 @@ The paper implements decoder-only and bidirectional EBT variants. To make the le
 
 > [!open-question]
 > How should multimodal or highly multimodal distributions be handled when a smooth convex local energy landscape is too restrictive?
+
+## Future Work
+
+- Scale EBT training and System 2 inference beyond 800M parameters and ~10²¹ FLOPs to foundation-model scale.
+- Extend the number of optimization/thinking steps with improved EBM training stability.
+- Build EBT world models over joint state–action distributions for goal-directed planning via energy minimization.
+- Develop methods to learn highly multimodal distributions (e.g., unconditional image generation) under the current convex energy landscape assumption.
+- Explore recurrent energy-based models (e.g., Mamba-based) and multimodal EBMs with a unified cross-modal energy objective.
 
 ## Links
 

@@ -2,7 +2,7 @@
 title: "Solve the Loop: Attractor Models for Language and Reasoning"
 type: source
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-07-11
 arxiv_id: "2605.12466"
 authors:
   - "Jacob Fein-Ashley"
@@ -67,6 +67,11 @@ Training uses standard next-token cross-entropy on the fixed-point output. Gradi
 
 > [!open-question]
 > How does the method compare with explicit token-level chain-of-thought on reasoning tasks where intermediate symbolic structure matters?
+
+## Future Work
+
+- Further study the equilibrium internalization phenomenon: why the backbone learns to make inference-time attractor refinement largely unnecessary after training.
+- Characterize systematic differences between Attractor Models and finite-loop recurrent architectures in when and how iterative refinement is internalized versus executed at inference.
 
 ## Links
 

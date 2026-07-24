@@ -2,7 +2,8 @@
 title: "Sensorimotor World Models: Perception for Action via Inverse Dynamics"
 type: source
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-11
+arxiv_id: "2606.20104"
 authors:
   - "Petr Ivashkov"
   - "Randall Balestriero"
@@ -98,6 +99,12 @@ MPC + CEM minimizing terminal latent MSE $C = \|\hat{z}_{H+1} - z_g\|_2^2$ to go
 
 > [!open-question]
 > How does inverse-dynamics regularization compare to [[sub-jepa|Sub-JEPA]] subspace SIGReg when controllable DoF dimension varies across tasks?
+
+## Future Work
+
+- Relax the assumption that actions are recoverable from consecutive latent states when multiple actions produce identical observations.
+- Scale empirical validation beyond moderate-scale simulated control tasks to larger, more diverse offline trajectory datasets.
+- The paper flags future work on planning and representation learning but does not specify concrete methodological extensions beyond broadening dataset coverage and deployment settings.
 
 ## Links
 

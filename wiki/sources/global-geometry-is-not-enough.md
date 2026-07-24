@@ -2,7 +2,7 @@
 title: "Global Geometry Is Not Enough for Vision Representations"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2602.03282"
 authors:
   - "Jiwan Chung"
@@ -62,6 +62,12 @@ JER estimates the effective rank of the input-output Jacobian using randomized r
 
 > [!open-question]
 > How do JEPA-style dense video models score under JER and compositional binding diagnostics?
+
+## Future Work
+
+- Design training objectives that regulate functional sensitivity directly rather than relying on geometry-based criteria or linear probing.
+- Develop evaluation benchmarks that target functional structure beyond static embedding statistics such as isotropy and effective rank.
+- Extend the local Jacobian analysis to global and trajectory-level geometric properties of the representation manifold.
 
 ## Links
 

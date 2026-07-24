@@ -2,7 +2,7 @@
 title: "A Frame is Worth One Token: Efficient Generative World Modeling with Delta Tokens"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2604.04913"
 authors:
   - "Tommie Kerssies"
@@ -75,6 +75,13 @@ Built on discriminative DINO-world (frozen DINOv3 ViT-B encodes frames to patch 
 
 > [!open-question]
 > Can BoM's winner-take-all training be replaced with explicit distributional modeling for calibrated uncertainty?
+
+## Future Work
+
+- Add an explicit distributional objective (beyond Best-of-Many) so sampled futures better approximate outcome probabilities, rather than being limited by the number of noise queries \(K\).
+- Explore explicit action-conditional generation via the query space, which may already act as implicit action conditioning across scenes.
+- Mitigate delta-token error accumulation by computing deltas sequentially on the tokenizer's own reconstructions (instead of parallel ground-truth frames), and apply known autoregressive rollout mitigations to the predictor.
+
 
 ## Links
 

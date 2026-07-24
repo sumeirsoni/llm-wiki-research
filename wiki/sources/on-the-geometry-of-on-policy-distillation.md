@@ -2,7 +2,7 @@
 title: "On the Geometry of On-Policy Distillation"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2606.07082"
 authors:
   - "Zhennan Shen"
@@ -59,6 +59,7 @@ Controlled experiments on Qwen3-8B (SFT from base, OPD/RLVR from SFT checkpoint)
 
 ## Connections
 
+- [[on-the-position-bias-of-on-policy-distillation|Position Bias OPD]] identifies a complementary inefficiency: uniform token averaging wastes budget on drifted suffixes where teacher supervision is unreliable; IW-OPD reallocates toward teacher-compatible prefixes.
 - Provides the parameter-space foundation for [[on-policy-representation-distillation|OPRD]], which operates within OPD's locked subspace but adds representation-level signal invisible to output-space objectives.
 - Extends [[representation-geometry|representation geometry]] from embedding spaces to parameter-space update geometry during post-training.
 - Complements [[self-distillation|self-distillation]] analysis: OPD's geometry differs from both SFT-style dense alignment and RLVR-style sparse reward shaping.
@@ -74,6 +75,12 @@ Controlled experiments on Qwen3-8B (SFT from base, OPD/RLVR from SFT checkpoint)
 
 > [!open-question]
 > How does adding representation-level distillation ([[on-policy-representation-distillation|OPRD]]) alter the subspace locking dynamics?
+
+## Future Work
+
+- Design OPD algorithms as geometry control—monitoring the locked update subspace and using objective composition as the primary lever when the trajectory drifts, rather than treating OPD as denser token supervision alone.
+- Tune token selection, rollout policy, and teacher scale through their effect on update geometry (stable rank, subspace rotation), not just downstream task metrics.
+- Develop geometry-aware OPD recipes that preserve the functionally sufficient low-dimensional update channel while avoiding unnecessary parameter-space drift, for more stable and transferable post-training.
 
 ## Links
 

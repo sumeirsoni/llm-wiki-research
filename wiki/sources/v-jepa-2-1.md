@@ -2,7 +2,7 @@
 title: "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning"
 type: source
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-07-11
 arxiv_id: "2603.14482"
 authors:
   - "Lorenzo Mur-Labadia"
@@ -87,6 +87,13 @@ V-JEPA 2.1 builds on the [[jepa|JEPA]] framework with four modifications:
 
 > [!open-question]
 > How much of the performance comes from scale (2B parameters, 163M data) vs. the architectural innovations?
+
+## Future Work
+
+- Scale model size beyond ViT-G (2B) toward larger vision transformers, following positive trends from 1B→2B and DINOv3's 7B results.
+- Scale video self-supervised training data further, building on the paper's large-scale image–video curation findings.
+- Build world models on top of dense V-JEPA 2.1 representations, extending toward dense prediction capabilities.
+- Deploy dense predictive representations in robotics and autonomous agents requiring pixel-level state estimation for navigation and fine-grained manipulation.
 
 ## Links
 

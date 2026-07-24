@@ -59,6 +59,6 @@ See `wiki/overview.md` for a synthesized view of current themes and open questio
 
 ## Current State
 
-**49 sources** · **14 concepts** · **5 entities** · **2 comparisons**
+**62 sources** · **17 concepts** · **6 entities** · **3 comparisons**
 
 Primary anchor: **JEPA** and its variants, with growing coverage of world models, post-training geometry, and reasoning architectures.

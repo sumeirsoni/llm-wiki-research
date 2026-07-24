@@ -2,7 +2,7 @@
 title: "Rethinking JEPA: Compute-Efficient Video SSL with Frozen Teachers"
 type: source
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-07-11
 arxiv_id: "2509.24317"
 authors:
   - "Xianhang Li"
@@ -81,6 +81,12 @@ This decoupling has several benefits:
 
 > [!contradiction]
 > SALT's finding that EMA is unnecessary contrasts with [[v-jepa-2-1|V-JEPA 2.1]]'s continued reliance on EMA-based self-distillation, yet both achieve strong results. This suggests EMA may be sufficient but not necessary for preventing collapse.
+
+## Future Work
+
+- Develop a principled characterization of teacher quality and explain why sub-optimal or smaller teachers can yield stronger students.
+- Conduct a fuller study of SALT's scaling behavior, including whether larger pretraining datasets can extend gains as model size grows.
+- Clarify what makes a "good" V-Pixel teacher and why an additional student-training stage yields only modest gains.
 
 ## Links
 

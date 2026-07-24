@@ -2,7 +2,7 @@
 title: "OPRD: On-Policy Representation Distillation"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2606.06021"
 authors:
   - "Shenzhi Yang"
@@ -66,6 +66,7 @@ Experiments use JustRL-1.5B teacher and R1-distill-1.5B student on DAPO-Math-17K
 - Directly paired with [[on-the-geometry-of-on-policy-distillation|On the Geometry of On-Policy Distillation]], which characterizes the parameter-space dynamics that OPRD's richer signal operates within.
 - The LM-head bottleneck analysis connects to [[representation-geometry|representation geometry]] — hidden states can differ substantially while producing identical output distributions.
 - OPRD's zero-variance property addresses the same late-stage stagnation that [[on-the-geometry-of-on-policy-distillation|geometry analysis]] identifies as subspace locking in OPD.
+- [[oprd-literature-review|OPRD Literature Review]] identifies three immediate follow-up directions: contrastive hidden-state objectives, position-aware OPRD weighting, and stable-rank/subspace diagnostics for OPRD update geometry.
 
 ## Limitations & Open Questions
 
@@ -76,7 +77,16 @@ Experiments use JustRL-1.5B teacher and R1-distill-1.5B student on DAPO-Math-17K
 > Can adaptive layer/position selection based on student–teacher disagreement further improve efficiency beyond the fixed last-2000-token strategy?
 
 > [!open-question]
+> Would contrastive or hidden-flow objectives preserve OPRD's zero-variance benefit while transferring more relational structure than pointwise MSE?
+
+> [!open-question]
 > Does representation-level distillation transfer to vision or multimodal post-training, or is the benefit specific to reasoning-heavy LLM domains?
+
+## Future Work
+
+- Deploy OPRD-Vanilla as a memory-efficient drop-in for multi-model RL merging and checkpoint consolidation, replacing top-k or full-vocabulary OPD where materializing [B, T, |V|] logit tensors is prohibitive.
+- Apply OPRD to on-policy self-distillation (OPSD) settings where teacher and student share weights and privileged information is injected into the prompt, replacing reverse-KL output-space objectives with lower-variance representation-level supervision.
+- Establish representational alignment during pre-training—via shared layer initialization, periodic representation-matching regularization, or co-distillation across model scales—so cross-architecture pairs can use OPRD-Vanilla with a simple dimension adapter instead of a learned bridge.
 
 ## Links
 

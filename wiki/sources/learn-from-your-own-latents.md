@@ -2,7 +2,7 @@
 title: "Learn from your own latents and not from tokens: A sample-complexity theory"
 type: source
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-11
 arxiv_id: "2605.27734"
 authors:
   - "Daniel J. Korchinski"
@@ -67,6 +67,12 @@ The Random Hierarchy Model generates visible tokens from a depth-L tree with bra
 
 > [!open-question]
 > How do explicit JEPA hierarchies (I-JEPA, V-JEPA, H-JEPA) compare to implicit phased learning in data2vec under matched compute?
+
+## Future Work
+
+- Run a controlled comparison between data2vec and a same-architecture next-token-prediction baseline as training-set size P varies, testing whether small-P regimes diverge sharply while large-P regimes converge.
+- Use such comparisons to assess whether latent-supervised generative models can break existing neural scaling laws, alone or combined with token-level losses.
+- Extend the quasilocal predictor-clusterer analysis to determine whether biological-plausible stop-gradient learning rules preserve the vm³ sample-complexity advantage on natural data.
 
 ## Links
 

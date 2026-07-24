@@ -2,7 +2,7 @@
 title: "Self-Distillation of Hidden Layers for Self-Supervised Representation Learning"
 type: source
 created: 2026-04-10
-updated: 2026-04-10
+updated: 2026-07-11
 arxiv_id: "2603.15553"
 authors:
   - "Scott C. Lowe"
@@ -76,6 +76,11 @@ This creates a hierarchical objective that:
 
 > [!open-question]
 > Can this multi-layer distillation approach be combined with [[lejepa|LeJEPA]]'s SIGReg regularization for even better results?
+
+## Future Work
+
+- Develop masking strategies tailored to specific training datasets, reducing correlations between seen tokens and neighboring target tokens.
+- Deploy hidden-self-distillation in non-vision domains, where the method's lack of domain-specific augmentations should require only minimal modification.
 
 ## Links
 

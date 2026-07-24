@@ -2,7 +2,7 @@
 title: "VISReg: Variance-Invariance-Sketching Regularization for JEPA training"
 type: source
 created: 2026-05-20
-updated: 2026-05-20
+updated: 2026-07-11
 arxiv_id: "2606.02572"
 authors:
   - "Haiyu Wu"
@@ -68,6 +68,13 @@ Total objective: `L = (1 - λ) L_pred + λ L_reg`. Trained on ViT-B/16 and ViT-L
 
 > [!open-question]
 > Does sliced Wasserstein shape matching help compositional or functional sensitivity metrics such as Jacobian Effective Rank?
+
+## Future Work
+
+- Close the remaining gap to MoCoV3 / iBOT on dense prediction (e.g., segmentation), which the authors flag as an important next focus.
+- Further develop the VISReg technical path for foundation-model usefulness, especially OOD robustness and transfer learning where VISReg already shows strength.
+- Expand generative-model guidance applications (e.g., SiT / iREPA-style training), where VISReg embeddings already improve IS/FID/precision/recall in lightweight experiments.
+
 
 ## Links
 

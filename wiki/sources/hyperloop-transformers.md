@@ -2,7 +2,7 @@
 title: "Hyperloop Transformers"
 type: source
 created: 2026-04-25
-updated: 2026-05-17
+updated: 2026-07-11
 tags:
   - transformer
   - parameter-efficiency
@@ -16,9 +16,7 @@ authors:
   - "Yoon Kim"
 year: 2026
 venue: "arXiv preprint"
-pdf_path: ""
-code_url: ""
-project_url: ""
+pdf_path: "https://arxiv.org/pdf/2604.21254"
 sources:
   - "[[rvm]]"
   - "[[attractor-models]]"
@@ -94,11 +92,17 @@ Hyperloop Transformers introduce a parameter-efficient architecture that combine
 2. **Efficient hyper-connections**: Loop-level application + diagonal H_res is more effective and cheaper than layer-level alternatives
 3. **Early exit potential**: Representations align with vocabulary distribution early, suggesting compute-saving early-exit strategies
 
-## Limitations
+## Limitations & Open Questions
 
 - Experiments limited to ~2B non-looped equivalent scale
 - No comparison with other parameter-efficient methods (e.g., weight sharing, pruning)
 - Language modeling only; generalization to other modalities unexplored
+
+## Future Work
+
+- Verify whether the ~50% parameter-efficiency gain over depth-matched Transformers holds at scales beyond the academic compute budget used here.
+- Develop early-exit inference strategies that exploit loop-level representations aligning with vocabulary distributions before the final loop.
+- Train much deeper Hyperloop Transformers with hyper-connection parameters shared across loops, enabling generalization to longer inference loops than seen during training and probing test-time scaling and reasoning.
 
 ## Links
 

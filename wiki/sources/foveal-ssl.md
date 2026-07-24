@@ -2,7 +2,7 @@
 title: "Self-supervised Pretraining for an Iterative Image Size Agnostic Vision Transformer"
 type: source
 created: 2026-04-25
-updated: 2026-04-25
+updated: 2026-07-11
 arxiv_id: "2604.20392"
 authors:
   - "Nedyalko Prisadnikov"
@@ -104,6 +104,11 @@ Trained separately after backbone pretraining:
 
 > [!open-question]
 > Could the learned gaze policy be used to guide masking strategies in JEPA methods (selective masking of non-attended regions)?
+
+## Future Work
+
+- Jointly train the task head and active gaze policy to break the chicken-and-egg loop where random gazes fail to train a strong frozen head, which in turn yields weak GRPO rewards for learning discriminative gazes.
+
 
 ## Links
 

@@ -2,7 +2,7 @@
 title: "Representation Fréchet Loss for Visual Generation"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2604.28190"
 authors:
   - "Jiawei Yang"
@@ -66,6 +66,12 @@ The method can optimize multiple representation spaces at once by normalizing ea
 
 > [!open-question]
 > Can FD-loss be combined with intrinsic representation learning methods such as [[self-flow|Self-Flow]] or ERD-style recoverability weighting?
+
+## Future Work
+
+- Extend distribution-level post-training via FD-loss to other modalities, data-scarce settings where real samples are restricted during post-training, and generative paradigms beyond image generation.
+- Study which representation spaces should define the Fréchet distance, since different feature extractors induce different notions of visual similarity and no single space captures perceptual quality fully.
+- Develop distribution-level objectives and representation-diverse evaluation protocols for generative models once distributional distances become optimizable at scale.
 
 ## Links
 

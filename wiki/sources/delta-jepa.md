@@ -2,7 +2,7 @@
 title: "Delta-JEPA: Learning Action-Sensitive World Models via Latent Difference Decoding"
 type: source
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2606.31232"
 authors:
   - "Zhenghao Zhang"
@@ -112,6 +112,10 @@ When the forward predictor is action-conditioned, $z_{t+1}$ can absorb action-co
 
 > [!open-question]
 > PLDM (VICReg + concat inverse dynamics) is a strong baseline on Two-Room but weak on 3D — does displacement decoding close the gap uniformly or trade off navigation vs manipulation?
+
+## Future Work
+
+- The paper does not spell out explicit next steps beyond its four continuous-control benchmarks; the conclusion frames latent-difference (action-from-Δz) supervision as a general principle for compact, collapse-resistant world models for planning.
 
 ## Links
 

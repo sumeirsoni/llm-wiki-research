@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-07-06
+updated: 2026-07-16
 tags:
   - meta
 ---
@@ -100,3 +100,18 @@ Fixed 28 escaped-pipe wikilinks in [[jepa]], [[ema]], [[world-models]], [[imagen
 
 ## [2026-07-06] ingest | Is One Layer Enough? RL Training
 Ingested [[is-one-layer-enough-rl-training]] (arXiv: 2607.01232). Created source page and concept page [[layer-contribution-rl]]. Updated [[representation-geometry]], [[self-distillation]], [[index]], and [[overview]].
+
+## [2026-07-06] ingest | On the Position Bias of On-Policy Distillation
+Ingested [[on-the-position-bias-of-on-policy-distillation]] (arXiv: 2606.22600). Created source page. Updated [[self-distillation]], [[on-the-geometry-of-on-policy-distillation]], [[index]], and [[overview]].
+
+## [2026-07-08] query | OPRD Literature Review
+Filed a targeted literature review for planned OPRD experiments. Added source pages for [[contrastive-representation-distillation]], [[codir]], [[distiller]], [[learning-beyond-teacher]], [[entropy-aware-opd]], [[tip-token-importance-opd]], [[fire-opd]], [[selectkd]], and [[phf]]. Created concept pages [[on-policy-distillation]], [[token-selective-distillation]], and [[contrastive-hidden-state-distillation]]. Filed synthesis page [[oprd-literature-review]] and updated [[self-distillation]], [[contrastive-learning]], [[representation-geometry]], [[index]], and [[overview]].
+
+## [2026-07-10] ingest | Revisiting the Platonic Representation Hypothesis: An Aristotelian View
+Ingested [[aristotelian-representation-hypothesis]] (arXiv: 2602.14486, ICML 2026). Created source page and entity page [[maria-brbic]]. Updated [[representation-geometry]], [[convergent-world-representations-and-divergent-tasks]], [[index]], and [[overview]].
+
+## [2026-07-11] update | Future Work sections on all sources
+Added a required `## Future Work` section to the source-page schema in [[AGENTS.md]] (canonical order: Limitations → Future Work → Links). Rechecked all 61 source pages against paper text (AlphaXiv full text / PDF queries) and added author-stated or clearly implied research directions. A minority of older/conclusion-only papers note that no explicit future-work agenda is stated.
+
+## [2026-07-16] ingest | Bridging the Gap Between Latent and Explicit Reasoning with Looped Transformers
+Ingested [[lotus]] (arXiv: 2606.31779). Created source page. Updated [[iterative-refinement]], [[latent-reasoning-with-normalizing-flows]], [[fixed-point-reasoners]], [[index]], and [[overview]].

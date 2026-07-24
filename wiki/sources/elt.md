@@ -2,7 +2,7 @@
 title: "ELT: Elastic Looped Transformers for Visual Generation"
 type: source
 created: 2026-04-12
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2604.09168"
 authors:
   - "Sahil Goyal"
@@ -13,7 +13,7 @@ authors:
   - "Aditya Kusupati"
 year: 2026
 venue: "Google"
-pdf_path: "raw/ELT_ Elastic Looped Transformers for Visual Generation.pdf"
+pdf_path: "https://arxiv.org/pdf/2604.09168"
 tags:
   - transformer
   - generative-modeling
@@ -117,6 +117,13 @@ Video (UCF-101):
 
 > [!open-question]
 > How does ELT's parameter efficiency compare to Self-Flow's intrinsic representation learning on shared benchmarks?
+
+## Future Work
+
+- Use ELT as a test-time compute lever inside multi-step diffusion, dynamically allocating loops across denoising steps rather than using a fixed network cost per step.
+- Enable true elasticity for one-step generative paradigms (consistency / drifting models) by varying loop count at inference without pre-determining sampling steps.
+- Deploy weight-efficient, Any-Time ELT models on resource-constrained hardware by traversing the quality–GFLOPs Pareto front from a single ILSD-trained checkpoint.
+
 
 ## Links
 

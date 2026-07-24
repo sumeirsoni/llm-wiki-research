@@ -2,7 +2,7 @@
 title: "Steerable Visual Representations"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2604.02327"
 authors:
   - "Jona Ruthardt"
@@ -64,6 +64,11 @@ The training signal is referential segmentation: given an image and a referring 
 
 > [!open-question]
 > Can steerable visual features improve robot world models, where prompts might select task-relevant objects or state variables?
+
+## Future Work
+
+- The paper does not spell out a dedicated future-work agenda; the conclusion positions text-conditioned cross-attention as a lightweight post-hoc steering mechanism for frozen ViTs, suggesting further domains and backbones as natural extensions of the SteerViT results.
+
 
 ## Links
 

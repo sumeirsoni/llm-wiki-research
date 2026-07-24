@@ -2,7 +2,7 @@
 title: "Temporal Straightening for Latent Planning"
 type: source
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2603.12231"
 authors:
   - "Ying Wang"
@@ -94,6 +94,12 @@ Goal-reaching via GD or MPC minimizing $\|\hat{z}_T - z_g\|_2^2$ over action seq
 
 > [!open-question]
 > Can temporal straightening combine with [[adajepa|AdaJEPA]] test-time adaptation for both better-conditioned training geometry and deployment recalibration?
+
+## Future Work
+
+- Extend beyond continuous goal-conditioned planning with symmetric Euclidean goal costs to asymmetric or irreversible dynamics using directional costs such as quasimetrics.
+- Decouple dynamics learning from planning objectives by optimizing in a projected latent space while the world model trains in a separate representation geometry.
+- Apply temporal straightening to more challenging environments beyond the 2D goal-reaching tasks studied here.
 
 ## Links
 

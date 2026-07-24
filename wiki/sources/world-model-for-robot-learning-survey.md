@@ -2,7 +2,7 @@
 title: "World Model for Robot Learning: A Comprehensive Survey"
 type: source
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-07-11
 arxiv_id: "2605.00080v1"
 authors:
   - "Bohan Hou"
@@ -74,6 +74,14 @@ The paper is a structured literature review. It classifies methods by architectu
 
 > [!open-question]
 > Which world-model representations best support long-horizon planning without compounding drift?
+
+## Future Work
+
+- Close causal conditioning gaps so predicted futures depend on robot actions rather than primarily on historical context or task intent.
+- Improve training and inference efficiency, integrate non-visual sensory feedback, and build standardized evaluation focused on functional utility rather than visual realism alone.
+- Develop hybrid world models that combine learned perceptual representations with symbolic, object-centric, or relational structure for scalable long-horizon reasoning.
+- Establish multi-dimensional evaluation spanning predictive quality, downstream control utility, and physical executability, moving beyond fragmented visual-fidelity metrics.
+- Maintain and regularly update the accompanying GitHub repository as new benchmarks, methods, and resources emerge.
 
 ## Links
 

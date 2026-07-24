@@ -2,7 +2,7 @@
 title: "Contrastive Learning"
 type: concept
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-08
 tags:
   - contrastive-learning
   - self-supervised-learning
@@ -15,6 +15,8 @@ sources:
   - "[[steerable-visual-representations]]"
   - "[[reconstruction-or-semantics-robotic-world-models]]"
   - "[[self-supervised-learning]]"
+  - "[[contrastive-representation-distillation]]"
+  - "[[codir]]"
 aliases:
   - "Contrastive SSL"
   - "Instance discrimination"
@@ -67,6 +69,10 @@ These methods are **reference baselines** in the wiki rather than primary ingest
 
 [[steerable-visual-representations|Steerable Visual Representations]] adapts frozen visual encoders (often contrastive-pretrained) with language prompts — contrastive geometry is a substrate for controllable features.
 
+### Contrastive distillation
+
+[[contrastive-representation-distillation|CRD]] and [[codir|CoDIR]] apply contrastive objectives to teacher-student representation transfer. They argue that pointwise hidden losses miss structural dependencies among representation dimensions. This is directly relevant to [[on-policy-representation-distillation|OPRD]], whose current hidden-state objective is MSE; see [[contrastive-hidden-state-distillation]] for the OPRD-specific design space.
+
 ## Strengths and Weaknesses
 
 **Strengths**
@@ -78,6 +84,7 @@ These methods are **reference baselines** in the wiki rather than primary ingest
 **Weaknesses** (as argued by wiki JEPA sources)
 
 - Batch-size and negative-mining sensitivity (SimCLR, MoCo)
+- False-negative sensitivity when distinct samples or trajectories share semantics
 - Global alignment may under-supervise patch tokens ([[levljepa|LeVLJEPA]] critique)
 - Augmentation design encodes strong inductive biases
 - Less natural fit for predictive world modeling than latent prediction ([[jepa|JEPA]], [[world-models|world models]])
@@ -93,6 +100,9 @@ These methods are **reference baselines** in the wiki rather than primary ingest
 > [!open-question]
 > Should the wiki ingest primary SimCLR/MoCo/DINO source papers for direct benchmark tables against [[lejepa|LeJEPA]] and [[v-jepa-2-1|V-JEPA 2.1]]?
 
+> [!open-question]
+> For contrastive OPRD, can negatives be chosen so they separate misleading reasoning traces without pushing apart equivalent correct solutions?
+
 ## Related Pages
 
 - [[self-supervised-learning]] — paradigm overview
@@ -100,3 +110,4 @@ These methods are **reference baselines** in the wiki rather than primary ingest
 - [[ema]] — shared collapse-prevention mechanism (DINO, V-JEPA)
 - [[representation-collapse]] — shared failure mode
 - [[levljepa]] — non-contrastive vision-language JEPA vs CLIP/SigLIP
+- [[contrastive-hidden-state-distillation]] — contrastive KD design space for OPRD

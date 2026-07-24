@@ -2,7 +2,7 @@
 title: "ARC Is a Vision Problem!"
 type: source
 created: 2026-06-09
-updated: 2026-06-09
+updated: 2026-07-11
 arxiv_id: "2511.14761"
 authors:
   - "Keya Hu"
@@ -74,6 +74,12 @@ Inference aggregates predictions from multiple canvas views via average pooling 
 
 > [!open-question]
 > What pre-training on larger visual datasets would add beyond scratch training on ARC alone?
+
+## Future Work
+
+- Extend VARC with more expressive architectures and richer visual priors beyond the ViT/U-Net baselines tested.
+- Improve fundamental pass@k accuracy rather than relying primarily on multi-view voting ensembles.
+- Focus future research on generalization, including stronger 2D positional embeddings and expanding the output token set beyond the limited color palette used here.
 
 ## Links
 

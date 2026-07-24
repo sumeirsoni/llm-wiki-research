@@ -2,7 +2,7 @@
 title: "DINO-WM: World Models on Pre-trained Visual Features enable Zero-shot Planning"
 type: source
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-07-11
 arxiv_id: "2411.04983"
 authors:
   - "Gaoyue Zhou"
@@ -101,6 +101,12 @@ Patch DINOv2 >> global encoders (R3M, ResNet, DINO CLS) on complex manipulation 
 
 > [!gap]
 > Frozen DINOv2 latents are not optimized for planning geometry — addressed by [[temporal-straightening|Temporal Straightening]] and [[adajepa|AdaJEPA]] (deployment adaptation).
+
+## Future Work
+
+- Combine DINO-WM with exploration strategies and continually update the world model as new offline/online experiences become available.
+- Train from internet-scale video without ground-truth action labels.
+- Develop a hierarchical planner that integrates high-level latent planning with low-level control policies for fine-grained manipulation.
 
 ## Links
 
