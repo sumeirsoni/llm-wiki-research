@@ -2,7 +2,7 @@
 title: "EMA vs Non-EMA Collapse Prevention"
 type: comparison
 created: 2026-07-03
-updated: 2026-07-03
+updated: 2026-08-25
 tags:
   - ema
   - jepa
@@ -20,6 +20,8 @@ sources:
   - "[[sub-jepa]]"
   - "[[sensorimotor-world-models]]"
   - "[[delta-jepa]]"
+  - "[[remove-symmetries]]"
+  - "[[obsessed-encoder]]"
 aliases:
   - "EMA debate"
   - "Collapse prevention comparison"
@@ -75,6 +77,19 @@ For planning, collapse prevention may need **action sensitivity**, not just dist
 - [[sensorimotor-world-models|SMWM]]: inverse dynamics from $(z_t, z_{t+1})$
 - [[delta-jepa|Delta-JEPA]]: inverse dynamics from $\Delta z_t$ only — beats concat IDM and SIGReg baselines on shared benchmarks
 
+### 4. Orthogonal axis: parameter-space symmetry ([[remove-symmetries|syre]])
+
+Every mechanism above fights *embedding-space* collapse (constant or distributionally degenerate embeddings). [[remove-symmetries|syre]] instead removes *parameter-space* low-capacity traps: reflection symmetries interacting with weight decay cause dead neurons and rank shrinkage, which it fixes by shifting the weight-decay center to a fixed random point. This is a complementary failure mode, not a competitor:
+
+- It does not address JEPA's constant-embedding global optimum, so it cannot replace EMA/SIGReg/frozen teachers.
+- Its SimCLR evidence (last-layer low-rankness 70% → 0%, last-layer linear accuracy 22.2% → 32.5%) shows rank degradation is a real, fixable pathology in joint-embedding training.
+- Its continual-learning/PPO results target plasticity loss over long nonstationary training - directly relevant to extended world-model pretraining.
+- No published work stacks syre with any mechanism in this comparison.
+
+### 5. Shared failure mode: predictable-feature domination
+
+[[obsessed-encoder|The Obsessed Encoder]] argues the EMA-vs-non-EMA axis may be secondary to a failure both families share. Planted low-entropy features collapse every tested system: EMA-based [[dinov3|DINOv3]] (self-distillation + Sinkhorn-Knopp + KoLeo) and SIGReg-based [[lejepa|LeJEPA]] / [[leworldmodel|LeWM]] all surrender most of their latent capacity to a ~12-bit watermark or, in LeWM's RandGoal PushT variant, to the natural goal-pose feature - with training loss *below* honest baselines throughout. See [[feature-suppression]]. The implication: these mechanisms constrain embedding statistics, not information allocation, so neither side of the debate addresses what may be the binding constraint on representation quality.
+
 ## When Each Approach May Win
 
 | Setting | Favored direction (from wiki evidence) |
@@ -95,6 +110,12 @@ For planning, collapse prevention may need **action sensitivity**, not just dist
 
 > [!open-question]
 > Does [[delta-jepa|Delta-JEPA]]'s LDAD make SIGReg and concat inverse dynamics redundant for action-conditioned world models?
+
+> [!open-question]
+> Does [[remove-symmetries|syre]]'s parameter-space symmetry removal stack usefully with EMA or SIGReg in JEPA world models - e.g., preserving rank/plasticity over long training horizons without harming the embedding-distribution control?
+
+> [!open-question]
+> Would any mechanism in this comparison resist [[feature-suppression|predictable-feature domination]] ([[obsessed-encoder|Obsessed Encoder]])? Action-aligned losses ([[sensorimotor-world-models|SMWM]], [[delta-jepa|Delta-JEPA]]) are the closest to measuring information content, but have not been tested against planted features.
 
 ## Related Pages
 

@@ -2,7 +2,7 @@
 title: "Representation Geometry"
 type: concept
 created: 2026-05-16
-updated: 2026-07-24
+updated: 2026-09-04
 tags:
   - representation-learning
   - theory
@@ -20,6 +20,11 @@ sources:
   - "[[phf]]"
   - "[[aristotelian-representation-hypothesis]]"
   - "[[intelligence-from-learnable-novelty]]"
+  - "[[patch-policy]]"
+  - "[[lost-in-backpropagation]]"
+  - "[[jepa-paradox-in-language]]"
+  - "[[viscore]]"
+  - "[[looped-transformers-jacobian-lens]]"
 aliases:
   - "Embedding geometry"
   - "Representation manifolds"
@@ -36,6 +41,8 @@ Representation geometry studies the structure of learned embedding spaces: their
 [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] shows that global isotropy and participation ratio do not predict compositional binding across vision encoders. Jacobian Effective Rank, which measures local input-output sensitivity, is much more predictive.
 
 This matters for [[lejepa|LeJEPA]] and [[sub-jepa|Sub-JEPA]] because Gaussian regularization improves stability, but global geometric regularity alone may not guarantee compositional or action-relevant structure.
+
+[[looped-transformers-jacobian-lens|Looped Transformers under the Jacobian Lens]] applies a related functional test to recurrent language models. Virtual-unrolling treats each firing of a tied block as a layer, then measures whether a hidden state remains readable, transports across recurrence, and changes behavior under intervention. The paper finds that these properties can separate: Huginn carries self-computed content into a verbal report at 98% but has no top-1 causal introspection successes in 97 tests. A stable or decodable representation is therefore not enough to establish that recurrence preserves a causally usable workspace.
 
 ## Observer-Relative Decodability
 
@@ -54,6 +61,12 @@ After permutation null-calibration:
 
 The proposed **Aristotelian Representation Hypothesis** refines the Platonic one: convergence is primarily in shared local neighborhood structure, not global second-order geometry. This cautions against interpreting raw CKA increases — as in [[convergent-world-representations-and-divergent-tasks|multi-task CKA convergence]] — without width/depth calibration or complementary local metrics.
 
+## Conditional and System-Relative Geometry
+
+[[jepa-paradox-in-language|The JEPA Paradox in Language]] adds conditional target geometry: a globally non-collapsed representation can still be unsuitable for deterministic prediction if one context maps to several separated valid targets. This distinguishes marginal covariance health from whether a single conditional centroid is meaningful.
+
+[[viscore|VIScore]] adds system-relative geometry for world models. Veracity, action influence, and planner sobriety ask whether the representation works with a specific predictor and search process, rather than whether its static geometry looks regular in isolation.
+
 ## Manifold Geometry and Control
 
 [[manifold-steering|Manifold Steering]] argues that intrinsic activation manifolds are causally tied to model behavior. Steering along a fitted manifold produces smoother behavioral trajectories than straight-line activation interpolation, suggesting that useful representation geometry can be curved and task-specific.
@@ -70,11 +83,17 @@ The proposed **Aristotelian Representation Hypothesis** refines the Platonic one
 
 [[temporal-straightening|Temporal Straightening]] adds a control-relevant geometric criterion: **latent trajectory curvature**. Pretrained DINOv2 features ([[dino-wm|DINO-WM]]) encode rich semantics but produce highly curved latent paths where Euclidean distance misaligns with geodesic (shortest-action) distance. Penalizing curvature during JEPA world model training straightens trajectories, improves planning Hessian conditioning, and makes gradient-based MPC viable. This complements global isotropy metrics ([[lejepa|LeJEPA]]) with geometry tailored to dynamical reachability.
 
+## Spatial Granularity as Functional Geometry
+
+[[patch-policy|Patch Policy]] adds another control-relevant axis: whether the downstream model receives the spatial arrangement of local visual tokens at all. Its learned compression ablation reduces 256 patch positions to 64, 16, 4, or 1 and sharply lowers Push-T performance. This supports [[dense-visual-representations]] as a distinct functional property: pooling changes which local relations remain accessible, while trajectory-curvature and Jacobian analyses characterize the geometry of the retained features.
+
 ## Parameter-Space Update Geometry
 
 [[on-the-geometry-of-on-policy-distillation|On the Geometry of On-Policy Distillation]] extends geometric analysis from embedding spaces to **parameter-space update trajectories** during LLM post-training. On-policy distillation occupies a relaxed off-principal regime between SFT (dense, principal-aligned) and RLVR (sparse, off-principal), with subspace locking — cumulative updates rapidly enter a narrow low-dimensional channel that is functionally sufficient.
 
 [[on-policy-representation-distillation|OPRD]] shows that hidden-state geometry can differ substantially from output distributions: the LM head's null space hides representational differences that output-space distillation cannot see. Representation-level alignment provides strictly richer supervision than token-level KL alone.
+
+[[lost-in-backpropagation|Lost in Backpropagation]] identifies the complementary backward geometry formalized by the [[lm-head-gradient-bottleneck]]: a high-rank vocabulary-space error is projected through a width-limited output map before reaching the backbone. The paper reports 95-99% of logit-gradient Frobenius norm in directions annihilated by the head transpose, but removed norm is not automatically equivalent to useful learning signal. Effective rank, spectral decay, and alignment of the surviving direction therefore complement parameter-trajectory diagnostics.
 
 [[phf|PHF]] adds a trajectory-geometry variant inside on-policy self-distillation: instead of pointwise hidden-state matching, it aligns token-to-token hidden transitions and within-trajectory Gram structure. This suggests that OPRD geometry should be measured not only by hidden-state cosine/MSE, but also by hidden **motion** along generated rollouts.
 

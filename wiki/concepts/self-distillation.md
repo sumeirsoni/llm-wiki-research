@@ -2,7 +2,7 @@
 title: "Self-Distillation"
 type: concept
 created: 2026-04-10
-updated: 2026-07-08
+updated: 2026-09-04
 tags:
   - self-distillation
   - self-supervised-learning
@@ -22,6 +22,10 @@ sources:
   - "[[fire-opd]]"
   - "[[selectkd]]"
   - "[[phf]]"
+  - "[[latent-on-policy-self-distillation]]"
+  - "[[simpleopd]]"
+  - "[[self-supervised-visual-on-policy-distillation]]"
+  - "[[opsa]]"
 aliases:
   - "Self-distillation"
   - "Knowledge distillation"
@@ -71,6 +75,17 @@ Self-distillation is a learning paradigm where a model learns from its own outpu
 - **Generalizations**: [[learning-beyond-teacher|ExOPD]] scales the teacher reward beyond imitation; [[entropy-aware-opd|EOPD]] switches objective behavior when teacher entropy is high
 - **Token selectivity**: [[on-the-position-bias-of-on-policy-distillation|IW-OPD]], [[tip-token-importance-opd|TIP]], [[fire-opd|FiRe-OPD]], and [[selectkd|SelecTKD]] all reject uniform token weighting in different ways
 - **Geometry**: [[on-the-geometry-of-on-policy-distillation|OPD Geometry]] shows objective composition controls early subspace locking
+- **Learned privilege**: [[latent-on-policy-self-distillation|LOPD]] retrieves successful experiences, compresses them into continuous training-only context for a frozen self-teacher, and uses a margin constraint so jointly learned context remains more informative than the student
+
+### Cross-Tokenizer Long-Context Distillation ([[simpleopd|SimpleOPD]])
+- Retokenizes the student's generated text under the teacher and supervises only exact shared surface spans
+- Masks termination tokens and anchors to the initial student to control repetition, truncation, and length growth
+- **Finding**: large proof-reasoning gains transfer across several model families, but greater tokenizer mismatch can weaken general-task transfer
+
+### Observation-Asymmetric Visual Distillation ([[self-supervised-visual-on-policy-distillation|S²VOPD]])
+- EMA teacher sees a clean image while the student generates from a degraded view
+- Uses augmentation to create privilege without labels, answers, or a stronger teacher
+- **Finding**: removing augmentation loses most of the gain, while freezing the teacher loses little, making informational asymmetry the main mechanism
 
 ### On-Policy Representation Distillation ([[on-policy-representation-distillation|OPRD]])
 - Lifts on-policy distillation from **output-space KL** to **hidden-state MSE** alignment
@@ -78,6 +93,11 @@ Self-distillation is a learning paradigm where a model learns from its own outpu
 - **Pro**: Zero-variance deterministic gradients; bypasses LM-head information bottleneck; monotonic late-stage improvement
 - **Finding**: Closes student–teacher gap on math reasoning where output-space OPD stagnates; 1.44× faster and 32–54% less GPU memory
 - **Open direction**: [[contrastive-hidden-state-distillation|contrastive hidden-state distillation]] and [[token-selective-distillation|token-selective distillation]] suggest OPRD can vary both the hidden objective and the positions receiving gradient budget
+
+### Teacher-Free On-Policy Self-Adaptation ([[opsa|OPSA]])
+- Analyzes standard OPD and finds that student improvement can survive noisy teacher advantages and removal of teacher supervision.
+- Uses the student's own log probabilities and entropy to assign negative advantages to low-probability tokens, so it is self-adaptation rather than teacher-student distillation in the strict sense.
+- **Finding**: entropy-adaptive negative suppression improves math reasoning while preserving diversity at high-entropy forks; scale, exploration-frontier, and large-model limits remain open.
 
 ### Parameter-Space Geometry of OPD ([[on-the-geometry-of-on-policy-distillation|OPD Geometry]])
 - Characterizes on-policy distillation updates in **parameter space** relative to SFT and RLVR

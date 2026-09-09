@@ -6,53 +6,17 @@
   "hideUnresolved": false,
   "showOrphans": true,
   "collapse-color-groups": false,
-  "colorGroups": [
-    {
-      "query": "path:wiki/sources/",
-      "color": {
-        "a": 1,
-        "rgb": 5765887
-      }
-    },
-    {
-      "query": "path:wiki/concepts/",
-      "color": {
-        "a": 1,
-        "rgb": 5025616
-      }
-    },
-    {
-      "query": "path:wiki/entities/",
-      "color": {
-        "a": 1,
-        "rgb": 16744448
-      }
-    },
-    {
-      "query": "path:wiki/comparisons/",
-      "color": {
-        "a": 1,
-        "rgb": 10040217
-      }
-    },
-    {
-      "query": "path:wiki/meta/",
-      "color": {
-        "a": 1,
-        "rgb": 8421504
-      }
-    }
-  ],
+  "colorGroups": [],
   "collapse-display": false,
   "showArrow": true,
   "textFadeMultiplier": 0,
-  "nodeSizeMultiplier": 1.24928819444444,
+  "nodeSizeMultiplier": 1,
   "lineSizeMultiplier": 1,
   "collapse-forces": false,
-  "centerStrength": 0.513498263888889,
-  "repelStrength": 10.3307291666667,
-  "linkStrength": 0.249001736111111,
-  "linkDistance": 312,
-  "scale": 1.0116810619177503,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 0.9722622466804461,
   "close": false
 }

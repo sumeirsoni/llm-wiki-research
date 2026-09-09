@@ -2,7 +2,7 @@
 title: "Generative Recursive Reasoning"
 type: source
 created: 2026-05-17
-updated: 2026-07-11
+updated: 2026-08-13
 arxiv_id: "2605.19376"
 authors:
   - "Junyeob Baek"
@@ -62,6 +62,7 @@ Multiple supervision steps stack these transitions, with deep supervision at eac
 - Directly compares against TRM and looped transformers; complements [[attractor-models|Attractor Models]], which also targets hard reasoning with compact recursive computation but uses fixed-point refinement rather than stochastic trajectories.
 - Related to [[hyperloop-transformers|Hyperloop Transformers]] as another looped/recurrent architecture family, though Hyperloop focuses on language-model pretraining efficiency rather than puzzle reasoning.
 - Uses [[ema|EMA]] for training stability, connecting to the wiki's broader debate on EMA as a stabilization mechanism.
+- [[bdh-cq|BDH-CQ]] provides a deterministic, demonstration-conditioned counterpart on ARC: it updates recurrent context memory and spends variable latent thinking effort on one workspace, while GRAM explores multiple stochastic trajectories for solution coverage and width scaling.
 
 ## Limitations & Open Questions
 

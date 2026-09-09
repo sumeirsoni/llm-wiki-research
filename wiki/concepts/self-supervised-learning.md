@@ -2,7 +2,7 @@
 title: "Self-Supervised Learning"
 type: concept
 created: 2026-04-10
-updated: 2026-07-24
+updated: 2026-09-04
 tags:
   - self-supervised-learning
   - representation-learning
@@ -21,6 +21,10 @@ sources:
   - "[[temporal-difference-vision]]"
   - "[[levljepa]]"
   - "[[intelligence-from-learnable-novelty]]"
+  - "[[patch-policy]]"
+  - "[[jepa-paradox-in-language]]"
+  - "[[self-supervised-visual-on-policy-distillation]]"
+  - "[[levjepa]]"
 aliases:
   - "SSL"
   - "Self-supervised learning"
@@ -53,9 +57,14 @@ Learn by **distinguishing positive pairs from negative pairs** in embedding spac
 Learn by **predicting masked embeddings** in latent space.
 
 - **Examples**: I-JEPA, [[v-jepa-2-1|V-JEPA 2.1]], [[lejepa|LeJEPA]]
+- **Efficient video example**: [[levjepa|LeVJEPA]] uses LeJEPA's SIGReg objective with sparse random token processing and block-causal attention
 - **Strengths**: Focuses on semantic content, discards irrelevant low-level details
-- **Weaknesses**: Susceptible to [[representation-collapse|representation collapse]]
+- **Weaknesses**: Susceptible to [[representation-collapse|representation collapse]]; deterministic point prediction can also be ill-posed when conditional targets remain multimodal, as argued by [[jepa-paradox-in-language|The JEPA Paradox in Language]]
 - **In this wiki**: The primary focus — 6 of 7 papers are in or related to this paradigm
+
+### Self-Supervised Behavioral Distillation
+
+[[self-supervised-visual-on-policy-distillation|S²VOPD]] derives teacher privilege from unequal observations rather than labels: the teacher sees a clean image while the student acts from a degraded view. Its results show that augmentation can support behavioral on-policy distillation, but only when corruption preserves the task and correct answer.
 
 ### Self-Supervised Generative ([[self-flow|Self-Flow]])
 Learn representations **within** the generative framework itself.
@@ -82,7 +91,8 @@ Learn representations by maximizing structure recoverable by a deliberately capa
 ## Current Trends (from this wiki)
 
 - **Removing heuristics**: [[lejepa|LeJEPA]] eliminates EMA, stop-gradient, and schedulers
-- **Dense features**: [[v-jepa-2-1|V-JEPA 2.1]] and [[bootleg|Bootleg]] emphasize spatial information
+- **Efficient video without heuristics**: [[levjepa|LeVJEPA]] extends this recipe to video, using 95% token dropping and causal attention while retaining competitive appearance and motion transfer
+- **Dense features**: [[v-jepa-2-1|V-JEPA 2.1]] and [[bootleg|Bootleg]] emphasize spatial information; [[patch-policy|Patch Policy]] shows that frozen SSL patch tokens can transfer directly to lightweight robot policies when their [[dense-visual-representations|spatial structure]] is retained
 - **World models**: [[causal-jepa|Causal-JEPA]] and [[leworldmodel|LeWorldModel]] learn dynamics, not just static representations
 - **Unifying generation and representation**: [[self-flow|Self-Flow]] integrates both
 - **Beyond static geometry**: [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] and [[steerable-visual-representations|Steerable Visual Representations]] shift attention toward functional sensitivity and prompt-steerable representations

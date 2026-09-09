@@ -2,7 +2,7 @@
 title: "DINO-WM: World Models on Pre-trained Visual Features enable Zero-shot Planning"
 type: source
 created: 2026-07-03
-updated: 2026-07-24
+updated: 2026-07-25
 arxiv_id: "2411.04983"
 authors:
   - "Gaoyue Zhou"
@@ -85,13 +85,15 @@ Patch DINOv2 >> global encoders (R3M, ResNet, DINO CLS) on complex manipulation 
 
 ## Connections
 
-- Bridges [[self-supervised-learning|SSL]] ([[repa|REPA]]/DINOv2 lineage) and [[world-models|world models]] — pretrained visual features as planning latents without end-to-end pixel modeling.
+- Bridges [[self-supervised-learning|SSL]] ([[repa|REPA]]/DINOv2 lineage) and [[world-models|world models]] by using pretrained visual features as planning latents without end-to-end pixel modeling.
+- Provides core evidence for [[dense-visual-representations]]: frozen patch grids preserve manipulation-relevant state that global DINOv2 summaries lose.
+- [[patch-policy|Patch Policy]] extends the same patch-over-global principle from model-based latent planning to direct behavior-cloned control. It does not use DINO-WM's predictor or MPC stack.
 - Primary baseline and experimental setup for [[temporal-straightening|Temporal Straightening]], which addresses DINO-WM's curved latent geometry limiting GD planning.
 - [[adajepa|AdaJEPA]] evaluates on PushT/PushObj/PointMaze from DINO-WM setups; frozen DINO-WM degrades under distribution shift where AdaJEPA adapts online.
 - Contrasts with [[leworldmodel|LeWM]]/[[sub-jepa|Sub-JEPA]]: trains dynamics in learned latents from scratch with SIGReg/subspace regularization rather than frozen foundation features.
-- Co-authored by [[yann-lecun|Yann LeCun]]; Gaoyue Zhou also co-authors [[temporal-straightening|Temporal Straightening]].
-- [[prism-prior-guided-imagination-sampling|PRISM]] finds that its learned proposal still improves a DINO-WM-style planner, but a global DINOv2 CLS token performs poorly on PushT, reinforcing this paper's patch-over-global encoder ablation
-- See [[sampling-based-latent-planning]] for the interaction between DINO-WM's representation choice and downstream proposal and trajectory optimization
+- Co-authored by [[yann-lecun|Yann LeCun]] and led by [[gaoyue-zhou|Gaoyue Zhou]], who also co-authors Temporal Straightening and Patch Policy.
+- [[prism-prior-guided-imagination-sampling|PRISM]] finds that its learned proposal still improves a DINO-WM-style planner, but a global DINOv2 CLS token performs poorly on PushT, reinforcing this paper's patch-over-global encoder ablation.
+- See [[sampling-based-latent-planning]] for the interaction between DINO-WM's representation choice and downstream proposal and trajectory optimization.
 
 ## Limitations & Open Questions
 

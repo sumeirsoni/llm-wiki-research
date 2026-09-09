@@ -2,7 +2,7 @@
 title: "LeVLJEPA: End-to-End Vision-Language Pretraining Without Negatives"
 type: source
 created: 2026-07-03
-updated: 2026-07-11
+updated: 2026-07-25
 arxiv_id: "2607.00784"
 authors:
   - "Lukas Kuhn"
@@ -102,8 +102,9 @@ LeVLJEPA wins every GQA / VQAv2 / POPE column under both Llama-1B and Qwen-1.5B 
 
 - Direct cross-modal extension of [[lejepa|LeJEPA]] / SIGReg to vision-language pretraining; co-authored by [[randall-balestriero|Randall Balestriero]].
 - Contrasts with **CLIP/SigLIP** (contrastive pooled embedding alignment) and **VL-JEPA** (JEPA framing but InfoNCE between predicted and target embeddings — still contrastive).
-- Complements [[v-jepa-2-1|V-JEPA 2.1]] dense-token story: LeVLJEPA shows non-contrastive VLP also favors patch-level semantics over global zero-shot metrics.
-- Relevant to [[reconstruction-or-semantics-robotic-world-models|semantic latents for robotics]] and VLM deployment (LLaVA-style frozen backbones) — evaluation should include token-level dense tasks, not only zero-shot.
+- Complements the [[v-jepa-2-1|V-JEPA 2.1]] and [[dense-visual-representations]] story: LeVLJEPA shows non-contrastive VLP also favors patch-level semantics over global zero-shot metrics.
+- [[patch-policy|Patch Policy]] independently finds dense-token advantages for precise embodied control. The studies use different pretraining objectives and downstream tasks, so this is convergent evidence rather than a direct comparison.
+- Relevant to [[reconstruction-or-semantics-robotic-world-models|semantic latents for robotics]] and VLM deployment (LLaVA-style frozen backbones); evaluation should include token-level dense tasks, not only zero-shot.
 - Uses **stop-gradient** for cross-modal stability — nuance vs vision-only [[lejepa|LeJEPA]] which claims to eliminate stop-gradient in unimodal SSL.
 
 ## Limitations & Open Questions

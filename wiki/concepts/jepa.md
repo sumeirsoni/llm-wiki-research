@@ -2,7 +2,7 @@
 title: "Joint-Embedding Predictive Architecture (JEPA)"
 type: concept
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-09-04
 tags:
   - jepa
   - self-supervised-learning
@@ -24,6 +24,13 @@ sources:
   - "[[sensorimotor-world-models]]"
   - "[[delta-jepa]]"
   - "[[levljepa]]"
+  - "[[jepa-paradox-in-language]]"
+  - "[[generalization-theory-for-jepa-world-models]]"
+  - "[[obsessed-encoder]]"
+  - "[[orthogonal-jepa]]"
+  - "[[lpwm]]"
+  - "[[levjepa]]"
+  - "[[better-slots-better-worlds]]"
 aliases:
   - "JEPA"
   - "I-JEPA"
@@ -64,19 +71,25 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 | [[lejepa|SIGReg]] | Regularize embeddings to isotropic Gaussian | [[lejepa|LeJEPA]], [[leworldmodel|LeWM]] |
 | [[visreg|VISReg]] | Decouple scale/shape/center; sliced Wasserstein shape matching | [[visreg|VISReg]] |
 | [[sub-jepa|Subspace SIGReg]] | Apply Gaussian regularization in low-dimensional frozen subspaces | [[sub-jepa|Sub-JEPA]] |
+| [[lpwm|RDMReg]] | Match rectified projections to a Rectified Generalized Gaussian (sparse, non-maximum-entropy target) | [[lpwm|LpWM]] |
 | Cross-modal predictors + SIGReg | Asymmetric prediction with stop-gradient per modality | [[levljepa|LeVLJEPA]] |
 | Frozen teacher | Pre-trained, fixed teacher provides static targets | [[rethinking-jepa|SALT]] |
 | Multi-layer distillation | Distill from multiple hidden layers | [[bootleg|Bootleg]] |
 
 > [!open-question]
-> Which collapse prevention mechanism is best? See [[ema-vs-non-ema-collapse-prevention]] — [[lejepa|LeJEPA]] and [[rethinking-jepa|SALT]] both argue EMA is unnecessary, but [[v-jepa-2-1|V-JEPA 2.1]] achieves SOTA with EMA.
+> Which collapse prevention mechanism is best? See [[ema-vs-non-ema-collapse-prevention]] - [[lejepa|LeJEPA]] and [[rethinking-jepa|SALT]] both argue EMA is unnecessary, but [[v-jepa-2-1|V-JEPA 2.1]] achieves SOTA with EMA.
+
+> [!contradiction]
+> [[obsessed-encoder|The Obsessed Encoder]] shows the debate above may be secondary: a low-entropy predictable feature collapses EMA-based DINOv3 and SIGReg-based LeJEPA/LeWM alike ([[feature-suppression|feature suppression]]) - all these mechanisms constrain embedding statistics, not how information content is allocated across dimensions.
 
 ## JEPA Variants in This Wiki
 
 ### By Domain
 - **Images**: I-JEPA (original), [[lejepa|LeJEPA]], [[bootleg|Bootleg]]
 - **Video**: [[v-jepa-2-1|V-JEPA 2.1]], [[rethinking-jepa|SALT]]
+- **Efficient video**: [[levjepa|LeVJEPA]] (SIGReg, sparse token processing, block-causal attention)
 - **World models**: [[causal-jepa|Causal-JEPA]], [[leworldmodel|LeWorldModel]]
+- **Object-centric world models**: [[better-slots-better-worlds|Better Slots Better Worlds]]
 - **Adaptive world models**: [[adajepa|AdaJEPA]] (test-time recalibration in MPC loop)
 - **Planning-focused world models**: [[dino-wm|DINO-WM]] (frozen DINOv2 latents), [[temporal-straightening|Temporal Straightening]] (straightened JEPA latents for GD planning)
 - **End-to-end pixel world models**: [[leworldmodel|LeWM]] (SIGReg), [[sub-jepa|Sub-JEPA]] (subspace SIGReg), [[sensorimotor-world-models|SMWM]] (concat inverse dynamics), [[delta-jepa|Delta-JEPA]] (latent-difference action decoding)
@@ -85,6 +98,8 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 
 ### By Innovation
 - **Theoretical foundations**: [[lejepa|LeJEPA]] (isotropic Gaussian theory + SIGReg), [[learn-from-your-own-latents|latent sample-complexity theory]]
+- **Factorized prediction**: [[orthogonal-jepa|Orthogonal JEPA]] (learned orthogonal bases split one monolithic prediction into per-component branches, preventing dominant signals from monopolizing capacity)
+- **Sparse geometry**: [[lpwm|LpWM]] (RDMReg sparse non-negative codes; one-hot linearization theory; mode-factored support/magnitude structure - see [[sparse-representations]])
 - **Alternative regularizers**: [[visreg|VISReg]] (variance-invariance-sketching with sliced Wasserstein shape loss)
 - **Object-centric**: [[causal-jepa|Causal-JEPA]] (object-level masking)
 - **Multi-layer**: [[bootleg|Bootleg]] (hidden layer distillation), [[v-jepa-2-1|V-JEPA 2.1]] (deep self-supervision)
@@ -93,6 +108,15 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 - **Intrinsic-dimensionality regularization**: [[sub-jepa|Sub-JEPA]] (Gaussian regularization in random low-dimensional subspaces)
 - **Dense features**: [[v-jepa-2-1|V-JEPA 2.1]] (all-token prediction)
 - **Minimal temporal bias**: [[temporal-difference-vision|TDV]] (causal next-frame prediction from video, no augmentations/masking)
+- **Efficient video pretraining**: [[levjepa|LeVJEPA]] (single encoder, 95% token dropping, SIGReg)
+
+## Conditional Target Geometry in Language
+
+[[jepa-paradox-in-language|The JEPA Paradox in Language]] argues that collapse prevention is not enough when one context admits several valid linguistic targets. Under deterministic squared-error prediction, the optimum is their latent centroid, which may match no real completion; merging alternatives can therefore lower loss while destroying useful distinctions. Its T-JEPA experiments are narrow, but they add a necessary design test: whether the target conditional distribution is concentrated enough for a single latent point to be meaningful.
+
+## Finite-Sample Theory for World Models
+
+[[generalization-theory-for-jepa-world-models|A Generalization Theory for JEPA-Based World Models]] interprets an action-conditioned spectral JEPA objective as low-rank factorization of a normalized transition operator. It links spectral prediction risk to planning regret and exposes a latent-dimension trade-off between singular-value-tail approximation and finite-sample estimation. The guarantees rely on strong assumptions and do not directly cover the EMA or SIGReg objectives used by most empirical systems in this wiki.
 
 ## Beyond Masking: Temporal Causality
 

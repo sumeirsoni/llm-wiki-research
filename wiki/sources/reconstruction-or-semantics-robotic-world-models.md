@@ -55,6 +55,7 @@ The evaluation suite includes reference video metrics, reference-free perceptual
 - Strongly supports the practical value of [[v-jepa-2-1|V-JEPA 2.1]] representations beyond standard vision benchmarks.
 - Pairs with [[world-model-for-robot-learning-survey|World Model for Robot Learning]] and [[world-action-models|World Action Models]] as a concrete empirical study within the surveyed design space.
 - Relates to [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] because latent usefulness is evaluated by functional action/task probes, not only by visual similarity.
+- Its semantic-over-reconstruction thesis recurs in latent-action learning: [[what-matters-latent-actions|What Matters for Latent Actions]] finds $\Delta$DINO semantic motion signals beat pixel-level differences for manipulation policy pretraining - see [[latent-actions]].
 
 ## Limitations & Open Questions
 

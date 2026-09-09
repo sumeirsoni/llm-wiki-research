@@ -2,7 +2,7 @@
 title: "V-JEPA 2.1: Unlocking Dense Features in Video Self-Supervised Learning"
 type: source
 created: 2026-04-10
-updated: 2026-07-11
+updated: 2026-07-25
 arxiv_id: "2603.14482"
 authors:
   - "Lorenzo Mur-Labadia"
@@ -74,8 +74,9 @@ V-JEPA 2.1 builds on the [[jepa|JEPA]] framework with four modifications:
 - The latest and most capable model in the [[jepa|JEPA]] family from [[meta-fair|Meta FAIR]]
 - **Deep self-supervision** is closely related to [[bootleg|Bootleg]]'s multi-layer distillation idea — both papers independently arrive at the importance of intermediate-layer supervision
 - Still uses [[ema|EMA]]-based self-distillation, which [[rethinking-jepa|SALT]] and [[lejepa|LeJEPA]] argue is unnecessary
-- Demonstrates the value of dense features — [[causal-jepa|Causal-JEPA]] shows that object-level representations can be even more efficient for planning
-- Key researchers: [[yann-lecun|Yann LeCun]], Adrien Bardes, Mido Assran
+- Demonstrates the value of [[dense-visual-representations|dense features]]; [[causal-jepa|Causal-JEPA]] shows that object-level representations can be even more efficient for planning.
+- [[patch-policy|Patch Policy]] benchmarks the earlier **V-JEPA 2** encoder, not V-JEPA 2.1. Its V-JEPA 2 control measurements are not direct evidence for or against this model.
+- Key researchers: [[yann-lecun|Yann LeCun]], Adrien Bardes, Mido Assran.
 
 > [!contradiction]
 > V-JEPA 2.1 continues to use EMA-based self-distillation, while [[rethinking-jepa|SALT]] shows that a frozen teacher can outperform V-JEPA 2 on frozen backbone evaluation. This contradiction suggests the EMA debate is not settled.

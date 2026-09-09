@@ -2,7 +2,7 @@
 title: "A Frame is Worth One Token: Efficient Generative World Modeling with Delta Tokens"
 type: source
 created: 2026-06-09
-updated: 2026-07-11
+updated: 2026-08-01
 arxiv_id: "2604.04913"
 authors:
   - "Tommie Kerssies"
@@ -64,6 +64,7 @@ Built on discriminative DINO-world (frozen DINOv3 ViT-B encodes frames to patch 
 - Complements JEPA-based [[world-models|world models]] ([[leworldmodel|LeWM]], [[sub-jepa|Sub-JEPA]]) by showing efficient generative diversity in frozen encoder feature space rather than end-to-end pixel prediction.
 - Delta compression parallels [[pretraining-recurrent-networks-without-recurrence|SMT]]'s insight that temporal change is low-dimensional and should be modeled explicitly rather than re-encoding full states.
 - Contrasts with diffusion/video generative models surveyed in [[world-model-for-robot-learning-survey|World Model for Robot Learning]] via single-pass multi-hypothesis generation.
+- Its Best-of-Many objective is a domain-specific instance of [[candidate-exploration|candidate exploration]]. [[explorative-modeling|Explorative Modeling]] generalizes the same winner-selected pattern across image, video, language, policy, and trajectory models, while making the finite-$K$ calibration limitation explicit.
 
 ## Limitations & Open Questions
 

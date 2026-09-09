@@ -2,7 +2,7 @@
 title: "Next-Latent Prediction Transformers Learn Compact World Models"
 type: source
 created: 2026-06-09
-updated: 2026-07-11
+updated: 2026-08-13
 arxiv_id: "2511.05963"
 authors:
   - "Jayden Teoh"
@@ -69,6 +69,8 @@ Stop-gradients on targets prevent collapse. At inference, the transformer decode
 ## Connections
 
 - Directly addresses [[topological-trouble-with-transformers|Topological Trouble With Transformers]]'s critique that feedforward transformers lack pressure to compress history into dynamic state — NextLat injects recurrent inductive bias via latent transition prediction without changing architecture.
+- Extended by [[hierarchical-latent-prediction|HiLP]], which adds a sliding-window abstract state and direct coarse-timescale transition to reduce compounding error in multi-step latent rollouts.
+- Complemented by [[full-bandwidth-transformer|Full-Bandwidth Transformer]], which recurrently feeds top-layer states into the next token at inference. NextLat instead uses latent transition prediction as a training objective and optional speculative drafter while preserving the ordinary deployed backbone.
 - Complements [[learn-from-your-own-latents|Learn From Your Own Latents]]: both argue latent/next-state prediction provides richer learning signal than token-level objectives.
 - Contrasts with [[latent-reasoning-with-normalizing-flows|NF-CoT]]: both use latent-space prediction, but NextLat shapes belief states during pretraining while NF-CoT replaces explicit CoT at inference.
 - Manhattan benchmark from Vafa et al. connects to [[world-models|world models]] and [[convergent-world-representations-and-divergent-tasks|Convergent World Representations]] on coherent internal world geometry.

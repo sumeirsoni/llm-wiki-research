@@ -2,7 +2,7 @@
 title: "World Action Models: The Next Frontier in Embodied AI"
 type: source
 created: 2026-05-16
-updated: 2026-07-11
+updated: 2026-08-25
 arxiv_id: "2605.12090"
 authors:
   - "Siyin Wang"
@@ -65,6 +65,7 @@ The survey also maps the data landscape, from high-fidelity robot triplets to hu
 - Provides survey context for [[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]], a concrete empirical study of latent spaces for robotic world models.
 - Connects to [[world-models|world models]] by extending the wiki's JEPA/control focus toward embodied foundation models.
 - Relevant to [[self-flow|Self-Flow]] and diffusion papers because many WAMs use video-generation or diffusion backbones.
+- [[what-matters-latent-actions|What Matters for Latent Actions]] supplies the empirical design recipe for this survey's action-free-video thesis: latent-action mid-training ([[latent-actions]]) is a concrete mechanism for converting human/egocentric video into policy-useful supervision.
 
 ## Limitations & Open Questions
 

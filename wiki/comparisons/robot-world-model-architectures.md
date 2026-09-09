@@ -2,7 +2,7 @@
 title: "Robot World Model Architectures"
 type: comparison
 created: 2026-07-03
-updated: 2026-07-24
+updated: 2026-07-30
 tags:
   - world-model
   - reinforcement-learning
@@ -21,6 +21,8 @@ sources:
   - "[[v-jepa-2-1]]"
   - "[[fast-leworldmodel]]"
   - "[[prism-prior-guided-imagination-sampling]]"
+  - "[[patch-policy]]"
+  - "[[intact]]"
 aliases:
   - "Robotics world model comparison"
   - "JEPA vs diffusion vs VLA world models"
@@ -34,17 +36,18 @@ How do **JEPA-style latent planners**, **generative video/diffusion world models
 
 ## Summary
 
-The wiki's robotics sources agree that **semantic latents outperform reconstruction latents** for policy-relevant rollouts ([[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]]), but they disagree on the best architecture for closed-loop control. JEPA end-to-end world models ([[leworldmodel|LeWM]] → [[delta-jepa|Delta-JEPA]]) optimize latent dynamics for MPC; [[fast-leworldmodel|Fast-LeWM]] and [[prism-prior-guided-imagination-sampling|PRISM]] show that the rollout and proposal interfaces remain major bottlenecks even after a latent model is learned; frozen-VFM generative models ([[delta-world|DeltaWorld]]) prioritize sample-efficient video forecasting; VLAs and [[world-action-models|WAMs]] joint-model states and actions for reactive embodied policies.
+The wiki's robotics sources agree that **semantic latents outperform reconstruction latents** for policy-relevant rollouts ([[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]]), but they disagree on the best architecture for closed-loop control. JEPA end-to-end world models ([[leworldmodel|LeWM]] → [[delta-jepa|Delta-JEPA]]) optimize latent dynamics for MPC; [[fast-leworldmodel|Fast-LeWM]] and [[prism-prior-guided-imagination-sampling|PRISM]] improve rollout and proposal interfaces; [[intact|INTACT]] instead learns a direct intent-to-action interface while retaining the forward model for optional verification; frozen-VFM generative models ([[delta-world|DeltaWorld]]) prioritize sample-efficient video forecasting; VLAs and [[world-action-models|WAMs]] jointly model states and actions; and [[patch-policy|Patch Policy]] shows that frozen [[dense-visual-representations|dense visual features]] can support a lightweight direct policy without learned dynamics or imagined rollouts.
 
 ## Architecture Families
 
 | Family | Representative sources | Latent / output | Training signal | Planning / control |
 |--------|-------------------------|-----------------|-----------------|------------------|
-| **JEPA latent dynamics** | [[leworldmodel|LeWM]], [[sub-jepa|Sub-JEPA]], [[sensorimotor-world-models|SMWM]], [[delta-jepa|Delta-JEPA]] | Patch/object latents from pixels | Latent prediction + regularization or inverse dynamics | MPC / CEM on latent distance to goal |
+| **JEPA latent dynamics** | [[leworldmodel|LeWM]], [[sub-jepa|Sub-JEPA]], [[sensorimotor-world-models|SMWM]], [[delta-jepa|Delta-JEPA]], [[intact|INTACT]] | Patch/object latents from pixels | Latent prediction + regularization or inverse/action supervision | MPC / CEM, or Direct control with optional local verification |
 | **Frozen semantic encoder WM** | [[dino-wm|DINO-WM]], [[temporal-straightening|Temporal Straightening]], [[adajepa|AdaJEPA]] | Frozen DINOv2 patches | Latent consistency on offline trajectories | Zero-shot visual MPC to goal image |
 | **Generative video WM** | [[delta-world|DeltaWorld]], Cosmos-class diffusion | VFM features or pixels | Reconstruction / delta-token prediction | Best-of-N rollouts; dense forecasting metrics |
 | **Semantic-latent diffusion WM** | [[reconstruction-or-semantics-robotic-world-models|Reconstruction or Semantics]] | V-JEPA 2.1, Web-DINO, SigLIP 2 | Diffusion in semantic latent space | Action recovery + policy-in-the-loop |
 | **VLA / WAM** | [[world-action-models|World Action Models]], RT-style policies | Multimodal tokens | Imitation + joint state-action modeling | Direct action output; less explicit rollouts |
+| **Frozen dense-feature direct policy** | [[patch-policy|Patch Policy]] | Frozen pretrained ViT patch tokens | Behavior cloning with standard transformer policy heads | Direct action chunks; no learned transition model or imagined rollout |
 
 ## JEPA World Models on Shared Benchmarks
 
@@ -62,14 +65,15 @@ Four end-to-end JEPA world models share LeWM-style environments (Two-Room, Reach
 
 ## Planning Interface After Representation Learning
 
-[[fast-leworldmodel|Fast-LeWM]] and [[prism-prior-guided-imagination-sampling|PRISM]] hold much of the LeWM stack fixed and optimize different parts of [[sampling-based-latent-planning]]:
+Recent LeWM extensions optimize distinct parts of [[sampling-based-latent-planning]]:
 
 | Method | Interface changed | Main result |
 | --- | --- | --- |
 | [[fast-leworldmodel|Fast-LeWM]] | Dynamics query and rollout | 3.9 times faster dynamics evaluation; average success 90.5% vs 85.8% |
 | [[prism-prior-guided-imagination-sampling|PRISM]] | Candidate proposal distribution | PushT 89% vs 57% and Cube 79% vs 44% at 128 samples |
+| [[intact|INTACT]] | Direct inverse/action interface | 95.33% Direct macro with zero candidates; 96.86% with bounded local verification |
 
-Fast-LeWM shows that one-step autoregression is not required for short-horizon latent MPC. PRISM shows that an accurate scorer can still waste most of its budget on poor proposals. Their interventions are complementary in principle, but no shared experiment yet combines parallel action-prefix prediction with confidence-weighted proposal sampling.
+Fast-LeWM shows that one-step autoregression is not required for short-horizon latent MPC. PRISM shows that an accurate scorer can still waste budget on poor proposals. INTACT learns the goal-to-action conversion jointly with the representation, making sampled search optional on its demonstrated support. These interventions are complementary in principle, but no shared experiment combines parallel prefix prediction, calibrated proposals or direct actions, uncertainty-triggered verification, and deployment adaptation.
 
 ## Semantic vs Reconstruction Latents
 
@@ -101,7 +105,9 @@ No single paper in the wiki scores all four on identical benchmarks — cross-fa
 | Deployment under distribution shift | [[adajepa|AdaJEPA]] closed-loop TTA |
 | Fast CEM candidate evaluation | [[fast-leworldmodel|Fast-LeWM]] action-prefix prediction |
 | Low-budget MPPI sample efficiency | [[prism-prior-guided-imagination-sampling|PRISM]] uncertainty-aware proposal fusion |
+| Search-free in-domain JEPA control with optional verification | [[intact|INTACT]] shared intent-to-action operator |
 | Reactive embodied foundation model | [[world-action-models|WAM]] / VLA joint modeling |
+| High-frequency in-domain control over frozen dense features | [[patch-policy|Patch Policy]] without explicit world rollout |
 | Object-centric causal reasoning | [[causal-jepa|C-JEPA]] |
 
 ## Gaps

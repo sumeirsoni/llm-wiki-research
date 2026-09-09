@@ -2,7 +2,7 @@
 title: "Learn from your own latents and not from tokens: A sample-complexity theory"
 type: source
 created: 2026-05-20
-updated: 2026-07-11
+updated: 2026-08-11
 arxiv_id: "2605.27734"
 authors:
   - "Daniel J. Korchinski"
@@ -57,7 +57,7 @@ The Random Hierarchy Model generates visible tokens from a depth-L tree with bra
 
 - Provides theoretical backing for the [[jepa|JEPA]] paradigm and [[lejepa|LeJEPA]]'s focus on latent-space prediction over token reconstruction.
 - Explains why [[learn-from-your-own-latents|latent objectives]] may outperform token-level training in data-limited regimes; relevant to [[visreg|VISReg]] and other collapse-prevention regularizers that shape latent geometry.
-- Questions explicit multi-scale stacking used in [[bootleg|Bootleg]] and [[v-jepa-2-1|V-JEPA 2.1]] if single-module EMA teachers already induce phased hierarchical learning (as in data2vec).
+- Questions explicit multi-scale stacking used in [[bootleg|Bootleg]] and [[v-jepa-2-1|V-JEPA 2.1]] if single-module EMA teachers already induce phased hierarchical learning (as in data2vec). [[hierarchical-latent-prediction|HiLP]] provides a language-model counterpoint: an explicit coarse temporal latent improves long-horizon prediction at 1B scale, though it does not test the theory's capacity-matched implicit-hierarchy alternative.
 - Contrasts with [[convergent-world-representations-and-divergent-tasks|Convergent World Representations]]: token-level multi-task learning can fracture geometry even when latent prediction is theoretically more efficient.
 
 ## Limitations & Open Questions

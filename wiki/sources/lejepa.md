@@ -2,7 +2,7 @@
 title: "LeJEPA: Provable and Scalable Self-Supervised Learning Without the Heuristics"
 type: source
 created: 2026-04-10
-updated: 2026-07-11
+updated: 2026-08-25
 arxiv_id: "2511.08544"
 authors:
   - "Randall Balestriero"
@@ -63,8 +63,11 @@ This eliminates the need for:
 - SIGReg regularizer directly adopted by [[leworldmodel|LeWorldModel]] for stable end-to-end training
 - Contrasts with [[rethinking-jepa|Rethinking JEPA (SALT)]] — LeJEPA removes EMA entirely, while SALT replaces EMA with a frozen teacher
 - [[visreg|VISReg]] proposes an alternative regularizer to SIGReg with decoupled scale/shape control and stronger collapse gradients
+- Orthogonal complement: [[remove-symmetries|syre]] removes *parameter-space* reflection symmetries via a shifted weight-decay center rather than regularizing embeddings; the two target different degenerate solutions and have never been combined
 - Extended to vision-language pretraining as [[levljepa|LeVLJEPA]] — cross-modal predictors + stop-gradient + per-modality SIGReg (asymmetric; symmetric cross-modal MSE collapses)
 - Contrasts with [[bootleg|Bootleg]] which still uses teacher-student distillation but across hidden layers
+- [[obsessed-encoder|The Obsessed Encoder]] trains LeJEPA from scratch with a faint planted watermark and reproduces full collapse despite SIGReg: a low-dimensional sheet folded across the embedding space passes every random-projection Gaussianity test, so distributional regularity does not imply informative allocation - see [[feature-suppression]]
+- [[lpwm|LpWM]] extends the distribution-matching line past maximum-entropy density: its RDMReg matches rectified projections to a Rectified Generalized Gaussian (default Rectified Laplace, p=1), yielding sparse non-negative codes. LeWM's dense isotropic Gaussian is the p=2 no-ReLU special case. The empirical claim: for dynamics modeling and planning, the sparse geometry needs less predictor capacity than the dense one - directly questioning whether isotropic-Gaussian density is optimal when the downstream task is control rather than prediction risk
 - Part of the broader effort by [[randall-balestriero|Randall Balestriero]] and [[yann-lecun|Yann LeCun]] to put SSL on rigorous theoretical footing
 
 ## Limitations & Open Questions
@@ -74,6 +77,9 @@ This eliminates the need for:
 
 > [!open-question]
 > Can SIGReg be applied to other SSL paradigms beyond JEPA (e.g., contrastive learning)?
+
+> [!open-question]
+> Does the [[lpwm|LpWM]] result - sparse codes needing less predictor capacity for planning - generalize beyond low-dimensional control, or is it specific to the dynamics-modeling setting?
 
 ## Future Work
 

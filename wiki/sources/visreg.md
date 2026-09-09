@@ -59,6 +59,7 @@ Total objective: `L = (1 - λ) L_pred + λ L_reg`. Trained on ViT-B/16 and ViT-L
 - Direct successor/alternative to [[lejepa|LeJEPA]]'s SIGReg within the [[jepa|JEPA]] framework; authored in part by [[randall-balestriero|Randall Balestriero]].
 - Addresses [[representation-collapse|representation collapse]] with explicit distributional control rather than EMA or stop-gradient heuristics.
 - Complements [[sub-jepa|Sub-JEPA]]'s subspace Gaussian idea by asking whether scale/shape decoupling and SWD are better priors than Epps-Pulley normality tests.
+- Shares VISReg's random-projection + Wasserstein machinery with [[lpwm|LpWM]]'s RDMReg: same sliced-comparison skeleton, opposite target philosophy - VISReg keeps maximum-entropy dense Gaussians while RDMReg chooses a sparse non-maximum-entropy target (Rectified Laplace) to shape the geometry for dynamics modeling.
 - Relevant to [[learn-from-your-own-latents|Learn from your own latents]] as another theoretical lens on why latent-space objectives can be more efficient than token-level learning.
 
 ## Limitations & Open Questions

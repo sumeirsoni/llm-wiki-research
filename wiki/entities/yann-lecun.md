@@ -2,7 +2,7 @@
 title: "Yann LeCun"
 type: entity
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-08-25
 tags:
   - researcher
   - meta-fair
@@ -15,6 +15,9 @@ sources:
   - "[[temporal-difference-vision]]"
   - "[[adajepa]]"
   - "[[temporal-straightening]]"
+  - "[[patch-policy]]"
+  - "[[lpwm]]"
+  - "[[levjepa]]"
 aliases:
   - "LeCun"
 ---
@@ -37,6 +40,9 @@ LeCun is a co-author on multiple JEPA-family papers in this wiki:
 - [[adajepa|AdaJEPA]] — adaptive latent world model with test-time recalibration in MPC (with Mengye Ren, NYU/AMI Labs)
 - [[temporal-straightening|Temporal Straightening]] — curvature regularization for planning-friendly JEPA latent geometry (ICML 2026)
 - [[dino-wm|DINO-WM]] — zero-shot latent planning on frozen DINOv2 features (ICML 2025, with Lerrel Pinto)
+- [[patch-policy|Patch Policy]] - lightweight robot policies over frozen dense ViT features (NYU/AMI Labs co-authorship)
+- [[lpwm|LpWM]] - sparse representations for world models (NYU/AMI Labs; with first author [[yilun-kuang|Yilun Kuang]])
+- [[levjepa|LeVJEPA]] - efficient video pretraining with SIGReg, sparse token processing, and causal attention (with Lukas Kuhn, Lucas Maes, and collaborators)
 
 ## JEPA Vision
 

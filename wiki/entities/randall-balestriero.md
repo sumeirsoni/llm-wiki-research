@@ -2,7 +2,7 @@
 title: "Randall Balestriero"
 type: entity
 created: 2026-04-10
-updated: 2026-07-03
+updated: 2026-08-25
 tags:
   - researcher
   - meta-fair
@@ -15,6 +15,9 @@ sources:
   - "[[temporal-straightening]]"
   - "[[sensorimotor-world-models]]"
   - "[[levljepa]]"
+  - "[[viscore]]"
+  - "[[lpwm]]"
+  - "[[levjepa]]"
 aliases:
   - "Balestriero"
 ---
@@ -34,7 +37,10 @@ Co-author on several key JEPA papers focused on principled, theoretically-ground
 - [[causal-jepa|Causal-JEPA]] — extended JEPA to object-centric representations
 - [[temporal-straightening|Temporal Straightening]] — curvature regularization for latent planning geometry (ICML 2026, with Wang, LeCun, Ren)
 - [[sensorimotor-world-models|SMWM]] — inverse dynamics regularization for action-aligned end-to-end JEPA world models (with Ivashkov, Schölkopf)
-- [[levljepa|LeVLJEPA]] — non-contrastive vision-language pretraining via cross-modal prediction + SIGReg (with Kuhn, Serra, Buettner)
+- [[levljepa|LeVLJEPA]] - non-contrastive vision-language pretraining via cross-modal prediction + SIGReg (with Kuhn, Serra, Buettner)
+- [[viscore|VIScore]] - diagnostic framework separating world-model veracity, action influence, and planner sobriety
+- [[lpwm|LpWM]] - sparse representations for world models (Brown University / AMI Labs affiliation on this paper; with first author [[yilun-kuang|Yilun Kuang]])
+- [[levjepa|LeVJEPA]] - efficient video pretraining with LeJEPA's SIGReg objective
 
 ## Research Theme
 

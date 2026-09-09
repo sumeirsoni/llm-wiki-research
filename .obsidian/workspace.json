@@ -22,63 +22,49 @@
             }
           },
           {
-            "id": "994ce9d770fedf02",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "wiki/sources/on-the-geometry-of-on-policy-distillation.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "on-the-geometry-of-on-policy-distillation"
-            }
-          },
-          {
-            "id": "8e625c960eabf038",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "wiki/sources/on-policy-representation-distillation.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "on-policy-representation-distillation"
-            }
-          },
-          {
-            "id": "58369a2669c0df84",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "wiki/sources/phf.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "phf"
-            }
-          },
-          {
             "id": "f224f74d6e6d5ca8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/sources/next-latent-prediction.md",
+                "file": "wiki/sources/prism-prior-guided-imagination-sampling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "next-latent-prediction"
+              "title": "prism-prior-guided-imagination-sampling"
+            }
+          },
+          {
+            "id": "7f41216ba4e5a5ba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/sources/intact.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "intact"
+            }
+          },
+          {
+            "id": "a2c517eceb91f1ed",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "wiki/sources/leflow.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "leflow"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -98,7 +84,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -241,44 +229,54 @@
       "marp-slides:Show Slide Preview": false
     }
   },
-  "active": "f224f74d6e6d5ca8",
+  "active": "a2c517eceb91f1ed",
   "lastOpenFiles": [
-    "wiki/concepts/sampling-based-latent-planning.md",
-    "wiki/sources/prism-prior-guided-imagination-sampling.md",
-    "wiki/sources/fast-leworldmodel.md",
-    "wiki/entities/mnist.md",
-    "wiki/concepts/learnable-novelty.md",
-    "wiki/sources/intelligence-from-learnable-novelty.md",
-    "wiki/sources/normalizing-trajectory-models.md",
-    "wiki/sources/on-policy-representation-distillation.md",
-    "wiki/sources/on-the-geometry-of-on-policy-distillation.md",
-    "wiki/sources/on-the-position-bias-of-on-policy-distillation.md",
-    "wiki/sources/phf.md",
-    "wiki/sources/causal-jepa.md",
-    "wiki/sources/attractor-models.md",
-    "wiki/sources/bootleg.md",
-    "wiki/sources/autoregressive-language-models-are-secretly-energy-based-models.md",
-    "CLAUDE.md",
-    "test/hooks.test.mjs",
-    "test/session-state.test.mjs",
-    "scripts/hooks/session-review.mjs",
-    "scripts/hooks/policy.mjs",
-    "scripts/hooks/session-state.mjs",
-    "scripts/hooks/snapshot.mjs",
-    "scripts/hooks/hook-io.mjs",
-    "test/qmd.test.mjs",
-    "scripts/qmd/configure.mjs",
-    "scripts/qmd/reindex.mjs",
-    "wiki/sources/sensorimotor-world-models.md",
-    "wiki/sources/lotus.md",
-    "wiki/sources/pretraining-recurrent-networks-without-recurrence.md",
-    "wiki/concepts/iterative-refinement.md",
-    "wiki/comparisons/oprd-literature-review.md",
+    "personal-notes/Ideas.md",
+    "wiki/comparisons/generative-modeling-techniques-in-llms.md",
+    "wiki/comparisons/few-step-generative-modeling-for-world-action-and-jepa-planning.md",
     "wiki/comparisons/ema-vs-non-ema-collapse-prevention.md",
-    "wiki/comparisons/oprd-adversarial-review.md",
-    "wiki/tier0-results.md",
-    "wiki/tier3-results.md",
-    "wiki/sources/un-0-coupled-oscillators.md",
+    "wiki/sources/orthogonal-jepa.md",
+    "wiki/sources/driftworld.md",
+    "wiki/sources/explorative-modeling.md",
+    "wiki/concepts/candidate-exploration.md",
+    "personal-notes/DEPRECATED - Transfer notes from iphone.md",
+    "personal-notes/DEPRECATED - LeJEPA-SelfFlow-Implementation-Plan.md",
+    "personal-notes/SALT + Bootleg, V-JEPA 2.1, and maybe Self-Flow.md",
+    "personal-notes/LeJEPA + Self-Flow.md",
+    "personal-notes/Looped JEPA.md",
+    "wiki/sources/leflow.md",
+    "wiki/concepts/single-step-generative-models.md",
+    "wiki/sources/roms-imle.md",
+    "wiki/sources/latent-energy-action-planning.md",
+    "wiki/concepts/compositional-generalization.md",
+    "wiki/sources/loop-think-generalize.md",
+    "wiki/concepts/jacobian-lens-workspace.md",
+    "wiki/sources/looped-transformers-jacobian-lens.md",
+    "AGENTS.md",
+    "wiki/concepts/state-prediction-separation-concept.md",
+    "wiki/concepts/critic-based-llm-rl.md",
+    "wiki/concepts/state-prediction-separation.md",
+    "wiki/sources/best-practice-critic-optimization.md",
+    "node_modules/node-llama-cpp/llama/xpack/cmakeInstall.lock",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/stb/stb_image.h",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/sheredom/subprocess.h",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/nlohmann/json_fwd.hpp",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/nlohmann/json.hpp",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/miniaudio/miniaudio.h",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/cpp-httplib/httplib.h",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/cpp-httplib/httplib.cpp",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/cpp-httplib/LICENSE",
+    "node_modules/node-llama-cpp/llama/llama.cpp/vendor/cpp-httplib/CMakeLists.txt",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/webui/tests/stories/fixtures/assets/hf-logo.svg",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/webui/tests/stories/fixtures/assets/beautiful-flowers-lotus.webp",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/webui/tests/stories/fixtures/assets/1.jpg",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/webui/static/favicon.svg",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/themes/buttons-top/buttons_top.png",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/themes/wild/wild.png",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/themes/wild/llamapattern.png",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/themes/wild/llama_cpp.png",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/server/public_simplechat/simplechat_screens.webp",
+    "node_modules/node-llama-cpp/llama/llama.cpp/tools/mtmd/test-1.jpeg",
     "personal-notes/Untitled.canvas",
     "Untitled.canvas",
     "Untitled 1.canvas"

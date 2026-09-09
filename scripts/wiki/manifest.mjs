@@ -23,7 +23,7 @@ function parseIndex(body) {
       section = INDEX_SECTIONS.get(heading[1]) ?? null;
       return;
     }
-    const entry = line.match(/^-\s+\[\[([^\]|#]+)(?:\|[^\]]+)?\]\]\s+—\s+(.+)$/);
+    const entry = line.match(/^-\s+\[\[([^\]|#]+)(?:\|[^\]]+)?\]\]\s+(?:\u2014|-)\s+(.+)$/);
     if (entry && section) {
       entries.push({ section, target: entry[1].trim().replace(/\.md$/i, ""), summary: entry[2].trim(), line: index + 1 });
     }

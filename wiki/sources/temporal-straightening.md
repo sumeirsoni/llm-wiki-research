@@ -2,7 +2,7 @@
 title: "Temporal Straightening for Latent Planning"
 type: source
 created: 2026-07-03
-updated: 2026-07-24
+updated: 2026-07-25
 arxiv_id: "2603.12231"
 authors:
   - "Ying Wang"
@@ -79,11 +79,13 @@ Goal-reaching via GD or MPC minimizing $\|\hat{z}_T - z_g\|_2^2$ over action seq
 ## Connections
 
 - Directly improves [[dino-wm|DINO-WM]]'s limitation: frozen DINOv2 features are semantically strong but geometrically curved for planning.
+- Complements [[patch-policy|Patch Policy]] and [[dense-visual-representations]] by separating spatial support from trajectory geometry. Patch Policy loses performance when patch positions are removed, while this work compresses channel width and preserves the spatial grid.
 - Training methodology used by [[adajepa|AdaJEPA]] (same author team: Wang, Bounou, LeCun, Ren).
 - Extends [[jepa|JEPA]] world-model line beyond collapse prevention ([[lejepa|LeJEPA]], [[sub-jepa|Sub-JEPA]]) toward **planning-aware representation geometry**.
 - Connects to [[representation-geometry|representation geometry]]: latent curvature and distance faithfulness matter for control, not just semantic richness.
+- Co-authored by [[gaoyue-zhou|Gaoyue Zhou]], who also led DINO-WM and Patch Policy.
 - Inspired by perceptual straightening hypothesis (Hénaff et al., 2019); related to plannable representation literature (Eysenbach et al., 2024; Plan2Vec).
-- Provides the representation-geometry branch of [[sampling-based-latent-planning]], complementary to [[fast-leworldmodel|Fast-LeWM]]'s rollout interface and [[prism-prior-guided-imagination-sampling|PRISM]]'s candidate proposal
+- Provides the representation-geometry branch of [[sampling-based-latent-planning]], complementary to [[fast-leworldmodel|Fast-LeWM]]'s rollout interface and [[prism-prior-guided-imagination-sampling|PRISM]]'s candidate proposal.
 
 ## Limitations & Open Questions
 

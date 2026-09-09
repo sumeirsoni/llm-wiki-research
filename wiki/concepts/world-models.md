@@ -2,7 +2,7 @@
 title: "World Models"
 type: concept
 created: 2026-04-10
-updated: 2026-07-24
+updated: 2026-09-04
 tags:
   - world-model
   - representation-learning
@@ -17,6 +17,7 @@ sources:
   - "[[convergent-world-representations-and-divergent-tasks]]"
   - "[[delta-world]]"
   - "[[next-latent-prediction]]"
+  - "[[hierarchical-latent-prediction]]"
   - "[[adajepa]]"
   - "[[temporal-straightening]]"
   - "[[dino-wm]]"
@@ -24,6 +25,14 @@ sources:
   - "[[delta-jepa]]"
   - "[[fast-leworldmodel]]"
   - "[[prism-prior-guided-imagination-sampling]]"
+  - "[[intact]]"
+  - "[[explorative-modeling]]"
+  - "[[generalization-theory-for-jepa-world-models]]"
+  - "[[viscore]]"
+  - "[[leflow]]"
+  - "[[driftworld]]"
+  - "[[better-slots-better-worlds]]"
+  - "[[latent-energy-action-planning]]"
 aliases:
   - "World model"
 ---
@@ -80,7 +89,31 @@ Several papers in this wiki apply [[jepa|JEPA]] to world modeling and latent pla
 - **Planning**: At 128 candidates, PushT 89% vs vanilla MPPI 57% and Cube 79% vs 44%, with negligible added latency
 - **Mechanism**: Fixed fused covariance preserves prior confidence across MPPI iterations and falls back toward vanilla sampling when uncertain
 
-These additions separate world-model quality from the broader [[sampling-based-latent-planning|planning interface]]: Fast-LeWM changes how a candidate is rolled out, while PRISM changes which candidates are proposed.
+### [[intact|INTACT]]
+- **Focus**: Direct intent-to-action control inside an end-to-end JEPA world model
+- **Key idea**: One conditional action operator interprets attached local displacement and detached future-goal displacement, jointly shaping representation and deployment mapping
+- **Planning**: Direct zero-candidate control reaches 95.33% macro across four separately trained simulated tasks; bounded local verification reaches 96.86%
+- **Mechanism**: Uses the learned conditional mean by default while retaining the forward predictor for rollout, replanning, and optional verification
+
+These additions separate world-model quality from the broader [[sampling-based-latent-planning|planning interface]]: Fast-LeWM changes how a candidate is rolled out, PRISM changes which candidates are proposed, and INTACT amortizes the inverse control query so candidate search can become optional.
+
+### Amortized and Generative Planning
+
+[[leflow|LeFlow]] learns a reusable rectified-flow prior over latent trajectories between current and goal embeddings. An inverse-dynamics decoder turns latent transitions into action chunks, while the frozen LeWM predictor reranks candidates for feasibility. This changes the proposal interface from repeated black-box CEM search to one batched proposal-and-verification pass, improving success and reducing planning time by roughly an order of magnitude on the LeWM benchmark suite.
+
+[[driftworld|DriftWorld]] takes a different route to fast imagination: it generates action-conditioned future video in one forward pass using a drifting generative model. Its fast rollouts support both GPC-RANK policy improvement and offline policy ranking, extending the world-model role from latent MPC to high-throughput visual simulation.
+
+### Object-Centric World Models
+
+[[better-slots-better-worlds|Better Slots Better Worlds]] controls for slot quality and compares SlotContrast-WM with DINO-WM and LeWM. Planning success rises with slot quality and then saturates; well-bound slots make proprioception and slot masking unnecessary in the tested tasks. Robustness under appearance shifts is strongest for the object-centric model, but DINO-WM remains similarly robust, suggesting frozen pretrained visual features are an important factor separate from object binding. See [[object-centric-world-models]] for the focused synthesis.
+
+## Theory and Planning-Relevant Diagnostics
+
+[[generalization-theory-for-jepa-world-models|JEPA World Model Generalization Theory]] links an action-conditioned spectral objective to low-rank transition factorization, finite-sample risk, and planning regret. Its main contribution is a bias-complexity view of latent dimension, but the experiment is synthetic and the practical objective differs from the analyzed one.
+
+[[viscore|VIScore]] separates three failure sources in a deployed planning stack: whether predictions remain on-manifold, whether actions influence latent futures, and whether search exploits unsupported trajectories. It predicts checkpoint rankings across several tasks and planners better than isolated static metrics, while discrete contact events and amortized or inverse-dynamics planners remain outside its validated scope.
+
+[[latent-energy-action-planning|LEAP]] addresses a related planner failure inside a frozen LeWM stack. It adds decoder-predicted terminal-state agreement to the latent goal cost and differentiates the combined energy through the complete action horizon. LEAP improves mean success from 77.5% for native LeWM+CEM to 94.8% under a matched four-domain protocol, but terminal-state matching does not certify that the selected action or rollout remains within offline-data support.
 
 ## Key Differences
 
@@ -105,9 +138,11 @@ See [[robot-world-model-architectures]] for a filed comparison of JEPA, diffusio
 
 [[delta-world|DeltaWorld]] shows that generative world modeling in frozen VFM (DINOv3) feature space can be orders of magnitude more efficient than pixel-level diffusion models. DeltaTok compresses each frame's temporal change into a single delta token (1,024× reduction per frame), and Best-of-Many training generates diverse future hypotheses in one forward pass. Best-of-20 predictions outperform Cosmos-4B/12B on dense forecasting (segmentation, depth) with 35× fewer parameters and 2,000× fewer FLOPs, supporting the [[reconstruction-or-semantics-robotic-world-models|semantic-over-reconstruction]] thesis for world model latents.
 
+[[explorative-modeling|Explorative Modeling]] generalizes this [[candidate-exploration|candidate-search]] pattern and tests it as a standalone low-step trajectory world model. On Maze2D, XM-10 averages 130.0 score with 2.3 network evaluations versus 127.2 with 192 for a reproduced Diffuser, although it underperforms on the Medium task. This suggests training-time exploration can reduce rollout depth in constrained trajectory domains. The proposed extension to JEPA-style feature-space world models is author-stated future work, not a demonstrated result.
+
 ## Belief-State World Models in Transformers
 
-[[next-latent-prediction|NextLat]] addresses a gap identified by Vafa et al.: transformers can achieve perfect next-token accuracy on Manhattan taxi trajectories while learning incoherent internal maps. NextLat's auxiliary latent dynamics objective provably shapes hidden states into belief states — sufficient statistics of history for predicting the future. On the Manhattan benchmark, NextLat reconstructs coherent street maps (98.7% valid OOD trajectories, effective latent rank 52.7 vs GPT 160.1). This connects to [[topological-trouble-with-transformers|Topological Trouble With Transformers]]'s argument that feedforward transformers need explicit pressure to compress history rather than relying on context-window retrieval.
+[[next-latent-prediction|NextLat]] addresses a gap identified by Vafa et al.: transformers can achieve perfect next-token accuracy on Manhattan taxi trajectories while learning incoherent internal maps. NextLat's auxiliary latent dynamics objective provably shapes hidden states into belief states, sufficient statistics of history for predicting the future. On the Manhattan benchmark, NextLat reconstructs coherent street maps (98.7% valid OOD trajectories, effective latent rank 52.7 vs GPT 160.1). [[hierarchical-latent-prediction|HiLP]] adds a coarser state over a four-token window and predicts its future directly, reducing long-horizon rollout error relative to flat NextLat dynamics while discarding the hierarchy at ordinary inference. This connects to [[topological-trouble-with-transformers|Topological Trouble With Transformers]]'s argument that feedforward transformers need explicit pressure to compress history rather than relying on context-window retrieval.
 
 ## JEPA-Based Latent Planning ([[dino-wm|DINO-WM]] → [[temporal-straightening|Temporal Straightening]] → [[adajepa|AdaJEPA]])
 

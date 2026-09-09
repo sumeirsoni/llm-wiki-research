@@ -2,7 +2,7 @@
 title: "Iterative Refinement"
 type: concept
 created: 2026-05-17
-updated: 2026-07-16
+updated: 2026-09-04
 tags:
   - transformer
   - language
@@ -21,9 +21,19 @@ sources:
   - "[[pretraining-recurrent-networks-without-recurrence]]"
   - "[[topological-trouble-with-transformers]]"
   - "[[next-latent-prediction]]"
+  - "[[hierarchical-latent-prediction]]"
   - "[[un-0-coupled-oscillators]]"
   - "[[fixed-point-reasoners]]"
   - "[[lotus]]"
+  - "[[bdh-cq]]"
+  - "[[full-bandwidth-transformer]]"
+  - "[[j-cot]]"
+  - "[[recirculation]]"
+  - "[[dynamic-compression]]"
+  - "[[smelt]]"
+  - "[[state-prediction-separation]]"
+  - "[[looped-transformers-jacobian-lens]]"
+  - "[[loop-think-generalize]]"
 aliases:
   - "Latent thinking"
   - "Architectural recurrence"
@@ -80,7 +90,31 @@ SMT trains nonlinear RNNs without BPTT by using a Transformer teacher to generat
 
 ### Belief-State Latent Dynamics ([[next-latent-prediction|NextLat]])
 
-NextLat co-trains a transformer with a lightweight MLP latent dynamics model that predicts next hidden states from (h_t, X_{t+1}). The auxiliary objective provably shapes representations into belief states and enables variable-length self-speculative decoding (up to 3.3× speedup). Surprisingly, the co-trained MLP generalizes to longer sequences than the transformer itself on state-tracking tasks — partially escaping the parallelism tradeoff identified in [[topological-trouble-with-transformers|Topological Trouble With Transformers]].
+NextLat co-trains a transformer with a lightweight MLP latent dynamics model that predicts next hidden states from $(h_t, X_{t+1})$. The auxiliary objective provably shapes representations into belief states and enables variable-length self-speculative decoding (up to 3.3× speedup). Surprisingly, the co-trained MLP generalizes to longer sequences than the transformer itself on state-tracking tasks, partially escaping the parallelism tradeoff identified in [[topological-trouble-with-transformers|Topological Trouble With Transformers]]. [[hierarchical-latent-prediction|HiLP]] extends this pattern with a sliding-window abstract state that predicts four positions ahead directly. At 1B scale, the explicit temporal hierarchy lowers longer-horizon rollout error and modestly improves coding and speculative draft acceptance over NextLat, while remaining a training-only scaffold.
+
+### Cross-Token Latent Feedback ([[full-bandwidth-transformer|Full-Bandwidth Transformer]])
+
+The Full-Bandwidth Transformer returns each generated position's top-layer hidden state to the bottom of the stack at the next position. Unlike fixed-query loops, recurrence advances with token generation; unlike NextLat and HiLP, it remains active at inference. Multi-pass parallel training preserves transformer-scale batching, while soft feedback adds reported sub-1% per-token overhead. The central trade-off is extra training and optional prefill compute for recurrent access to processed state.
+
+### Demonstration-Conditioned Latent Reasoning ([[bdh-cq|BDH-CQ]])
+
+BDH-CQ separates persistent memory updated by in-context demonstrations from a query workspace refined for a variable number of latent steps. Its 150M-parameter ARC system reports 29.5% pass@2 at $0.00070 computed cost per task. This is an efficiency-oriented deterministic recursion point beside GRAM's stochastic width scaling, but exact reproduction is blocked by proprietary architecture and training details.
+
+### Vocabulary-Indexed Recurrent Reasoning ([[j-cot|J-CoT]])
+
+J-CoT carries sparse, nonnegative coefficients over vocabulary-indexed layer directions between recurrent compute cycles. It occupies a middle interface between explicit decoded CoT and unrestricted dense recurrence: ordinary transformer blocks perform the within-cycle computation, while only a structured J-thought crosses the cycle boundary. Training the carrier and read gate improves over the training-free interface, but the v1 release omits several referenced reproducibility appendices.
+
+### Post-Hoc Deep-to-Shallow Feedback ([[recirculation|Recirculation]])
+
+Recirculation injects a source-layer representation from one token into a shallower destination layer for the next token, retrofitting recurrence into a frozen pretrained transformer. Fixed settings improve perplexity broadly on Gemma, while a small token-conditional controller reports a 23% mean reduction. The benefit transfers weakly to other model families and serializes prompt prefill, so it is best understood as an architecture-sensitive inference intervention rather than a universal recurrence recipe.
+
+### Selective History Re-Scanning ([[dynamic-compression|Dynamic Compression]])
+
+Dynamic compression attacks a different bottleneck: not depth, but the fixed-size *state* of single-pass recurrent models. A Gated DeltaNet keeps an O(t) raw token record and selectively re-scans past positions through additional recurrent updates, revising its working memory once a query reveals what matters. Single-pass compression needs ~1000x more state going from 1 to 3 stored functions (~3k to ~3M elements), while oracle re-scanning at ~111k elements beats single-pass at ~3.1M; a learned selection policy distilled from repeat-model write-strength patterns recovers much of that benefit label-free. This is the clearest computation-memory tradeoff in the wiki - extra compute buys better use of a small state, rather than deeper reasoning or higher output quality.
+
+### State-Prediction Separation ([[state-prediction-separation-concept|SPS]])
+
+SPS separates the immediate next-token prediction role from persistent state preparation. It inserts a learned <predict> step after each input token, keeps input-stream KV entries persistent, and limits prediction-stream entries to a recent window. This is an internal state interface rather than a user-visible reasoning loop: it adds training computation and attention-mask complexity while keeping inference cache size close to a standard Transformer. Its controlled Delayed State baseline shows that the role separation matters beyond simply adding a computation step.
 
 ### Continuous ODE Attractors ([[un-0-coupled-oscillators|Un-0]])
 
@@ -94,9 +128,21 @@ NextLat co-trains a transformer with a lightweight MLP latent dynamics model tha
 
 [[lotus|LOTUS]] applies looped Transformers to **latent Chain-of-Thought**: a fixed padded latent prefix is refined over R iterations with a shared question KV cache, then supervised in parallel against gold CoT tokens through the base LM head. This removes the sequential decode bottleneck of explicit CoT and of autoregressive latent methods, while keeping latents readable (LM-head recovery of gold steps). At 3B scale it approaches explicit CoT accuracy with ~2–7× lower thought-phase latency — a practical bridge between [[latent-reasoning-with-normalizing-flows|continuous latent CoT]] and [[hyperloop-transformers|looped depth]] architectures.
 
+### Compute-Matched MoE Looping ([[smelt|SMELT]])
+
+[[smelt|SMELT]] shows that the second visit in a looped Transformer can be useful even after matching per-token FLOPs, total non-embedding parameters, and KV-cache size. Its middle-half, two-pass MoE recipe improves the compute-scaling frontier, especially on structured and long-context data. Mechanistic probes suggest the second pass refines the residual stream and reduces attention-sink mass, but do not yet establish a causal mechanism.
+
+### Workspace persistence under recurrence ([[looped-transformers-jacobian-lens|Jacobian Lens]])
+
+[[looped-transformers-jacobian-lens|Looped Transformers under the Jacobian Lens]] tests whether recurrent refinement carries an interpretable workspace across virtual depth. Ouro reconstructs workspace content at each supervised loop end, while Huginn transports content across recurrences within a short effective window. The paper separates readability from causal access: Huginn verbalises self-computed content at 98% but has no top-1 causal introspection successes in 97 tests. This makes recurrence a question about state transport and intervention placement, not only about repeated computation.
+
+### Implicit compositional reasoning ([[loop-think-generalize|Loop, Think, & Generalize]])
+
+[[loop-think-generalize|Loop, Think, & Generalize]] uses synthetic multi-hop knowledge graphs to test whether recurrence can combine parametric facts that were never composed during training and extrapolate to deeper chains at inference. Recurrent-depth models pass the systematicity split through a three-stage grokking process and gain depth from additional iterations. The same extra compute can hurt after the correct answer is reached, so the paper combines output-distribution stability with entropy for halting. [[compositional-generalization]] records the task design and the shortcut controls.
+
 ## Key Tension
 
-The central tradeoff is between extra computation and useful refinement. Attractor Models complicate this story with **equilibrium internalization**: the model learns to make the first proposal close to the fixed point, so iterative refinement shapes training but may add little at inference. GRAM adds a complementary axis: **width-based scaling** can explore multiple hypotheses in parallel rather than only refining one trajectory deeper.
+The central tradeoff is between extra computation and useful refinement. Attractor Models complicate this story with **equilibrium internalization**: the model learns to make the first proposal close to the fixed point, so iterative refinement shapes training but may add little at inference. GRAM adds a complementary axis: **width-based scaling** can explore multiple hypotheses in parallel rather than only refining one trajectory deeper. [[dynamic-compression|Dynamic compression]] adds a third axis: spending compute on *re-reading raw history* to shrink the memory a task requires, trading inference-time revisits for orders-of-magnitude smaller recurrent state.
 
 ## Open Questions
 

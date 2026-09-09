@@ -2,7 +2,7 @@
 title: "Normalizing Trajectory Models"
 type: source
 created: 2026-05-16
-updated: 2026-07-11
+updated: 2026-07-28
 arxiv_id: "2605.08078"
 authors:
   - "Jiatao Gu"
@@ -57,6 +57,7 @@ Training can occur from scratch over stochastic forward trajectories or by finet
 - Related to [[representation-frechet-loss|Representation Fréchet Loss]] as another path to one-step or few-step high-quality generation.
 - Complements [[energy-based-transformers|Energy-Based Transformers]]: both replace simple direct prediction with iterative or likelihood-based refinement.
 - The exact-likelihood framing may be useful for uncertainty-aware [[world-models|world models]], though this paper focuses on image generation.
+- Complements [[expanding-flow-maps|Expanding Flow Maps]]: NTM enriches large reverse transitions on a fixed-dimensional canvas, while EFM learns few-step transitions that also expand the active state size.
 
 ## Limitations & Open Questions
 

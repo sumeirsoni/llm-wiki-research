@@ -2,7 +2,7 @@
 title: "Sub-JEPA: Subspace Gaussian Regularization for Stable End-to-End World Models"
 type: source
 created: 2026-05-16
-updated: 2026-07-11
+updated: 2026-08-25
 arxiv_id: "2605.09241"
 authors:
   - "Kai Zhao"
@@ -59,6 +59,7 @@ The projections are frozen to prevent co-adaptation and orthogonalized to give b
 - Adds another JEPA-based branch to [[world-models|world models]], especially for continuous-control planning.
 - [[delta-jepa|Delta-JEPA]] is a complementary alternative: replaces Gaussian/subspace regularization entirely with Latent Difference Action Decoding; beats Sub-JEPA on all four shared benchmark tasks in its evaluation.
 - Relates to [[global-geometry-is-not-enough|Global Geometry Is Not Enough]] because both caution against treating global geometry as the whole story.
+- [[orthogonal-jepa|Orthogonal JEPA]] is the learned-bases counterpart: where Sub-JEPA regularizes in frozen random orthogonal subspaces, OJEPA learns orthogonal bases and factorizes the prediction pathway into per-subspace branches - trading Sub-JEPA's freeze-for-stability for dedicated predictive capacity per component.
 
 ## Limitations & Open Questions
 

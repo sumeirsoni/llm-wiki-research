@@ -2,7 +2,7 @@
 title: "The Topological Trouble With Transformers"
 type: source
 created: 2026-06-09
-updated: 2026-07-11
+updated: 2026-08-13
 arxiv_id: "2604.17121"
 authors:
   - "Michael C. Mozer"
@@ -51,6 +51,8 @@ Conceptual analysis grounded in state-update formalism s_t = f(s_{t-1}, x_t), il
 - Critiques explicit CoT as a workaround that [[latent-reasoning-with-normalizing-flows|NF-CoT]] and [[generative-recursive-reasoning|GRAM]] attempt to replace with implicit latent computation.
 - Connects to [[convergent-world-representations-and-divergent-tasks|Convergent World Representations]] on maintaining coherent world state across extended interactions.
 - Taxonomy includes models adjacent to [[energy-based-transformers|Energy-Based Transformers]] and equilibrium-based inference as alternative state-update mechanisms.
+- [[full-bandwidth-transformer|Full-Bandwidth Transformer]] realizes a direct step-recurrent path by feeding each top-layer state into the next position's bottom-layer input; its 1B-scale evidence supports the paper's mechanism-level diagnosis, but not yet indefinite state tracking.
+- [[bdh-cq|BDH-CQ]] supplies a separate demonstration-conditioned memory and recurrent query workspace for ARC, showing how compact latent recurrence can trade additional thinking effort for accuracy without textual CoT.
 
 ## Limitations & Open Questions
 

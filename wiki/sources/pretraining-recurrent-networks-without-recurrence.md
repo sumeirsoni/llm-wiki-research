@@ -2,7 +2,7 @@
 title: "Pretraining Recurrent Networks without Recurrence"
 type: source
 created: 2026-06-09
-updated: 2026-07-11
+updated: 2026-08-13
 arxiv_id: "2606.06479"
 authors:
   - "Akarsh Kumar"
@@ -57,6 +57,8 @@ After SMT, DMT fine-tunes by training on (m̂_t, x_{t+1}) → m_{t+1} where m̂_
 - The predictive-state memory objective connects to [[world-models|world models]] — compressed sufficient statistics of past experience for predicting future observations.
 - Complements [[learn-from-your-own-latents|Learn From Your Own Latents]]: both argue that latent/memory prediction can be more sample-efficient than token-level prediction.
 - DMT's on-policy imitation learning parallels the on-policy training paradigm in [[on-policy-representation-distillation|OPRD]] and [[on-the-geometry-of-on-policy-distillation|OPD geometry analysis]].
+- [[full-bandwidth-transformer|Full-Bandwidth Transformer]] offers another parallel-pretraining route to recurrent inference: it unrolls a small number of hidden-feedback passes with gradients, whereas SMT learns one-step recurrent dynamics from Transformer-generated memory labels and then corrects rollout drift with DMT.
+- [[bdh-cq|BDH-CQ]] demonstrates a compact recurrent memory and workspace on ARC, but proprietary update rules and training details prevent testing whether SMT could reproduce or pretrain the same capability.
 
 ## Limitations & Open Questions
 

@@ -2,7 +2,7 @@
 title: "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels"
 type: source
 created: 2026-04-10
-updated: 2026-07-24
+updated: 2026-09-04
 arxiv_id: "2603.19312"
 authors:
   - "Lucas Maes"
@@ -71,7 +71,11 @@ The key insight is that SIGReg is sufficient to prevent collapse without needing
 - [[delta-jepa|Delta-JEPA]] replaces SIGReg with Latent Difference Action Decoding — **79.3% vs 64.1%** on OGB-Cube in a shared benchmark table with Sub-JEPA and PLDM
 - [[fast-leworldmodel|Fast-LeWM]] retains LeWM's visual encoder and SIGReg but replaces one-step autoregressive rollout with dense action-prefix prediction, improving average success from 85.8% to 90.5% and halving CEM solve time
 - [[prism-prior-guided-imagination-sampling|PRISM]] freezes LeWM and learns a lightweight uncertainty-aware action prior from its latents, improving MPPI sample efficiency without a second visual encoder
-- See [[sampling-based-latent-planning]] for how LeWM's representation, rollout interface, and planner proposal distribution form separate optimization surfaces
+- [[intact|INTACT]] retains LeWM's forward JEPA and SIGReg foundation but learns a shared local/goal intent-to-action operator, enabling direct zero-candidate control with optional bounded verification
+- [[latent-energy-action-planning|LEAP]] retains LeWM's frozen encoder and autoregressive predictor but adds decoder-predicted terminal-state agreement to the latent planning objective, improving matched four-domain success over native LeWM+CEM
+- See [[sampling-based-latent-planning]] for how LeWM's representation, rollout interface, planner proposal distribution, and direct inverse-control interface form separate optimization surfaces
+- [[obsessed-encoder|The Obsessed Encoder]] reproduces [[feature-suppression|feature suppression]] on LeWM: a 5x5 px per-episode color square (<0.05% of the image) and the natural RandGoal PushT variant (fixed start, randomized goal pose) both drive prediction loss below baseline while planner success stays at chance - despite SIGReg. This offers a candidate explanation for failures LeWM's own authors had reported under mild PushT variations without explanation (Maes et al., 2026)
+- [[lpwm|LpWM]] is the direct sparse-geometry successor from an overlapping team (Maes, Le Lidec, Balestriero, LeCun): same architecture and CEM planning, but RDMReg replaces SIGReg's dense isotropic Gaussian with a Rectified Laplace target. On PushT at intermediate predictor capacity LpWM beats dense LeWM by 24-57% planning success; they tie at full DiT capacity and both fail at linear-predictor capacity. LeWM's dense Gaussian is recovered as the p=2 no-ReLU special case of RDMReg's target family
 
 ## Limitations & Open Questions
 

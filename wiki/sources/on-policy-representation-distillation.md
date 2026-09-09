@@ -2,7 +2,7 @@
 title: "OPRD: On-Policy Representation Distillation"
 type: source
 created: 2026-06-09
-updated: 2026-07-11
+updated: 2026-08-16
 arxiv_id: "2606.06021"
 authors:
   - "Shenzhi Yang"
@@ -64,9 +64,11 @@ Experiments use JustRL-1.5B teacher and R1-distill-1.5B student on DAPO-Math-17K
 
 - Extends [[self-distillation|self-distillation]] from output distributions to internal representations; complements [[bootleg|Bootleg]]'s multi-layer distillation in SSL but in the on-policy LLM post-training setting.
 - Directly paired with [[on-the-geometry-of-on-policy-distillation|On the Geometry of On-Policy Distillation]], which characterizes the parameter-space dynamics that OPRD's richer signal operates within.
-- The LM-head bottleneck analysis connects to [[representation-geometry|representation geometry]] — hidden states can differ substantially while producing identical output distributions.
+- The LM-head bottleneck analysis connects to [[representation-geometry|representation geometry]] - hidden states can differ substantially while producing identical output distributions.
+- [[lost-in-backpropagation|Lost in Backpropagation]] studies the complementary [[lm-head-gradient-bottleneck|backward bottleneck]] in ordinary language-model training: vocabulary-space error directions in $\ker(W^\top)$ cannot reach hidden states. OPRD instead addresses hidden-state directions in $\ker(W)$ that output-space distillation cannot observe; the papers do not establish the same mechanism.
 - OPRD's zero-variance property addresses the same late-stage stagnation that [[on-the-geometry-of-on-policy-distillation|geometry analysis]] identifies as subspace locking in OPD.
 - [[oprd-literature-review|OPRD Literature Review]] identifies three immediate follow-up directions: contrastive hidden-state objectives, position-aware OPRD weighting, and stable-rank/subspace diagnostics for OPRD update geometry.
+- [[latent-on-policy-self-distillation|LOPD]] realizes the paper's proposed privileged-information OPSD setting through learned latent experience context, but retains reverse-KL output supervision. Combining its learned context with OPRD would test whether richer teacher privilege and pre-head student supervision are complementary.
 
 ## Limitations & Open Questions
 

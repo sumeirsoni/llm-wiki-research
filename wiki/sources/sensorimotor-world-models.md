@@ -2,7 +2,7 @@
 title: "Sensorimotor World Models: Perception for Action via Inverse Dynamics"
 type: source
 created: 2026-07-03
-updated: 2026-07-11
+updated: 2026-07-30
 arxiv_id: "2606.20104"
 authors:
   - "Petr Ivashkov"
@@ -87,6 +87,7 @@ MPC + CEM minimizing terminal latent MSE $C = \|\hat{z}_{H+1} - z_g\|_2^2$ to go
 - Contrasts with [[dino-wm|DINO-WM]] (frozen pretrained encoder) and [[adajepa|AdaJEPA]] (test-time adaptation) — SMWM trains encoder end-to-end from pixels with a task-aligned inductive bias.
 - Builds on Pathak et al. (2017) curiosity/inverse dynamics for controllable features; situates within JEPA world model line (Assran et al., 2023).
 - [[delta-jepa|Delta-JEPA]] uses the same forward + inverse recipe but decodes actions from $\Delta z_t = z_{t+1} - z_t$ rather than $(z_t, z_{t+1})$; ablations show displacement decoding improves planning (+4 to +12.6 pp) by avoiding action shortcuts in endpoint embeddings.
+- [[intact|INTACT]] keeps the attached local inverse signal that makes SMWM's representation action-recoverable, then adds a detached goal-intent call through the same conditional action operator to support Direct control rather than mandatory CEM.
 - Co-authored by [[randall-balestriero|Randall Balestriero]]; empirical baseline is SIGReg from [[leworldmodel|LeWorldModel]].
 
 ## Limitations & Open Questions

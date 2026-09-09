@@ -53,12 +53,13 @@ The wiki started with **self-supervised representation learning** (especially JE
 | **Generative modeling** | Self-Flow, REPA, DeltaWorld, normalizing flows, oscillator-based generation |
 | **LLM post-training** | On-policy distillation geometry, OPRD, layer contribution in RLVR |
 | **Reasoning & inference** | Fixed-point reasoners, GRAM, NF-CoT, energy-based transformers, ARC-as-vision |
-| **Representation geometry** | Global vs functional geometry, manifold steering, layer-wise adaptation |
+| **Representation geometry** | Global vs functional geometry, dense visual representations, manifold steering, layer-wise adaptation |
+| **Embodied control** | Patch Policy, DINO-WM, PRISM, and robot architecture comparisons |
 
 See `wiki/overview.md` for a synthesized view of current themes and open questions.
 
 ## Current State
 
-**65 sources** · **19 concepts** · **7 entities** · **3 comparisons**
+**101 sources** · **34 concepts** · **13 entities** · **6 comparisons**
 
 Primary anchor: **JEPA** and its variants, with growing coverage of world models, post-training geometry, and reasoning architectures.

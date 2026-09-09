@@ -2,7 +2,7 @@
 title: "OPRD Literature Review: Contrastive Objectives, Position Bias, and Geometry"
 type: comparison
 created: 2026-07-08
-updated: 2026-07-08
+updated: 2026-08-13
 tags:
   - self-distillation
   - contrastive-learning
@@ -21,6 +21,7 @@ sources:
   - "[[fire-opd]]"
   - "[[selectkd]]"
   - "[[phf]]"
+  - "[[beta-opsd]]"
 aliases:
   - "OPRD Literature Review"
   - "Contrastive OPRD Review"
@@ -30,7 +31,7 @@ aliases:
 
 ## Research Frame
 
-[[on-policy-representation-distillation|OPRD]] establishes that hidden-state supervision can beat output-space OPD by avoiding sampling variance and the LM-head bottleneck. The next experimental step should test whether OPRD can be improved or better understood along three axes:
+[[on-policy-representation-distillation|OPRD]] establishes that hidden-state supervision can beat output-space OPD by avoiding sampling variance and the LM-head bottleneck. [[beta-opsd|β-OPSD]] strengthens the output-space control: reference-anchored logit interpolation plus return-to-go improves vanilla OPSD without hidden-state targets. The next experimental step should test whether OPRD can be improved or better understood along three axes:
 
 - **Objective**: replace or augment pointwise hidden-state MSE with contrastive or relational representation objectives.
 - **Position**: test whether OPRD has the same prefix/suffix asymmetry as output-space OPD.
@@ -118,7 +119,7 @@ Measure OPRD hidden loss and downstream gradient signal by position:
 
 ## Recommended Experiment Sequence
 
-1. **Reproduce OPRD baseline diagnostics**: standard OPD, OPRD, and OPD + OPRD on the same checkpoints with position-stratified hidden/output losses.
+1. **Reproduce OPRD baseline diagnostics**: standard OPD, [[beta-opsd|β-OPSD]], OPRD, and OPD + OPRD on the same checkpoints with position-stratified hidden/output losses. β-OPSD should separate benefits of reference anchoring and return-to-go from benefits of hidden-state supervision.
 2. **Position probes before new objectives**: prefix-only, suffix-only, last-k, IW-style weighting, and hidden-discrepancy weighting.
 3. **Geometry pass**: stable rank, subspace similarity, and rank-constrained training for OPD vs OPRD.
 4. **Conservative contrastive OPRD**: in-batch different-prompt negatives only; compare token-level, segment-pooled, and transition-level variants.

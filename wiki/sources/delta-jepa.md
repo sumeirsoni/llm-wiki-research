@@ -2,7 +2,7 @@
 title: "Delta-JEPA: Learning Action-Sensitive World Models via Latent Difference Decoding"
 type: source
 created: 2026-07-03
-updated: 2026-07-11
+updated: 2026-07-30
 arxiv_id: "2606.31232"
 authors:
   - "Zhenghao Zhang"
@@ -100,6 +100,7 @@ When the forward predictor is action-conditioned, $z_{t+1}$ can absorb action-co
 - **vs [[sensorimotor-world-models|SMWM]]**: both use forward + inverse losses; SMWM decodes from $(z_t, z_{t+1})$; Delta-JEPA shows displacement decoding is more effective and avoids endpoint shortcuts (also critiques PLDM's concat formulation).
 - **vs [[leworldmodel|LeWM]] / [[sub-jepa|Sub-JEPA]]**: replaces SIGReg/subspace Gaussian regularization with LDAD — simpler objective, stronger action-conditioned predictor responses.
 - **vs [[dino-wm|DINO-WM]]**: trains encoder end-to-end from pixels rather than frozen pretrained features.
+- [[intact|INTACT]] extends displacement-conditioned action recovery from local physical transitions to a shared local/goal operator: Delta-JEPA uses LDAD to shape CEM-planning latents, while INTACT also interprets a detached future-goal displacement for Direct deployment.
 - Evaluated on same LeWM-style environments: Two-Room, DMC Reacher, Push-T, OGBench-Cube.
 
 ## Limitations & Open Questions

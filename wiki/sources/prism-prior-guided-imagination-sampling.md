@@ -2,7 +2,7 @@
 title: "PRISM: Prior-Guided Imagination Sampling in World Models"
 type: source
 created: 2026-07-24
-updated: 2026-07-24
+updated: 2026-07-30
 arxiv_id: "2606.07974"
 authors:
   - "Yuhai Wang"
@@ -92,7 +92,7 @@ At 32 candidates on PushT, fixed-variance PRISM-MPPI reaches $82\pm4$ while adap
 
 ### Encoder ablation
 
-A DINO-WM-style DINOv2 CLS encoder still benefits from PRISM relative to its own vanilla MPPI baseline, but absolute PushT success remains only 10% to 15%. The authors attribute this to global CLS features discarding fine 2D position, reinforcing [[dino-wm|DINO-WM]]'s finding that spatial patch features matter for manipulation.
+A DINO-WM-style DINOv2 CLS encoder still benefits from PRISM relative to its own vanilla MPPI baseline, but absolute PushT success remains only 10% to 15%. The authors attribute this to global CLS features discarding fine 2D position, reinforcing [[dino-wm|DINO-WM]]'s finding that [[dense-visual-representations|spatial patch features]] matter for manipulation. [[patch-policy|Patch Policy]] independently reaches the same representation-level conclusion in direct behavior-cloned policies: downstream optimization cannot reconstruct spatial state that pooling removed.
 
 ### Real robots
 
@@ -106,6 +106,7 @@ A DINO-WM-style DINOv2 CLS encoder still benefits from PRISM relative to its own
 - Adds the proposal-distribution branch of [[sampling-based-latent-planning]]: improving which imagined trajectories are evaluated rather than changing the world model that scores them.
 - Complements [[fast-leworldmodel|Fast-LeWM]], which reduces cost and error inside each candidate rollout through parallel action-prefix prediction.
 - Connects to [[dino-wm|DINO-WM]] through an encoder ablation showing that prior fusion is representation-agnostic but cannot recover spatial information absent from a global visual token.
+- Contrasts with [[intact|INTACT]]: PRISM freezes LeWM and preserves sampled trajectory evaluation through an uncertainty-aware proposal, while INTACT jointly shapes the encoder and learns a conditional mean that can act with zero candidates, retaining search only as optional local verification.
 - Strengthens the planner-interface dimension in [[world-models]] and [[robot-world-model-architectures]], where world-model quality alone does not determine closed-loop success.
 
 ## Limitations & Open Questions
@@ -123,6 +124,10 @@ A DINO-WM-style DINOv2 CLS encoder still benefits from PRISM relative to its own
 - They identify mixture-of-Gaussians or other multimodal heads as a route beyond the current unimodal prior's ceiling.
 - A matched real-robot baseline comparison is still in progress according to the paper.
 - Broader evaluation should test longer-horizon tasks and priors with temporal memory, following the limitations stated by the authors.
+
+## Related Pages
+
+- [[multimodal-futures-in-latent-world-models]] - surveys the unimodal-head limitation this paper shares across the LeWM-cluster world models, and the multimodal head families (mixtures, diffusion, discrete codes) proposed as escapes
 
 ## Links
 
