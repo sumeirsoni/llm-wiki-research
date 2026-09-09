@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-09-07
+updated: 2026-09-09
 tags:
   - meta
 ---
@@ -325,3 +325,10 @@ Followed up on whether XM, IMLE, and drifting have been applied to language mode
 
 Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); qmd lexical reindex PASS (0 new, 2 updated, 156 unchanged, 0 removed); embedding step FAIL (Metal backend could not initialize).
 Caveats: XM and TokenDrift language results are recent preprints and primarily target discrete diffusion language models, not conventional autoregressive frontier LLMs. The IMLE conclusion is a literature-search finding, not proof that no unpublished or non-indexed result exists. QMD reports 41 unique hashes still needing embeddings.
+
+## [2026-09-09] ingest | Fresh four-paper AlphaXiv experiment
+
+Ingested four papers from fresh AlphaXiv reads: [[fractal-basins-trap-latent-reasoning]], [[latent-geometry-beyond-search]], [[convergeflow]], and [[latent-action-as-intention]]. Created concepts [[reasoning-dynamics]] and [[continuous-language-modeling]]. Created entities [[gc-idm]], [[lawa]], [[robocasa]], [[libero-plus]], and [[openwebtext]]. Updated [[world-models]], [[sampling-based-latent-planning]], [[latent-actions]], [[flow-matching]], [[representation-geometry]], [[iterative-refinement]], [[index]], and [[overview]]. Paper 2608.29029 was not ingested.
+
+Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); npm test PASS (15 tests); qmd reindex PASS with lexical index and embeddings refreshed.
+Caveats: The four papers are recent preprints. Their benchmark protocols differ, and the LAWA paper states that code and models will be released.

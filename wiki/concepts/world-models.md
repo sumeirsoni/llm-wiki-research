@@ -2,7 +2,7 @@
 title: "World Models"
 type: concept
 created: 2026-04-10
-updated: 2026-09-04
+updated: 2026-09-09
 tags:
   - world-model
   - representation-learning
@@ -33,6 +33,8 @@ sources:
   - "[[driftworld]]"
   - "[[better-slots-better-worlds]]"
   - "[[latent-energy-action-planning]]"
+  - "[[latent-geometry-beyond-search]]"
+  - "[[latent-action-as-intention]]"
 aliases:
   - "World model"
 ---
@@ -96,6 +98,14 @@ Several papers in this wiki apply [[jepa|JEPA]] to world modeling and latent pla
 - **Mechanism**: Uses the learned conditional mean by default while retaining the forward predictor for rollout, replanning, and optional verification
 
 These additions separate world-model quality from the broader [[sampling-based-latent-planning|planning interface]]: Fast-LeWM changes how a candidate is rolled out, PRISM changes which candidates are proposed, and INTACT amortizes the inverse control query so candidate search can become optional.
+
+### [[latent-geometry-beyond-search|GC-IDM]]
+
+GC-IDM freezes LeWM and learns a horizon-conditioned inverse action map from offline demonstrations. It re-encodes the current observation at every step, so it does not accumulate an imagined latent rollout. On the four LeWM tasks, it matches or exceeds CEM in seven of eight protocol cells and reduces per-plan-call cost by 100 to 130 times. This is a direct-control interface built on latent geometry rather than a new world-model objective.
+
+### [[latent-action-as-intention|LAWA]]
+
+LAWA is a World Action Model that keeps future imagination at inference but moves it from pixel or video latents to compact latent actions. A tokenizer learns transition codes from action-free robot and egocentric video. The policy jointly denoises latent intentions and executable action chunks while omitting future-video generation at inference. On RoboCasa, it reaches 65.6% few-shot and 80.8% full-data success, matching the matched Joint-WAM reference at 42.9% lower latency.
 
 ### Amortized and Generative Planning
 

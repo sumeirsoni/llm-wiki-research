@@ -2,7 +2,7 @@
 title: "Sampling-Based Latent Planning"
 type: concept
 created: 2026-07-24
-updated: 2026-09-04
+updated: 2026-09-09
 tags:
   - world-model
   - reinforcement-learning
@@ -16,6 +16,7 @@ sources:
   - "[[fast-leworldmodel]]"
   - "[[prism-prior-guided-imagination-sampling]]"
   - "[[intact]]"
+  - "[[latent-geometry-beyond-search]]"
   - "[[generalization-theory-for-jepa-world-models]]"
   - "[[viscore]]"
   - "[[leflow]]"
@@ -77,6 +78,10 @@ At 32 candidates, PRISM-MPPI exceeds vanilla LeWM MPPI at 128 candidates by 25 p
 
 [[intact|INTACT]] trains one conditional action operator on attached local physical displacement and detached future-goal displacement. Its Direct interface uses the learned conditional mean with zero sampled candidates, while the forward model remains available for recurrent imagined rollout and replanning.
 
+[[latent-geometry-beyond-search|GC-IDM]] takes a closely related route through a frozen [[leworldmodel|LeWM]] latent space. It predicts the next action from the current latent, the goal latent, and the remaining horizon, then re-encodes the real observation after each action. On the four LeWM tasks, GC-IDM matches or exceeds CEM in seven of eight protocol cells and cuts per-plan-call cost by 100 to 130 times.
+
+GC-IDM differs from INTACT in its training interface and control claim. GC-IDM fits a goal-conditioned inverse map separately for each environment from the same offline demonstrations as LeWM. It does not use imagined rollouts or candidate verification at inference. Push-T is its clear weak case, which supports the paper's view that long contact sequences can require more than local inverse recovery.
+
 This differs from [[prism-prior-guided-imagination-sampling|PRISM]], which improves the proposal distribution but still samples and scores candidates. INTACT's Guarded A mode occupies an intermediate point: it centers a bounded 128-candidate, three-iteration CEM correction around the Direct plan. On the paper's four simulated tasks, Direct reaches 95.33% macro success and Guarded A reaches 96.86% using 384 rather than 9,000 candidate sequences.
 
 The result does not establish that search is obsolete outside demonstrated task and goal support. Multimodal actions, obstacle-induced nonlinearity, latent rollout drift, and distribution shift may increase the value of uncertainty-triggered verification.
@@ -112,6 +117,7 @@ The approaches are complementary:
 | Rollout cost and compounding error | [[fast-leworldmodel|Fast-LeWM]] | Parallel action-prefix prediction |
 | Candidate sample efficiency | [[prism-prior-guided-imagination-sampling|PRISM]] | Confidence-weighted learned proposal |
 | Mandatory candidate search | [[intact|INTACT]] | Shared intent-to-action conditional with optional local verification |
+| Direct goal-conditioned control | [[latent-geometry-beyond-search|GC-IDM]] | Horizon-conditioned inverse action from frozen latents |
 | Deployment shift | [[adajepa|AdaJEPA]] | Adapt encoder and predictor during MPC |
 
 A natural combined controller would use task-relevant latents, parallel prefix prediction, a calibrated direct action conditional or proposal, uncertainty-triggered verification, and closed-loop adaptation. These components may interact, so their gains should not be assumed additive without shared ablations.

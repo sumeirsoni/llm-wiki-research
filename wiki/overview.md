@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-09-07
+updated: 2026-09-09
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**101 sources ingested** | **34 concept pages** | **13 entity pages** | **6 comparison pages** | 154 source/concept/entity/comparison pages | 158 wiki Markdown files
+**105 sources ingested** | **36 concept pages** | **18 entity pages** | **6 comparison pages** | 165 source/concept/entity/comparison pages | 169 wiki Markdown files
 
 ## Key Themes
 
@@ -52,6 +52,8 @@ Multiple papers extend representation learning into [[world-models|world models]
 - [[fast-leworldmodel|Fast-LeWM]]: parallel action-prefix prediction removes repeated one-step latent rollout, halving CEM solve time while improving average success
 - [[prism-prior-guided-imagination-sampling|PRISM]]: a lightweight uncertainty-aware action prior from frozen LeWM features improves low-budget MPPI proposals with negligible inference overhead
 - [[intact|INTACT]]: a shared local/goal intent-to-action operator jointly shapes the representation and enables Direct zero-candidate control, with bounded CEM retained as optional verification
+- [[latent-geometry-beyond-search|GC-IDM]]: a horizon-conditioned inverse controller turns frozen LeWM latents into direct closed-loop actions, matching or beating CEM in seven of eight cells at 100 to 130 times lower per-plan-call cost
+- [[latent-action-as-intention|LAWA]]: compact latent actions retain test-time future intention for World Action Models, reaching 80.8% full-data RoboCasa success at 42.9% lower latency than matched Joint-WAM
 - [[sampling-based-latent-planning|Sampling-Based Latent Planning]] separates representation geometry, dynamics queries, candidate proposals, and direct inverse-control interfaces as distinct planning bottlenecks
 - [[adajepa|AdaJEPA]]: test-time adaptation in the MPC loop recalibrates frozen JEPA world models under visual, dynamics, and layout shifts
 - [[dino-wm|DINO-WM]] → [[temporal-straightening|Temporal Straightening]] → [[adajepa|AdaJEPA]]: latent planning pipeline from frozen DINOv2 features, to straightened JEPA geometry, to deployment adaptation
@@ -82,6 +84,7 @@ REPA and SALT are conceptual mirrors: one makes generative models more discrimin
 Newer theory pages broaden this theme:
 - [[energy-based-models|Energy-Based Models]] connect learned verifiers, inference-time optimization, and autoregressive lookahead.
 - [[iterative-refinement|Iterative Refinement]] connects looped transformers, fixed-point attractor models, stochastic recursive reasoning (GRAM), attractor landscapes (EqR), inference-time width scaling (PTRM), vision-centric reasoning (VARC), continuous latent CoT (NF-CoT, LOTUS), supervised memory training (SMT), and energy-based inference.
+- [[reasoning-dynamics|Reasoning dynamics]] adds a route-level diagnostic: difficult tasks produce fractal settling-time basins when latent trajectories pass near saddles representing nearly correct solutions.
 - [[fixed-point-reasoners|FPRM]]: pre-norm + residual scaling enables stable deep looped Transformers with native fixed-point halting — outperforms hierarchical TRM/HRM on Sudoku/Maze at 7M params without external ACT.
 - [[learn-from-your-own-latents|Learn from your own latents]]: latent prediction can be exponentially more sample-efficient than token-level SSL on hierarchical data.
 - [[jepa-paradox-in-language|The JEPA Paradox in Language]] adds a complementary boundary: deterministic latent point prediction can be ill-posed when one linguistic context has several separated valid continuations, even if marginal collapse is controlled.
@@ -135,6 +138,7 @@ See [[oprd-literature-review]] for the experiment-facing synthesis: contrastive 
 - [[drifting-generative-models|Drifting Generative Models]]: DriftWorld uses a learned distribution field to move noisy candidates toward action-conditioned video targets in one step, trading multiple negatives and feature losses for high-throughput rollouts.
 - [[single-step-generative-models|Single-Step Generative Models]]: one-pass generation can move complexity from inference into staged supervision, robust candidate matching, distribution-level post-training, or richer transitions.
 - [[roms-imle|ROMS-IMLE]]: multi-stage supervision and robust IMLE matching produce competitive one-step image generation, with FID 2.56 on ImageNet 256 after round-trip rejection.
+- [[continuous-language-modeling|Continuous language modeling]] adds an endpoint question for language flows: ConvergeFlow constrains predictions to the vocabulary convex hull and proves convergence to token embeddings under stated assumptions.
 - [[explorative-modeling|Explorative Modeling]] and [[candidate-exploration]] generalize winner-selected multi-hypothesis training into a proposed pretraining axis. [[why-the-third-axis-is-freedom|Why the Third Axis Is Freedom]] refines this claim: candidate count is the mechanism, while retained compatible behavior is the proposed axis. Its formal support-ranking results require balanced probability allocation, and current selector evidence is synthetic.
 - [[normalizing-trajectory-models|Normalizing Trajectory Models]] enrich few-step reverse transitions while retaining a fixed-dimensional canvas.
 - [[expanding-flow-maps|Expanding Flow Maps]] adds a distinct axis: the canvas itself can grow. Its [[variable-dimensional-generative-flows|expand-transport construction]] inserts coordinates, graph elements, or tokens and then denoises the enlarged state, enabling few-step variable-size generation across continuous and discrete domains.
@@ -244,6 +248,9 @@ graph TD
 38. **Compositional generalization**: Does the recurrent-depth advantage on synthetic permutation graphs transfer to natural-language facts and pretrained models, and can training recurrence increase depth without causing overthinking or seed-sensitive failure?
 39. **Cross-representation planning objectives**: Can LEAP-style terminal agreement use geometry-aware goal representations and explicit support or uncertainty checks to prevent latent-model exploitation under domain shift and longer horizons?
 40. **One-step generation**: When does staged supervision, robust candidate matching, or distribution-level post-training replace iterative denoising without sacrificing calibrated multimodal coverage?
+41. **Reasoning basin control**: Can models escape incorrect saddle states without losing the multi-step reasoning ability that creates those escape directions?
+42. **Continuous language endpoints**: Can a flow learn token embeddings jointly with its predictor while preserving ConvergeFlow's endpoint guarantee?
+43. **Latent intention transfer**: Does LAWA's compact future-intention interface hold across longer horizons, embodiments, and more irreversible contact tasks?
 
 ## Knowledge Gaps
 

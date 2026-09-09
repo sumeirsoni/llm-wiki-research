@@ -2,7 +2,7 @@
 title: "Iterative Refinement"
 type: concept
 created: 2026-05-17
-updated: 2026-09-04
+updated: 2026-09-09
 tags:
   - transformer
   - language
@@ -34,6 +34,7 @@ sources:
   - "[[state-prediction-separation]]"
   - "[[looped-transformers-jacobian-lens]]"
   - "[[loop-think-generalize]]"
+  - "[[fractal-basins-trap-latent-reasoning]]"
 aliases:
   - "Latent thinking"
   - "Architectural recurrence"
@@ -71,6 +72,8 @@ Iterative refinement is a family of model designs where prediction is improved t
 ### Attractor Landscapes
 
 [[equilibrium-reasoners|Equilibrium Reasoners]] treat HRM/TRM-style models as dynamical systems with task-conditioned attractors. Segmented Online Training, randomized initialization, and noise injection shape the landscape so depth and breadth scaling converge to correct solutions; fixed-point residual becomes a verifier.
+
+[[fractal-basins-trap-latent-reasoning|Fractal basins trap latent reasoning]] adds a route-level view of the same dynamics. Difficult tasks create fractal settling-time basins because trajectories pass near weakly unstable saddles that decode to nearly correct solutions. Its training experiment links the appearance of these saddles and transient chaos to the point where a looped transformer learns multi-step elimination.
 
 ### Inference-Time Width Scaling
 

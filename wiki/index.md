@@ -13,6 +13,10 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Sources
 
+- [[latent-action-as-intention]] - LAWA uses compact latent actions as future intentions for efficient World Action Model inference (2026)
+- [[convergeflow]] - Embedding-space flow language model with provable convergence to token embeddings (2026)
+- [[latent-geometry-beyond-search]] - Goal-conditioned inverse dynamics amortizes LeWM planning and cuts per-decision cost by 100 to 130 times (2026)
+- [[fractal-basins-trap-latent-reasoning]] - Fractal convergence-time basins and transient chaos explain slow latent reasoning on hard tasks (2026)
 - [[roms-imle]] - Single-step IMLE with multi-stage supervision and robust matching reaches competitive image-generation quality (2026)
 - [[latent-energy-action-planning]] - Differentiable cross-representation energy planning through a frozen LeWorldModel; 94.8% vs 77.5% mean success (2026)
 - [[loop-think-generalize]] - Recurrent-depth Transformers learn systematic composition and depth extrapolation on controlled multi-hop tasks, with entropy-aware halting (COLM 2026)
@@ -117,6 +121,8 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Concepts
 
+- [[continuous-language-modeling]] - Continuous language generation with finite-support token endpoints and flow-based sampling
+- [[reasoning-dynamics]] - Settling-time basins, transient chaos, and attractor structure in recurrent reasoning
 - [[single-step-generative-models]] - Design patterns and tradeoffs for one-pass image, video, and physical generative models
 - [[compositional-generalization]] - Systematic composition and depth extrapolation in recurrent Transformers
 - [[jacobian-lens-workspace]] - Jacobian transport, workspace readability, and causal access in recurrent Transformers
@@ -154,7 +160,12 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Entities
 
-- [[pulkit-agrawal]] — MIT (Improbable AI Lab); dynamic compression for recurrent memory (researcher)
+- [[openwebtext]] - Language-modeling dataset used for ConvergeFlow experiments (dataset)
+- [[libero-plus]] - Robustness benchmark used for zero-shot robot-policy transfer (dataset)
+- [[robocasa]] - 24-task simulation benchmark for everyday robot manipulation (dataset)
+- [[lawa]] - World Action Model that uses latent actions as future intentions (model)
+- [[gc-idm]] - Horizon-conditioned inverse controller for frozen LeWM latents (model)
+- [[pulkit-agrawal]] - MIT (Improbable AI Lab); dynamic compression for recurrent memory (researcher)
 - [[enigma]] — Robotics startup researching compact world representations; published The Obsessed Encoder (org)
 - [[dinov3]] — Meta FAIR's self-distillation vision encoder; frozen backbone across control and generation work (model)
 - [[yann-lecun]] — Chief AI Scientist at Meta FAIR; architect of JEPA (researcher)

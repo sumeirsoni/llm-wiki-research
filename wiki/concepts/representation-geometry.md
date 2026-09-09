@@ -2,7 +2,7 @@
 title: "Representation Geometry"
 type: concept
 created: 2026-05-16
-updated: 2026-09-04
+updated: 2026-09-09
 tags:
   - representation-learning
   - theory
@@ -25,6 +25,8 @@ sources:
   - "[[jepa-paradox-in-language]]"
   - "[[viscore]]"
   - "[[looped-transformers-jacobian-lens]]"
+  - "[[latent-geometry-beyond-search]]"
+  - "[[convergeflow]]"
 aliases:
   - "Embedding geometry"
   - "Representation manifolds"
@@ -66,6 +68,10 @@ The proposed **Aristotelian Representation Hypothesis** refines the Platonic one
 [[jepa-paradox-in-language|The JEPA Paradox in Language]] adds conditional target geometry: a globally non-collapsed representation can still be unsuitable for deterministic prediction if one context maps to several separated valid targets. This distinguishes marginal covariance health from whether a single conditional centroid is meaningful.
 
 [[viscore|VIScore]] adds system-relative geometry for world models. Veracity, action influence, and planner sobriety ask whether the representation works with a specific predictor and search process, rather than whether its static geometry looks regular in isolation.
+
+[[latent-geometry-beyond-search|GC-IDM]] tests a different functional claim about geometry. A smooth and action-sensitive LeWM latent can make goal-conditioned inverse recovery local enough to learn offline. The controller's closed-loop success and large speedup over CEM support the claim on four tasks, while its Push-T degradation with goal distance marks a boundary for local recovery.
+
+[[convergeflow|ConvergeFlow]] adds finite-support geometry in language. Its continuous state is constrained to the convex hull of vocabulary embeddings, and its flow is designed to approach one embedding at the data endpoint. The result shows that a useful continuous representation may need both smooth interior structure and a discrete endpoint set.
 
 ## Manifold Geometry and Control
 

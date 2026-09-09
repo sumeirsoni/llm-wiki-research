@@ -2,7 +2,7 @@
 title: "Flow Matching"
 type: concept
 created: 2026-04-10
-updated: 2026-09-05
+updated: 2026-09-09
 tags:
   - flow-matching
   - generative-modeling
@@ -16,6 +16,7 @@ sources:
   - "[[explorative-modeling]]"
   - "[[leflow]]"
   - "[[roms-imle]]"
+  - "[[convergeflow]]"
 aliases:
   - "Flow matching"
   - "Continuous normalizing flows"
@@ -51,6 +52,12 @@ Flow matching and [[jepa|JEPA]] share a conceptual connection:
 ## Latent Trajectory Planning
 
 [[leflow|LeFlow]] uses conditional rectified flow to generate the interior of a goal-conditioned latent trajectory on top of a frozen JEPA world model. It benefits from the few-step integration of rectified flow because many candidate paths must be generated at each replanning step. This is a planning use of flow matching rather than a representation-learning objective: the world-model encoder and predictor remain fixed, and the flow model supplies reusable proposals.
+
+### [[convergeflow|ConvergeFlow]]
+
+ConvergeFlow applies flow matching to language in a fixed token-embedding space. Its data predictor is a convex combination of vocabulary embeddings, with weights built from a learned base function and the exact Gaussian corruption kernel. The paper proves endpoint convergence under regularity conditions, so nearest-neighbor decoding can replace a separately trained cross-entropy decoder.
+
+This adds a support constraint to continuous language generation. The flow-matching MSE objective remains continuous, but the predictor cannot leave the vocabulary convex hull. The experiments use a 130M-parameter model on OpenWebText and report generative perplexity 33.17 at unigram entropy 5.44.
 
 ## Training Efficiency: External vs. Intrinsic Representations
 
