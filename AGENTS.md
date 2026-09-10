@@ -48,6 +48,13 @@ For broad multi-file, configuration-heavy, or experimental work:
 
 Small single-page corrections do not require a formal plan, but they still require validation.
 
+### Writing defaults
+
+- Use the `technical-writing` skill for every wiki ingest and documentation change.
+- Apply the `unslop` skill to every document touched. The `technical-writing` skill requires this pass.
+- Use Diataxis Reference mode for source pages unless the task explicitly calls for another mode.
+- Commit each completed ingest after validation and reindexing.
+
 ---
 
 ## Page Format Conventions
