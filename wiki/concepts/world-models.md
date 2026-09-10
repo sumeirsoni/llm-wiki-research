@@ -35,6 +35,7 @@ sources:
   - "[[latent-energy-action-planning]]"
   - "[[latent-geometry-beyond-search]]"
   - "[[latent-action-as-intention]]"
+  - "[[semigroup-jepa]]"
 aliases:
   - "World model"
 ---
@@ -60,6 +61,12 @@ Several papers in this wiki apply [[jepa|JEPA]] to world modeling and latent pla
 - **Key idea**: Uses [[lejepa|LeJEPA]]'s SIGReg regularizer for collapse-free training with minimal loss terms
 - **Planning**: 48x faster than foundation-model-based world models
 - **Evaluation**: 2D/3D control tasks, physical quantity probing, surprise detection
+
+### [[semigroup-jepa|Semigroup-JEPA (SG-JEPA)]]
+- **Focus**: Long-horizon physical prediction and zero-shot transfer across gravity values
+- **Key idea**: Supplies gravity as an action coordinate and trains the encoder and predictor with a discounted autoregressive latent rollout
+- **Evaluation**: MuJoCo rigid-body, projectile, and robot-arm tasks with held-out gravity grids
+- **Mechanism**: The GRU-trained encoder preserves dynamics-relevant features; recursive feedback amplifies its local prediction advantage
 
 ### [[sub-jepa|Sub-JEPA]]
 - **Focus**: Better regularization geometry for end-to-end JEPA world models
@@ -120,6 +127,8 @@ LAWA is a World Action Model that keeps future imagination at inference but move
 ## Theory and Planning-Relevant Diagnostics
 
 [[generalization-theory-for-jepa-world-models|JEPA World Model Generalization Theory]] links an action-conditioned spectral objective to low-rank transition factorization, finite-sample risk, and planning regret. Its main contribution is a bias-complexity view of latent dimension, but the experiment is synthetic and the practical objective differs from the analyzed one.
+
+[[semigroup-jepa|Semigroup-JEPA]] supplies an empirical counterpart focused on changing physical laws. Its linear feature model separates local law-conditioned error from recursive amplification, while its MuJoCo experiments show that a GRU-trained representation transfers across held-out gravity values.
 
 [[viscore|VIScore]] separates three failure sources in a deployed planning stack: whether predictions remain on-manifold, whether actions influence latent futures, and whether search exploits unsupported trajectories. It predicts checkpoint rankings across several tasks and planners better than isolated static metrics, while discrete contact events and amortized or inverse-dynamics planners remain outside its validated scope.
 
@@ -199,3 +208,6 @@ Frozen latent world models degrade under test-time distribution shift — visual
 
 > [!open-question]
 > How should a finite planning budget be divided among better latent geometry, faster [[fast-leworldmodel|prefix prediction]], stronger [[prism-prior-guided-imagination-sampling|action priors]], and more sampled candidates?
+
+> [!open-question]
+> Can [[semigroup-jepa|Semigroup-JEPA]]-style rollout training transfer to unknown or vector-valued physical parameters and to real contact-rich environments?

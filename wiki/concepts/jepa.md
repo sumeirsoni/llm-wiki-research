@@ -31,6 +31,7 @@ sources:
   - "[[lpwm]]"
   - "[[levjepa]]"
   - "[[better-slots-better-worlds]]"
+  - "[[semigroup-jepa]]"
 aliases:
   - "JEPA"
   - "I-JEPA"
@@ -89,6 +90,7 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 - **Video**: [[v-jepa-2-1|V-JEPA 2.1]], [[rethinking-jepa|SALT]]
 - **Efficient video**: [[levjepa|LeVJEPA]] (SIGReg, sparse token processing, block-causal attention)
 - **World models**: [[causal-jepa|Causal-JEPA]], [[leworldmodel|LeWorldModel]]
+- **Physics-generalizing world models**: [[semigroup-jepa|Semigroup-JEPA]] (gravity conditioning and recursive latent rollouts)
 - **Object-centric world models**: [[better-slots-better-worlds|Better Slots Better Worlds]]
 - **Adaptive world models**: [[adajepa|AdaJEPA]] (test-time recalibration in MPC loop)
 - **Planning-focused world models**: [[dino-wm|DINO-WM]] (frozen DINOv2 latents), [[temporal-straightening|Temporal Straightening]] (straightened JEPA latents for GD planning)
@@ -109,6 +111,10 @@ A fundamental challenge in JEPA training is [[representation-collapse|representa
 - **Dense features**: [[v-jepa-2-1|V-JEPA 2.1]] (all-token prediction)
 - **Minimal temporal bias**: [[temporal-difference-vision|TDV]] (causal next-frame prediction from video, no augmentations/masking)
 - **Efficient video pretraining**: [[levjepa|LeVJEPA]] (single encoder, 95% token dropping, SIGReg)
+
+## Recursive Rollouts and Physics Generalization
+
+[[semigroup-jepa|Semigroup-JEPA]] extends [[leworldmodel|LeWorldModel]] with a known gravity parameter and a discounted multi-step latent rollout loss. On MuJoCo tasks, the model transfers across held-out gravity values and keeps its advantage over DINO-WM as the forecast horizon grows. A frozen-representation crossover shows that the gain follows the encoder representation learned with the GRU objective, while recursive feedback amplifies the local prediction difference.
 
 ## Conditional Target Geometry in Language
 

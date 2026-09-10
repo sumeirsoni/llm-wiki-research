@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-09-09
+updated: 2026-09-10
 tags:
   - meta
 ---
@@ -332,3 +332,10 @@ Ingested four papers from fresh AlphaXiv reads: [[fractal-basins-trap-latent-rea
 
 Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); npm test PASS (15 tests); qmd reindex PASS with lexical index and embeddings refreshed.
 Caveats: The four papers are recent preprints. Their benchmark protocols differ, and the LAWA paper states that code and models will be released.
+
+## [2026-09-10] ingest | Semigroup-JEPA: Latent Dynamics Consistency for Zero-Shot Physics Generalization
+
+Ingested [[semigroup-jepa]] (arXiv: 2609.10464). Created model entity [[sg-jepa-model]]. Updated [[jepa]], [[world-models]], [[randall-balestriero]], [[index]], [[overview]], and README bookkeeping. The source page records the controlled encoder-predictor crossover, the long-horizon physics results, the gravity-conditioned control results, and the paper's internal inconsistency in its introduction versus its experiment and conclusion.
+
+Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); npm test PASS (15 tests); qmd lexical reindex PASS; embedding step FAIL because the host's Metal backend could not initialize.
+Caveats: Results are grounded in the AlphaXiv AI report and targeted extracted pages from arXiv v1; no local PDF or raw source was added. The main text's reported 34% Approach Ball improvement differs from the percentage implied by Appendix Table 10 values. Existing pending qmd embeddings remain unresolved.

@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-09-09
+updated: 2026-09-10
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**105 sources ingested** | **36 concept pages** | **18 entity pages** | **6 comparison pages** | 165 source/concept/entity/comparison pages | 169 wiki Markdown files
+**106 sources ingested** | **36 concept pages** | **19 entity pages** | **6 comparison pages** | 167 source/concept/entity/comparison pages | 171 wiki Markdown files
 
 ## Key Themes
 
@@ -45,6 +45,7 @@ Standard JEPA learns global scene representations but loses spatial detail. Mult
 Multiple papers extend representation learning into [[world-models|world models]]:
 - [[causal-jepa|Causal-JEPA]]: object-level masking for causal reasoning (1% of features, comparable planning)
 - [[leworldmodel|LeWorldModel]]: end-to-end from pixels with minimal hyperparameters (48x faster planning)
+- [[semigroup-jepa|Semigroup-JEPA]]: gravity-conditioned recursive latent rollouts improve long-horizon prediction and control under held-out physics
 - [[latent-energy-action-planning|LEAP]]: adds decoder-predicted terminal-state agreement and differentiable action refinement to frozen LeWM planning, raising matched four-domain mean success from 77.5% to 94.8%
 - [[sub-jepa|Sub-JEPA]]: subspace Gaussian regularization improves LeWM-style end-to-end world models
 - [[sensorimotor-world-models|SMWM]]: inverse dynamics regularization prevents collapse and biases latents toward controllable DoF ("perception for action")

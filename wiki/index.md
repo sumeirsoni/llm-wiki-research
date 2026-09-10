@@ -13,6 +13,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Sources
 
+- [[semigroup-jepa]] - Gravity-conditioned recursive latent rollouts improve long-horizon physics prediction and control under held-out gravity values (2026)
 - [[latent-action-as-intention]] - LAWA uses compact latent actions as future intentions for efficient World Action Model inference (2026)
 - [[convergeflow]] - Embedding-space flow language model with provable convergence to token embeddings (2026)
 - [[latent-geometry-beyond-search]] - Goal-conditioned inverse dynamics amortizes LeWM planning and cuts per-decision cost by 100 to 130 times (2026)
@@ -160,6 +161,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Entities
 
+- [[sg-jepa-model|SG-JEPA]] - Gravity-conditioned JEPA world model for recursive physics prediction (model)
 - [[openwebtext]] - Language-modeling dataset used for ConvergeFlow experiments (dataset)
 - [[libero-plus]] - Robustness benchmark used for zero-shot robot-policy transfer (dataset)
 - [[robocasa]] - 24-task simulation benchmark for everyday robot manipulation (dataset)

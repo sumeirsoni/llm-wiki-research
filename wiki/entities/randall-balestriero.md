@@ -18,6 +18,7 @@ sources:
   - "[[viscore]]"
   - "[[lpwm]]"
   - "[[levjepa]]"
+  - "[[semigroup-jepa]]"
 aliases:
   - "Balestriero"
 ---
@@ -41,6 +42,7 @@ Co-author on several key JEPA papers focused on principled, theoretically-ground
 - [[viscore|VIScore]] - diagnostic framework separating world-model veracity, action influence, and planner sobriety
 - [[lpwm|LpWM]] - sparse representations for world models (Brown University / AMI Labs affiliation on this paper; with first author [[yilun-kuang|Yilun Kuang]])
 - [[levjepa|LeVJEPA]] - efficient video pretraining with LeJEPA's SIGReg objective
+- [[semigroup-jepa|Semigroup-JEPA]] - gravity-conditioned recursive latent rollouts for zero-shot physics generalization
 
 ## Research Theme
 
