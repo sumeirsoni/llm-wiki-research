@@ -193,3 +193,5 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 ## Meta
 
 - [[iterative-latent-refinement-for-world-models]] — Design note on where iterative refinement helps JEPA-style semantic world models
+- [[compute-cluster]] — UMD Nexus CML connection, storage, and Slurm reference links
+- [[sg-jepa-gravity-rollout-factorial]] — Four-cell, five-seed test of gravity conditioning versus rollout training
