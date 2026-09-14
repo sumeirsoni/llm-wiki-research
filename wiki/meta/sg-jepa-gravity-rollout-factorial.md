@@ -78,8 +78,9 @@ Use the [UMD Nexus CML compute reference](compute-cluster) for the SSH host,
 storage paths, and Slurm links. Do not store the cluster password or Duo
 details in the repository.
 
-The bundle is prepared locally. Submission remains pending because the Codex
-shell cannot reach the cluster host and the available terminal app cannot be
-controlled through the desktop safety boundary. Authenticate from a local
-terminal on the UMD network, copy `upstream.patch` to the cluster, apply it to
-the public SG-JEPA checkout, and submit the four jobs in the bundle's README.
+The bundle is prepared locally. The authenticated Nexus terminal confirmed
+that the initial submissions were rejected by `cml-default`, because that QoS
+allows only 4 CPUs per job. The Slurm scripts now request `cml-high_long`,
+which is available in the `cml-furongh` association. Copy the refreshed
+`upstream.patch` to the cluster, apply it to the public SG-JEPA checkout, and
+resubmit the four jobs with Slurm dependencies.

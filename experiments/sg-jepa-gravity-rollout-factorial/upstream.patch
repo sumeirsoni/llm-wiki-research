@@ -307,13 +307,14 @@ index 0000000..de9a52a
 +second route for the physical parameter to affect control.
 diff --git a/experiments/gravity_rollout_factorial/slurm/data.sbatch b/experiments/gravity_rollout_factorial/slurm/data.sbatch
 new file mode 100644
-index 0000000..83715a3
+index 0000000..6ff23c0
 --- /dev/null
 +++ b/experiments/gravity_rollout_factorial/slurm/data.sbatch
-@@ -0,0 +1,41 @@
+@@ -0,0 +1,42 @@
 +#!/usr/bin/env bash
 +#SBATCH --job-name=sgj-factorial-data
 +#SBATCH --partition=cml-furongh
++#SBATCH --qos=cml-high_long
 +#SBATCH --nodes=1
 +#SBATCH --ntasks=1
 +#SBATCH --cpus-per-task=16
@@ -354,13 +355,14 @@ index 0000000..83715a3
 +  --test-episodes 40000
 diff --git a/experiments/gravity_rollout_factorial/slurm/evaluate.sbatch b/experiments/gravity_rollout_factorial/slurm/evaluate.sbatch
 new file mode 100644
-index 0000000..9927aa0
+index 0000000..17f011d
 --- /dev/null
 +++ b/experiments/gravity_rollout_factorial/slurm/evaluate.sbatch
-@@ -0,0 +1,62 @@
+@@ -0,0 +1,63 @@
 +#!/usr/bin/env bash
 +#SBATCH --job-name=sgj-factorial-eval
 +#SBATCH --partition=cml-furongh
++#SBATCH --qos=cml-high_long
 +#SBATCH --nodes=1
 +#SBATCH --ntasks=1
 +#SBATCH --cpus-per-task=8
@@ -422,13 +424,14 @@ index 0000000..9927aa0
 +  --path "$evaluation_dir/evaluation.json"
 diff --git a/experiments/gravity_rollout_factorial/slurm/probe.sbatch b/experiments/gravity_rollout_factorial/slurm/probe.sbatch
 new file mode 100644
-index 0000000..2119bd9
+index 0000000..93490e6
 --- /dev/null
 +++ b/experiments/gravity_rollout_factorial/slurm/probe.sbatch
-@@ -0,0 +1,59 @@
+@@ -0,0 +1,60 @@
 +#!/usr/bin/env bash
 +#SBATCH --job-name=sgj-factorial-probe
 +#SBATCH --partition=cml-furongh
++#SBATCH --qos=cml-high_long
 +#SBATCH --nodes=1
 +#SBATCH --ntasks=1
 +#SBATCH --cpus-per-task=8
@@ -487,13 +490,14 @@ index 0000000..2119bd9
 +  --path "$probe_dir/probe_summary.json"
 diff --git a/experiments/gravity_rollout_factorial/slurm/world_model.sbatch b/experiments/gravity_rollout_factorial/slurm/world_model.sbatch
 new file mode 100644
-index 0000000..2a96e24
+index 0000000..ad98b9b
 --- /dev/null
 +++ b/experiments/gravity_rollout_factorial/slurm/world_model.sbatch
-@@ -0,0 +1,54 @@
+@@ -0,0 +1,55 @@
 +#!/usr/bin/env bash
 +#SBATCH --job-name=sgj-factorial-wm
 +#SBATCH --partition=cml-furongh
++#SBATCH --qos=cml-high_long
 +#SBATCH --nodes=1
 +#SBATCH --ntasks=1
 +#SBATCH --cpus-per-task=8

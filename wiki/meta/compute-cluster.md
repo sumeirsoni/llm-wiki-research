@@ -28,8 +28,11 @@ credential in this vault, a script, or a job file.
 ## Slurm defaults
 
 The CML documentation lists `cml-furongh` as the faculty-specific partition
-for Furong Huang's nodes and `cml-furongh` as the matching account name. Check
-the live account association with `show_assoc` before submitting a long job.
+for Furong Huang's nodes and `cml-furongh` as the matching account name. The
+default `cml-default` QoS allows only 4 CPUs per job. This experiment uses
+`cml-high_long`, which is present in the account association and supports its
+larger CPU and memory requests. Check the live account and QoS associations
+with `show_assoc` and `show_qos --all | grep cml` before submitting a long job.
 
 The shared CML scratch path is `/cmlscratch/<username>`. It is available on
 submission and compute nodes, but it is not backed up. The CML documentation

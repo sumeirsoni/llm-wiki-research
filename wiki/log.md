@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-09-13
+updated: 2026-09-14
 tags:
   - meta
 ---
@@ -346,3 +346,10 @@ Prepared a four-cell, five-seed Square experiment to separate correct gravity co
 
 Verification: wiki:validate PASS; qmd lexical reindex pending; upstream patch syntax and shell syntax PASS.
 Caveats: The Slurm jobs were not submitted because the Codex shell could not reach `nexuscml.umiacs.umd.edu` and the available terminal app could not be controlled through the desktop safety boundary. No password or Duo information was stored.
+
+## [2026-09-14] experiment | SG-JEPA factorial QoS correction
+
+Verified the authenticated Nexus terminal and applied the SG-JEPA factorial bundle. The first Slurm submissions were rejected before execution because the account default `cml-default` QoS allows only 4 CPUs per job. Updated the bundle and cluster reference to request the available `cml-high_long` QoS.
+
+Verification: wiki:validate PASS; npm test PASS (15 tests); Slurm scripts and patch regeneration PASS.
+Caveats: No job ran and no credentials were stored. The terminal session remains user-authenticated.
