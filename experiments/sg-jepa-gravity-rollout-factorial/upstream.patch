@@ -239,9 +239,10 @@ index 0000000..de9a52a
 +| `constant_onestep` | Constant normalized mean, `0` | One-step teacher-forced loss |
 +| `constant_rollout` | Constant normalized mean, `0` | Five-step autoregressive rollout loss |
 +
-+Each cell runs with seeds `42`, `43`, `44`, `45`, and `46`. The primary
-+evaluation uses the paper-scale Square dataset and the existing state-probe
-+metric at horizons 1, 3, 5, 9, 20, 32, and 44.
++Each cell trains once with world-model seed `42`. Each trained checkpoint gets
++five independent probes and evaluations with seeds `42`, `43`, `44`, `45`, and
++`46`. The primary evaluation uses the paper-scale Square dataset and the
++existing state-probe metric at horizons 1, 3, 5, 9, 20, 32, and 44.
 +
 +## Run on a CML submission node
 +
@@ -259,20 +260,37 @@ index 0000000..de9a52a
 +Generate the shared dataset once:
 +
 +```bash
-+sbatch --account=cml-furongh experiments/gravity_rollout_factorial/slurm/data.sbatch
++sbatch --account=cml-furongh --qos=cml-high_long experiments/gravity_rollout_factorial/slurm/data.sbatch
 +```
 +
-+After the data job passes, submit world-model training, probe fitting, and
-+prediction evaluation in order:
++After the data job passes, submit the resource-specific arrays. The normal
++split runs `correct_onestep` and `constant_rollout` on B300. It runs
++`correct_rollout` and `constant_onestep` on H200.
++
++For the current run, reuse the completed `correct_onestep/seed_42` checkpoint.
++The two B300 slots first ran `constant_onestep` and `correct_rollout`. Queue
++`constant_rollout` with a 12-hour limit when a B300 slot opens.
 +
 +```bash
-+sbatch --account=cml-furongh experiments/gravity_rollout_factorial/slurm/world_model.sbatch
-+sbatch --account=cml-furongh experiments/gravity_rollout_factorial/slurm/probe.sbatch
-+sbatch --account=cml-furongh experiments/gravity_rollout_factorial/slurm/evaluate.sbatch
++wm_onestep=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=12:00:00 --gres=gpu:b300-sxm:1 --array=2%1 experiments/gravity_rollout_factorial/slurm/world_model.sbatch)
++wm_rollout=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=36:00:00 --gres=gpu:b300-sxm:1 --array=1%1 experiments/gravity_rollout_factorial/slurm/world_model.sbatch)
++probe_onestep=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=1-00:00:00 --gres=gpu:b300-sxm:1 --array=10-14%8 --dependency=afterok:$wm_onestep experiments/gravity_rollout_factorial/slurm/probe.sbatch)
++probe_rollout=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=1-00:00:00 --gres=gpu:b300-sxm:1 --array=5-9%8 --dependency=afterok:$wm_rollout experiments/gravity_rollout_factorial/slurm/probe.sbatch)
++eval_onestep=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=1-00:00:00 --gres=gpu:b300-sxm:1 --array=10-14%8 --dependency=afterok:$probe_onestep experiments/gravity_rollout_factorial/slurm/evaluate.sbatch)
++eval_rollout=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=1-00:00:00 --gres=gpu:b300-sxm:1 --array=5-9%8 --dependency=afterok:$probe_rollout experiments/gravity_rollout_factorial/slurm/evaluate.sbatch)
++wm_constant_rollout=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=12:00:00 --gres=gpu:b300-sxm:1 --array=3%1 experiments/gravity_rollout_factorial/slurm/world_model.sbatch)
++probe_constant_rollout=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=1-00:00:00 --gres=gpu:b300-sxm:1 --array=15-19%8 --dependency=afterok:$wm_constant_rollout experiments/gravity_rollout_factorial/slurm/probe.sbatch)
++eval_constant_rollout=$(sbatch --account=cml-furongh --qos=cml-high_long --export=ALL --parsable --time=1-00:00:00 --gres=gpu:b300-sxm:1 --array=15-19%8 --dependency=afterok:$probe_constant_rollout experiments/gravity_rollout_factorial/slurm/evaluate.sbatch)
++printf 'world one-step=%s world rollout=%s world constant-rollout=%s probe one-step=%s probe rollout=%s probe constant-rollout=%s eval one-step=%s eval rollout=%s eval constant-rollout=%s\\n' "$wm_onestep" "$wm_rollout" "$wm_constant_rollout" "$probe_onestep" "$probe_rollout" "$probe_constant_rollout" "$eval_onestep" "$eval_rollout" "$eval_constant_rollout"
 +```
 +
-+The array jobs use 20 entries, one for each cell and seed. Each later stage
-+checks for the output from its previous stage before it starts.
++For a fresh run, the world-model array uses 4 entries, one per cell. In this
++resumed run, the completed `correct_onestep/seed_42` checkpoint is reused. The
++two world-model jobs above train the one-step `constant_onestep` cell and the
++five-step `correct_rollout` cell. The separate `constant_rollout` job uses the
++same B300 pool and a 12-hour limit. The probe and evaluation jobs above cover
++five downstream seeds for each new cell.
++Each later stage checks for the output from its previous stage before it starts.
 +
 +Monitor the jobs with:
 +
@@ -297,8 +315,8 @@ index 0000000..de9a52a
 +```
 +
 +A positive interaction means that rollout training helps more when the model
-+has the correct gravity input. Use the per-seed reports for confidence
-+intervals. Do not treat one seed as evidence of an interaction.
++has the correct gravity input. Report the five downstream-seed results as
++probe/evaluation variability, not as independent world-model training runs.
 +
 +## Scope
 +
@@ -318,7 +336,7 @@ index 0000000..6ff23c0
 +#SBATCH --nodes=1
 +#SBATCH --ntasks=1
 +#SBATCH --cpus-per-task=16
-+#SBATCH --gres=gpu:1
++#SBATCH --gres=gpu:b300-sxm:1
 +#SBATCH --mem=96G
 +#SBATCH --time=1-00:00:00
 +#SBATCH --output=slurm-%x-%j.out
@@ -366,7 +384,7 @@ index 0000000..17f011d
 +#SBATCH --nodes=1
 +#SBATCH --ntasks=1
 +#SBATCH --cpus-per-task=8
-+#SBATCH --gres=gpu:1
++#SBATCH --gres=gpu:b300-sxm:1
 +#SBATCH --mem=96G
 +#SBATCH --time=1-00:00:00
 +#SBATCH --array=0-19%8
@@ -381,6 +399,7 @@ index 0000000..17f011d
 +
 +conditions=(correct_onestep correct_rollout constant_onestep constant_rollout)
 +seeds=(42 43 44 45 46)
++train_seed=42
 +condition_index=$((SLURM_ARRAY_TASK_ID / 5))
 +seed_index=$((SLURM_ARRAY_TASK_ID % 5))
 +condition="${conditions[$condition_index]}"
@@ -394,7 +413,7 @@ index 0000000..17f011d
 +  *) echo "unknown condition: $condition" >&2; exit 2 ;;
 +esac
 +
-+world_model_dir="$SGJEPA_OUTPUT/world_models/$condition/seed_$seed"
++world_model_dir="$SGJEPA_OUTPUT/world_models/$condition/seed_$train_seed"
 +probe_dir="$SGJEPA_OUTPUT/probes/$condition/seed_$seed"
 +evaluation_dir="$SGJEPA_OUTPUT/evaluations/$condition/seed_$seed"
 +export PYTHONNOUSERSITE=1
@@ -435,7 +454,7 @@ index 0000000..93490e6
 +#SBATCH --nodes=1
 +#SBATCH --ntasks=1
 +#SBATCH --cpus-per-task=8
-+#SBATCH --gres=gpu:1
++#SBATCH --gres=gpu:b300-sxm:1
 +#SBATCH --mem=96G
 +#SBATCH --time=1-00:00:00
 +#SBATCH --array=0-19%8
@@ -450,6 +469,7 @@ index 0000000..93490e6
 +
 +conditions=(correct_onestep correct_rollout constant_onestep constant_rollout)
 +seeds=(42 43 44 45 46)
++train_seed=42
 +condition_index=$((SLURM_ARRAY_TASK_ID / 5))
 +seed_index=$((SLURM_ARRAY_TASK_ID % 5))
 +condition="${conditions[$condition_index]}"
@@ -463,7 +483,7 @@ index 0000000..93490e6
 +  *) echo "unknown condition: $condition" >&2; exit 2 ;;
 +esac
 +
-+world_model_dir="$SGJEPA_OUTPUT/world_models/$condition/seed_$seed"
++world_model_dir="$SGJEPA_OUTPUT/world_models/$condition/seed_$train_seed"
 +probe_dir="$SGJEPA_OUTPUT/probes/$condition/seed_$seed"
 +export PYTHONNOUSERSITE=1
 +export PYTHONDONTWRITEBYTECODE=1
@@ -501,10 +521,10 @@ index 0000000..ad98b9b
 +#SBATCH --nodes=1
 +#SBATCH --ntasks=1
 +#SBATCH --cpus-per-task=8
-+#SBATCH --gres=gpu:1
++#SBATCH --gres=gpu:b300-sxm:1
 +#SBATCH --mem=192G
 +#SBATCH --time=2-00:00:00
-+#SBATCH --array=0-19%8
++#SBATCH --array=0-3%4
 +#SBATCH --output=slurm-%x-%A_%a.out
 +
 +set -euo pipefail
@@ -515,11 +535,10 @@ index 0000000..ad98b9b
 +: "${SGJEPA_OUTPUT:?set SGJEPA_OUTPUT to the experiment output path}"
 +
 +conditions=(correct_onestep correct_rollout constant_onestep constant_rollout)
-+seeds=(42 43 44 45 46)
-+condition_index=$((SLURM_ARRAY_TASK_ID / 5))
-+seed_index=$((SLURM_ARRAY_TASK_ID % 5))
++train_seed=42
++condition_index=$SLURM_ARRAY_TASK_ID
 +condition="${conditions[$condition_index]}"
-+seed="${seeds[$seed_index]}"
++seed="$train_seed"
 +
 +case "$condition" in
 +  correct_onestep) config="configs/train/square_factorial_correct_onestep.yaml" ;;
@@ -892,3 +911,25 @@ index 0553e7f..f7718b1 100644
              args.data,
              args.output_dir,
              device=args.device,
++            resume=args.resume,
++            max_steps=args.max_steps,
++        )
+diff --git a/sg_jepa/models/factory.py b/sg_jepa/models/factory.py
+--- a/sg_jepa/models/factory.py
++++ b/sg_jepa/models/factory.py
+@@ -3,6 +3,7 @@
+ from __future__ import annotations
+
++import torch
+ from torch import nn
+
+ from sg_jepa.config import WorldModelConfig
+@@ -27,6 +28,8 @@
+ def build_vit_encoder(config: WorldModelConfig) -> nn.Module:
+     """Reproduce ``stable_pretraining.backbone.utils.vit_hf`` locally."""
+
++    if torch.cuda.is_available():
++        torch.backends.cuda.enable_cudnn_sdp(False)
++
+     try:
+         from transformers import ViTConfig, ViTModel
