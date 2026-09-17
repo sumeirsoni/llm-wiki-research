@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-09-10
+updated: 2026-09-13
 tags:
   - meta
 ---
@@ -339,3 +339,10 @@ Ingested [[semigroup-jepa]] (arXiv: 2609.10464). Created model entity [[sg-jepa-
 
 Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); npm test PASS (15 tests); qmd lexical reindex PASS; embedding step FAIL because the host's Metal backend could not initialize.
 Caveats: Results are grounded in the AlphaXiv AI report and targeted extracted pages from arXiv v1; no local PDF or raw source was added. The main text's reported 34% Approach Ball improvement differs from the percentage implied by Appendix Table 10 values. Existing pending qmd embeddings remain unresolved.
+
+## [2026-09-13] ingest | Predicting the Order of Upcoming Tokens Improves Language Modeling
+
+Ingested [[predicting-order-upcoming-tokens]] (arXiv: 2508.19228). Created concept [[token-order-prediction]] and dataset entity [[fineweb-edu]]. Updated [[self-supervised-learning]], [[iterative-refinement]], [[index]], [[overview]], and README counts. The synthesis distinguishes TOP's vocabulary-space proximity ranking from MTP's exact future-token heads, NextLat's hidden-state transition loss, and SPS's state-versus-prediction architecture.
+
+Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); npm test PASS (15 tests); qmd lexical reindex PASS (4 new, 4 updated, 167 unchanged, 0 removed); embedding step FAIL because qmd's Metal backend could not initialize.
+Caveats: The paper is an early preprint with one data mixture, fixed TOP and MTP horizons, standard NLP evaluation only, and no demonstrated TOP-based speculative decoding. QMD reports 14 unique hashes needing embeddings.

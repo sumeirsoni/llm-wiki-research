@@ -22,6 +22,7 @@ sources:
   - "[[topological-trouble-with-transformers]]"
   - "[[next-latent-prediction]]"
   - "[[hierarchical-latent-prediction]]"
+  - "[[predicting-order-upcoming-tokens]]"
   - "[[un-0-coupled-oscillators]]"
   - "[[fixed-point-reasoners]]"
   - "[[lotus]]"
@@ -94,6 +95,10 @@ SMT trains nonlinear RNNs without BPTT by using a Transformer teacher to generat
 ### Belief-State Latent Dynamics ([[next-latent-prediction|NextLat]])
 
 NextLat co-trains a transformer with a lightweight MLP latent dynamics model that predicts next hidden states from $(h_t, X_{t+1})$. The auxiliary objective provably shapes representations into belief states and enables variable-length self-speculative decoding (up to 3.3× speedup). Surprisingly, the co-trained MLP generalizes to longer sequences than the transformer itself on state-tracking tasks, partially escaping the parallelism tradeoff identified in [[topological-trouble-with-transformers|Topological Trouble With Transformers]]. [[hierarchical-latent-prediction|HiLP]] extends this pattern with a sliding-window abstract state that predicts four positions ahead directly. At 1B scale, the explicit temporal hierarchy lowers longer-horizon rollout error and modestly improves coding and speculative draft acceptance over NextLat, while remaining a training-only scaffold.
+
+### Future-Token Ranking ([[token-order-prediction|TOP]])
+
+TOP adds a listwise ranking target over the upcoming vocabulary window to ordinary next-token training. It asks the model to score each token by how soon it next appears, rather than to predict exact tokens at several offsets. The extra head is removed at inference, so TOP changes representation learning without changing the deployed decoder. This is a lighter future-oriented training signal than NextLat's hidden-state transition model or MTP's multiple transformer-block heads. Its initial 340M to 7B study reports gains on most standard NLP benchmark cells, but does not test generative tasks or self-speculative decoding.
 
 ### Cross-Token Latent Feedback ([[full-bandwidth-transformer|Full-Bandwidth Transformer]])
 

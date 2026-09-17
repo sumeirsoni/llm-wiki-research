@@ -25,6 +25,7 @@ sources:
   - "[[jepa-paradox-in-language]]"
   - "[[self-supervised-visual-on-policy-distillation]]"
   - "[[levjepa]]"
+  - "[[predicting-order-upcoming-tokens]]"
 aliases:
   - "SSL"
   - "Self-supervised learning"
@@ -45,6 +46,10 @@ Learn by **reconstructing raw inputs** from corrupted versions.
 - **Strengths**: Strong grounding in low-level data statistics
 - **Weaknesses**: Computationally expensive for high-redundancy data (images/video); objective doesn't prioritize high-level features
 - **In this wiki**: [[rethinking-jepa|SALT]] uses a generative teacher (Stage 1)
+
+### Token-Level Auxiliary Objectives
+
+[[token-order-prediction|Token Order Prediction (TOP)]] adds a second self-supervised target to next-token prediction. It ranks upcoming vocabulary items by proximity instead of predicting exact tokens at several future offsets. This gives language models a future-oriented training signal with one additional unembedding head. The initial study improves most of its eight benchmark tasks across 340M, 1.8B, and 7B models, but it does not yet test coding, summarization, or speculative decoding.
 
 ### Contrastive Methods
 Learn by **distinguishing positive pairs from negative pairs** in embedding space.
@@ -101,4 +106,5 @@ Learn representations by maximizing structure recoverable by a deliberately capa
 - **JEPA regularization advances**: [[visreg|VISReg]] refines collapse prevention with decoupled scale/shape regularization and strong OOD transfer
 - **Minimal-assumption SSL**: [[temporal-difference-vision|TDV]] removes even augmentation/masking biases, learning from video via causal next-frame prediction alone
 - **Latent dynamics for transformers**: [[next-latent-prediction|NextLat]] adds belief-state pressure to next-token training via self-supervised hidden-state prediction
+- **Future-token ranking**: [[token-order-prediction|TOP]] adds a listwise proximity target to next-token training; unlike MTP, its auxiliary head does not grow with the look-ahead window
 - **Observer-relative objectives**: [[intelligence-from-learnable-novelty|Learnable Novelty]] organizes a label-free [[mnist|MNIST]] representation by maximizing structure recoverable through a bounded random-feature observer

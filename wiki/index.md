@@ -2,7 +2,7 @@
 title: "Wiki Index"
 type: meta
 created: 2026-04-10
-updated: 2026-09-07
+updated: 2026-09-13
 tags:
   - meta
 ---
@@ -13,6 +13,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Sources
 
+- [[predicting-order-upcoming-tokens]] - Token Order Prediction ranks upcoming vocabulary items as a training-only auxiliary objective (2025)
 - [[semigroup-jepa]] - Gravity-conditioned recursive latent rollouts improve long-horizon physics prediction and control under held-out gravity values (2026)
 - [[latent-action-as-intention]] - LAWA uses compact latent actions as future intentions for efficient World Action Model inference (2026)
 - [[convergeflow]] - Embedding-space flow language model with provable convergence to token embeddings (2026)
@@ -122,6 +123,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Concepts
 
+- [[token-order-prediction]] - Future-token ranking as an auxiliary objective for autoregressive language models
 - [[continuous-language-modeling]] - Continuous language generation with finite-support token endpoints and flow-based sampling
 - [[reasoning-dynamics]] - Settling-time basins, transient chaos, and attractor structure in recurrent reasoning
 - [[single-step-generative-models]] - Design patterns and tradeoffs for one-pass image, video, and physical generative models
@@ -161,6 +163,7 @@ A catalog of all pages in the ML Research Wiki, organized by category.
 
 ## Entities
 
+- [[fineweb-edu]] - Language-model pretraining corpus used by TOP, NextLat, SPS, and LM-head studies (dataset)
 - [[sg-jepa-model|SG-JEPA]] - Gravity-conditioned JEPA world model for recursive physics prediction (model)
 - [[openwebtext]] - Language-modeling dataset used for ConvergeFlow experiments (dataset)
 - [[libero-plus]] - Robustness benchmark used for zero-shot robot-policy transfer (dataset)

@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-09-10
+updated: 2026-09-13
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**106 sources ingested** | **36 concept pages** | **19 entity pages** | **6 comparison pages** | 167 source/concept/entity/comparison pages | 172 wiki Markdown files
+**107 sources ingested** | **37 concept pages** | **20 entity pages** | **6 comparison pages** | 170 source/concept/entity/comparison pages | 175 wiki Markdown files
 
 ## Key Themes
 
@@ -252,6 +252,7 @@ graph TD
 41. **Reasoning basin control**: Can models escape incorrect saddle states without losing the multi-step reasoning ability that creates those escape directions?
 42. **Continuous language endpoints**: Can a flow learn token embeddings jointly with its predictor while preserving ConvergeFlow's endpoint guarantee?
 43. **Latent intention transfer**: Does LAWA's compact future-intention interface hold across longer horizons, embodiments, and more irreversible contact tasks?
+44. **Future-token supervision**: Does [[token-order-prediction|TOP]] retain its gains across data mixtures, window sizes, model families, and generative tasks, and how does it compare with [[next-latent-prediction|NextLat]], [[hierarchical-latent-prediction|HiLP]], and DeepSeek-V3-style MTP under matched compute?
 
 ## Knowledge Gaps
 
@@ -272,3 +273,5 @@ graph TD
 
 > [!gap]
 > [[robot-world-model-architectures]] files a partial comparison of JEPA, diffusion/video, and VLA-style world models, but no source runs all families on identical robot benchmarks with unified metrics.
+### 17. Future-Token Auxiliary Objectives
+[[token-order-prediction|Token Order Prediction (TOP)]] adds a softer future-oriented signal to next-token training. It ranks upcoming vocabulary items by proximity with one extra unembedding head, while [[next-latent-prediction|NextLat]] predicts future hidden-state transitions and [[hierarchical-latent-prediction|HiLP]] predicts a coarser future latent. The initial TOP comparison at 340M, 1.8B, and 7B reports better standard NLP performance than NTP and a reproduced four-token MTP baseline on most benchmark cells. The remaining question is whether the gain comes from the ranking target, regularization, the data mixture, or some combination.
