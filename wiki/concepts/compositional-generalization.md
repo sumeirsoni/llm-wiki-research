@@ -2,7 +2,7 @@
 title: "Compositional generalization in recurrent Transformers"
 type: concept
 created: 2026-09-04
-updated: 2026-09-04
+updated: 2026-09-17
 tags:
   - language
   - transformer
@@ -11,6 +11,7 @@ tags:
   - theory
 sources:
   - "[[loop-think-generalize]]"
+  - "[[learning-to-theorize-world-observation]]"
 aliases:
   - "Systematic generalization"
   - "Depth extrapolation"
@@ -22,6 +23,8 @@ aliases:
 ## Overview
 
 Compositional generalization asks whether a model can combine learned parts in configurations that were absent from training. In the recurrent-depth setting, two tests matter. Systematic generalization combines atomic facts that were never composed during training. Depth extrapolation applies a learned composition rule to longer chains than the training curriculum contained.
+
+[[learning-to-theorize-world-observation|Learning to Theorize the World from Observation]] studies the same capability outside language-model recurrence. Its NEO model infers a latent program from one observation pair, then applies that program to a new input. OTIB separates support reconstruction from query transfer, so it can detect a model that memorizes a target without learning a reusable composition.
 
 ## The controlled task
 
@@ -58,6 +61,7 @@ The paper's halting rule combines a small change in the output distribution with
 - [[topological-trouble-with-transformers]] explains why fixed feedforward depth can limit repeated state updates. This paper provides a controlled composition experiment where recurrence helps.
 - [[jacobian-lens-workspace]] and the source paper separate decodability from causal use. Logit-lens recovery of an intermediate entity is stronger evidence when activation patching shows that restoring it recovers the final answer.
 - [[fixed-point-reasoners|FPRM]] provides a different solution to adaptive latent compute. It halts on state convergence, while this paper halts on output stability plus confidence.
+- [[learning-to-theorize-world-observation|Learning to Theorize the World from Observation]] tests compositional transfer with latent executable programs. It reports strong transfer on held-out compositions and longer programs, but only in controlled discrete domains.
 
 ## Open Questions
 

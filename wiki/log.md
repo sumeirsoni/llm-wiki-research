@@ -2,7 +2,7 @@
 title: "Wiki Log"
 type: meta
 created: 2026-04-10
-updated: 2026-09-13
+updated: 2026-09-17
 tags:
   - meta
 ---
@@ -346,3 +346,10 @@ Ingested [[predicting-order-upcoming-tokens]] (arXiv: 2508.19228). Created conce
 
 Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); npm test PASS (15 tests); qmd lexical reindex PASS (4 new, 4 updated, 167 unchanged, 0 removed); embedding step FAIL because qmd's Metal backend could not initialize.
 Caveats: The paper is an early preprint with one data mixture, fixed TOP and MTP horizons, standard NLP evaluation only, and no demonstrated TOP-based speculative decoding. QMD reports 14 unique hashes needing embeddings.
+
+## [2026-09-17] ingest | Learning to Theorize the World from Observation
+
+Ingested [[learning-to-theorize-world-observation]] (arXiv: 2605.03413, ICML 2026). Created concept [[learning-to-theorize]], model entity [[neural-theorizer]], and benchmark entity [[observation-to-theory-induction-benchmark]]. Updated [[world-models]], [[compositional-generalization]], [[iterative-refinement]], [[index]], [[overview]], and README bookkeeping. The synthesis records L2T's distinction between support reconstruction and query transfer, NEO's discrete latent programs and state grounding, and OTIB's controlled compositional and length OOD tests.
+
+Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); npm test PASS (15 tests); qmd lexical reindex PASS; embedding step FAIL because qmd's Metal backend could not initialize.
+Caveats: The paper's evidence is limited to controlled domains with small discrete primitive sets and short programs. The paper provides no code link in the retrieved metadata. QMD reports 19 unique hashes needing embeddings.

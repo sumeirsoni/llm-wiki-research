@@ -2,7 +2,7 @@
 title: "Iterative Refinement"
 type: concept
 created: 2026-05-17
-updated: 2026-09-09
+updated: 2026-09-17
 tags:
   - transformer
   - language
@@ -36,6 +36,7 @@ sources:
   - "[[looped-transformers-jacobian-lens]]"
   - "[[loop-think-generalize]]"
   - "[[fractal-basins-trap-latent-reasoning]]"
+  - "[[learning-to-theorize-world-observation]]"
 aliases:
   - "Latent thinking"
   - "Architectural recurrence"
@@ -147,6 +148,10 @@ SPS separates the immediate next-token prediction role from persistent state pre
 ### Implicit compositional reasoning ([[loop-think-generalize|Loop, Think, & Generalize]])
 
 [[loop-think-generalize|Loop, Think, & Generalize]] uses synthetic multi-hop knowledge graphs to test whether recurrence can combine parametric facts that were never composed during training and extrapolate to deeper chains at inference. Recurrent-depth models pass the systematicity split through a three-stage grokking process and gain depth from additional iterations. The same extra compute can hurt after the correct answer is reached, so the paper combines output-distribution stability with entropy for halting. [[compositional-generalization]] records the task design and the shortcut controls.
+
+### Latent program execution ([[learning-to-theorize-world-observation|Learning to Theorize]])
+
+NEO applies iterative latent computation to a different problem. A goal-conditioned theory programmer selects one learned primitive at a time, and a shared executor transforms the latent state. Minimum Description Length chooses an explanation length, while state grounding keeps intermediate states in the valid encoder-decoder space. This is a structured program trace rather than repeated refinement of an unrestricted hidden state. The paper reports transfer to held-out compositions and longer programs on controlled OTIB tasks.
 
 ## Key Tension
 

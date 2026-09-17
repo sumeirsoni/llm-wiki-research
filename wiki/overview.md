@@ -2,7 +2,7 @@
 title: "ML Research Wiki — Overview"
 type: meta
 created: 2026-04-10
-updated: 2026-09-13
+updated: 2026-09-17
 tags:
   - meta
   - self-supervised-learning
@@ -19,7 +19,7 @@ This wiki is a persistent, evolving knowledge base covering **self-supervised re
 
 ## Current State
 
-**107 sources ingested** | **37 concept pages** | **20 entity pages** | **6 comparison pages** | 170 source/concept/entity/comparison pages | 175 wiki Markdown files
+**108 sources ingested** | **38 concept pages** | **22 entity pages** | **6 comparison pages** | 174 source/concept/entity/comparison pages | 179 wiki Markdown files
 
 ## Key Themes
 
@@ -173,6 +173,9 @@ See [[oprd-literature-review]] for the experiment-facing synthesis: contrastive 
 ### 16. Critic-Based LLM Reinforcement Learning
 [[critic-based-llm-rl]] separates the value-estimation interface from the policy objective. [[best-practice-critic-optimization|BPCO]] shows that DPPO, reward-range-bounded values, Monte Carlo critic targets, raw advantages, and length-adaptive GAE can turn single-rollout actor-critic training into a competitive alternative to group-relative methods. Training-only privileged information can improve critic fit but may increase overfitting, and critic memory is not captured fully by trajectory-matched comparisons.
 
+### 17. Explanation-driven world models
+[[learning-to-theorize|Learning-to-Theorize]] shifts part of the world-model question from "Can the model predict the next observation?" to "Can it infer and reuse the program that generated the observation?" NEO uses a learned discrete primitive vocabulary and a shared executor, then measures transfer from a support observation pair to a query input. OTIB reports strong transfer on held-out compositions and longer programs, but only in controlled discrete domains.
+
 ## Key Relationships
 
 ```mermaid
@@ -253,6 +256,7 @@ graph TD
 42. **Continuous language endpoints**: Can a flow learn token embeddings jointly with its predictor while preserving ConvergeFlow's endpoint guarantee?
 43. **Latent intention transfer**: Does LAWA's compact future-intention interface hold across longer horizons, embodiments, and more irreversible contact tasks?
 44. **Future-token supervision**: Does [[token-order-prediction|TOP]] retain its gains across data mixtures, window sizes, model families, and generative tasks, and how does it compare with [[next-latent-prediction|NextLat]], [[hierarchical-latent-prediction|HiLP]], and DeepSeek-V3-style MTP under matched compute?
+45. **Explanation-driven generalization**: Can [[learning-to-theorize|L2T]] learn reusable, causally meaningful programs from natural visual trajectories with noisy observations, continuous operations, and unknown theory spaces?
 
 ## Knowledge Gaps
 
