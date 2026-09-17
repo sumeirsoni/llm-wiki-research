@@ -339,17 +339,3 @@ Ingested [[semigroup-jepa]] (arXiv: 2609.10464). Created model entity [[sg-jepa-
 
 Verification: wiki:validate PASS (0 errors, 5 pre-existing venue warnings); npm test PASS (15 tests); qmd lexical reindex PASS; embedding step FAIL because the host's Metal backend could not initialize.
 Caveats: Results are grounded in the AlphaXiv AI report and targeted extracted pages from arXiv v1; no local PDF or raw source was added. The main text's reported 34% Approach Ball improvement differs from the percentage implied by Appendix Table 10 values. Existing pending qmd embeddings remain unresolved.
-
-## [2026-09-13] experiment | SG-JEPA gravity and rollout factorial
-
-Prepared a four-cell, five-seed Square experiment to separate correct gravity conditioning from five-step autoregressive rollout training. Added an upstream patch with config-controlled constant gravity, seed overrides, Slurm data, world-model, probe, and evaluation arrays, plus a reproducibility README. Added [[sg-jepa-gravity-rollout-factorial]] and [[compute-cluster]] for the protocol and UMD Nexus CML links.
-
-Verification: wiki:validate PASS; qmd lexical reindex pending; upstream patch syntax and shell syntax PASS.
-Caveats: The Slurm jobs were not submitted because the Codex shell could not reach `nexuscml.umiacs.umd.edu` and the available terminal app could not be controlled through the desktop safety boundary. No password or Duo information was stored.
-
-## [2026-09-14] experiment | SG-JEPA factorial QoS correction
-
-Verified the authenticated Nexus terminal and applied the SG-JEPA factorial bundle. The first Slurm submissions were rejected before execution because the account default `cml-default` QoS allows only 4 CPUs per job. Updated the bundle and cluster reference to request the available `cml-high_long` QoS.
-
-Verification: wiki:validate PASS; npm test PASS (15 tests); Slurm scripts and patch regeneration PASS.
-Caveats: No job ran and no credentials were stored. The terminal session remains user-authenticated.
